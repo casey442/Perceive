@@ -1,0 +1,35 @@
+---
+// Demonstrates the summary promise: plain-language, translated into the reader's
+// language, and always citing its source page. Mock content (a rendered summary),
+// so it is exempt from the marketing stop-slop gate.
+const item = 'Superintendent contract · renewal';
+const cite = 'Cites p. 12 · Minutes 11/12/2019';
+const langs = [
+  { code: 'EN', text: "The board renewed the superintendent's contract for three years and set the annual evaluation, on a 6–1 vote." },
+  { code: 'ES', text: 'La junta renovó el contrato del superintendente por tres años y fijó la evaluación anual, con un voto de 6 a 1.' },
+  { code: '中文', text: '董事会以6票对1票续签了督学的三年合同，并确定了年度评估安排。' },
+];
+---
+<div class="summary-card">
+  <div class="s-item">{item}</div>
+  <div class="lang-tabs" role="tablist" aria-label="Summary language">
+    {langs.map((l, i) => (
+      <button role="tab" data-text={l.text} aria-selected={i === 0 ? 'true' : 'false'}>{l.code}</button>
+    ))}
+  </div>
+  <p class="s-body">{langs[0].text}</p>
+  <div class="cite"><span class="dot"></span>{cite}</div>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>('.summary-card').forEach((card) => {
+    const body = card.querySelector<HTMLElement>('.s-body');
+    card.querySelectorAll<HTMLButtonElement>('.lang-tabs button').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        card.querySelectorAll('.lang-tabs button').forEach((b) => b.setAttribute('aria-selected', 'false'));
+        btn.setAttribute('aria-selected', 'true');
+        if (body) body.textContent = btn.getAttribute('data-text') || '';
+      });
+    });
+  });
+</script>

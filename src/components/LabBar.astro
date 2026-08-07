@@ -1,0 +1,21 @@
+---
+// Lab chrome: version switcher across the exploration pages. Not part of the design.
+interface Props { active?: 'home' | 'search' | 'workflow'; }
+const { active } = Astro.props;
+const items = [
+  { key: 'home', label: 'Home study', href: '/lab/' },
+  { key: 'search', label: 'How it works · Search-led', href: '/lab/how-it-works-search/' },
+  { key: 'workflow', label: 'How it works · Workflow-led', href: '/lab/how-it-works-workflow/' },
+];
+---
+<div class="lab-banner">
+  <div class="wrap">
+    <span class="tag">Design lab</span>
+    <nav class="lab-switch">
+      {items.map((it) => (
+        <a href={it.href} class={active === it.key ? 'on' : ''}>{it.label}</a>
+      ))}
+    </nav>
+    <span class="note">Exploration only. Approved site at <a href="/">/</a>.</span>
+  </div>
+</div>

@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import '../styles/lab.css';
 import Nav from '../components/Nav.astro';
+import LabBar from '../components/LabBar.astro';
 import Marquee from '../components/Marquee.astro';
 import Stakes from '../components/Stakes.astro';
 import FinalCta from '../components/FinalCta.astro';
@@ -54,14 +55,7 @@ const boxes3 = [
 ---
 <Base title="BoardPlanner — design lab">
   <div class="lab" id="lab">
-    <!-- lab chrome (not part of the design) -->
-    <div class="lab-banner">
-      <div class="wrap">
-        <span class="tag">Design lab · mono + Function Health / Notion study</span>
-        <span class="note">Exploration only. The approved homepage lives at <a href="/">/</a>. Boxes now lead the scroll band, condensed to three, copy trimmed.</span>
-        <button class="grid-toggle" id="grid-toggle" aria-pressed="false">Baseline grid</button>
-      </div>
-    </div>
+    <LabBar active="home" />
 
     <Nav />
 

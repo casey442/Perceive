@@ -1,0 +1,38 @@
+---
+// Index-style footer (from the mono study), reused across lab pages.
+const index = [
+  { n: '01', name: 'How it works', href: '/how-it-works' },
+  { n: '02', name: 'Board members', href: '/board-members' },
+  { n: '03', name: 'Public portal', href: '/public-portal' },
+  { n: '04', name: 'Security', href: '/security' },
+  { n: '05', name: 'Contact', href: '/contact' },
+];
+---
+<footer>
+  <div class="foot-inner">
+    <div class="foot-top">
+      <a class="logo" href="/">Board<em>Planner</em></a>
+    </div>
+    <div class="foot-index">
+      <span class="foot-index-label">Index</span>
+      <ul class="index-list">
+        {index.map((it) => (
+          <li>
+            <a class="index-row" href={it.href}>
+              <span class="ix-num">{it.n}</span>
+              <span class="ix-name">{it.name}</span>
+              <span class="ix-arrow" aria-hidden="true">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8" /></svg>
+              </span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+    <p class="disclosure">Our disclosure commitment: <b>if anything goes wrong with your district's data, you hear it from us first, in writing.</b></p>
+    <div class="foot-bottom">
+      <span>© 2026 BoardPlanner</span>
+      <span class="adjourned">Meeting adjourned.</span>
+    </div>
+  </div>
+</footer>

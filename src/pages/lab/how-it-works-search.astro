@@ -1,0 +1,132 @@
+---
+import Base from '../../layouts/Base.astro';
+import '../../styles/lab.css';
+import '../../styles/hiw.css';
+import Nav from '../../components/Nav.astro';
+import LabBar from '../../components/LabBar.astro';
+import LabFooter from '../../components/LabFooter.astro';
+import FinalCta from '../../components/FinalCta.astro';
+import SummaryCard from '../../components/hiw/SummaryCard.astro';
+
+// Condensed lifecycle for the search-led treatment.
+const parts = [
+  { n: '01', title: 'The packet', body: 'Templates hold the shape. Forward a document and it files onto the right agenda item.' },
+  { n: '02', title: 'The minutes', body: 'Start from the agenda and fill in as the meeting runs: motions, votes, roll calls.' },
+  { n: '03', title: 'The record', body: 'The board carries it on the phone in their pocket. The public reads the same agendas and approved minutes.' },
+];
+const goalItems = [
+  { t: 'Curriculum adoption', s: 'approved 05/2024' },
+  { t: 'Reading coach budget', s: 'amended 09/2024' },
+  { t: 'Q2 progress update', s: 'posted 02/2025' },
+];
+---
+<Base title="BoardPlanner — How it works (search-led)">
+  <div class="lab" id="lab">
+    <LabBar active="search" />
+    <Nav />
+
+    <!-- HERO -->
+    <header class="hiw-hero">
+      <div class="wrap">
+        <span class="hiw-eyebrow">How it works</span>
+        <h1>Find any <em>decision</em>.</h1>
+        <p class="hiw-lede">Search every agenda, minute, and policy by the words inside the PDF. <b>Read the summary first</b>, in the reader's language, cited to its page.</p>
+      </div>
+    </header>
+
+    <!-- SEARCH -->
+    <section class="hiw-sec">
+      <div class="wrap">
+        <div class="hiw-head">
+          <div class="hiw-kicker">Search</div>
+          <h2>Search the <em>record</em>.</h2>
+          <p class="say">Search by the words inside every PDF. The result is the exact minute, with the page it lives on.</p>
+        </div>
+        <div class="search-mock">
+          <div class="search-bar">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+            <span class="q">bus routes redrawn</span>
+            <span class="caret"></span>
+          </div>
+          <div class="result-card">
+            <div class="r-title">Minutes · Regular Meeting, March 2023</div>
+            <div class="r-snip">…the Board approved the <mark>redrawn bus routes</mark> for the 2023–24 year on a 5–2 vote, effective in August…</div>
+            <div class="cite"><span class="dot"></span>p. 4 · Minutes 03/14/2023</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SUMMARIES -->
+    <section class="hiw-sec alt">
+      <div class="wrap">
+        <div class="hiw-head">
+          <div class="hiw-kicker">Summaries</div>
+          <h2>Read the summary <em>first</em>.</h2>
+          <p class="say">The full packet runs long. Every item carries a plain-language summary in the reader's language, and it cites the page it came from.</p>
+        </div>
+        <SummaryCard />
+      </div>
+    </section>
+
+    <!-- LIFECYCLE (condensed) -->
+    <section class="hiw-sec">
+      <div class="wrap">
+        <div class="hiw-head">
+          <div class="hiw-kicker">Every meeting</div>
+          <h2>Agenda to <em>adjournment</em>.</h2>
+        </div>
+        <div class="steps">
+          {parts.map((p) => (
+            <div class="step">
+              <span class="s-num">{p.n}</span>
+              <div>
+                <h3>{p.title}</h3>
+                <p>{p.body}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- MIGRATION -->
+    <section class="hiw-sec alt">
+      <div class="wrap">
+        <div class="hiw-head">
+          <div class="hiw-kicker">Migration</div>
+          <h2>Bring your <em>history</em>.</h2>
+        </div>
+        <div class="mig">
+          <p class="say">We move your full history over before day one. The minute book runs complete from your first meeting.</p>
+          <div class="from">
+            <span class="chip">from BoardDocs</span>
+            <span class="chip">from Diligent</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GOALS / commitment tracker -->
+    <section class="hiw-sec">
+      <div class="wrap">
+        <div class="hiw-head">
+          <div class="hiw-kicker">Goals</div>
+          <h2>Follow a <em>goal</em>.</h2>
+          <p class="say">Track the board's goals in one place. Each goal pulls in every related item, vote, and update.</p>
+        </div>
+        <div class="track">
+          <div class="goal">Raise third-grade reading <em>proficiency</em>.</div>
+          <ul>
+            {goalItems.map((g) => (
+              <li><span><b>{g.t}</b></span><span class="tag2">{g.s}</span></li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <FinalCta />
+    <LabFooter />
+  </div>
+</Base>

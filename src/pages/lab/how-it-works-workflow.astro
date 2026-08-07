@@ -1,0 +1,108 @@
+---
+import Base from '../../layouts/Base.astro';
+import '../../styles/lab.css';
+import '../../styles/hiw.css';
+import Nav from '../../components/Nav.astro';
+import LabBar from '../../components/LabBar.astro';
+import LabFooter from '../../components/LabFooter.astro';
+import FinalCta from '../../components/FinalCta.astro';
+import SummaryCard from '../../components/hiw/SummaryCard.astro';
+
+const steps = [
+  {
+    n: '01',
+    title: 'Build the packet',
+    body: 'Templates hold the shape. Forward a document and it files onto the right agenda item. Email a new item and it lands on the draft, <b>in order</b>.',
+  },
+  {
+    n: '02',
+    title: 'Draft, review, publish',
+    body: 'You draft in private, route it for review, and <b>publish when the board approves</b>. One version, never a folder of near-duplicates.',
+  },
+  {
+    n: '03',
+    title: 'Run the meeting',
+    body: 'Minutes start from the agenda and fill in as you go: motions, votes, roll calls. Each entry <b>ties back to the posted notice</b>.',
+  },
+  {
+    n: '04',
+    title: 'Open it to the public',
+    body: 'Agendas and approved minutes post <b>inside your state\'s notice window</b>, searchable by anyone, each with a summary that cites its page.',
+  },
+];
+---
+<Base title="BoardPlanner — How it works (workflow-led)">
+  <div class="lab" id="lab">
+    <LabBar active="workflow" />
+    <Nav />
+
+    <!-- HERO -->
+    <header class="hiw-hero">
+      <div class="wrap">
+        <span class="hiw-eyebrow">How it works</span>
+        <h1>Draft to <em>published</em>.</h1>
+        <p class="hiw-lede">Build the packet, run the meeting, publish the record. <b>One workflow</b>, from Monday's draft to the public portal.</p>
+      </div>
+    </header>
+
+    <!-- THE WORKFLOW -->
+    <section class="hiw-sec">
+      <div class="wrap">
+        <div class="steps">
+          {steps.map((s) => (
+            <div class="step">
+              <span class="s-num">{s.n}</span>
+              <div>
+                <h3>{s.title}</h3>
+                <p set:html={s.body} />
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- SUMMARIES (rides inside publishing) -->
+    <section class="hiw-sec alt">
+      <div class="wrap">
+        <div class="hiw-head">
+          <div class="hiw-kicker">What the public gets</div>
+          <h2>Read the summary <em>first</em>.</h2>
+          <p class="say">The full packet runs long. Every published item carries a plain-language summary in the reader's language, and it cites the page it came from.</p>
+        </div>
+        <SummaryCard />
+      </div>
+    </section>
+
+    <!-- THE BOARD -->
+    <section class="hiw-sec">
+      <div class="wrap">
+        <div class="hiw-head">
+          <div class="hiw-kicker">The board</div>
+          <h2>On the phone in their <em>pocket</em>.</h2>
+          <p class="say">Each member gets their own private section for notes and packets. It works on the phone in their pocket, with no app to install.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- MIGRATION -->
+    <section class="hiw-sec alt">
+      <div class="wrap">
+        <div class="hiw-head">
+          <div class="hiw-kicker">Migration</div>
+          <h2>Bring your <em>history</em>.</h2>
+        </div>
+        <div class="mig">
+          <p class="say">We move your full history over before day one. The minute book runs complete from your first meeting.</p>
+          <div class="from">
+            <span class="chip">from BoardDocs</span>
+            <span class="chip">from Diligent</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <FinalCta />
+    <LabFooter />
+  </div>
+</Base>
