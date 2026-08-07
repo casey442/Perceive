@@ -1,0 +1,51 @@
+/* BoardPlanner design tokens — v4 (achromatic black / silver / white)
+   Rule: every grey is a true neutral. R=G=B only. No blue, no pink, no warm drift. */
+
+:root {
+  /* Surfaces */
+  --paper:   #FBFBFB;  /* page background */
+  --silver:  #F2F2F2;  /* alternate bands: marquee, stakes, footer */
+  --silver2: #EAEAEA;  /* deeper band accents */
+  --card:    #FFFFFF;  /* cards, nav (at 92% + blur) */
+
+  /* Text */
+  --ink:     #111111;  /* headlines, body emphasis, buttons */
+  --muted:   #575757;  /* body text — 7.4:1 on paper */
+  --label:   #757575;  /* small-caps labels — 4.6:1, do not lighten */
+
+  /* Lines */
+  --line:    #E5E5E5;  /* section borders */
+  --line2:   #D6D6D6;  /* card borders, dividers */
+  --hair:    #C0C0C0;  /* hairline rules, double-rule footer */
+
+  /* Silver-as-material gradients */
+  --folio-gradient: linear-gradient(135deg, #EFEFEF 0%, #DBDBDB 55%, #C9C9C9 100%); /* ghost numerals, background-clip:text */
+  --media-field: radial-gradient(130% 100% at 50% 8%, #F6F6F6 0%, #EAEAEA 46%, #D9D9D9 100%); /* hero arch */
+
+  /* Shape */
+  --radius: 4px;          /* cards; buttons 3px */
+  --arch: 300px;          /* hero media top radius (160px under 900px viewport) */
+  --maxw: 1180px;
+
+  /* Type */
+  --serif-display: "Fraunces", Georgia, serif;   /* weight ~520; italics at 480 for accent words */
+  --serif-text:    "Newsreader", Georgia, serif; /* 13px minimum anywhere */
+}
+
+/* Type scale (desktop)
+   H1 hero:        clamp(56px, 7.2vw, 96px) / 0.98 / 520
+   H2 section:     clamp(34px, 3.8vw, 50px) / 520
+   H2 final CTA:   clamp(38px, 4.6vw, 60px) / 1.04
+   H3 card:        26px / 560
+   Stat numeral:   46px / 480 (Fraunces)
+   Body large:     20px (hero sub)
+   Body:           16px / 1.65
+   Meta line:      14px
+   Stat label:     13.5px
+   Small caps:     11–12.5px / 500 / letter-spacing .18–.22em / uppercase
+
+   Spacing rhythm: sections 92–110px top; heads 52px to content; cards 34px padding; 20px grid gap.
+   Shadows (neutral black only): cards hover 0 26px 50px -26px rgba(0,0,0,.25);
+   hero media 0 40px 90px -40px rgba(0,0,0,.32); buttons 0 10px 24px -12px rgba(0,0,0,.4).
+   Motion: reveals .7s cubic-bezier(.2,.6,.2,1), 70ms stagger; marquee 52s linear, pausable;
+   all gated by prefers-reduced-motion. */

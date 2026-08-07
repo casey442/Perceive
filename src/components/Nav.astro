@@ -1,0 +1,17 @@
+---
+const links = [
+  { label: 'How it works', href: '/how-it-works' },
+  { label: 'Board members', href: '/board-members' },
+  { label: 'Public portal', href: '/public-portal' },
+  { label: 'Security', href: '/security' },
+];
+---
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="/">Board<em>Planner</em></a>
+    <div class="nav-links">
+      {links.map((l) => <a href={l.href}>{l.label}</a>)}
+      <a class="btn" href="/demo">See a demo</a>
+    </div>
+  </div>
+</nav>

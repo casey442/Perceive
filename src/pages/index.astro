@@ -1,0 +1,40 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Hero from '../components/Hero.astro';
+import Marquee from '../components/Marquee.astro';
+import Boxes from '../components/Boxes.astro';
+import Stakes from '../components/Stakes.astro';
+import FinalCta from '../components/FinalCta.astro';
+import Footer from '../components/Footer.astro';
+---
+<Base>
+  <Nav />
+  <Hero />
+  <Marquee />
+  <Boxes />
+  <Stakes />
+  <FinalCta />
+  <Footer />
+</Base>
+
+<script>
+  // Reveal-on-scroll — progressive enhancement. Content is visible without JS
+  // (see the <noscript> fallback in Base.astro) and with prefers-reduced-motion.
+  const reveals = document.querySelectorAll<HTMLElement>('.reveal');
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        }
+      });
+    },
+    { threshold: 0.12 }
+  );
+  reveals.forEach((el, i) => {
+    el.style.transitionDelay = (i % 4) * 70 + 'ms';
+    io.observe(el);
+  });
+</script>

@@ -1,0 +1,26 @@
+---
+// The footer gets hero-level care. The page's one wink lives here at the exit:
+// "Meeting adjourned."
+const links = [
+  { label: 'How it works', href: '/how-it-works' },
+  { label: 'Board members', href: '/board-members' },
+  { label: 'Public portal', href: '/public-portal' },
+  { label: 'Security', href: '/security' },
+  { label: 'Contact', href: '/contact' },
+];
+---
+<footer>
+  <div class="foot-inner">
+    <div class="foot-top">
+      <a class="logo" href="/">Board<em>Planner</em></a>
+      <div class="foot-links">
+        {links.map((l) => <a href={l.href}>{l.label}</a>)}
+      </div>
+    </div>
+    <p class="disclosure">Our disclosure commitment: <b>if anything goes wrong with your district's data, you hear it from us first, in writing.</b></p>
+    <div class="foot-bottom">
+      <span>© 2026 BoardPlanner</span>
+      <span class="adjourned">Meeting adjourned.</span>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,23 @@
+---
+// OPEN ITEM: all three statutory numbers must be re-verified against live sources
+// before launch. Texas: cite the AG's Open Meetings Act handbook, not the statutes
+// portal (which shows stale pre-Sept-2025 text).
+const stats = [
+  { n: '1–2×', l: 'public meetings each month, year round, by statute' },
+  { n: '72 hrs', l: 'of posted notice in California and Pennsylvania; Texas sets 3 business days' },
+  { n: '48 hrs', l: 'packet-delivery deadline many districts write into board policy' },
+];
+---
+<section class="stakes">
+  <div class="stakes-inner">
+    <div class="lead reveal">The law requires the meeting. <span>It sets the deadlines, too.</span></div>
+    <div class="stat-row reveal">
+      {stats.map((s) => (
+        <div class="stat">
+          <div class="n">{s.n}</div>
+          <div class="l">{s.l}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

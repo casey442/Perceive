@@ -1,0 +1,44 @@
+---
+// The card device: the title is the sentence subject. Copy verbatim from
+// copy/homepage-copy.md. 1998 is illustrative — becomes the customer's real
+// earliest year at launch.
+const boxes = [
+  {
+    n: '01',
+    title: 'The packet',
+    body: 'Goes out <b>days early</b>. Templates hold the shape, and forwarded emails file themselves onto the agenda. When an item changes Monday night, you swap one page and the packet stays whole.',
+  },
+  {
+    n: '02',
+    title: 'The minutes',
+    body: 'Start from the agenda and follow the meeting item by item: motions, votes, roll calls. Each entry <b>ties back to the posted notice</b>, and the minute book runs complete back to 1998.',
+  },
+  {
+    n: '03',
+    title: 'The board',
+    body: "Carries Tuesday's packet, their own notes, and the history behind item 7.C <b>on the phone in their pocket</b>. The binder stays on the shelf.",
+  },
+  {
+    n: '04',
+    title: 'The public',
+    body: "Reads the same record you keep: agendas and approved minutes, posted <b>inside your state's notice window</b> and searchable by anyone. Every summary cites the page it came from.",
+  },
+];
+---
+<section class="boxes">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2>Agenda to <em>adjournment</em>.</h2>
+      <span class="kicker">The four parts of every meeting</span>
+    </div>
+    <div class="grid">
+      {boxes.map((b) => (
+        <div class="box reveal">
+          <span class="folio">{b.n}</span>
+          <h3>{b.title}</h3>
+          <p set:html={b.body} />
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
