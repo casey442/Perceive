@@ -1,0 +1,77 @@
+/* Alternating black bands for the /lab home study ("more black" monochromatic look).
+   Scoped to `.lab.ink` so the approved homepage and the How-it-works lab pages are
+   untouched. The reading-dense band (the boxes) stays on light paper; the framing and
+   skimmable bands (nav, hero, marquee, stats, final, footer) go true black with light
+   type. All light-on-dark text holds >= 4.5:1 contrast. Still achromatic: R=G=B only. */
+
+/* ---------- NAV ---------- */
+.lab.ink nav { background: rgba(17,17,17,.92); border-bottom-color: #262626; }
+.lab.ink .logo { color: #FFFFFF; }
+.lab.ink .nav-links a:not(.btn) { color: #B5B5B5; }
+.lab.ink .nav-links a:not(.btn):hover { color: #FFFFFF; }
+.lab.ink .btn { background: #FFFFFF; color: #111111; border-color: #FFFFFF; }
+.lab.ink .btn:hover { background: #E6E6E6; box-shadow: 0 10px 24px -12px rgba(0,0,0,.6); }
+
+/* ---------- HERO (black) ---------- */
+.lab.ink .hero { background: #111111; border-bottom-color: #262626; }
+.lab.ink .hero .eyebrow { color: #8F8F8F; }
+.lab.ink .kicker-row .rule { background: #3A3A3A; }
+.lab.ink h1 { color: #FFFFFF; }
+.lab.ink .sub { color: #B5B5B5; }
+.lab.ink .sub strong { color: #FFFFFF; }
+.lab.ink .ghost { color: #FFFFFF; border-bottom-color: #4A4A4A; }
+.lab.ink .ghost:hover { border-color: #FFFFFF; }
+.lab.ink .meta-line { color: #9A9A9A; }
+.lab.ink .meta-line b { color: #FFFFFF; }
+/* the crafted silver field stays bright — it reads as light on black (mono4 vibe).
+   Its dark-on-light caption is intentionally left untouched. */
+.lab.ink .media-frame { border-color: #2A2A2A; box-shadow: 0 40px 90px -40px rgba(0,0,0,.7), 0 12px 30px -18px rgba(0,0,0,.4); }
+
+/* ---------- MARQUEE (black) ---------- */
+.lab.ink .marquee-band { background: #111111; border-bottom-color: #262626; }
+.lab.ink .band-label { background: #111111; color: #8F8F8F; border-right-color: #333333; }
+.lab.ink .q { color: #B0B0B0; }
+.lab.ink .q b { color: #FFFFFF; }
+.lab.ink .q::after { background: #444444; }
+.lab.ink .pause-btn { background: #111111; border-color: #3A3A3A; color: #B0B0B0; }
+.lab.ink .pause-btn:hover { color: #FFFFFF; }
+
+/* ---------- BOXES stay LIGHT (the one reading band). No override. ---------- */
+
+/* ---------- SEAM ornaments sitting on black ---------- */
+.lab.ink .seam { background: #111111; }
+.lab.ink .seam .ring { stroke: #3A3A3A; }
+.lab.ink .seam .cross { stroke: #333333; }
+.lab.ink .seam .dot { fill: #777777; }
+
+/* ---------- STAKES (black) ---------- */
+.lab.ink .stakes { background: #111111; border-top-color: #262626; border-bottom-color: #262626; }
+.lab.ink .stakes .lead { color: #FFFFFF; }
+.lab.ink .stakes .lead span { color: #9A9A9A; }
+.lab.ink .stat + .stat { border-left-color: #333333; }
+.lab.ink .stat .n { color: #FFFFFF; }
+.lab.ink .stat .l { color: #A6A6A6; }
+
+/* ---------- FINAL CTA (black) ---------- */
+.lab.ink .final { background: #111111; }
+.lab.ink .final h2 { color: #FFFFFF; }
+.lab.ink .final p { color: #B0B0B0; }
+.lab.ink .final .btn { background: #FFFFFF; color: #111111; border-color: #FFFFFF; }
+.lab.ink .final .btn:hover { background: #E6E6E6; }
+.lab.ink .final .meta-line { color: #9A9A9A; }
+.lab.ink .final .meta-line b { color: #FFFFFF; }
+
+/* ---------- FOOTER (black) ---------- */
+.lab.ink footer { background: #111111; border-top-color: #444444; }
+.lab.ink .foot-index .foot-index-label { color: #8F8F8F; }
+.lab.ink .index-list { border-top-color: #2A2A2A; }
+.lab.ink .index-row { color: #FFFFFF; border-bottom-color: #2A2A2A; }
+.lab.ink .index-row:hover { background: rgba(255,255,255,.04); }
+.lab.ink .index-row .ix-num { color: #8F8F8F; }
+.lab.ink .index-row:hover .ix-name { border-color: #FFFFFF; }
+.lab.ink .index-row .ix-arrow { border-color: #3A3A3A; color: #B0B0B0; }
+.lab.ink .index-row:hover .ix-arrow { border-color: #FFFFFF; color: #FFFFFF; }
+.lab.ink .disclosure { color: #A6A6A6; }
+.lab.ink .disclosure b { color: #FFFFFF; }
+.lab.ink .foot-bottom { border-top-color: #2A2A2A; color: #9A9A9A; }
+.lab.ink .adjourned { color: #8F8F8F; }
