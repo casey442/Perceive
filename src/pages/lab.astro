@@ -21,6 +21,14 @@ const ticks = [
   { x: 250, y: 322 },
   { x: 720, y: 300 },
 ];
+// mono4 · geometric glyph-nodes riding the orbit
+const nodes = [
+  { x: 490, y: 70, shape: 'circle' },
+  { x: 168, y: 150, shape: 'square' },
+  { x: 812, y: 150, shape: 'triangle' },
+];
+// mono5 · barcode "spine" (bar widths, px) — an archival end-mark before the footer
+const barcode = [3,1,2,1,4,1,1,2,3,1,2,1,1,4,2,1,3,1,1,2,1,3,2,1,4,1,1,2,1,2,3,1,1,2,4,1,2,1,3,1,1,2,1,4,2,1,1,3,2,1,3,1,2,1,1,4,1,2];
 
 // 4 · index-style link list
 const index = [
@@ -88,9 +96,16 @@ const boxes3 = [
               <g transform="rotate(-16 490 196)">
                 <ellipse class="orbit" cx="490" cy="196" rx="330" ry="104" />
               </g>
-              <!-- a small drifting node on the orbit -->
-              <g transform="rotate(-16 490 196)">
-                <circle class="node" cx="820" cy="196" r="7" />
+              <!-- mono4 · geometric glyph-nodes on the field -->
+              <g class="glyphs">
+                {nodes.map((n) => (
+                  <g transform={`translate(${n.x} ${n.y})`}>
+                    <circle class="ndisc" r="15" />
+                    {n.shape === 'circle' && <circle class="gsym" r="5" />}
+                    {n.shape === 'square' && <rect class="gsym" x="-4.5" y="-4.5" width="9" height="9" />}
+                    {n.shape === 'triangle' && <path class="gsym" d="M0 -5.5 L5 4 L-5 4 Z" />}
+                  </g>
+                ))}
               </g>
               <!-- registration ticks -->
               {ticks.map((t) => (
@@ -130,14 +145,12 @@ const boxes3 = [
       </div>
     </section>
 
-    <!-- 2 · seam ornament -->
+    <!-- 2 · seam ornament — Mono3 four-point star -->
     <div class="seam" aria-hidden="true">
-      <svg width="120" height="26" viewBox="0 0 120 26">
-        <line class="cross" x1="0" y1="13" x2="44" y2="13" />
-        <line class="cross" x1="76" y1="13" x2="120" y2="13" />
-        <circle class="ring" cx="60" cy="13" r="8" />
-        <circle class="ring" cx="60" cy="13" r="3.5" />
-        <circle class="dot" cx="60" cy="13" r="1.1" />
+      <svg width="140" height="24" viewBox="0 0 140 24">
+        <line class="cross" x1="0" y1="12" x2="52" y2="12" />
+        <line class="cross" x1="88" y1="12" x2="140" y2="12" />
+        <path class="star" transform="translate(70 12)" d="M0 -9 Q1.6 -1.6 9 0 Q1.6 1.6 0 9 Q-1.6 1.6 -9 0 Q-1.6 -1.6 0 -9 Z" />
       </svg>
     </div>
 
@@ -147,16 +160,23 @@ const boxes3 = [
     <!-- 3 · bolder stats (Stakes) -->
     <Stakes />
 
-    <!-- 2 · seam ornament -->
+    <!-- 2 · seam ornament — Mono3 quarter-arcs -->
     <div class="seam" aria-hidden="true">
-      <svg width="26" height="26" viewBox="0 0 26 26">
-        <line class="cross" x1="13" y1="2" x2="13" y2="24" />
-        <line class="cross" x1="2" y1="13" x2="24" y2="13" />
-        <circle class="ring" cx="13" cy="13" r="6" />
+      <svg width="64" height="24" viewBox="0 0 64 24">
+        <path class="arc2" d="M20 22 A16 16 0 0 1 4 6" />
+        <path class="arc2" d="M44 2 A16 16 0 0 1 60 18" />
+        <circle class="dot" cx="32" cy="12" r="1.5" />
       </svg>
     </div>
 
     <FinalCta />
+
+    <!-- mono5 · barcode spine, an archival end-mark -->
+    <div class="barcode-wrap" aria-hidden="true">
+      <div class="barcode">
+        {barcode.map((w) => <span style={`width:${w}px`}></span>)}
+      </div>
+    </div>
 
     <!-- 4 · index-style footer -->
     <footer>

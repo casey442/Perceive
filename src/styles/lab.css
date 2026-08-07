@@ -44,12 +44,23 @@
 }
 @keyframes orbit-drift { from { transform: rotate(0); } to { transform: rotate(360deg); } }
 
-/* ---------- 2 · hairline geometric seam ornaments ---------- */
+/* ---------- 2 · hairline geometric seam ornaments (Mono3 vocabulary) ---------- */
 .seam { display: flex; justify-content: center; padding: 8px 0; }
 .seam svg { display: block; }
 .seam .ring { fill: none; stroke: var(--hair); stroke-width: 1; }
 .seam .cross { stroke: var(--line2); stroke-width: 1; }
 .seam .dot { fill: var(--label); }
+.seam .star { fill: var(--hair); stroke: none; }
+.seam .arc2 { fill: none; stroke: var(--line2); stroke-width: 1; }
+
+/* ---------- mono4 · hero glyph-nodes (sit on the light silver field) ---------- */
+.lab .ndisc { fill: rgba(255,255,255,.55); stroke: #BDBDBD; stroke-width: 1; }
+.lab .gsym { fill: none; stroke: #7C7C7C; stroke-width: 1.4; }
+
+/* ---------- mono5 · barcode spine ---------- */
+.barcode-wrap { display: flex; justify-content: center; padding: 6px 0 46px; }
+.barcode { display: flex; align-items: stretch; gap: 2px; height: 38px; }
+.barcode span { display: block; background: var(--line2); }
 
 /* ---------- 3 · bolder ghost numerals + baseline rhythm ---------- */
 .lab .box { padding-top: 40px; padding-right: 92px; }
