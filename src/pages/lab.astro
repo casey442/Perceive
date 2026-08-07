@@ -3,7 +3,6 @@ import Base from '../layouts/Base.astro';
 import '../styles/lab.css';
 import Nav from '../components/Nav.astro';
 import Marquee from '../components/Marquee.astro';
-import Boxes from '../components/Boxes.astro';
 import Stakes from '../components/Stakes.astro';
 import FinalCta from '../components/FinalCta.astro';
 
@@ -29,14 +28,37 @@ const index = [
   { n: '04', name: 'Security', href: '/security' },
   { n: '05', name: 'Contact', href: '/contact' },
 ];
+
+// Function Health / Notion study:
+//  · condensed four cards -> three (before / during / after the meeting)
+//  · copy trimmed toward Notion-level minimalism
+//  · "The board" + "The public" merged into "The record" (who reads it)
+// All new copy passes the stop-slop gate; title stays the sentence subject.
+const boxes3 = [
+  {
+    n: '01',
+    title: 'The packet',
+    body: 'Goes out <b>days early</b>. Forwarded emails file onto the agenda. Change one item Monday night, swap one page, the packet stays whole.',
+  },
+  {
+    n: '02',
+    title: 'The minutes',
+    body: 'Follow the meeting item by item: motions, votes, roll calls. Each entry <b>ties back to the posted notice</b>. The minute book runs complete back to 1998.',
+  },
+  {
+    n: '03',
+    title: 'The record',
+    body: "The board carries it <b>on the phone in their pocket</b>. The public reads the same agendas and approved minutes, inside your state's notice window. Every summary cites its page.",
+  },
+];
 ---
 <Base title="BoardPlanner — design lab">
   <div class="lab" id="lab">
     <!-- lab chrome (not part of the design) -->
     <div class="lab-banner">
       <div class="wrap">
-        <span class="tag">Design lab · mono study</span>
-        <span class="note">Exploration only — the approved homepage lives at <a href="/">/</a>. Achromatic, serif, light-mode; copy unchanged.</span>
+        <span class="tag">Design lab · mono + Function Health / Notion study</span>
+        <span class="note">Exploration only. The approved homepage lives at <a href="/">/</a>. Boxes now lead the scroll band, condensed to three, copy trimmed.</span>
         <button class="grid-toggle" id="grid-toggle" aria-pressed="false">Baseline grid</button>
       </div>
     </div>
@@ -94,7 +116,24 @@ const index = [
       </div>
     </header>
 
-    <Marquee />
+    <!-- Function Health rhythm: boxes come first (three, Notion-lean copy) -->
+    <section class="boxes">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <h2>Agenda to <em>adjournment</em>.</h2>
+          <span class="kicker">Before · during · after</span>
+        </div>
+        <div class="grid three">
+          {boxes3.map((b) => (
+            <div class="box reveal">
+              <span class="folio">{b.n}</span>
+              <h3>{b.title}</h3>
+              <p set:html={b.body} />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
 
     <!-- 2 · seam ornament -->
     <div class="seam" aria-hidden="true">
@@ -107,8 +146,8 @@ const index = [
       </svg>
     </div>
 
-    <!-- 3 · bolder ghost numerals (Boxes) -->
-    <Boxes />
+    <!-- Function Health rhythm: the scrolling band FOLLOWS the boxes -->
+    <Marquee />
 
     <!-- 3 · bolder stats (Stakes) -->
     <Stakes />

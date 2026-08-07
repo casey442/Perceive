@@ -56,6 +56,13 @@
 .lab .box .folio { font-size: 156px; top: -24px; right: 2px; font-weight: 300; }
 .lab .box h3 { font-size: 28px; position: relative; z-index: 1; }
 .lab .box p { position: relative; z-index: 1; }
+
+/* Function Health three-across row (condensed from four). Narrower cards get a
+   smaller folio and gutter so the ghost numeral still clears the body text. */
+.lab .grid.three { grid-template-columns: repeat(3, 1fr); }
+.lab .grid.three .box { padding-right: 56px; padding-top: 34px; }
+.lab .grid.three .box .folio { font-size: 108px; top: -14px; }
+.lab .grid.three .box h3 { font-size: 25px; }
 .lab .stakes { padding: 72px 0; }
 .lab .stakes .lead { font-size: 26px; }
 .lab .stat .n { font-size: 64px; letter-spacing: -0.025em; }
@@ -75,7 +82,10 @@
 .lab .foot-index .foot-index-label { font-size: 11px; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; color: var(--label); }
 
 @media (max-width: 900px) {
+  .lab .grid.three { grid-template-columns: 1fr; }
+  .lab .grid.three .box { padding-right: 92px; }
   .lab .box .folio { font-size: 120px; }
+  .lab .grid.three .box .folio { font-size: 118px; }
   .lab .stat .n { font-size: 52px; }
   .lab .index-row { grid-template-columns: 32px 1fr auto; gap: 12px; }
   .lab .index-row .ix-name { font-size: 19px; }
