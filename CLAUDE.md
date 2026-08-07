@@ -14,7 +14,7 @@ The buyer, daily user, and person feeling the pain are the same person: the boar
 - Buyer vocabulary: packet, backup, consent agenda, minute book, roll call, properly noticed. Never "governance solution" or "platform" language.
 - Never imply board members are unprepared. Never use world-changing language (no "transform," "revolutionize," "reimagine how districts work").
 - Stop-slop gate on all new copy: no em dashes, no filler adverbs, no passives without an actor, no "no X, no Y" listings, no "not X but Y" contrasts, no rhetorical triplets (factual enumerations like "motions, votes, roll calls" are fine).
-- Any AI feature mention must state provenance: summaries cite the exact source page.
+- Any AI feature mention must state provenance: summaries cite the exact source page. Summaries may be written in the reader's language (translation); the source-page citation still applies.
 - Never claim to be "more secure." The security promise is the disclosure commitment: problems reported to the district first, in writing. Never cite a district count for the 2025 BoardDocs incident.
 - No fabricated testimonials, customer counts, or logos. Until real customers exist, proof = statutory-deadline numbers.
 - Compliance numbers must trace to a live URL before ship. The Texas posting rule (3 business days) cites the AG's Open Meetings Act handbook — the statutes portal shows stale pre-Sept-2025 text.
@@ -41,7 +41,7 @@ The buyer, daily user, and person feeling the pain are the same person: the boar
 ## Open items (do not silently resolve)
 
 1. Hero media slot needs a real photograph or ~15s ambient film (direction: the board room at 5:45, packets laid out, doors still closed). The arch frame stays.
-2. The hero metadata line promises full history migration. Whether marketing names BoardDocs explicitly is an open positioning/legal call — currently the copy says "your full history" and does not name the competitor.
+2. DECIDED 2026-08-07 (Tyler): copy may name BoardDocs and Diligent in the migration context, factual and non-disparaging. Do not use the 2025 BoardDocs security incident as a selling point, and never claim to be "more secure." The hero still says "your full history"; interior/feature copy may name them.
 3. "How it works" is the next page to design; per the decision log, that page (not the homepage) carries the product story, led by search with AI summaries riding on top, citations visible.
 4. Testimonial/proof slot deliberately absent until real customers exist.
 5. Verify all three statutory numbers against live sources before launch (see copy rules).
