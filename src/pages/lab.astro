@@ -1,0 +1,185 @@
+---
+import Base from '../layouts/Base.astro';
+import '../styles/lab.css';
+import Nav from '../components/Nav.astro';
+import Marquee from '../components/Marquee.astro';
+import Boxes from '../components/Boxes.astro';
+import Stakes from '../components/Stakes.astro';
+import FinalCta from '../components/FinalCta.astro';
+
+// 1 · crafted silver hero field — concentric arcs sweeping up through the field,
+// a slow orbit ellipse, and registration ticks. Centre is below the frame so the
+// arcs read as a horizon, not a target.
+const arcs = [140, 178, 216, 254, 292, 330, 368, 406].map((r, i) => ({
+  r,
+  opacity: (0.6 - i * 0.055).toFixed(2),
+}));
+const ticks = [
+  { x: 176, y: 120 },
+  { x: 792, y: 150 },
+  { x: 250, y: 322 },
+  { x: 720, y: 300 },
+];
+
+// 4 · index-style link list
+const index = [
+  { n: '01', name: 'How it works', href: '/how-it-works' },
+  { n: '02', name: 'Board members', href: '/board-members' },
+  { n: '03', name: 'Public portal', href: '/public-portal' },
+  { n: '04', name: 'Security', href: '/security' },
+  { n: '05', name: 'Contact', href: '/contact' },
+];
+---
+<Base title="BoardPlanner — design lab">
+  <div class="lab" id="lab">
+    <!-- lab chrome (not part of the design) -->
+    <div class="lab-banner">
+      <div class="wrap">
+        <span class="tag">Design lab · mono study</span>
+        <span class="note">Exploration only — the approved homepage lives at <a href="/">/</a>. Achromatic, serif, light-mode; copy unchanged.</span>
+        <button class="grid-toggle" id="grid-toggle" aria-pressed="false">Baseline grid</button>
+      </div>
+    </div>
+
+    <Nav />
+
+    <!-- HERO with crafted silver field -->
+    <header class="hero">
+      <div class="hero-inner">
+        <div class="kicker-row">
+          <span class="rule"></span>
+          <span class="eyebrow">Board meeting software for K-12 districts</span>
+          <span class="rule"></span>
+        </div>
+        <h1>Keep the <em>record</em>.</h1>
+        <p class="sub">Agendas, packets, minutes, and policies. <strong>Everything your board decided, and why,</strong> in one place.</p>
+        <div class="hero-cta-row">
+          <a class="btn big" href="/demo">See a demo</a>
+          <a class="ghost" href="/how-it-works">How it works</a>
+        </div>
+        <p class="meta-line"><b>We migrate your full history</b> · Nothing for district IT to run</p>
+      </div>
+      <div class="hero-media">
+        <div class="media-frame" role="img" aria-label="Placeholder for hero photograph or short film">
+          <figure class="hero-figure">
+            <svg viewBox="0 0 980 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <!-- concentric arcs (horizon) -->
+              <g>
+                {arcs.map((a) => <circle class="arc" cx="490" cy="486" r={a.r} style={`opacity:${a.opacity}`} />)}
+              </g>
+              <!-- slow orbit ellipse -->
+              <g transform="rotate(-16 490 196)">
+                <ellipse class="orbit" cx="490" cy="196" rx="330" ry="104" />
+              </g>
+              <!-- a small drifting node on the orbit -->
+              <g transform="rotate(-16 490 196)">
+                <circle class="node" cx="820" cy="196" r="7" />
+              </g>
+              <!-- registration ticks -->
+              {ticks.map((t) => (
+                <g class="tick">
+                  <line x1={t.x - 7} y1={t.y} x2={t.x + 7} y2={t.y} />
+                  <line x1={t.x} y1={t.y - 7} x2={t.x} y2={t.y + 7} />
+                </g>
+              ))}
+            </svg>
+          </figure>
+          <div class="media-tag">
+            <div class="play">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#111111" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg>
+            </div>
+            <div class="cap">Hero image / film<b>The board room at 5:45: packets laid out, doors still closed</b></div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <Marquee />
+
+    <!-- 2 · seam ornament -->
+    <div class="seam" aria-hidden="true">
+      <svg width="120" height="26" viewBox="0 0 120 26">
+        <line class="cross" x1="0" y1="13" x2="44" y2="13" />
+        <line class="cross" x1="76" y1="13" x2="120" y2="13" />
+        <circle class="ring" cx="60" cy="13" r="8" />
+        <circle class="ring" cx="60" cy="13" r="3.5" />
+        <circle class="dot" cx="60" cy="13" r="1.1" />
+      </svg>
+    </div>
+
+    <!-- 3 · bolder ghost numerals (Boxes) -->
+    <Boxes />
+
+    <!-- 3 · bolder stats (Stakes) -->
+    <Stakes />
+
+    <!-- 2 · seam ornament -->
+    <div class="seam" aria-hidden="true">
+      <svg width="26" height="26" viewBox="0 0 26 26">
+        <line class="cross" x1="13" y1="2" x2="13" y2="24" />
+        <line class="cross" x1="2" y1="13" x2="24" y2="13" />
+        <circle class="ring" cx="13" cy="13" r="6" />
+      </svg>
+    </div>
+
+    <FinalCta />
+
+    <!-- 4 · index-style footer -->
+    <footer>
+      <div class="foot-inner">
+        <div class="foot-top">
+          <a class="logo" href="/">Board<em>Planner</em></a>
+        </div>
+        <div class="foot-index">
+          <span class="foot-index-label">Index</span>
+          <ul class="index-list">
+            {index.map((it) => (
+              <li>
+                <a class="index-row" href={it.href}>
+                  <span class="ix-num">{it.n}</span>
+                  <span class="ix-name">{it.name}</span>
+                  <span class="ix-arrow" aria-hidden="true">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8" /></svg>
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <p class="disclosure">Our disclosure commitment: <b>if anything goes wrong with your district's data, you hear it from us first, in writing.</b></p>
+        <div class="foot-bottom">
+          <span>© 2026 BoardPlanner</span>
+          <span class="adjourned">Meeting adjourned.</span>
+        </div>
+      </div>
+    </footer>
+  </div>
+</Base>
+
+<script>
+  // reveal-on-scroll (same as the homepage)
+  const reveals = document.querySelectorAll<HTMLElement>('.reveal');
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        }
+      });
+    },
+    { threshold: 0.12 }
+  );
+  reveals.forEach((el, i) => {
+    el.style.transitionDelay = (i % 4) * 70 + 'ms';
+    io.observe(el);
+  });
+
+  // baseline-grid toggle (lab affordance)
+  const lab = document.getElementById('lab');
+  const btn = document.getElementById('grid-toggle');
+  btn?.addEventListener('click', () => {
+    const on = lab?.classList.toggle('grid-on');
+    btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+  });
+</script>

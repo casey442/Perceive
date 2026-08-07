@@ -1,0 +1,82 @@
+/* /lab — design exploration layered on top of global.css.
+   EVERYTHING here is scoped under `.lab` so the approved homepage is untouched.
+   Rules honored: achromatic only, Fraunces + Newsreader (no sans), light
+   surfaces (no dark mode), copy unchanged. Four motifs translated from the
+   mono reference set: crafted silver hero field, hairline seam ornaments,
+   bolder ghost numerals on a baseline grid, index-style link lists. */
+
+/* ---------- lab chrome ---------- */
+.lab-banner {
+  border-bottom: 1px solid var(--line);
+  background: var(--silver);
+  font-family: var(--serif-text);
+}
+.lab-banner .wrap { display: flex; align-items: baseline; justify-content: space-between; gap: 24px; padding-top: 12px; padding-bottom: 12px; flex-wrap: wrap; }
+.lab-banner .tag { font-size: 11px; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; color: var(--label); }
+.lab-banner .note { font-size: 13.5px; color: var(--muted); font-style: italic; }
+.lab-banner .note a { color: var(--ink); }
+.grid-toggle { font-family: var(--serif-text); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--label); background: var(--paper); border: 1px solid var(--line2); border-radius: 3px; padding: 6px 12px; cursor: pointer; transition: color .15s ease, border-color .15s ease; }
+.grid-toggle:hover { color: var(--ink); border-color: var(--hair); }
+.grid-toggle[aria-pressed="true"] { color: var(--ink); border-color: var(--ink); }
+
+/* baseline grid overlay (12px rhythm) — a lab affordance, off by default */
+.lab.grid-on::before {
+  content: ""; position: fixed; inset: 0; z-index: 99; pointer-events: none;
+  background-image: repeating-linear-gradient(to bottom, transparent 0, transparent 11px, rgba(17,17,17,.06) 11px, rgba(17,17,17,.06) 12px);
+}
+
+/* ---------- 1 · crafted silver hero field ---------- */
+/* retire the mock "table" bars; the SVG composition replaces them */
+.lab .media-frame::before,
+.lab .media-frame::after { content: none; }
+.lab .media-frame {
+  background: radial-gradient(120% 100% at 50% 4%, #F7F7F7 0%, #E9E9E9 44%, #D4D4D4 78%, #C7C7C7 100%);
+}
+.lab .hero-figure { position: absolute; inset: 0; margin: 0; }
+.lab .hero-figure svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.lab .arc { fill: none; stroke: #B4B4B4; stroke-width: 0.75; }
+.lab .orbit { fill: none; stroke: #ABABAB; stroke-width: 0.9; }
+.lab .tick { stroke: #9A9A9A; stroke-width: 1; }
+.lab .node { fill: none; stroke: #8F8F8F; stroke-width: 1.1; }
+.lab .media-tag { z-index: 3; }
+@media (prefers-reduced-motion: no-preference) {
+  .lab .orbit { transform-box: fill-box; transform-origin: center; animation: orbit-drift 60s linear infinite; }
+}
+@keyframes orbit-drift { from { transform: rotate(0); } to { transform: rotate(360deg); } }
+
+/* ---------- 2 · hairline geometric seam ornaments ---------- */
+.seam { display: flex; justify-content: center; padding: 8px 0; }
+.seam svg { display: block; }
+.seam .ring { fill: none; stroke: var(--hair); stroke-width: 1; }
+.seam .cross { stroke: var(--line2); stroke-width: 1; }
+.seam .dot { fill: var(--label); }
+
+/* ---------- 3 · bolder ghost numerals + baseline rhythm ---------- */
+.lab .box { padding-top: 40px; padding-right: 92px; }
+.lab .box .folio { font-size: 156px; top: -24px; right: 2px; font-weight: 300; }
+.lab .box h3 { font-size: 28px; position: relative; z-index: 1; }
+.lab .box p { position: relative; z-index: 1; }
+.lab .stakes { padding: 72px 0; }
+.lab .stakes .lead { font-size: 26px; }
+.lab .stat .n { font-size: 64px; letter-spacing: -0.025em; }
+.lab .stat .l { margin-top: 12px; }
+.lab .sec-head h2 { letter-spacing: -0.02em; }
+
+/* ---------- 4 · index-style link list (footer) ---------- */
+.lab .index-list { list-style: none; margin: 4px 0 0; border-top: 1px solid var(--line2); }
+.lab .index-row { display: grid; grid-template-columns: 44px 1fr auto; align-items: center; gap: 20px; padding: 16px 4px; border-bottom: 1px solid var(--line2); text-decoration: none; color: var(--ink); transition: padding-left .2s cubic-bezier(.2,.6,.2,1), background .2s ease; }
+.lab .index-row:hover { padding-left: 12px; background: rgba(17,17,17,.02); }
+.lab .index-row .ix-num { font-family: var(--serif-display); font-style: italic; font-weight: 300; font-size: 18px; color: var(--label); }
+.lab .index-row .ix-name { font-family: var(--serif-display); font-size: 22px; font-weight: 520; letter-spacing: -0.01em; border-bottom: 1px solid transparent; padding-bottom: 2px; transition: border-color .15s ease; }
+.lab .index-row:hover .ix-name { border-color: var(--ink); }
+.lab .index-row .ix-arrow { width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--line2); display: flex; align-items: center; justify-content: center; color: var(--muted); transition: transform .2s ease, border-color .15s ease, color .15s ease; }
+.lab .index-row:hover .ix-arrow { transform: translate(2px,-2px); border-color: var(--ink); color: var(--ink); }
+.lab .foot-index { margin-top: 8px; margin-bottom: 30px; }
+.lab .foot-index .foot-index-label { font-size: 11px; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; color: var(--label); }
+
+@media (max-width: 900px) {
+  .lab .box .folio { font-size: 120px; }
+  .lab .stat .n { font-size: 52px; }
+  .lab .index-row { grid-template-columns: 32px 1fr auto; gap: 12px; }
+  .lab .index-row .ix-name { font-size: 19px; }
+}
