@@ -2,6 +2,8 @@
 // Hero renders fully without JS (CSS keyframe entrance only). The media frame is
 // an approved placeholder — OPEN ITEM: swap for a real photograph or ~15s ambient
 // film (the board room at 5:45, packets laid out, doors still closed). Arch stays.
+// `headline` defaults to the approved H1; theme-variation pages pass an alternate.
+const { headline = 'Keep the <em>record</em>.' } = Astro.props;
 ---
 <header class="hero">
   <div class="hero-inner">
@@ -10,7 +12,7 @@
       <span class="eyebrow">Board meeting software for K-12 districts</span>
       <span class="rule"></span>
     </div>
-    <h1>Keep the <em>record</em>.</h1>
+    <h1 set:html={headline} />
     <p class="sub">Agendas, packets, minutes, and policies. <strong>Everything your board decided, and why,</strong> in one place.</p>
     <div class="hero-cta-row">
       <a class="btn big" href="/demo">See a demo</a>
