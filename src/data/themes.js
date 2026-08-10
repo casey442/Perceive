@@ -86,4 +86,44 @@ export const themes = [
     vars: { paper: '#151515', silver: '#1E1E1E', silver2: '#242424', card: '#1C1C1C', ink: '#F1F1F1', muted: '#B2B2B2', label: '#8C8C8C', line: '#2A2A2A', line2: '#333333', hair: '#3A3A3A' },
     extraCss: "nav{background:rgba(21,21,21,.9);border-bottom-color:#2A2A2A}.btn{background:#F1F1F1;color:#151515;border-color:#F1F1F1}.btn:hover{background:#DCDCDC}.media-frame{border-color:#2A2A2A}.box .folio{background:linear-gradient(135deg,#2B2B2B,#3C3C3C);-webkit-background-clip:text;background-clip:text}::selection{background:#2E2E2E;color:#F1F1F1}",
   },
+  {
+    num: 7,
+    id: 'garamond',
+    name: 'Garamond',
+    paletteLabel: 'Achromatic',
+    fontLabel: 'EB Garamond',
+    note: 'Deviates: EB Garamond throughout',
+    deviates: true,
+    fonts: { display: "'EB Garamond', Georgia, serif", text: "'EB Garamond', Georgia, serif" },
+    googleHref: 'https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap',
+    vars: { paper: '#FBFBFA', silver: '#F2F2F0', silver2: '#EAEAE8', card: '#FFFFFF', ink: '#121211', muted: '#565654', label: '#747472', line: '#E5E5E3', line2: '#D6D6D3', hair: '#C0C0BD' },
+    extraCss: 'h1,.boxes h2,.final h2{font-weight:600;letter-spacing:-0.008em}h1 em,.boxes h2 em,.final h2 em{font-weight:500}.box h3{font-weight:600}.eyebrow,.sec-head .kicker,.band-label{letter-spacing:.2em}',
+  },
+  {
+    num: 8,
+    id: 'monocle',
+    name: 'Monocle',
+    paletteLabel: 'Book paper + black',
+    fontLabel: 'Helvetica + Plantin*',
+    note: 'Monocle sans/serif system (Plantin → Newsreader substitute)',
+    deviates: true,
+    fonts: { display: "'Newsreader Variable', Georgia, serif", text: "'Newsreader Variable', Georgia, serif" },
+    googleHref: null,
+    vars: { paper: '#FAF9F6', silver: '#F0EFEA', silver2: '#E8E7E1', card: '#FFFFFF', ink: '#141414', muted: '#4C4A45', label: '#6A675F', line: '#E6E4DD', line2: '#D7D4CB', hair: '#C1BDB2' },
+    // Monocle's hierarchy: Helvetica (sans) for labels/decks/captions/data + hard edges;
+    // Plantin (serif, substituted by Newsreader) for headlines and body; heavy weight contrast.
+    extraCss:
+      ".logo{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:700;letter-spacing:-0.03em}" +
+      ".logo em{font-style:normal;font-weight:700}" +
+      ".nav-links a:not(.btn){font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:14px}" +
+      ".btn{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:600;border-radius:0}" +
+      ".eyebrow,.sec-head .kicker,.band-label,.stat .l,.foot-index-label{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:700;letter-spacing:.1em}" +
+      ".sub{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:300}" +
+      ".sub strong{font-weight:600}" +
+      ".meta-line,.q,.disclosure,.media-tag .cap,.foot-bottom,.foot-links a{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif}" +
+      ".stat .n{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:700;letter-spacing:-0.02em}" +
+      "h1,.boxes h2,.final h2,.box h3,.stakes .lead{font-weight:700}" +
+      "h1 em,.boxes h2 em,.final h2 em{font-style:italic;font-weight:600}" +
+      ".box{border-radius:0}",
+  },
 ];
