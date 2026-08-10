@@ -9,6 +9,9 @@
   --line: #EAE2D3; --line2: #DDD3C1; --hair: #C9BEA8;
   --dark: #1C1915; --dark2: #14110D; --oncream-dark: #211C15;
   --oninktext: #F3ECDD; --oninkmuted: #B7AC97; --taupe: #A8977B; --pill: #EADFC7;
+  /* FH-style terracotta accent for the interactive widgets */
+  --accent: #B76B44; --accent-deep: #9A552F; --accent-tint: #F1E5D8; --accent-line: #E4C9B4;
+  --ok: #4E7A52;
   background: var(--cream); color: var(--ink); font-family: var(--serif-text);
 }
 .fh .wrap { max-width: 1120px; margin: 0 auto; padding: 0 32px; }

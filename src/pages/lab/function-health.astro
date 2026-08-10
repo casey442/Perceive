@@ -2,6 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import '../../styles/lab.css';
 import '../../styles/fh.css';
+import '../../styles/fh-interactive.css';
 import LabBar from '../../components/LabBar.astro';
 
 const navLinks = ['How it works', 'Board members', 'Public portal', 'Security'];
@@ -95,6 +96,142 @@ const rows = [
       </div>
     </section>
 
+    <!-- INTERACTIVE FEATURES (FH's per-card mini-widgets) -->
+    <section class="fh-features">
+      <div class="wrap">
+        <div class="fh-features-head">
+          <div class="fh-kick">Inside the record</div>
+          <h2>Five things, <em>working</em>.</h2>
+        </div>
+
+        <!-- 1 · Agenda builder -->
+        <div class="feat">
+          <div class="feat-copy">
+            <span class="fnum">01</span>
+            <h3>The agenda builds itself.</h3>
+            <p>Start from a <b>reusable template</b>, not a blank page. Forward a document and it <b>files itself</b> onto the right agenda item.</p>
+          </div>
+          <div class="feat-widget">
+            <div class="wcard">
+              <div class="wcard-top"><span class="wcard-title">Agenda builder</span><span class="wlabel" id="agbTplName">Regular meeting</span></div>
+              <div class="agb-tpls" id="agbTpls">
+                <button class="agb-tpl on" data-tpl="Regular meeting">Regular meeting</button>
+                <button class="agb-tpl" data-tpl="Special session">Special session</button>
+                <button class="agb-tpl" data-tpl="Budget hearing">Budget hearing</button>
+              </div>
+              <ul class="agb-list" id="agbList"></ul>
+              <div class="agb-email">
+                <div class="agb-env">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+                  <span><b>Fwd: Budget-FY26.pdf</b><br><span class="from">from business@district.org</span></span>
+                </div>
+                <button class="wbtn" id="agbFile">File to agenda</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2 · Draft → review → publish -->
+        <div class="feat rev">
+          <div class="feat-copy">
+            <span class="fnum">02</span>
+            <h3>Draft, review, publish.</h3>
+            <p>You draft in private, route it for review, and <b>publish when the board approves</b>. One version, never a folder of near-duplicates.</p>
+          </div>
+          <div class="feat-widget">
+            <div class="wcard">
+              <div class="wcard-top"><span class="wcard-title">Workflow</span></div>
+              <div class="wf-steps" id="wfSteps">
+                <div class="wf-node" data-i="0"><span class="bar"></span><div class="wf-dot">1</div><div class="wf-name">Draft</div></div>
+                <div class="wf-node" data-i="1"><span class="bar"></span><div class="wf-dot">2</div><div class="wf-name">Review</div></div>
+                <div class="wf-node" data-i="2"><span class="bar"></span><div class="wf-dot">3</div><div class="wf-name">Publish</div></div>
+              </div>
+              <div class="wf-card">
+                <div class="wf-doc"><span class="t">Minutes — Regular Meeting, Mar 12</span><span class="wf-status" id="wfStatus">Draft</span></div>
+                <div class="wf-note" id="wfNote">Yours to edit. Not visible to anyone yet.</div>
+              </div>
+              <div class="wf-actions"><button class="wbtn" id="wfNext">Send for review</button><button class="wbtn ghost" id="wfReset">Reset</button></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3 · Translation summaries -->
+        <div class="feat">
+          <div class="feat-copy">
+            <span class="fnum">03</span>
+            <h3>Read the summary first.</h3>
+            <p>No one opens the full packet. Every item carries a <b>plain-language summary in the reader's language</b>, and it cites the page it came from.</p>
+          </div>
+          <div class="feat-widget">
+            <div class="wcard">
+              <div class="wcard-top"><span class="wcard-title">AI summary</span></div>
+              <div class="sum-item">Superintendent contract · renewal</div>
+              <div class="sum-tabs" id="sumTabs">
+                <button class="sum-tab" aria-selected="true" data-l="EN">EN</button>
+                <button class="sum-tab" aria-selected="false" data-l="ES">ES</button>
+                <button class="sum-tab" aria-selected="false" data-l="ZH">中文</button>
+              </div>
+              <p class="sum-body" id="sumBody"></p>
+              <div class="sum-foot">
+                <span class="sum-cite"><span class="dot"></span>Cites p. 12 · Minutes 11/12/2019</span>
+                <button class="wbtn ghost" id="sumToggle">Show full document</button>
+              </div>
+              <div class="sum-full" id="sumFull" hidden>
+                <div class="sum-fulllabel">Full document · 14 pages</div>
+                <div class="sum-lines">
+                  <span></span><span></span><span></span><span></span><span></span><span></span><span style="width:70%"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4 · Commitment tracker -->
+        <div class="feat rev">
+          <div class="feat-copy">
+            <span class="fnum">04</span>
+            <h3>Follow a goal to done.</h3>
+            <p>Track the board's goals in one place. <b>AI pulls every related item</b> — agenda entries, votes, updates — into one view and summarizes the work.</p>
+          </div>
+          <div class="feat-widget">
+            <div class="wcard">
+              <div class="wcard-top"><span class="wcard-title">Commitment tracker</span></div>
+              <div class="ct">
+                <div class="ct-goals" id="ctGoals">
+                  <button class="ct-goal on" data-g="0">Raise 3rd-grade reading</button>
+                  <button class="ct-goal" data-g="1">Balance the budget</button>
+                  <button class="ct-goal" data-g="2">New elementary school</button>
+                </div>
+                <div class="ct-panel">
+                  <div class="ct-ai"><span class="spark">✦</span><span id="ctSummary"></span></div>
+                  <ul class="ct-items" id="ctItems"></ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5 · Minutes autopopulate -->
+        <div class="feat">
+          <div class="feat-copy">
+            <span class="fnum">05</span>
+            <h3>Minutes write themselves.</h3>
+            <p>Minutes start from the agenda and <b>fill in as the meeting runs</b>: motions, votes, roll calls. Each entry ties back to its agenda item.</p>
+          </div>
+          <div class="feat-widget">
+            <div class="wcard">
+              <div class="wcard-top"><span class="wcard-title">Live minutes</span></div>
+              <div class="mn">
+                <div class="mn-col"><h5>Agenda</h5><ul class="mn-agenda" id="mnAgenda"></ul></div>
+                <div class="mn-col"><h5>Minutes</h5><ul class="mn-minutes" id="mnMinutes"><li class="mn-empty">Run the meeting to autopopulate…</li></ul></div>
+              </div>
+              <div class="mn-controls"><button class="wbtn" id="mnNext">Next item</button><button class="wbtn ghost" id="mnReset">Reset</button></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- BACK-AND-FORTH SCROLL (FH disease rows) -->
     <section class="fh-scroll" id="fhScroll">
       <div class="wrap">
@@ -129,11 +266,136 @@ const rows = [
 </Base>
 
 <script>
+  // Back-and-forth scroll pause
   const scroll = document.getElementById('fhScroll');
-  const btn = document.getElementById('fhPause');
-  btn?.addEventListener('click', () => {
+  const pbtn = document.getElementById('fhPause');
+  pbtn?.addEventListener('click', () => {
     const paused = scroll?.classList.toggle('paused');
-    btn.textContent = paused ? 'Resume motion' : 'Pause motion';
-    btn.setAttribute('aria-pressed', paused ? 'true' : 'false');
+    pbtn.textContent = paused ? 'Resume motion' : 'Pause motion';
+    pbtn.setAttribute('aria-pressed', paused ? 'true' : 'false');
   });
+
+  // 1 · Agenda builder (templates + email-to-upload)
+  const AGB = {
+    'Regular meeting': ['Call to order', 'Roll call', 'Consent agenda', 'Old business', 'New business', 'Public comment', 'Adjourn'],
+    'Special session': ['Call to order', 'Roll call', 'Purpose stated', 'Action item', 'Adjourn'],
+    'Budget hearing': ['Call to order', 'Budget presentation', 'Public hearing', 'Board discussion', 'Adoption vote'],
+  };
+  const AGB_TARGET = { 'Regular meeting': 'New business', 'Special session': 'Action item', 'Budget hearing': 'Board discussion' };
+  const agbList = document.getElementById('agbList');
+  let agbTpl = 'Regular meeting', agbFiled = false;
+  function agbRender() {
+    const target = AGB_TARGET[agbTpl];
+    agbList.innerHTML = AGB[agbTpl].map((it, i) => {
+      const isT = it === target;
+      const att = (isT && agbFiled)
+        ? '<div class="agb-attach"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg> Budget-FY26.pdf</div>' : '';
+      return '<li class="agb-row' + (isT ? ' target' : '') + '"><div class="agb-item"><span class="idx">' + (i + 1) + '</span>' + it + '</div>' + att + '</li>';
+    }).join('');
+    document.getElementById('agbTplName').textContent = agbTpl;
+  }
+  document.getElementById('agbTpls')?.addEventListener('click', (e) => {
+    const b = e.target.closest('.agb-tpl'); if (!b) return;
+    document.querySelectorAll('.agb-tpl').forEach((x) => x.classList.remove('on'));
+    b.classList.add('on'); agbTpl = b.dataset.tpl; agbFiled = false;
+    const fb = document.getElementById('agbFile'); fb.disabled = false; fb.textContent = 'File to agenda';
+    agbRender();
+  });
+  document.getElementById('agbFile')?.addEventListener('click', () => {
+    agbFiled = true; const fb = document.getElementById('agbFile'); fb.disabled = true; fb.textContent = 'Filed ✓'; agbRender();
+  });
+  agbRender();
+
+  // 2 · Draft → review → publish
+  const WF = [
+    { status: 'Draft', cls: '', note: 'Yours to edit. Not visible to anyone yet.', btn: 'Send for review' },
+    { status: 'In review', cls: '', note: 'With S. Lee for review, tracked with comments.', btn: 'Approve & publish' },
+    { status: 'Published', cls: 'pub', note: 'Posted to the public portal, inside your notice window.', btn: 'Published' },
+  ];
+  let wfStage = 0;
+  function wfRender() {
+    const s = WF[wfStage];
+    document.querySelectorAll('#wfSteps .wf-node').forEach((n, i) => {
+      n.classList.toggle('done', i < wfStage); n.classList.toggle('current', i === wfStage);
+    });
+    const badge = document.getElementById('wfStatus');
+    badge.textContent = s.status; badge.className = 'wf-status' + (s.cls ? ' ' + s.cls : '');
+    document.getElementById('wfNote').textContent = s.note;
+    const nb = document.getElementById('wfNext'); nb.textContent = s.btn; nb.disabled = wfStage >= WF.length - 1;
+  }
+  document.getElementById('wfNext')?.addEventListener('click', () => { if (wfStage < WF.length - 1) { wfStage++; wfRender(); } });
+  document.getElementById('wfReset')?.addEventListener('click', () => { wfStage = 0; wfRender(); });
+  wfRender();
+
+  // 3 · Translation summaries
+  const SUM = {
+    EN: "The board renewed the superintendent's contract for three years and set the annual evaluation, on a 6–1 vote.",
+    ES: 'La junta renovó el contrato del superintendente por tres años y fijó la evaluación anual, con un voto de 6 a 1.',
+    ZH: '董事会以6票对1票续签了督学的三年合同，并确定了年度评估安排。',
+  };
+  const sumBody = document.getElementById('sumBody');
+  if (sumBody) sumBody.textContent = SUM.EN;
+  document.getElementById('sumTabs')?.addEventListener('click', (e) => {
+    const b = e.target.closest('.sum-tab'); if (!b) return;
+    document.querySelectorAll('.sum-tab').forEach((x) => x.setAttribute('aria-selected', 'false'));
+    b.setAttribute('aria-selected', 'true'); sumBody.textContent = SUM[b.dataset.l];
+  });
+  document.getElementById('sumToggle')?.addEventListener('click', () => {
+    const full = document.getElementById('sumFull'); const wasHidden = full.hasAttribute('hidden');
+    if (wasHidden) full.removeAttribute('hidden'); else full.setAttribute('hidden', '');
+    document.getElementById('sumToggle').textContent = wasHidden ? 'Hide full document' : 'Show full document';
+  });
+
+  // 4 · Commitment tracker
+  const CT = [
+    { summary: 'Reading proficiency is up 6 points since the 2024 curriculum adoption; the next checkpoint is the Q3 benchmark.',
+      items: [{ what: 'Curriculum adoption', when: 'approved 05/2024' }, { what: 'Reading coach budget', when: 'amended 09/2024' }, { what: 'Q2 benchmark update', when: 'posted 02/2025' }] },
+    { summary: 'The FY26 budget is balanced after the transportation bid came in under estimate; one hearing remains.',
+      items: [{ what: 'Budget presentation', when: '01/2025' }, { what: 'Bus contract, under bid', when: 'awarded 03/2025' }, { what: 'Public hearing', when: 'scheduled 06/2025' }] },
+    { summary: 'Site selection is done and the bond timeline is set; the architect RFP is up next.',
+      items: [{ what: 'Site selection', when: 'approved 11/2024' }, { what: 'Bond timeline', when: 'set 01/2025' }, { what: 'Architect RFP', when: 'open' }] },
+  ];
+  function ctRender(i) {
+    document.getElementById('ctSummary').textContent = CT[i].summary;
+    document.getElementById('ctItems').innerHTML = CT[i].items.map((x) => '<li><span class="what">' + x.what + '</span><span class="when">' + x.when + '</span></li>').join('');
+  }
+  document.getElementById('ctGoals')?.addEventListener('click', (e) => {
+    const b = e.target.closest('.ct-goal'); if (!b) return;
+    document.querySelectorAll('.ct-goal').forEach((x) => x.classList.remove('on'));
+    b.classList.add('on'); ctRender(+b.dataset.g);
+  });
+  ctRender(0);
+
+  // 5 · Minutes tied to agenda + autopopulate
+  const MN = [
+    { a: 'Consent agenda 8.A–8.F', m: 'Approved the consent agenda as presented.', v: 'Approved 7–0', split: false },
+    { a: 'Bus route contract', m: 'Motion to award the route contract to Durham.', v: 'Approved 6–1', split: true },
+    { a: 'Bell schedule change', m: 'Motion to adopt an 8:15 start next year.', v: 'Approved 5–2', split: true },
+    { a: 'Superintendent evaluation', m: 'Set the evaluation timeline for June.', v: 'Approved 7–0', split: false },
+  ];
+  const mnAgenda = document.getElementById('mnAgenda');
+  const mnMinutes = document.getElementById('mnMinutes');
+  let mnStep = -1;
+  function mnRenderAgenda() {
+    mnAgenda.innerHTML = MN.map((x, i) => '<li class="mn-ai' + (i === mnStep ? ' active' : '') + (i < mnStep ? ' done' : '') + '"><span class="g">' + (i + 1) + '.</span> ' + x.a + '</li>').join('');
+  }
+  function mnAdvance() {
+    if (mnStep >= MN.length - 1) return;
+    mnStep++;
+    if (mnStep === 0) mnMinutes.innerHTML = '';
+    const x = MN[mnStep];
+    const li = document.createElement('li');
+    li.className = 'mn-entry';
+    li.innerHTML = '<div class="mtitle">' + x.a + '</div>' + x.m + '<div class="vote' + (x.split ? ' split' : '') + '">✓ ' + x.v + '</div>';
+    mnMinutes.appendChild(li);
+    mnRenderAgenda();
+    if (mnStep >= MN.length - 1) { const nb = document.getElementById('mnNext'); nb.disabled = true; nb.textContent = 'Meeting adjourned'; }
+  }
+  document.getElementById('mnNext')?.addEventListener('click', mnAdvance);
+  document.getElementById('mnReset')?.addEventListener('click', () => {
+    mnStep = -1; mnMinutes.innerHTML = '<li class="mn-empty">Run the meeting to autopopulate…</li>';
+    const nb = document.getElementById('mnNext'); nb.disabled = false; nb.textContent = 'Next item';
+    mnRenderAgenda();
+  });
+  mnRenderAgenda();
 </script>
