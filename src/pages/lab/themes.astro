@@ -1,0 +1,79 @@
+---
+import Base from '../../layouts/Base.astro';
+import '../../styles/lab.css';
+import LabBar from '../../components/LabBar.astro';
+import { themes } from '../../data/themes.js';
+---
+<Base title="BoardPlanner — theme review">
+  <div class="lab">
+    <LabBar active="themes" />
+
+    <header class="themes-hero">
+      <div class="wrap">
+        <span class="hint">Design lab · theme review</span>
+        <h1>Pick a direction.</h1>
+        <p>Six palette + font pairings on the same homepage. Click any preview to open it full-page. Refer to them by number when you leave feedback.</p>
+      </div>
+    </header>
+
+    <div class="wrap">
+      <div class="theme-grid">
+        {themes.map((t) => (
+          <a class="tcard" href={`/lab/theme/${t.num}/`}>
+            <div class="frame">
+              <iframe src={`/lab/theme/${t.num}/`} title={`Theme ${t.num}: ${t.name}`} loading="lazy" scrolling="no" tabindex="-1"></iframe>
+            </div>
+            <div class="tmeta">
+              <div class="trow">
+                <span class="tnum">0{t.num}</span>
+                <span class="tname">{t.name}</span>
+                {t.deviates ? <span class="tflag">variation</span> : <span class="tflag ok">approved</span>}
+              </div>
+              <div class="tdesc">{t.paletteLabel} · {t.fontLabel}</div>
+              <div class="tnote">{t.note}</div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+
+    <footer class="themes-foot">
+      <div class="wrap">
+        <span>© 2026 BoardPlanner</span>
+        <span class="adjourned-lite">Six ways to keep the record.</span>
+      </div>
+    </footer>
+  </div>
+</Base>
+
+<style>
+  .themes-hero { padding: 64px 0 24px; text-align: center; }
+  .themes-hero .hint { font-family: var(--serif-text); font-size: 11.5px; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; color: var(--label); }
+  .themes-hero h1 { font-family: var(--serif-display); font-size: clamp(40px, 5vw, 64px); font-weight: 520; letter-spacing: -0.02em; margin: 16px 0 14px; }
+  .themes-hero p { font-family: var(--serif-text); font-size: 17px; line-height: 1.6; color: var(--muted); max-width: 60ch; margin: 0 auto; }
+
+  .theme-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; padding: 24px 0 72px; }
+  .tcard { display: block; text-decoration: none; color: var(--ink); border: 1px solid var(--line2); border-radius: 8px; overflow: hidden; background: var(--card); transition: transform .25s cubic-bezier(.2,.6,.2,1), box-shadow .25s cubic-bezier(.2,.6,.2,1); }
+  .tcard:hover { transform: translateY(-4px); box-shadow: 0 30px 60px -30px rgba(0,0,0,.32); }
+
+  /* scaled live preview of the real homepage */
+  .frame { position: relative; height: 300px; overflow: hidden; border-bottom: 1px solid var(--line); background: var(--silver); }
+  .frame iframe { position: absolute; top: 0; left: 0; width: 1400px; height: 1200px; border: 0; transform: scale(0.25); transform-origin: top left; pointer-events: none; }
+  .frame::after { content: ""; position: absolute; inset: 0; } /* keep clicks on the card */
+
+  .tmeta { padding: 18px 20px 20px; font-family: var(--serif-text); }
+  .trow { display: flex; align-items: baseline; gap: 12px; }
+  .tnum { font-family: var(--serif-display); font-style: italic; font-weight: 300; font-size: 22px; color: var(--label); }
+  .tname { font-family: var(--serif-display); font-size: 22px; font-weight: 560; letter-spacing: -0.01em; }
+  .tflag { margin-left: auto; font-size: 10px; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; color: var(--label); border: 1px solid var(--line2); border-radius: 100px; padding: 3px 9px; }
+  .tflag.ok { color: var(--ink); border-color: var(--hair); }
+  .tdesc { font-size: 14.5px; color: var(--muted); margin-top: 8px; }
+  .tnote { font-size: 13px; color: var(--label); font-style: italic; margin-top: 4px; }
+
+  .themes-foot { border-top: 1px solid var(--line); padding: 26px 0; }
+  .themes-foot .wrap { display: flex; justify-content: space-between; font-family: var(--serif-text); font-size: 13px; color: var(--muted); }
+  .adjourned-lite { font-family: var(--serif-display); font-style: italic; color: var(--label); }
+
+  @media (max-width: 980px) { .theme-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 620px) { .theme-grid { grid-template-columns: 1fr; } }
+</style>

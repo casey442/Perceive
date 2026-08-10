@@ -37,6 +37,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
     <meta name="twitter:card" content="summary_large_image" />
     <!-- Without JS, reveal-gated content below the fold must still be visible. -->
     <noscript><style>.reveal { opacity: 1 !important; transform: none !important; }</style></noscript>
+    <slot name="head" />
   </head>
   <body>
     <slot />

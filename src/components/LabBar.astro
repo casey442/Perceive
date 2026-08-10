@@ -1,9 +1,10 @@
 ---
 // Lab chrome: version switcher across the exploration pages. Not part of the design.
-interface Props { active?: 'home' | 'search' | 'workflow'; }
+interface Props { active?: 'home' | 'search' | 'workflow' | 'themes'; }
 const { active } = Astro.props;
 const items = [
   { key: 'home', label: 'Home study', href: '/lab/' },
+  { key: 'themes', label: 'Theme review', href: '/lab/themes/' },
   { key: 'search', label: 'How it works · Search-led', href: '/lab/how-it-works-search/' },
   { key: 'workflow', label: 'How it works · Workflow-led', href: '/lab/how-it-works-workflow/' },
 ];

@@ -1,0 +1,11 @@
+---
+import ThemeHome from '../../../layouts/ThemeHome.astro';
+import { themes } from '../../../data/themes.js';
+
+export function getStaticPaths() {
+  return themes.map((t) => ({ params: { id: String(t.num) }, props: { theme: t } }));
+}
+
+const { theme } = Astro.props;
+---
+<ThemeHome theme={theme} />

@@ -1,0 +1,73 @@
+---
+import Base from './Base.astro';
+import Nav from '../components/Nav.astro';
+import Hero from '../components/Hero.astro';
+import Marquee from '../components/Marquee.astro';
+import Boxes from '../components/Boxes.astro';
+import Stakes from '../components/Stakes.astro';
+import FinalCta from '../components/FinalCta.astro';
+import Footer from '../components/Footer.astro';
+
+const { theme } = Astro.props;
+const v = theme.vars;
+
+// Variables go INLINE on the .themed wrapper so they win by inheritance,
+// independent of stylesheet order. Per-theme tweaks are scoped under .themed so
+// they out-specify global.css.
+const inlineVars = [
+  `--paper:${v.paper}`, `--silver:${v.silver}`, `--silver2:${v.silver2}`, `--card:${v.card}`,
+  `--ink:${v.ink}`, `--muted:${v.muted}`, `--label:${v.label}`,
+  `--line:${v.line}`, `--line2:${v.line2}`, `--hair:${v.hair}`,
+  `--serif-display:${theme.fonts.display}`, `--serif-text:${theme.fonts.text}`,
+].join(';');
+
+function scope(css) {
+  if (!css) return '';
+  return css.replace(/([^{}]+)\{([^{}]*)\}/g, (_m, sel, body) => {
+    const scoped = sel.split(',').map((s) => `.themed ${s.trim()}`).join(', ');
+    return `${scoped}{${body}}`;
+  });
+}
+
+const css = `
+html{background:${v.paper};}
+.themed{background:var(--paper);min-height:100vh;font-family:var(--serif-text);color:var(--ink);}
+${scope(theme.extraCss)}
+.theme-back{position:fixed;left:16px;bottom:16px;z-index:300;display:inline-flex;gap:8px;align-items:center;
+  font-family:var(--serif-text);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);
+  background:var(--card);border:1px solid var(--line2);border-radius:100px;padding:9px 15px;text-decoration:none;
+  box-shadow:0 10px 30px -14px rgba(0,0,0,.45);opacity:.9;}
+.theme-back:hover{opacity:1}
+.theme-back b{font-weight:600}
+`;
+---
+<Base title={`BoardPlanner — ${theme.name} (theme 0${theme.num})`}>
+  <Fragment slot="head">
+    {theme.googleHref && <link rel="preconnect" href="https://fonts.googleapis.com" />}
+    {theme.googleHref && <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />}
+    {theme.googleHref && <link rel="stylesheet" href={theme.googleHref} />}
+    <style set:html={css}></style>
+  </Fragment>
+
+  <div class="themed" style={inlineVars}>
+    <a class="theme-back" href="/lab/themes/"><b>0{theme.num}</b> {theme.name} · all themes</a>
+    <Nav />
+    <Hero />
+    <Marquee />
+    <Boxes />
+    <Stakes />
+    <FinalCta />
+    <Footer />
+  </div>
+</Base>
+
+<script>
+  const io = new IntersectionObserver(
+    (entries) => entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }),
+    { threshold: 0.12 }
+  );
+  document.querySelectorAll<HTMLElement>('.reveal').forEach((el, i) => {
+    el.style.transitionDelay = (i % 4) * 70 + 'ms';
+    io.observe(el);
+  });
+</script>
