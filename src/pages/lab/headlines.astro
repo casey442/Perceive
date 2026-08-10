@@ -1,0 +1,98 @@
+---
+import Base from '../../layouts/Base.astro';
+import '../../styles/lab.css';
+import LabBar from '../../components/LabBar.astro';
+
+// Each option rendered in the real hero context (eyebrow + H1 + subhead + CTA + meta),
+// on the approved Ledger palette, so the headline is judged as it would ship.
+const eyebrow = 'Board meeting software for K-12 districts';
+const sub = 'Agendas, packets, minutes, and policies. <strong>Everything your board decided, and why,</strong> in one place.';
+
+const options = [
+  {
+    tag: '00', label: 'Control', note: 'Current approved H1',
+    h1: 'Keep the <em>record</em>.',
+    eyebrow,
+  },
+  {
+    tag: 'A', label: '“Let the record show.”', note: 'Imperative, 4 words — obeys every rule',
+    h1: 'Let the <em>record</em> show.',
+    eyebrow,
+  },
+  {
+    tag: 'B', label: '“Matter of record. Matter of minutes.”', note: 'Best as a tagline, not an H1 (6 words, not imperative)',
+    h1: 'Matter of record.<br>Matter of <em>minutes</em>.',
+    eyebrow,
+  },
+  {
+    tag: 'C', label: '“Keep records. In record time.”', note: 'Introduces a speed claim; double “record” runs cute',
+    h1: 'Keep records.<br>In <em>record</em> time.',
+    eyebrow,
+  },
+  {
+    tag: '★', label: 'Recommended pairing', note: 'Keep the record. as H1 + the pun as the eyebrow/tagline',
+    h1: 'Keep the <em>record</em>.',
+    eyebrow: 'Matter of record. Matter of <em>minutes</em>.',
+    taglineEyebrow: true,
+  },
+];
+---
+<Base title="BoardPlanner — headline study">
+  <div class="lab">
+    <LabBar active="headlines" />
+
+    <header class="hl-intro">
+      <div class="wrap">
+        <span class="hint">Design lab · headline study</span>
+        <h2>Same hero, five headlines.</h2>
+        <p>Each option in the real hero context, on the approved palette. Refer to them by tag when you leave feedback.</p>
+      </div>
+    </header>
+
+    {options.map((o) => (
+      <section class="hl-opt">
+        <div class="wrap">
+          <div class="hl-tagrow">
+            <span class="hl-tag">{o.tag}</span>
+            <span class="hl-label">{o.label}</span>
+            <span class="hl-note">{o.note}</span>
+          </div>
+        </div>
+        <div class="hero hl-hero">
+          <div class="hero-inner">
+            <div class="kicker-row">
+              <span class="rule"></span>
+              <span class="eyebrow" class:list={[{ 'eyebrow-tagline': o.taglineEyebrow }]} set:html={o.eyebrow} />
+              <span class="rule"></span>
+            </div>
+            <h1 set:html={o.h1} />
+            <p class="sub" set:html={sub} />
+            <div class="hero-cta-row">
+              <a class="btn big" href="#">See a demo</a>
+              <a class="ghost" href="#">How it works</a>
+            </div>
+            <p class="meta-line"><b>We migrate your full history</b> · Nothing for district IT to run</p>
+          </div>
+        </div>
+      </section>
+    ))}
+  </div>
+</Base>
+
+<style>
+  .hl-intro { text-align: center; padding: 56px 0 8px; }
+  .hl-intro .hint { font-family: var(--serif-text); font-size: 11.5px; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; color: var(--label); }
+  .hl-intro h2 { font-family: var(--serif-display); font-size: clamp(32px, 4vw, 50px); font-weight: 520; letter-spacing: -0.02em; margin: 14px 0 12px; }
+  .hl-intro p { font-family: var(--serif-text); font-size: 16px; color: var(--muted); max-width: 56ch; margin: 0 auto; }
+
+  .hl-opt { border-top: 1px solid var(--line); }
+  .hl-tagrow { display: flex; align-items: baseline; gap: 16px; padding: 22px 0 6px; flex-wrap: wrap; }
+  .hl-tag { font-family: var(--serif-display); font-style: italic; font-weight: 300; font-size: 22px; color: var(--ink); min-width: 26px; }
+  .hl-label { font-family: var(--serif-text); font-size: 15px; font-weight: 600; color: var(--ink); }
+  .hl-note { font-family: var(--serif-text); font-size: 13.5px; font-style: italic; color: var(--label); }
+  /* compact hero for the study — no media arch, just the headline system */
+  .hl-hero { border-bottom: none; }
+  .hl-hero .hero-inner { padding: 26px 36px 60px; }
+  .eyebrow-tagline { font-family: var(--serif-display); font-style: italic; font-size: 16px; letter-spacing: 0; text-transform: none; color: var(--muted); font-weight: 400; }
+  .eyebrow-tagline em { font-style: italic; color: var(--ink); }
+</style>
