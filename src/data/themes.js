@@ -126,4 +126,26 @@ export const themes = [
       "h1 em,.boxes h2 em,.final h2 em{font-style:italic;font-weight:600}" +
       ".box{border-radius:0}",
   },
+  {
+    num: 9,
+    id: 'lamplight',
+    name: 'Lamplight',
+    paletteLabel: 'Warm charcoal + cream',
+    fontLabel: 'Fraunces + Newsreader',
+    note: 'Deviates: warm dark palette (#222831 · #393E46 · #948979 · #DFD0B8)',
+    deviates: true,
+    fonts: { display: "'Fraunces Variable', Georgia, serif", text: "'Newsreader Variable', Georgia, serif" },
+    googleHref: null,
+    // Warm dark: charcoal base, cream text, taupe accents. Body/label lightened
+    // from #948979 to hold >= 4.5:1 on the charcoal; taupe kept for accent words.
+    vars: { paper: '#222831', silver: '#272E37', silver2: '#2E353F', card: '#393E46', ink: '#DFD0B8', muted: '#A99C86', label: '#A2957F', line: '#333A44', line2: '#3E454F', hair: '#4A515C' },
+    extraCss:
+      "nav{background:rgba(34,40,49,.9);border-bottom-color:#333A44}" +
+      ".btn{background:#DFD0B8;color:#222831;border-color:#DFD0B8}.btn:hover{background:#EDE3CE}" +
+      "h1 em,.boxes h2 em,.final h2 em,.stakes .lead span{color:#948979}" +
+      ".ghost{color:#DFD0B8;border-bottom-color:#5A5347}.ghost:hover{border-color:#948979}" +
+      ".media-frame{background:radial-gradient(130% 100% at 50% 8%,#EDE3CE 0%,#DFD0B8 46%,#CBB998 100%);border-color:#333A44}" +
+      ".box .folio{background:linear-gradient(135deg,#464C55,#544E42);-webkit-background-clip:text;background-clip:text}" +
+      "::selection{background:#393E46;color:#DFD0B8}",
+  },
 ];
