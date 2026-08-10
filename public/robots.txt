@@ -1,0 +1,3 @@
+# PRE-LAUNCH: block all crawlers. Replace with a normal robots.txt at launch.
+User-agent: *
+Disallow: /
