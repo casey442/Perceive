@@ -8,15 +8,15 @@
 .fh-features .wrap { max-width: 1120px; }
 .fh-features-head { text-align: center; margin: 40px 0 8px; }
 .fh-features-head .fh-kick { color: var(--accent); }
-.fh-features-head h2 { font-family: var(--serif-display); font-size: clamp(32px, 4vw, 50px); font-weight: 520; letter-spacing: -.02em; margin-top: 12px; }
-.fh-features-head h2 em { font-style: italic; font-weight: 480; }
+.fh-features-head h2 { font-family: var(--serif-display); font-size: clamp(32px, 4vw, 50px); font-weight: 400; letter-spacing: -.02em; margin-top: 12px; }
+.fh-features-head h2 em { font-style: italic; font-weight: 400; }
 
 .feat { display: grid; grid-template-columns: 0.92fr 1.08fr; gap: 54px; align-items: center; padding: 52px 0; border-top: 1px solid var(--line); }
 .feat:first-of-type { border-top: none; }
 .feat.rev .feat-copy { order: 2; }
 .feat.rev .feat-widget { order: 1; }
 .feat-copy .fnum { font-family: var(--serif-display); font-style: italic; font-weight: 300; font-size: 34px; color: var(--accent); line-height: 1; }
-.feat-copy h3 { font-family: var(--serif-display); font-size: clamp(26px, 2.8vw, 36px); font-weight: 540; letter-spacing: -.015em; margin: 12px 0 12px; }
+.feat-copy h3 { font-family: var(--serif-display); font-size: clamp(26px, 2.8vw, 36px); font-weight: 500; letter-spacing: -.015em; margin: 12px 0 12px; }
 .feat-copy p { font-size: 17px; line-height: 1.6; color: var(--muted); max-width: 42ch; }
 .feat-copy p b { color: var(--ink); font-weight: 600; }
 
