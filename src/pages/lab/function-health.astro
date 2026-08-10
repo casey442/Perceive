@@ -49,6 +49,10 @@ const rows = [
   <LabBar active="fh" />
 
   <div class="fh">
+    <button class="fh-modetoggle" id="fhMode" aria-pressed="false" title="Toggle a lighter body treatment">
+      <span class="dot"></span> Lighter body
+    </button>
+
     <div class="fh-annc">We migrate your full history from <b>BoardDocs</b> or <b>Diligent</b>.</div>
 
     <!-- HERO (dark, full-bleed) -->
@@ -271,6 +275,14 @@ const rows = [
 </Base>
 
 <script>
+  // Light-body toggle (keeps the dark hero + final; flips the body bands)
+  const fhEl = document.querySelector('.fh');
+  const modeBtn = document.getElementById('fhMode');
+  modeBtn?.addEventListener('click', () => {
+    const on = fhEl.classList.toggle('light');
+    modeBtn.setAttribute('aria-pressed', on ? 'true' : 'false');
+  });
+
   // Back-and-forth scroll pause
   const scroll = document.getElementById('fhScroll');
   const pbtn = document.getElementById('fhPause');

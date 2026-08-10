@@ -105,6 +105,29 @@
 .fh-final .meta { font-size: 14px; color: var(--oninkmuted); margin-top: 18px; }
 .fh-final .meta b { color: var(--oninktext); font-weight: 600; }
 
+/* ---------- LIGHT-BODY TOGGLE (.fh.light) ---------- */
+/* Keeps the FH-authentic dark hero + dark final + dark announcement bar;
+   flips the body bands (boxes, features, widgets, scroll) to a warm-cream
+   light treatment built from the same palette. Toggled on the page. */
+.fh.light {
+  --cream: #E7DCC6; --card: #F5EFE2; --chip: #EEE6D5;
+  --ink: #222831; --muted: #59544A; --label: #7C7568;
+  --line: #D8CDB6; --line2: #CBBD9F; --hair: #B6A88C;
+  --accent: #948979; --accent-deep: #7A6E5A; --accent-tint: rgba(148,137,121,.2); --accent-line: #C9BBA1;
+  --ok: #4E7A52;
+}
+.fh.light .fh-scroll { background: #EDE3D1; }
+.fh.light .feat-copy .fnum, .fh.light .fh-box .num { color: var(--accent-deep); }
+
+/* floating toggle — dark pill so it reads over both the dark hero and light body */
+.fh-modetoggle { position: fixed; right: 20px; bottom: 20px; z-index: 200; display: inline-flex; align-items: center; gap: 9px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 12.5px; font-weight: 500; letter-spacing: .03em;
+  background: rgba(20,25,32,.92); color: #EADFC9; border: 1px solid rgba(223,208,184,.22); border-radius: 100px; padding: 10px 16px; cursor: pointer;
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); box-shadow: 0 14px 34px -16px rgba(0,0,0,.55); }
+.fh-modetoggle:hover { border-color: rgba(223,208,184,.42); }
+.fh-modetoggle .dot { width: 10px; height: 10px; border-radius: 50%; background: #6E6656; box-shadow: inset 0 0 0 1px rgba(223,208,184,.3); transition: background .2s; }
+.fh-modetoggle[aria-pressed="true"] .dot { background: #EADFC9; }
+
 @media (max-width: 860px) {
   .fh-links a:not(.fh-cta) { display: none; }
   .fh-3grid { grid-template-columns: 1fr; }

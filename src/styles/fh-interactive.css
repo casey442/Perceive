@@ -122,3 +122,10 @@
   .ct { grid-template-columns: 1fr; }
   .mn { grid-template-columns: 1fr; }
 }
+
+/* light-body toggle overrides */
+.fh.light .wcard { box-shadow: 0 30px 60px -40px rgba(120,95,50,.2); }
+.fh.light .sum-lines span { background: linear-gradient(90deg, #D3C7B0, #E1D7C3); }
+.fh.light .wbtn,
+.fh.light .agb-tpl.on,
+.fh.light .wf-node.done .wf-dot { color: #222831; }
