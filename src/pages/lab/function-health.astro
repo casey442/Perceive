@@ -1,0 +1,139 @@
+---
+import Base from '../../layouts/Base.astro';
+import '../../styles/lab.css';
+import '../../styles/fh.css';
+import LabBar from '../../components/LabBar.astro';
+
+const navLinks = ['How it works', 'Board members', 'Public portal', 'Security'];
+
+const boxes = [
+  { n: '01', title: 'The packet', body: 'Goes out <b>days early</b>. Forwarded emails file themselves onto the agenda.' },
+  { n: '02', title: 'The minutes', body: 'Start from the agenda: motions, votes, roll calls. Each entry <b>ties back to the posted notice</b>.' },
+  { n: '03', title: 'The record', body: 'The board reads it <b>on their phone</b>. The public reads it inside your notice window.' },
+];
+
+// Board record items for the back-and-forth scroll (FH's disease tags analog).
+const items = [
+  { t: 'Superintendent contract', d: 'Nov 2019' },
+  { t: 'Bus routes', d: 'redrawn 2023' },
+  { t: 'Boundary study', d: 'adopted' },
+  { t: 'Substitute pay scale', d: 'amended' },
+  { t: 'Consent agenda 8.B', d: 'pulled' },
+  { t: 'FFA trip', d: 'approved 7–0' },
+  { t: 'Roof bid, Lincoln Elementary', d: 'awarded' },
+  { t: 'Calendar adoption', d: 'first reading' },
+  { t: 'Milk vendor', d: 'renewed' },
+  { t: 'Bond refunding', d: 'Nov 2019' },
+  { t: 'Title I plan', d: 'approved' },
+  { t: 'Bell schedule', d: 'revised' },
+  { t: 'Coach stipends', d: 'set' },
+  { t: 'Cafeteria pricing', d: 'updated' },
+  { t: 'Facilities study', d: 'tabled' },
+];
+const rowA = items;
+const rowB = [...items].reverse();
+const rowC = items.slice(6).concat(items.slice(0, 6));
+const rows = [
+  { dir: 'left', data: rowA },
+  { dir: 'right', data: rowB },
+  { dir: 'left', data: rowC },
+];
+---
+<Base title="BoardPlanner — Function Health layout study">
+  <LabBar active="fh" />
+
+  <div class="fh">
+    <div class="fh-annc">We migrate your full history from <b>BoardDocs</b> or <b>Diligent</b>.</div>
+
+    <!-- HERO (dark, full-bleed) -->
+    <header class="fh-hero">
+      <nav class="fh-nav">
+        <div class="fh-nav-inner">
+          <a class="fh-logo" href="/">Board<em>Planner</em></a>
+          <div class="fh-links">
+            {navLinks.map((l) => <a href="#">{l}</a>)}
+            <a href="#">Log in</a>
+            <a class="fh-cta" href="/demo">See a demo</a>
+          </div>
+        </div>
+      </nav>
+
+      <div class="fh-hero-body">
+        <span class="fh-pill-label">Board meeting software · K-12 districts</span>
+        <h1>Keep the <em>record</em>.</h1>
+        <p class="fh-lede">Agendas, packets, minutes, and policies. <b>Everything your board decided, and why,</b> in one place.</p>
+        <a class="fh-cta big" href="/demo">See a demo</a>
+
+        <div class="fh-stats">
+          <div class="fh-stat"><div class="n">One place</div><div class="l">agendas, packets, minutes</div></div>
+          <div class="fh-stat"><div class="n">Full history</div><div class="l">migrated before day one</div></div>
+          <div class="fh-stat"><div class="n">Nothing to run</div><div class="l">no district IT</div></div>
+        </div>
+      </div>
+    </header>
+
+    <!-- THREE BOXES (FH "Testing is easy") -->
+    <section class="fh-easy">
+      <div class="wrap">
+        <div class="fh-easy-head">
+          <div class="fh-kick">Before · during · after</div>
+          <h2>Agenda to <em>adjournment</em>.</h2>
+        </div>
+        <div class="fh-3grid">
+          {boxes.map((b) => (
+            <div class="fh-box">
+              <div class="num">{b.n}</div>
+              <h3>{b.title}</h3>
+              <p set:html={b.body} />
+            </div>
+          ))}
+        </div>
+        <div class="fh-easy-cta">
+          <a class="fh-cta" href="/demo">See a demo</a>
+          <a class="ghost" href="#">How it works</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- BACK-AND-FORTH SCROLL (FH disease rows) -->
+    <section class="fh-scroll" id="fhScroll">
+      <div class="wrap">
+        <div class="fh-scroll-head">
+          <h2>Every decision, <em>on the record</em>.</h2>
+          <p>Searchable back to your first meeting.</p>
+        </div>
+      </div>
+      <div class="fh-marq" aria-hidden="true">
+        {rows.map((row) => (
+          <div class={`fh-row ${row.dir}`}>
+            {row.data.map((it) => <span class="fh-tag">{it.t} <i>· {it.d}</i></span>)}
+            {row.data.map((it) => <span class="fh-tag">{it.t} <i>· {it.d}</i></span>)}
+          </div>
+        ))}
+      </div>
+      <div class="fh-pausewrap">
+        <button class="fh-pausemotion" id="fhPause" aria-pressed="false">Pause motion</button>
+      </div>
+    </section>
+
+    <!-- CLOSING CTA (dark bookend) -->
+    <section class="fh-final">
+      <div class="wrap">
+        <h2>The next meeting is already<br />on the <em>calendar</em>.</h2>
+        <p>Twenty minutes with your real agenda, start to finish.</p>
+        <a class="fh-cta big" href="/demo">See a demo</a>
+        <p class="meta">Bring Tuesday's agenda. <b>We build it live.</b></p>
+      </div>
+    </section>
+  </div>
+</Base>
+
+<script>
+  const scroll = document.getElementById('fhScroll');
+  const btn = document.getElementById('fhPause');
+  btn?.addEventListener('click', () => {
+    const paused = scroll?.classList.toggle('paused');
+    btn.textContent = paused ? 'Resume motion' : 'Pause motion';
+    btn.setAttribute('aria-pressed', paused ? 'true' : 'false');
+  });
+</script>

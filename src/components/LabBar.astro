@@ -1,9 +1,10 @@
 ---
-interface Props { active?: 'index' | 'home' | 'search' | 'workflow' | 'themes' | 'headlines'; }
+interface Props { active?: 'index' | 'home' | 'search' | 'workflow' | 'themes' | 'headlines' | 'fh'; }
 const { active } = Astro.props;
 const items = [
   { key: 'index', label: 'Lab', href: '/lab/' },
   { key: 'home', label: 'Home study', href: '/lab/home-study/' },
+  { key: 'fh', label: 'FH layout', href: '/lab/function-health/' },
   { key: 'themes', label: 'Themes', href: '/lab/themes/' },
   { key: 'headlines', label: 'Headlines', href: '/lab/headlines/' },
   { key: 'search', label: 'HIW · Search', href: '/lab/how-it-works-search/' },
