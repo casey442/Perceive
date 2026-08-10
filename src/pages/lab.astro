@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import '../styles/lab.css';
+import LabBar from '../components/LabBar.astro';
 
 // The Lab hub: a single page linking to every design and copy exploration.
 const items = [
@@ -33,12 +34,7 @@ const items = [
 ---
 <Base title="BoardPlanner — the Lab">
   <div class="lab">
-    <div class="labtop">
-      <div class="wrap">
-        <a class="brand" href="/">Board<em>Planner</em> · Design Lab</a>
-        <a class="approved" href="/">View approved homepage →</a>
-      </div>
-    </div>
+    <LabBar active="index" />
 
     <header class="hub-hero">
       <div class="wrap">
@@ -87,13 +83,6 @@ const items = [
 </Base>
 
 <style>
-  .labtop { border-bottom: 1px solid var(--line); background: var(--silver); }
-  .labtop .wrap { display: flex; justify-content: space-between; align-items: center; height: 52px; }
-  .labtop .brand { font-family: var(--serif-display); font-size: 15px; font-weight: 600; color: var(--ink); text-decoration: none; }
-  .labtop .brand em { font-style: italic; font-weight: 500; }
-  .labtop .approved { font-family: var(--serif-text); font-size: 13.5px; color: var(--muted); text-decoration: none; }
-  .labtop .approved:hover { color: var(--ink); }
-
   .hub-hero { text-align: center; padding: 64px 0 20px; }
   .hub-hero .hint { font-family: var(--serif-text); font-size: 11.5px; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; color: var(--label); }
   .hub-hero h1 { font-family: var(--serif-display); font-size: clamp(46px, 6vw, 76px); font-weight: 520; letter-spacing: -0.02em; margin: 14px 0 16px; }

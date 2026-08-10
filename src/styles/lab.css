@@ -19,6 +19,9 @@
 .grid-toggle:hover { color: var(--ink); border-color: var(--hair); }
 .grid-toggle[aria-pressed="true"] { color: var(--ink); border-color: var(--ink); }
 
+/* the site's sticky nav sits below the sticky LabBar (52px) on lab pages */
+.lab nav { top: 52px; }
+
 /* baseline grid overlay (12px rhythm) — a lab affordance, off by default */
 .lab.grid-on::before {
   content: ""; position: fixed; inset: 0; z-index: 99; pointer-events: none;

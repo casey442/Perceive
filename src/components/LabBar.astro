@@ -1,24 +1,76 @@
 ---
-// Lab chrome: version switcher across the exploration pages. Not part of the design.
 interface Props { active?: 'index' | 'home' | 'search' | 'workflow' | 'themes' | 'headlines'; }
 const { active } = Astro.props;
 const items = [
   { key: 'index', label: 'Lab', href: '/lab/' },
   { key: 'home', label: 'Home study', href: '/lab/home-study/' },
-  { key: 'themes', label: 'Theme review', href: '/lab/themes/' },
+  { key: 'themes', label: 'Themes', href: '/lab/themes/' },
   { key: 'headlines', label: 'Headlines', href: '/lab/headlines/' },
-  { key: 'search', label: 'How it works · Search-led', href: '/lab/how-it-works-search/' },
-  { key: 'workflow', label: 'How it works · Workflow-led', href: '/lab/how-it-works-workflow/' },
+  { key: 'search', label: 'HIW · Search', href: '/lab/how-it-works-search/' },
+  { key: 'workflow', label: 'HIW · Workflow', href: '/lab/how-it-works-workflow/' },
 ];
+const idx = Math.max(0, items.findIndex((i) => i.key === active));
+const prev = items[(idx - 1 + items.length) % items.length];
+const next = items[(idx + 1) % items.length];
 ---
-<div class="lab-banner">
-  <div class="wrap">
-    <span class="tag">Design lab</span>
-    <nav class="lab-switch">
-      {items.map((it) => (
-        <a href={it.href} class={active === it.key ? 'on' : ''}>{it.label}</a>
-      ))}
+<div class="labbar" data-prev={prev.href} data-next={next.href}>
+  <div class="lb-inner">
+    <a class="lb-brand" href="/lab/">
+      <span class="lb-dot"></span>
+      Design Lab
+    </a>
+    <nav class="lb-nav" aria-label="Lab sections">
+      <a class="lb-arrow" href={prev.href} aria-label={`Previous: ${prev.label}`} title="Previous (←)">‹</a>
+      <div class="lb-tabs">
+        {items.map((it) => (
+          <a href={it.href} class:list={['lb-tab', { on: it.key === active }]}>{it.label}</a>
+        ))}
+      </div>
+      <a class="lb-arrow" href={next.href} aria-label={`Next: ${next.label}`} title="Next (→)">›</a>
     </nav>
-    <span class="note">Exploration only. Approved site at <a href="/">/</a>.</span>
+    <a class="lb-site" href="/">View site <span aria-hidden="true">↗</span></a>
   </div>
 </div>
+
+<style>
+  .labbar {
+    position: sticky; top: 0; z-index: 60;
+    background: rgba(255,255,255,.86);
+    -webkit-backdrop-filter: blur(12px) saturate(1.1);
+    backdrop-filter: blur(12px) saturate(1.1);
+    border-bottom: 1px solid #E3E3E3;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  }
+  .lb-inner { max-width: 1180px; margin: 0 auto; padding: 0 20px; height: 52px; display: flex; align-items: center; gap: 16px; justify-content: space-between; }
+  .lb-brand { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; letter-spacing: .01em; color: #111; text-decoration: none; white-space: nowrap; }
+  .lb-dot { width: 9px; height: 9px; border-radius: 50%; background: #111; box-shadow: 0 0 0 3px rgba(17,17,17,.12); }
+  .lb-nav { display: flex; align-items: center; gap: 6px; min-width: 0; }
+  .lb-arrow { flex: none; width: 28px; height: 28px; border-radius: 7px; border: 1px solid #DDD; background: #fff; color: #555; display: flex; align-items: center; justify-content: center; font-size: 17px; line-height: 1; text-decoration: none; transition: color .15s ease, border-color .15s ease, background .15s ease; }
+  .lb-arrow:hover { color: #111; border-color: #BBB; background: #FAFAFA; }
+  .lb-tabs { display: flex; align-items: center; gap: 2px; overflow-x: auto; scrollbar-width: none; }
+  .lb-tabs::-webkit-scrollbar { display: none; }
+  .lb-tab { flex: none; font-size: 12.5px; font-weight: 500; color: #666; text-decoration: none; padding: 6px 12px; border-radius: 7px; white-space: nowrap; transition: color .15s ease, background .15s ease; }
+  .lb-tab:hover { color: #111; background: rgba(17,17,17,.05); }
+  .lb-tab.on { color: #fff; background: #111; }
+  .lb-site { flex: none; font-size: 12.5px; color: #666; text-decoration: none; white-space: nowrap; }
+  .lb-site:hover { color: #111; }
+  @media (max-width: 820px) {
+    .lb-brand span:not(.lb-dot), .lb-brand { gap: 0; }
+    .lb-site { display: none; }
+    .lb-inner { padding: 0 12px; gap: 10px; }
+  }
+</style>
+
+<script>
+  // Left/Right arrow keys cycle lab sections (ignore while typing).
+  const bar = document.querySelector('.labbar');
+  if (bar) {
+    document.addEventListener('keydown', (e) => {
+      const t = e.target as HTMLElement | null;
+      if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable)) return;
+      if (e.metaKey || e.ctrlKey || e.altKey) return;
+      if (e.key === 'ArrowLeft') { const h = bar.getAttribute('data-prev'); if (h) window.location.href = h; }
+      if (e.key === 'ArrowRight') { const h = bar.getAttribute('data-next'); if (h) window.location.href = h; }
+    });
+  }
+</script>
