@@ -1,9 +1,8 @@
-/* "Luxe" study — a BoardPlanner variation modeled on fxair.com's premium,
-   cinematic private-aviation aesthetic: centered-logo split nav, full-bleed dark
-   hero with a thin right-aligned serif + an overlaid booking-style bar, tracked
-   uppercase micro-labels, a tabbed spec showcase, featured cards, a grand dark
-   closing statement. Fonts: Playfair Display (thin) + Source Sans 3 (FXAIR's
-   actual pairing). Monochrome/achromatic so it stays near the BoardPlanner brand.
+/* "Luxe" study — a premium, cinematic BoardPlanner variation: centered-logo
+   split nav, full-bleed dark hero with a thin right-aligned serif + an overlaid
+   booking-style bar, tracked uppercase micro-labels, a tabbed spec showcase,
+   featured cards, a grand dark closing statement. Fonts: Playfair Display (thin)
+   + Source Sans 3. Monochrome/achromatic so it stays near the BoardPlanner brand.
    Scoped under `.luxe`. */
 
 .luxe {
