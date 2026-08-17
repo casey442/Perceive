@@ -30,11 +30,11 @@
 .lx-contact:hover { background: var(--on-dark); color: var(--dark); }
 
 /* ---------- HERO (cinematic, dark) ---------- */
-/* hero photo placeholder (/lux/hero.svg) under a dark overlay for legibility */
+/* hero photo (self-hosted placeholder) under a dark overlay for legibility */
 .lx-hero { position: relative; min-height: 92vh; display: flex; flex-direction: column; justify-content: center; color: var(--on-dark); overflow: hidden;
   background:
-    linear-gradient(180deg, rgba(14,16,19,.34) 0%, rgba(14,16,19,.66) 100%),
-    url("/lux/hero.svg") center / cover no-repeat; }
+    linear-gradient(180deg, rgba(14,16,19,.42) 0%, rgba(14,16,19,.72) 100%),
+    url("/lux/hero.jpg") center / cover no-repeat; }
 .lx-hero::after { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .05;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E"); }
 .lx-hero-body { position: relative; z-index: 2; max-width: 1280px; width: 100%; margin: 0 auto; padding: 120px 40px 0; }
@@ -78,7 +78,7 @@
 .lx-tab.on { color: var(--ink); border-bottom-color: var(--ink); }
 .lx-panel { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
 .lx-panel-media { position: relative; aspect-ratio: 4/3; overflow: hidden; background-color: #14171A; background-position: center; background-size: cover;
-  background-image: linear-gradient(180deg, rgba(14,16,19,0) 52%, rgba(14,16,19,.5) 100%), url("/lux/t-packet.svg"); }
+  background-image: linear-gradient(180deg, rgba(14,16,19,0) 52%, rgba(14,16,19,.55) 100%), url("/lux/t-packet.jpg"); }
 .lx-panel-media::after { content: attr(data-cap); position: absolute; left: 22px; bottom: 20px; font-size: 10.5px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: rgba(242,241,236,.5); }
 .lx-panel-copy .lx-eyebrow { display: block; margin-bottom: 18px; }
 .lx-stat { font-family: var(--disp); font-weight: 400; font-size: clamp(40px, 5vw, 68px); line-height: 1; letter-spacing: -.01em; }
@@ -100,7 +100,7 @@
 
 /* ---------- CLOSING STATEMENT (dark) ---------- */
 .lx-close { position: relative; text-align: center; color: var(--on-dark); padding: 150px 0; overflow: hidden;
-  background: linear-gradient(180deg, rgba(14,16,19,.58) 0%, rgba(14,16,19,.8) 100%), url("/lux/hero.svg") center / cover no-repeat; }
+  background: linear-gradient(180deg, rgba(14,16,19,.62) 0%, rgba(14,16,19,.82) 100%), url("/lux/close.jpg") center / cover no-repeat; }
 .lx-close::after { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .05;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E"); }
 .lx-close .in { position: relative; z-index: 2; }
