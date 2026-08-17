@@ -1,0 +1,185 @@
+---
+import Base from '../../layouts/Base.astro';
+import '../../styles/lab.css';
+import '../../styles/luxe.css';
+import LabBar from '../../components/LabBar.astro';
+
+const navLeft = [
+  { l: 'How it works', h: '#' },
+  { l: 'Board members', h: '#' },
+];
+const navRight = [
+  { l: 'Public portal', h: '#' },
+  { l: 'Security', h: '#' },
+  { l: 'Login', h: '#' },
+];
+
+const specs = [
+  { key: 'packet', tab: 'The packet', eyebrow: '01 · Before the meeting', stat: 'Days early', statL: 'Out before the meeting',
+    desc: 'Templates hold the shape. Forwarded emails file themselves onto the agenda. When an item changes Monday night, you swap one page and the packet stays whole.' },
+  { key: 'minutes', tab: 'The minutes', eyebrow: '02 · The meeting', stat: 'Back to 1998', statL: 'A complete minute book',
+    desc: 'Minutes start from the agenda and follow the meeting item by item: motions, votes, roll calls. Each entry ties back to the posted notice.' },
+  { key: 'board', tab: 'The board', eyebrow: '03 · The members', stat: 'In their pocket', statL: 'On every phone',
+    desc: "Tuesday's packet, their own notes, and the history behind item 7.C, on the phone in their pocket. The binder stays on the shelf." },
+  { key: 'public', tab: 'The public', eyebrow: '04 · The community', stat: '72 hrs', statL: 'Inside your notice window',
+    desc: "The public reads the same record you keep: agendas and approved minutes, posted inside your state's notice window and searchable by anyone." },
+];
+
+const cards = [
+  { cap: 'Findable', name: 'The board portal' },
+  { cap: 'Transparent', name: 'The public portal' },
+  { cap: 'Complete', name: 'The minute book' },
+];
+---
+<Base title="BoardPlanner — Luxe study (FXAIR-inspired)">
+  <Fragment slot="head">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" />
+  </Fragment>
+
+  <LabBar active="luxe" />
+
+  <div class="luxe">
+    <!-- HERO -->
+    <header class="lx-hero">
+      <nav class="lx-nav">
+        <div class="lx-nav-inner">
+          <div class="lx-nav-left">
+            {navLeft.map((n) => <a class="lx-link" href={n.h}>{n.l}</a>)}
+          </div>
+          <a class="lx-logo" href="/">BoardPlanner</a>
+          <div class="lx-nav-right">
+            {navRight.map((n) => <a class="lx-link" href={n.h}>{n.l}</a>)}
+            <a class="lx-contact" href="/demo">Contact us</a>
+          </div>
+        </div>
+      </nav>
+
+      <div class="lx-hero-body">
+        <div class="lx-hero-copy">
+          <h1>Every meeting,<br />on the <em>record</em>.</h1>
+          <p class="sub">The complete record of every board decision, kept with care.</p>
+        </div>
+      </div>
+
+      <div class="lx-bar">
+        <div class="lx-bar-inner">
+          <div class="lx-field"><div class="k">District</div><div class="v ph">Your district</div></div>
+          <div class="lx-field"><div class="k">State</div><div class="v ph">Select</div></div>
+          <div class="lx-field"><div class="k">Role</div><div class="v ph">Board secretary</div></div>
+          <a class="lx-request" href="/demo">Request a demo</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- EDITORIAL INTRO -->
+    <section class="lx-intro">
+      <div class="wrap">
+        <span class="lx-eyebrow">Complete · Compliant · Kept</span>
+        <h2>An immaculate record,<br />start to <em>adjournment</em>.</h2>
+        <p>BoardPlanner keeps every agenda, packet, minute, and policy in one place. Properly noticed, complete back to your first meeting, and searchable by anyone.</p>
+        <div class="lx-features">
+          <div class="lx-feature"><span class="lx-eyebrow">Always properly noticed</span></div>
+          <div class="lx-feature"><span class="lx-eyebrow">A complete minute book</span></div>
+          <div class="lx-feature"><span class="lx-eyebrow">Public by law</span></div>
+        </div>
+        <a class="lx-cta-link" href="#">See how it works <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+
+    <!-- TABBED SPEC SHOWCASE -->
+    <section class="lx-specs">
+      <div class="wrap">
+        <div class="lx-specs-head">
+          <span class="lx-eyebrow">The four parts of every meeting</span>
+          <h2>Agenda to <em>adjournment</em>.</h2>
+        </div>
+        <div class="lx-tabs" id="lxTabs">
+          {specs.map((s, i) => (
+            <button class:list={['lx-tab', { on: i === 0 }]} data-key={s.key}>{s.tab}</button>
+          ))}
+        </div>
+        <div class="lx-panel">
+          <div class="lx-panel-media" id="lxMedia" data-cap={specs[0].tab}></div>
+          <div class="lx-panel-copy">
+            <span class="lx-eyebrow" id="lxEyebrow">{specs[0].eyebrow}</span>
+            <div class="lx-stat" id="lxStat">{specs[0].stat}</div>
+            <div class="lx-stat-l" id="lxStatL">{specs[0].statL}</div>
+            <p id="lxDesc">{specs[0].desc}</p>
+            <a class="lx-cta-link" href="#">Learn more <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURED CARDS -->
+    <section class="lx-featured">
+      <div class="wrap">
+        <div class="lx-featured-head">
+          <span class="lx-eyebrow">Where the record lives</span>
+          <h2>One record, three ways in.</h2>
+        </div>
+        <div class="lx-cards">
+          {cards.map((c) => (
+            <a class="lx-card" href="#">
+              <div class="lx-card-body">
+                <div class="cap">{c.cap}</div>
+                <div class="name">{c.name}</div>
+                <div class="go">Explore <span aria-hidden="true">→</span></div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CLOSING STATEMENT -->
+    <section class="lx-close">
+      <div class="in">
+        <h2>A standard uncommon<br />in <em>board software</em>.</h2>
+        <a class="lx-request" href="/demo">Request a demo</a>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="lx-foot">
+      <div class="lx-foot-inner">
+        <a class="lx-logo" href="/">BoardPlanner</a>
+        <div class="lx-foot-links">
+          <a href="#">How it works</a><a href="#">Board members</a><a href="#">Public portal</a><a href="#">Security</a><a href="#">Contact</a>
+        </div>
+      </div>
+      <div class="lx-foot-bottom">
+        <span>© 2026 BoardPlanner</span>
+        <span class="lx-adjourned">Meeting adjourned.</span>
+      </div>
+    </footer>
+  </div>
+</Base>
+
+<script>
+  const SPECS = {
+    packet: { eyebrow: '01 · Before the meeting', stat: 'Days early', statL: 'Out before the meeting', tab: 'The packet',
+      desc: 'Templates hold the shape. Forwarded emails file themselves onto the agenda. When an item changes Monday night, you swap one page and the packet stays whole.' },
+    minutes: { eyebrow: '02 · The meeting', stat: 'Back to 1998', statL: 'A complete minute book', tab: 'The minutes',
+      desc: 'Minutes start from the agenda and follow the meeting item by item: motions, votes, roll calls. Each entry ties back to the posted notice.' },
+    board: { eyebrow: '03 · The members', stat: 'In their pocket', statL: 'On every phone', tab: 'The board',
+      desc: "Tuesday's packet, their own notes, and the history behind item 7.C, on the phone in their pocket. The binder stays on the shelf." },
+    public: { eyebrow: '04 · The community', stat: '72 hrs', statL: 'Inside your notice window', tab: 'The public',
+      desc: "The public reads the same record you keep: agendas and approved minutes, posted inside your state's notice window and searchable by anyone." },
+  };
+  const $ = (id) => document.getElementById(id);
+  document.getElementById('lxTabs')?.addEventListener('click', (e) => {
+    const b = (e.target as HTMLElement).closest('.lx-tab') as HTMLElement | null;
+    if (!b) return;
+    document.querySelectorAll('.lx-tab').forEach((x) => x.classList.remove('on'));
+    b.classList.add('on');
+    const s = SPECS[b.dataset.key as keyof typeof SPECS];
+    $('lxEyebrow')!.textContent = s.eyebrow;
+    $('lxStat')!.textContent = s.stat;
+    $('lxStatL')!.textContent = s.statL;
+    $('lxDesc')!.textContent = s.desc;
+    $('lxMedia')!.setAttribute('data-cap', s.tab);
+  });
+</script>
