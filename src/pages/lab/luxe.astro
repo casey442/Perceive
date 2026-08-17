@@ -26,9 +26,9 @@ const specs = [
 ];
 
 const cards = [
-  { cap: 'Findable', name: 'The board portal' },
-  { cap: 'Transparent', name: 'The public portal' },
-  { cap: 'Complete', name: 'The minute book' },
+  { cap: 'Findable', name: 'The board portal', img: '/lux/t-board.svg' },
+  { cap: 'Transparent', name: 'The public portal', img: '/lux/t-public.svg' },
+  { cap: 'Complete', name: 'The minute book', img: '/lux/t-minutes.svg' },
 ];
 ---
 <Base title="BoardPlanner — Luxe study (FXAIR-inspired)">
@@ -122,7 +122,7 @@ const cards = [
         </div>
         <div class="lx-cards">
           {cards.map((c) => (
-            <a class="lx-card" href="#">
+            <a class="lx-card" href="#" style={`background-image:url(${c.img})`}>
               <div class="lx-card-body">
                 <div class="cap">{c.cap}</div>
                 <div class="name">{c.name}</div>
@@ -180,6 +180,8 @@ const cards = [
     $('lxStat')!.textContent = s.stat;
     $('lxStatL')!.textContent = s.statL;
     $('lxDesc')!.textContent = s.desc;
-    $('lxMedia')!.setAttribute('data-cap', s.tab);
+    const media = $('lxMedia')!;
+    media.setAttribute('data-cap', s.tab);
+    media.style.backgroundImage = `linear-gradient(180deg, rgba(14,16,19,0) 52%, rgba(14,16,19,.5) 100%), url(/lux/t-${b.dataset.key}.svg)`;
   });
 </script>
