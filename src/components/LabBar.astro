@@ -1,8 +1,9 @@
 ---
-interface Props { active?: 'index' | 'home' | 'search' | 'workflow' | 'themes' | 'headlines' | 'fh' | 'luxe' | 'motion' | 'motion-bw' | 'crisp'; }
+interface Props { active?: 'index' | 'home' | 'search' | 'workflow' | 'themes' | 'headlines' | 'fh' | 'luxe' | 'motion' | 'motion-bw' | 'crisp' | 'feedback-v1'; }
 const { active } = Astro.props;
 const items = [
   { key: 'index', label: 'Lab', href: '/lab/' },
+  { key: 'feedback-v1', label: 'Feedback V1', href: '/lab/feedback-v1/' },
   { key: 'home', label: 'Home study', href: '/lab/home-study/' },
   { key: 'fh', label: 'FH layout', href: '/lab/function-health/' },
   { key: 'luxe', label: 'Luxe', href: '/lab/luxe/' },
