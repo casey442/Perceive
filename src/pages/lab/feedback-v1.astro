@@ -10,59 +10,11 @@ const svg = {
   mail: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.5 7l8.5 6 8.5-6"/></svg>',
   check: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M8 12l2.8 2.8L16 9"/></svg>',
   clock: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.2 2"/></svg>',
-  ballot: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="2.5"/><path d="M7.5 12l3 3 6-6.5"/></svg>',
-  book: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 4.5A1.5 1.5 0 0 1 6.5 3H19v16.5H6.5A1.5 1.5 0 0 0 5 21z"/><path d="M9 3v18"/></svg>',
   search: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>',
   doc: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="5" y="3" width="14" height="18" rx="2.5"/><path d="M9 8.5h6M9 12.5h6M9 16.5h4"/></svg>',
-  calendar: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="5" width="16" height="16" rx="2.5"/><path d="M4 9.5h16M8.5 3v4M15.5 3v4"/></svg>',
+  book: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 4.5A1.5 1.5 0 0 1 6.5 3H19v16.5H6.5A1.5 1.5 0 0 0 5 21z"/><path d="M9 3v18"/></svg>',
   clip: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M20 11.5l-8.2 8.2a5 5 0 0 1-7-7l8.5-8.5a3.3 3.3 0 1 1 4.7 4.7l-8.5 8.5a1.6 1.6 0 0 1-2.3-2.3l7.8-7.8"/></svg>',
 };
-
-// reusable app mockups (monochrome)
-const agendaApp = `
-  <div class="cr-app">
-    <div class="cr-app-bar"><span class="cr-dots"><i></i><i></i><i></i></span><span class="cr-app-title">Agenda — Regular Meeting, Mar 12</span></div>
-    <div class="cr-app-body"><div class="cr-ag">
-      <div class="chipbar"><span class="chip on">Regular</span><span class="chip">Special</span><span class="chip">Budget hearing</span></div>
-      <ul style="margin:0;padding:0">
-        <li><span><span class="idx">1</span>Call to order</span></li>
-        <li><span><span class="idx">2</span>Consent agenda</span></li>
-        <li class="on"><span><span class="idx">3</span>New business</span></li>
-      </ul>
-      <div class="att">${svg.clip} Budget-FY26.pdf · filed from email</div>
-      <ul style="margin:0;padding:0">
-        <li><span><span class="idx">4</span>Public comment</span></li>
-        <li><span><span class="idx">5</span>Adjourn</span></li>
-      </ul>
-    </div></div>
-  </div>`;
-const minutesApp = `
-  <div class="cr-app">
-    <div class="cr-app-bar"><span class="cr-dots"><i></i><i></i><i></i></span><span class="cr-app-title">Minutes — live</span></div>
-    <div class="cr-app-body"><div class="cr-mn">
-      <div><h6>Agenda</h6><ul class="ai"><li class="on">Consent agenda</li><li>Bus contract</li><li>Bell schedule</li></ul></div>
-      <div><h6>Minutes</h6><ul>
-        <li class="en"><b>Consent agenda</b>Approved as presented. <em>7–0</em></li>
-        <li class="en"><b>Bus contract</b>Awarded to Durham. <em>6–1</em></li>
-      </ul></div>
-    </div></div>
-  </div>`;
-const portalApp = `
-  <div class="cr-app">
-    <div class="cr-app-bar"><span class="cr-dots"><i></i><i></i><i></i></span><span class="cr-app-title">Public portal</span></div>
-    <div class="cr-app-body"><div class="cr-pt">
-      <div class="bar">${svg.search} bus routes redrawn</div>
-      <div class="res"><b>Minutes · Regular Meeting, Mar 2023</b><span class="sn">…the redrawn bus routes approved 5–2, effective August…</span><span class="cite">Cites p. 4</span></div>
-      <div class="res"><b>Agenda · Mar 14, 2023</b><span class="sn">Item 5.2 — Transportation: route realignment…</span><span class="cite">Posted 3 days prior</span></div>
-    </div></div>
-  </div>`;
-
-// marquee content: buyer vocabulary + statutory deadlines (doubled for seamless loop)
-const vocab = [
-  { t: 'Consent agenda' }, { t: '72 hrs', s: 'posted notice' }, { t: 'Roll call' },
-  { t: 'The minute book' }, { t: '3 days', s: 'Texas posting rule' }, { t: 'Properly noticed' },
-  { t: 'Packet' }, { t: '48 hrs', s: 'packet delivery' }, { t: 'Backup' }, { t: 'Motions & votes' },
-];
 ---
 <Base title="BoardPlanner — Feedback V1">
   <Fragment slot="head">
@@ -78,7 +30,7 @@ const vocab = [
       <div class="fb-nav-inner">
         <a class="fb-logo" href="/">BoardPlanner</a>
         <div class="fb-nav-links">
-          <a href="#work">How it works</a>
+          <a href="#feats">How it works</a>
           <a href="#">Public portal</a>
           <a href="#">Security</a>
           <a href="#">Sign in</a>
@@ -87,55 +39,142 @@ const vocab = [
       </div>
     </nav>
 
-    <!-- HERO -->
+    <!-- HERO · photo left, headline right -->
     <header class="fb-hero">
       <div class="wrap">
         <div class="fb-hero-grid">
-          <div class="fb-hero-copy">
-            <h1>Keep the <em>record</em>.</h1>
-            <p class="lede">The agenda, the packet, the minutes, and your full history. In one place, posted on time, searchable by anyone.</p>
-            <div class="fb-hero-cta">
-              <a class="fb-btn big" href="/demo">See a demo</a>
-              <a class="plain" href="#work">See it work</a>
-            </div>
-            <div class="fb-hero-proof">
-              <div><span class="n">72 hrs</span><span class="l">of posted notice, met every meeting</span></div>
-              <div><span class="n">1 book</span><span class="l">back to your first meeting on record</span></div>
-            </div>
-          </div>
           <div class="fb-hero-media">
             <div class="frame">
               <img src="/fb/hero.jpg" width="1500" height="1100" alt="A civic building, seen from below." loading="eager" />
               <span class="cap">Placeholder · board room, 5:45</span>
             </div>
           </div>
+          <div class="fb-hero-copy">
+            <h1>Keep the <em>record</em>.</h1>
+            <p class="lede">The agenda, the packet, the minutes, and your full history. <b>In one place, posted on time, searchable by anyone.</b></p>
+            <div class="fb-hero-cta">
+              <a class="fb-btn big" href="/demo">See a demo</a>
+              <a class="plain" href="#feats">See it work</a>
+            </div>
+            <div class="fb-hero-proof">
+              <div><span class="n">72 hrs</span><span class="l">of posted notice, met every meeting</span></div>
+              <div><span class="n">1 book</span><span class="l">back to your first meeting on record</span></div>
+            </div>
+          </div>
         </div>
       </div>
     </header>
 
-    <!-- PRODUCT SWITCHER BAND -->
-    <section class="fb-switch-sec" id="work">
+    <!-- FEATURE GRID · hover or tap to watch it work -->
+    <section class="fb-feats" id="feats">
       <div class="wrap">
-        <div class="fb-sec-head">
-          <h2>See it work.</h2>
-          <div class="fb-switch" id="fbSwitch">
-            <button class="fb-tab on" data-k="agendas">Agendas</button>
-            <button class="fb-tab" data-k="minutes">Minutes</button>
-            <button class="fb-tab" data-k="portal">Public portal</button>
+        <div class="fb-feats-head">
+          <h2>Six things it does <em>for you</em>.</h2>
+          <p>Hover or tap a feature to watch it work.</p>
+        </div>
+
+        <div class="fb-grid" id="fbGrid">
+          <!-- 1 · summaries -->
+          <div class="fb-feat" tabindex="0">
+            <div class="fb-preview"><div class="pv-sum">
+              <div class="pv-label">AI summary · Supt. contract</div>
+              <div class="pv-tabs"><span class="hl"></span><b>EN</b><b>ES</b><b>中文</b></div>
+              <div class="pv-lines">
+                <span class="l1">The board renewed the contract for three years.</span>
+                <span class="l2">La junta renovó el contrato por tres años.</span>
+                <span class="l3">董事会续签了三年的合同。</span>
+              </div>
+              <div class="pv-cite">Cites p. 12</div>
+            </div></div>
+            <div class="fb-ic" set:html={svg.doc} />
+            <div class="t">AI summaries</div>
+            <div class="s">Plain-language, cited</div>
+            <div class="hint">Hover to preview →</div>
+          </div>
+
+          <!-- 2 · agenda -->
+          <div class="fb-feat" tabindex="0">
+            <div class="fb-preview"><div class="pv-agenda">
+              <div class="pv-label">Agenda builder</div>
+              <ul>
+                <li><span>1 · Call to order</span></li>
+                <li class="tgt"><span>5 · New business</span><span class="att"><span set:html={svg.clip} /> Budget.pdf</span></li>
+                <li><span>7 · Adjourn</span></li>
+              </ul>
+              <div class="pv-email"><span set:html={svg.mail} /> Fwd: Budget-FY26.pdf</div>
+            </div></div>
+            <div class="fb-ic" set:html={svg.templates} />
+            <div class="t">Agenda builder</div>
+            <div class="s">Templates + email-to-file</div>
+            <div class="hint">Hover to preview →</div>
+          </div>
+
+          <!-- 3 · minutes -->
+          <div class="fb-feat" tabindex="0">
+            <div class="fb-preview"><div class="pv-minutes">
+              <div class="pv-label">Live minutes</div>
+              <ul>
+                <li><span>Consent agenda</span><em>Approved 7–0</em></li>
+                <li><span>Bus contract</span><em>Approved 6–1</em></li>
+                <li><span>Bell schedule</span><em>Approved 5–2</em></li>
+              </ul>
+            </div></div>
+            <div class="fb-ic" set:html={svg.clock} />
+            <div class="t">Live minutes</div>
+            <div class="s">Autopopulate as you go</div>
+            <div class="hint">Hover to preview →</div>
+          </div>
+
+          <!-- 4 · search -->
+          <div class="fb-feat" tabindex="0">
+            <div class="fb-preview"><div class="pv-search">
+              <div class="pv-label">Search the record</div>
+              <div class="pv-bar"><span set:html={svg.search} /><span class="q">bus routes redrawn</span><span class="car"></span></div>
+              <div class="pv-res">
+                <b>Minutes · Regular Meeting, Mar 2023</b>
+                <span class="sn">…the redrawn bus routes approved 5–2…</span>
+                <div class="pv-cite">P. 4</div>
+              </div>
+            </div></div>
+            <div class="fb-ic" set:html={svg.search} />
+            <div class="t">Full-text search</div>
+            <div class="s">Every word, every PDF</div>
+            <div class="hint">Hover to preview →</div>
+          </div>
+
+          <!-- 5 · workflow -->
+          <div class="fb-feat" tabindex="0">
+            <div class="fb-preview"><div class="pv-workflow">
+              <div class="pv-label">Draft → review → publish</div>
+              <div class="pv-steps">
+                <span class="n n1">1</span><span class="ln ln1"><i></i></span>
+                <span class="n n2">2</span><span class="ln ln2"><i></i></span>
+                <span class="n n3">3</span>
+              </div>
+              <div class="pv-badges"><b class="b1">Draft</b><b class="b2">In review</b><b class="b3">Published</b></div>
+            </div></div>
+            <div class="fb-ic" set:html={svg.check} />
+            <div class="t">Draft to publish</div>
+            <div class="s">One version, approved</div>
+            <div class="hint">Hover to preview →</div>
+          </div>
+
+          <!-- 6 · migration -->
+          <div class="fb-feat" tabindex="0">
+            <div class="fb-preview"><div class="pv-migrate">
+              <div class="pv-label">History migration</div>
+              <div class="pv-imp"><b class="imp">Importing your history…</b><b class="done"><span set:html={svg.check} /> 12,480 records imported</b></div>
+              <div class="pv-prog"><i></i></div>
+              <div class="pv-from">from BoardDocs or Diligent</div>
+            </div></div>
+            <div class="fb-ic" set:html={svg.book} />
+            <div class="t">History migration</div>
+            <div class="s">Your full record, day one</div>
+            <div class="hint">Hover to preview →</div>
           </div>
         </div>
 
-        <div class="fb-stage">
-          <div class="fb-stage-copy">
-            <div class="cap" id="fbCap">Build the packet in minutes.</div>
-            <p id="fbBody">Templates hold the shape. Forward a document and it files itself onto the agenda. Change one item Monday night, swap one page.</p>
-          </div>
-          <div class="fb-panel-wrap">
-            <div class="fb-hero-panel on" data-k="agendas"><div class="cr-panel p-1" set:html={agendaApp} /></div>
-            <div class="fb-hero-panel" data-k="minutes"><div class="cr-panel p-2" set:html={minutesApp} /></div>
-            <div class="fb-hero-panel" data-k="portal"><div class="cr-panel p-3" set:html={portalApp} /></div>
-          </div>
-        </div>
+        <p class="note">Every summary cites the exact page it came from.</p>
       </div>
     </section>
 
@@ -147,47 +186,18 @@ const vocab = [
       </div>
       <div class="fb-track-mask">
         <div class="fb-track" id="fbTrack">
-          {[...vocab, ...vocab].map((v) => (
+          {[
+            { t: 'Consent agenda' }, { t: '72 hrs', s: 'posted notice' }, { t: 'Roll call' },
+            { t: 'The minute book' }, { t: '3 days', s: 'Texas posting rule' }, { t: 'Properly noticed' },
+            { t: 'Packet' }, { t: '48 hrs', s: 'packet delivery' }, { t: 'Backup' }, { t: 'Motions & votes' },
+            { t: 'Consent agenda' }, { t: '72 hrs', s: 'posted notice' }, { t: 'Roll call' },
+            { t: 'The minute book' }, { t: '3 days', s: 'Texas posting rule' }, { t: 'Properly noticed' },
+            { t: 'Packet' }, { t: '48 hrs', s: 'packet delivery' }, { t: 'Backup' }, { t: 'Motions & votes' },
+          ].map((v) => (
             <span class="fb-chip">{v.t}{v.s && <span class="s">{v.s}</span>}</span>
           ))}
         </div>
       </div>
-    </section>
-
-    <!-- FEATURE ROW 1 -->
-    <section class="fb-feat">
-      <div class="wrap"><div class="fb-feat-inner">
-        <div>
-          <h2>Build the packet, not the busywork.</h2>
-          <p class="intro">Start from a reusable template, never a blank page. The packet goes out days early and stays whole when Monday night changes.</p>
-          <div class="fb-sub">
-            <div><span class="ic" set:html={svg.templates} /><div><h4>Reusable templates</h4><p>The structure is set once. You fill in the night's business.</p></div></div>
-            <div><span class="ic" set:html={svg.mail} /><div><h4>Email-to-file</h4><p>Forward a document and it lands on the right agenda item.</p></div></div>
-            <div><span class="ic" set:html={svg.book} /><div><h4>A complete minute book</h4><p>Runs unbroken back to your first meeting on record.</p></div></div>
-          </div>
-        </div>
-        <div class="fb-feat-photo">
-          <img src="/fb/desk.jpg" width="1200" height="820" alt="A notebook and papers laid out on a desk." loading="lazy" />
-        </div>
-      </div></div>
-    </section>
-
-    <!-- FEATURE ROW 2 -->
-    <section class="fb-feat rev">
-      <div class="wrap"><div class="fb-feat-inner">
-        <div>
-          <h2>A record anyone can read.</h2>
-          <p class="intro">Agendas and approved minutes, posted inside your notice window and searchable by anyone. Every summary cites the exact page it came from.</p>
-          <div class="fb-sub">
-            <div><span class="ic" set:html={svg.search} /><div><h4>Full-text search</h4><p>Every word inside every PDF, answerable in seconds.</p></div></div>
-            <div><span class="ic" set:html={svg.doc} /><div><h4>Cited summaries</h4><p>Plain-language, in the reader's language, citing the source page.</p></div></div>
-            <div><span class="ic" set:html={svg.calendar} /><div><h4>Posted on time</h4><p>Inside your state's notice window, every meeting.</p></div></div>
-          </div>
-        </div>
-        <div class="fb-feat-photo">
-          <img src="/fb/hero.jpg" width="1500" height="1100" alt="A civic building, seen from below." loading="lazy" />
-        </div>
-      </div></div>
     </section>
 
     <!-- STATEMENT -->
@@ -233,22 +243,30 @@ const vocab = [
 </Base>
 
 <script>
-  // product switcher: swaps the caption, body line, and app mockup
-  const COPY = {
-    agendas: { cap: 'Build the packet in minutes.', body: "Templates hold the shape. Forward a document and it files itself onto the agenda. Change one item Monday night, swap one page." },
-    minutes: { cap: 'Minutes that follow the meeting.', body: 'They start from the agenda and follow it item by item. Motions, votes, roll calls, each tied to the posted notice.' },
-    portal: { cap: 'A record the public can read.', body: 'Agendas and approved minutes, searchable by anyone, with a plain-language summary that cites its page.' },
-  };
-  const sw = document.getElementById('fbSwitch');
-  sw?.addEventListener('click', (e) => {
-    const b = (e.target as HTMLElement).closest('.fb-tab') as HTMLElement | null;
-    if (!b) return;
-    const k = b.dataset.k as keyof typeof COPY;
-    sw.querySelectorAll('.fb-tab').forEach((x) => x.classList.remove('on'));
-    b.classList.add('on');
-    document.getElementById('fbCap')!.textContent = COPY[k].cap;
-    document.getElementById('fbBody')!.textContent = COPY[k].body;
-    document.querySelectorAll('.fb-hero-panel').forEach((p) => p.classList.toggle('on', (p as HTMLElement).dataset.k === k));
+  // hover shows a preview; tap/click pins it open (mobile + click-to-hold)
+  const grid = document.getElementById('fbGrid');
+
+  // tag the leftmost / rightmost card in each row so its popover anchors inward
+  // (column count changes across breakpoints, so recompute on resize)
+  const feats = grid ? [...grid.querySelectorAll('.fb-feat')] as HTMLElement[] : [];
+  function tagEdges() {
+    const rows = new Map<number, HTMLElement[]>();
+    feats.forEach((f) => { f.classList.remove('edge-l', 'edge-r'); const y = f.offsetTop; (rows.get(y) || rows.set(y, []).get(y)!).push(f); });
+    rows.forEach((row) => { row[0].classList.add('edge-l'); row[row.length - 1].classList.add('edge-r'); });
+  }
+  tagEdges();
+  let rt: number; window.addEventListener('resize', () => { clearTimeout(rt); rt = window.setTimeout(tagEdges, 150); });
+  grid?.addEventListener('click', (e) => {
+    const f = (e.target as HTMLElement).closest('.fb-feat');
+    if (!f) return;
+    const wasPinned = f.classList.contains('pinned');
+    grid.querySelectorAll('.fb-feat').forEach((x) => x.classList.remove('pinned'));
+    if (!wasPinned) f.classList.add('pinned');
+  });
+  document.addEventListener('click', (e) => {
+    if (!(e.target as HTMLElement).closest('.fb-feat')) {
+      grid?.querySelectorAll('.fb-feat').forEach((x) => x.classList.remove('pinned'));
+    }
   });
 
   // marquee pause control
