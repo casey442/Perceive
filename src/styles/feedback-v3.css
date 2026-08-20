@@ -173,6 +173,28 @@
 
 @media (prefers-reduced-motion: reduce) { .pr-stage * { animation: none !important; } .ag-att, .email-pill, .mn-en li, .pt-res, .sum-lines span { opacity: 1 !important; } }
 
+/* ---------- SNEAK-PEEK ARCH FRAME ---------- */
+/* the product is wider than the arch, so you see a slice and scroll right to explore */
+.pr-peek { position: relative; max-width: 940px; margin: 10px auto 0; }
+.pr-peek-mask { position: relative; border: 1px solid var(--app-line2); border-radius: 150px 150px 14px 14px; overflow: hidden; background: var(--app2); box-shadow: 0 60px 100px -45px rgba(38,61,73,.55), 0 12px 34px -16px rgba(38,61,73,.28); }
+.pr-scroll { overflow-x: auto; overflow-y: hidden; -webkit-overflow-scrolling: touch; scrollbar-width: thin; scrollbar-color: var(--app-line2) transparent; }
+.pr-scroll::-webkit-scrollbar { height: 9px; }
+.pr-scroll::-webkit-scrollbar-track { background: var(--app2); }
+.pr-scroll::-webkit-scrollbar-thumb { background: var(--app-line2); border-radius: 100px; border: 2px solid var(--app2); }
+.pr-peek .pr-app { width: 1240px; max-width: none; margin: 0; border: none; border-radius: 0; box-shadow: none; }
+.pr-peek .pr-topbar { justify-content: center; padding-top: 16px; }
+.pr-peek .pr-dots, .pr-peek .pr-badge { display: none; }
+.pr-peek .pr-topsearch { max-width: 320px; }
+/* right-edge fade cueing "there's more" */
+.pr-peek-fade { position: absolute; top: 1px; right: 1px; bottom: 10px; width: 110px; pointer-events: none; z-index: 4; background: linear-gradient(90deg, rgba(245,242,235,0), rgba(245,242,235,.6) 55%, var(--app2) 100%); }
+.pr-peek-scrollhint { position: absolute; right: 18px; bottom: 20px; z-index: 5; display: inline-flex; align-items: center; gap: 8px; font-size: 11.5px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #F1EDE4; background: var(--navy); border: none; border-radius: 100px; padding: 9px 16px; box-shadow: 0 12px 26px -10px rgba(38,61,73,.6); }
+.pr-peek-scrollhint span { display: inline-block; animation: nudge 1.8s ease-in-out infinite; }
+@keyframes nudge { 0%,100% { transform: translateX(0); } 50% { transform: translateX(5px); } }
+/* keystone "sneak peek" seal at the arch apex */
+.pr-peek-seal { position: absolute; top: -13px; left: 50%; transform: translateX(-50%); z-index: 6; display: inline-flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--navy); background: #F1EDE4; border: 1px solid var(--navy-tint); border-radius: 100px; padding: 8px 18px; box-shadow: 0 10px 24px -8px rgba(38,61,73,.45); }
+.pr-peek-seal .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--sage-deep); animation: pulse 1.6s infinite; }
+@media (max-width: 640px) { .pr-peek-mask { border-radius: 90px 90px 12px 12px; } }
+
 /* ---------- STATEMENT (navy) ---------- */
 .pr-statement { background: var(--navy); padding: 84px 0; margin-top: 84px; }
 .pr-statement h2 { font-family: var(--disp); font-weight: 340; font-size: clamp(32px, 4.6vw, 56px); line-height: 1.06; letter-spacing: -.02em; max-width: 20ch; color: #EEEAE0; }

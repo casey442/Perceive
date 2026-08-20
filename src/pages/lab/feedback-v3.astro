@@ -57,15 +57,19 @@ const nav = [
           <a class="pr-btn big" href="/demo">See a demo</a>
           <a class="plain" href="#">Take a tour</a>
         </div>
-        <p class="pr-hint">Hover the menu. This is the live product.</p>
+        <p class="pr-hint">A first look, by invitation. Hover the menu, scroll to explore.</p>
 
-        <div class="pr-app">
-          <div class="pr-topbar">
-            <span class="pr-dots"><i></i><i></i><i></i></span>
-            <span class="pr-topsearch"><span set:html={svg.search} /> Search the record…</span>
-            <span class="pr-badge">Riverton USD</span>
-          </div>
-          <div class="pr-body">
+        <div class="pr-peek">
+          <span class="pr-peek-seal"><span class="dot"></span> Sneak peek</span>
+          <div class="pr-peek-mask">
+            <div class="pr-scroll">
+              <div class="pr-app">
+                <div class="pr-topbar">
+                  <span class="pr-dots"><i></i><i></i><i></i></span>
+                  <span class="pr-topsearch"><span set:html={svg.search} /> Search the record…</span>
+                  <span class="pr-badge">Riverton USD</span>
+                </div>
+                <div class="pr-body">
             <aside class="pr-side" id="prSide">
               <div class="grp">Workspace</div>
               {nav.map((n, i) => (
@@ -166,7 +170,12 @@ const nav = [
                   <div><div class="n">1 book</div><div class="l">unbroken, searchable</div></div>
                 </div>
               </section>
+                </div>
+              </div>
             </div>
+            </div>
+            <div class="pr-peek-fade" aria-hidden="true"></div>
+            <a class="pr-peek-scrollhint" href="#">Scroll to explore <span>→</span></a>
           </div>
         </div>
       </div>
