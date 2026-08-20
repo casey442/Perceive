@@ -1,0 +1,218 @@
+---
+import Base from '../../layouts/Base.astro';
+import '../../styles/lab.css';
+import '../../styles/crisp.css';
+import LabBar from '../../components/LabBar.astro';
+
+// reusable app mockups
+const agendaApp = `
+  <div class="cr-app">
+    <div class="cr-app-bar"><span class="cr-dots"><i></i><i></i><i></i></span><span class="cr-app-title">Agenda — Regular Meeting, Mar 12</span></div>
+    <div class="cr-app-body"><div class="cr-ag">
+      <div class="chipbar"><span class="chip on">Regular</span><span class="chip">Special</span><span class="chip">Budget hearing</span></div>
+      <ul style="margin:0;padding:0">
+        <li><span><span class="idx">1</span>Call to order</span></li>
+        <li><span><span class="idx">2</span>Consent agenda</span></li>
+        <li class="on"><span><span class="idx">3</span>New business</span></li>
+      </ul>
+      <div class="att">📎 Budget-FY26.pdf · filed from email</div>
+      <ul style="margin:0;padding:0">
+        <li><span><span class="idx">4</span>Public comment</span></li>
+        <li><span><span class="idx">5</span>Adjourn</span></li>
+      </ul>
+    </div></div>
+  </div>`;
+const minutesApp = `
+  <div class="cr-app">
+    <div class="cr-app-bar"><span class="cr-dots"><i></i><i></i><i></i></span><span class="cr-app-title">Minutes — live</span></div>
+    <div class="cr-app-body"><div class="cr-mn">
+      <div><h6>Agenda</h6><ul class="ai"><li class="on">Consent agenda</li><li>Bus contract</li><li>Bell schedule</li></ul></div>
+      <div><h6>Minutes</h6><ul>
+        <li class="en"><b>Consent agenda</b>Approved as presented. <em>✓ 7–0</em></li>
+        <li class="en"><b>Bus contract</b>Awarded to Durham. <em>✓ 6–1</em></li>
+      </ul></div>
+    </div></div>
+  </div>`;
+const portalApp = `
+  <div class="cr-app">
+    <div class="cr-app-bar"><span class="cr-dots"><i></i><i></i><i></i></span><span class="cr-app-title">Public portal</span></div>
+    <div class="cr-app-body"><div class="cr-pt">
+      <div class="bar">🔎 bus routes redrawn</div>
+      <div class="res"><b>Minutes · Regular Meeting, Mar 2023</b><span class="sn">…the redrawn bus routes approved 5–2, effective August…</span><span class="cite">Cites p. 4</span></div>
+      <div class="res"><b>Agenda · Mar 14, 2023</b><span class="sn">Item 5.2 — Transportation: route realignment…</span><span class="cite">Posted 3 days prior</span></div>
+    </div></div>
+  </div>`;
+---
+<Base title="BoardPlanner — Crisp study">
+  <Fragment slot="head">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" />
+  </Fragment>
+
+  <LabBar active="crisp" />
+
+  <div class="crisp">
+    <nav class="cr-nav">
+      <div class="cr-nav-inner">
+        <a class="cr-logo" href="/">BoardPlanner</a>
+        <div class="cr-nav-links">
+          <a href="#">How it works</a>
+          <a href="#">Public portal</a>
+          <a href="#">Security</a>
+          <a href="#">Sign in</a>
+          <a class="cr-btn accent" href="/demo">See a demo</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- HERO with product switcher -->
+    <header class="cr-hero">
+      <div class="wrap">
+        <div class="cr-hero-head">
+          <div class="cr-eyebrow">One place to keep the record</div>
+          <div class="cr-switch" id="crSwitch">
+            <button class="cr-tab on" data-k="agendas">Agendas</button>
+            <button class="cr-tab" data-k="minutes">Minutes</button>
+            <button class="cr-tab" data-k="portal">Public portal</button>
+          </div>
+        </div>
+
+        <div class="cr-hero-grid">
+          <div class="cr-hero-copy">
+            <h1 id="crH1">Build the packet in minutes.</h1>
+            <p class="lede" id="crLede">Templates hold the shape. Forward a document and it files itself onto the agenda. Change one item Monday night, swap one page.</p>
+            <div class="cr-hero-cta">
+              <a class="cr-btn big accent" href="/demo">See a demo</a>
+              <a class="cr-btn big ghost" href="#">Learn more</a>
+            </div>
+            <ul class="cr-bullets">
+              <li><span class="ck">✓</span><span><b>Always properly noticed.</b> Posted inside your state's window.</span></li>
+              <li><span class="ck">✓</span><span><b>A complete minute book.</b> Back to your first meeting.</span></li>
+              <li><span class="ck">✓</span><span><b>Public by law.</b> Searchable by anyone.</span></li>
+            </ul>
+          </div>
+
+          <div class="cr-hero-panel-wrap">
+            <div class="cr-hero-panel on" data-k="agendas"><div class="cr-panel indigo" set:html={agendaApp} /></div>
+            <div class="cr-hero-panel" data-k="minutes"><div class="cr-panel violet" set:html={minutesApp} /></div>
+            <div class="cr-hero-panel" data-k="portal"><div class="cr-panel blue" set:html={portalApp} /></div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- TRUST STRIP (value props, no fabricated logos/counts) -->
+    <section class="cr-trust">
+      <div class="wrap">
+        <div class="lbl">Built for the person who keeps the record</div>
+        <div class="row">
+          <span>Board secretaries</span><span>Executive assistants</span><span>Superintendents</span><span>District clerks</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURE 1 · Agendas -->
+    <section class="cr-feat">
+      <div class="wrap"><div class="cr-feat-inner">
+        <div class="cr-feat-copy">
+          <div class="k">Agendas</div>
+          <h2>Build the packet, not the busywork.</h2>
+          <p>Start from a reusable template, never a blank page. The packet goes out days early and stays whole when Monday night changes.</p>
+          <div class="cr-feat-sub">
+            <div><span class="ic">🗂️</span><div><h4>Reusable templates</h4><p>The structure is set once. You fill in the night's business.</p></div></div>
+            <div><span class="ic">✉️</span><div><h4>Email-to-file</h4><p>Forward a document and it lands on the right agenda item.</p></div></div>
+            <div><span class="ic">✅</span><div><h4>Draft → review → publish</h4><p>One version, published when the board approves.</p></div></div>
+          </div>
+          <div class="cr-feat-cta"><a class="cr-btn accent" href="/demo">See a demo</a><a class="cr-btn ghost" href="#">Learn more</a></div>
+        </div>
+        <div class="cr-feat-panel"><div class="cr-panel indigo" set:html={agendaApp} /></div>
+      </div></div>
+    </section>
+
+    <!-- FEATURE 2 · Minutes -->
+    <section class="cr-feat rev" style="background:var(--soft)">
+      <div class="wrap"><div class="cr-feat-inner">
+        <div class="cr-feat-copy">
+          <div class="k">Minutes</div>
+          <h2>Minutes that write themselves.</h2>
+          <p>They start from the agenda and follow the meeting item by item. Each entry ties back to the posted notice.</p>
+          <div class="cr-feat-sub">
+            <div><span class="ic">⏱️</span><div><h4>Tied to the agenda</h4><p>Every entry maps to its item. Nothing floats loose.</p></div></div>
+            <div><span class="ic">🗳️</span><div><h4>Motions & votes</h4><p>Roll calls and tallies captured as the meeting runs.</p></div></div>
+            <div><span class="ic">📚</span><div><h4>A complete minute book</h4><p>Runs unbroken back to your first meeting.</p></div></div>
+          </div>
+          <div class="cr-feat-cta"><a class="cr-btn accent" href="/demo">See a demo</a><a class="cr-btn ghost" href="#">Learn more</a></div>
+        </div>
+        <div class="cr-feat-panel"><div class="cr-panel violet" set:html={minutesApp} /></div>
+      </div></div>
+    </section>
+
+    <!-- FEATURE 3 · Public portal -->
+    <section class="cr-feat">
+      <div class="wrap"><div class="cr-feat-inner">
+        <div class="cr-feat-copy">
+          <div class="k">The public</div>
+          <h2>A record anyone can read.</h2>
+          <p>Agendas and approved minutes, posted inside your notice window and searchable by anyone. Every summary cites its page.</p>
+          <div class="cr-feat-sub">
+            <div><span class="ic">🔎</span><div><h4>Full-text search</h4><p>Every word inside every PDF, answerable in seconds.</p></div></div>
+            <div><span class="ic">📝</span><div><h4>Cited summaries</h4><p>Plain-language, in the reader's language, citing the source page.</p></div></div>
+            <div><span class="ic">📅</span><div><h4>Posted on time</h4><p>Inside your state's notice window, every meeting.</p></div></div>
+          </div>
+          <div class="cr-feat-cta"><a class="cr-btn accent" href="/demo">See a demo</a><a class="cr-btn ghost" href="#">Learn more</a></div>
+        </div>
+        <div class="cr-feat-panel"><div class="cr-panel blue" set:html={portalApp} /></div>
+      </div></div>
+    </section>
+
+    <!-- STATEMENT -->
+    <section class="cr-statement">
+      <div class="wrap">
+        <h2>The law requires the meeting. <span class="g">It sets the deadlines, too.</span></h2>
+        <div class="stats">
+          <div class="stat"><div class="n">1–2×</div><div class="l">public meetings each month, by statute</div></div>
+          <div class="stat"><div class="n">72 hrs</div><div class="l">of posted notice in many states</div></div>
+          <div class="stat"><div class="n">48 hrs</div><div class="l">packet-delivery deadline in board policy</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cr-cta">
+      <h2>The next meeting is already on the calendar.</h2>
+      <a class="cr-btn big light" href="/demo">See a demo</a>
+      <p class="sub">Twenty minutes with your real agenda, start to finish.</p>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="cr-foot">
+      <div class="cr-foot-inner">
+        <a class="cr-logo" href="/">BoardPlanner</a>
+        <div class="cr-foot-links">
+          <a href="#">How it works</a><a href="#">Board members</a><a href="#">Public portal</a><a href="#">Security</a><a href="#">Contact</a>
+        </div>
+        <span>© 2026 BoardPlanner</span>
+      </div>
+    </footer>
+  </div>
+</Base>
+
+<script>
+  const COPY = {
+    agendas: { h1: 'Build the packet in minutes.', lede: "Templates hold the shape. Forward a document and it files itself onto the agenda. Change one item Monday night, swap one page." },
+    minutes: { h1: 'Minutes that write themselves.', lede: 'Start from the agenda and follow the meeting item by item. Motions, votes, roll calls, each tied to the posted notice.' },
+    portal: { h1: 'A record the public can read.', lede: 'Agendas and approved minutes, searchable by anyone, with a plain-language summary that cites its page.' },
+  };
+  const sw = document.getElementById('crSwitch');
+  sw?.addEventListener('click', (e) => {
+    const b = (e.target as HTMLElement).closest('.cr-tab') as HTMLElement | null;
+    if (!b) return;
+    const k = b.dataset.k as keyof typeof COPY;
+    sw.querySelectorAll('.cr-tab').forEach((x) => x.classList.remove('on'));
+    b.classList.add('on');
+    document.getElementById('crH1')!.textContent = COPY[k].h1;
+    document.getElementById('crLede')!.textContent = COPY[k].lede;
+    document.querySelectorAll('.cr-hero-panel').forEach((p) => p.classList.toggle('on', (p as HTMLElement).dataset.k === k));
+  });
+</script>
