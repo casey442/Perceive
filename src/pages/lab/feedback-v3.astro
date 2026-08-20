@@ -1,0 +1,232 @@
+---
+import Base from '../../layouts/Base.astro';
+import '../../styles/lab.css';
+import '../../styles/feedback-v3.css';
+import LabBar from '../../components/LabBar.astro';
+
+// line icons (no emoji)
+const svg = {
+  templates: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="2.5"/><path d="M3 9h18M9 21V9"/></svg>',
+  mail: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.5 7l8.5 6 8.5-6"/></svg>',
+  check: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M8 12l2.8 2.8L16 9"/></svg>',
+  clock: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.2 2"/></svg>',
+  search: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>',
+  doc: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="5" y="3" width="14" height="18" rx="2.5"/><path d="M9 8.5h6M9 12.5h6M9 16.5h4"/></svg>',
+  book: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 4.5A1.5 1.5 0 0 1 6.5 3H19v16.5H6.5A1.5 1.5 0 0 0 5 21z"/><path d="M9 3v18"/></svg>',
+  clip: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M20 11.5l-8.2 8.2a5 5 0 0 1-7-7l8.5-8.5a3.3 3.3 0 1 1 4.7 4.7l-8.5 8.5a1.6 1.6 0 0 1-2.3-2.3l7.8-7.8"/></svg>',
+};
+
+const nav = [
+  { k: 'agenda', ic: 'templates', name: 'Agenda builder', d: 'Templates + email-to-file' },
+  { k: 'minutes', ic: 'clock', name: 'Live minutes', d: 'Motions, votes, roll calls' },
+  { k: 'portal', ic: 'search', name: 'Public portal', d: 'Search the whole record' },
+  { k: 'summaries', ic: 'doc', name: 'AI summaries', d: 'Plain-language, cited' },
+  { k: 'workflow', ic: 'check', name: 'Draft to publish', d: 'One approved version' },
+  { k: 'migration', ic: 'book', name: 'History migration', d: 'Your full record, day one' },
+];
+---
+<Base title="BoardPlanner — Feedback V3 · Live Product">
+  <Fragment slot="head">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..500;1,9..144,300..500&family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400..500&display=swap" />
+  </Fragment>
+
+  <LabBar active="feedback-v3" />
+
+  <div class="prod">
+    <nav class="pr-nav">
+      <div class="pr-nav-inner">
+        <a class="pr-logo" href="/">BoardPlanner</a>
+        <div class="pr-nav-links">
+          <a href="#">How it works</a>
+          <a href="#">Public portal</a>
+          <a href="#">Security</a>
+          <a href="#">Sign in</a>
+          <a class="pr-btn" href="/demo">See a demo</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- HERO + LIVE PRODUCT WINDOW -->
+    <header class="pr-hero">
+      <div class="wrap">
+        <h1>The whole meeting, in <em>one place</em>.</h1>
+        <p class="lede">Build the packet, take the minutes, and post the record. Everything the board decided, and why, back to your first meeting.</p>
+        <div class="pr-hero-cta">
+          <a class="pr-btn big" href="/demo">See a demo</a>
+          <a class="plain" href="#">Take a tour</a>
+        </div>
+        <p class="pr-hint">Hover the menu. This is the live product.</p>
+
+        <div class="pr-app">
+          <div class="pr-topbar">
+            <span class="pr-dots"><i></i><i></i><i></i></span>
+            <span class="pr-topsearch"><span set:html={svg.search} /> Search the record…</span>
+            <span class="pr-badge">Riverton USD</span>
+          </div>
+          <div class="pr-body">
+            <aside class="pr-side" id="prSide">
+              <div class="grp">Workspace</div>
+              {nav.map((n, i) => (
+                <div class={`pr-navitem${i === 0 ? ' on' : ''}`} data-k={n.k} tabindex="0" role="button" aria-label={n.name}>
+                  <span set:html={svg[n.ic]} />
+                  <span><span class="k">{n.name}</span><span class="d">{n.d}</span></span>
+                </div>
+              ))}
+            </aside>
+
+            <div class="pr-stage" id="prStage">
+              <!-- AGENDA -->
+              <section class="pr-panel on" data-k="agenda">
+                <div class="s-head"><div><h4>Regular Meeting · March 12</h4><span class="sub">Agenda · draft</span></div><span class="s-chip">Posted · 3 days prior</span></div>
+                <div class="ag-cols">
+                  <ul class="ag-list">
+                    <li><i>1</i> Call to order</li>
+                    <li><i>2</i> Consent agenda</li>
+                    <li class="tgt"><i>3</i> New business <span class="ag-att"><span set:html={svg.clip} /> Budget-FY26.pdf</span></li>
+                    <li><i>4</i> Public comment</li>
+                    <li><i>5</i> Adjourn</li>
+                  </ul>
+                  <div class="ag-side">
+                    <span class="lbl">Inbox → agenda</span>
+                    <div class="ag-inbox"><span class="email-pill"><span set:html={svg.mail} /> Fwd: Budget-FY26.pdf</span></div>
+                    <p class="note">Forward any document. It files itself onto the right item.</p>
+                  </div>
+                </div>
+              </section>
+
+              <!-- MINUTES -->
+              <section class="pr-panel" data-k="minutes">
+                <div class="s-head"><div><h4>Minutes · Regular Meeting</h4><span class="sub">Recording in progress</span></div><span class="s-chip live">Live</span></div>
+                <div class="mn-cols">
+                  <div>
+                    <h6>Agenda</h6>
+                    <ul class="mn-ai"><li class="on">Consent agenda</li><li>Bus contract</li><li>Bell schedule</li></ul>
+                  </div>
+                  <div>
+                    <h6>Minutes</h6>
+                    <ul class="mn-en">
+                      <li><span><b>Consent agenda</b><span class="d">Approved as presented</span></span><em>7–0</em></li>
+                      <li><span><b>Bus contract</b><span class="d">Awarded to Durham</span></span><em>6–1</em></li>
+                      <li><span><b>Bell schedule</b><span class="d">Adopted for FY26</span></span><em>5–2</em></li>
+                    </ul>
+                  </div>
+                </div>
+              </section>
+
+              <!-- PORTAL -->
+              <section class="pr-panel" data-k="portal">
+                <div class="s-head"><div><h4>Public portal</h4><span class="sub">Riverton USD · public record</span></div><span class="s-chip">Anyone can read</span></div>
+                <div class="pt-bar"><span set:html={svg.search} /> <span class="q">bus routes redrawn</span><span class="car"></span></div>
+                <div class="pt-res"><b>Minutes · Regular Meeting, March 2023</b><span class="sn">…the redrawn bus routes were approved 5–2, effective August…</span><div class="pr-cite">Cites p. 4</div></div>
+                <div class="pt-res"><b>Agenda · March 14, 2023</b><span class="sn">Item 5.2 · Transportation: route realignment for the east feeder…</span><div class="pr-cite">Posted 3 days prior</div></div>
+              </section>
+
+              <!-- SUMMARIES -->
+              <section class="pr-panel" data-k="summaries">
+                <div class="s-head"><div><h4>AI summary · Superintendent contract</h4><span class="sub">Reads the source page, not the room</span></div><span class="s-chip">Cited</span></div>
+                <div class="sum-cols">
+                  <div class="sum-doc">
+                    <div class="ln"></div><div class="ln"></div><div class="ln hl"></div><div class="ln"></div><div class="ln s"></div>
+                    <div class="ln"></div><div class="ln s"></div>
+                  </div>
+                  <div class="sum-panel">
+                    <div class="sum-tabs"><span class="hl"></span><b>EN</b><b>ES</b><b>中文</b></div>
+                    <div class="sum-lines">
+                      <span class="l1">The board renewed the superintendent's contract for three years.</span>
+                      <span class="l2">La junta renovó el contrato del superintendente por tres años.</span>
+                      <span class="l3">董事会将督学的合同续签了三年。</span>
+                    </div>
+                    <div class="pr-cite">Cites p. 12 of the March packet</div>
+                  </div>
+                </div>
+              </section>
+
+              <!-- WORKFLOW -->
+              <section class="pr-panel" data-k="workflow">
+                <div class="s-head"><div><h4>Draft → review → publish</h4><span class="sub">One version, start to finish</span></div><span class="s-chip">Approved</span></div>
+                <div class="wf-steps">
+                  <span class="n n1">1</span><span class="ln ln1"><i></i></span>
+                  <span class="n n2">2</span><span class="ln ln2"><i></i></span>
+                  <span class="n n3">3</span>
+                </div>
+                <div class="wf-badges"><b class="b1">Draft</b><b class="b2">In review</b><b class="b3">Published</b></div>
+                <p class="wf-note">The packet has one version at a time. It publishes to the public portal the moment the board approves it.</p>
+              </section>
+
+              <!-- MIGRATION -->
+              <section class="pr-panel" data-k="migration">
+                <div class="s-head"><div><h4>History migration</h4><span class="sub">From BoardDocs or Diligent</span></div><span class="s-chip">Day one</span></div>
+                <div class="mg-row"><b class="imp">Importing your history…</b><b class="done"><span set:html={svg.check} /> 12,480 records imported</b></div>
+                <div class="mg-prog"><i></i></div>
+                <div class="mg-from">Agendas, packets, and minutes, back to your first meeting on record.</div>
+                <div class="mg-stats">
+                  <div><div class="n">12,480</div><div class="l">records carried over</div></div>
+                  <div><div class="n">1 book</div><div class="l">unbroken, searchable</div></div>
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- STATEMENT -->
+    <section class="pr-statement">
+      <div class="wrap">
+        <h2>The law requires the meeting. <em>It sets the deadlines, too.</em></h2>
+        <div class="stats">
+          <div class="stat"><div class="n">1–2×</div><div class="l">public meetings each month, by statute</div></div>
+          <div class="stat"><div class="n">72 hrs</div><div class="l">of posted notice in many states</div></div>
+          <div class="stat"><div class="n">3 days</div><div class="l">Texas posting rule, business days prior</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="pr-cta">
+      <div class="wrap">
+        <h2>The next meeting is already on the calendar.</h2>
+        <p class="sub">Twenty minutes with your real agenda, start to finish.</p>
+        <a class="pr-btn big" href="/demo">See a demo</a>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="pr-foot">
+      <div class="pr-foot-inner">
+        <div class="pr-foot-top">
+          <div>
+            <a class="pr-logo" href="/">BoardPlanner</a>
+            <p>Board meeting software for K-12 districts. Agendas, packets, minutes, and a public record.</p>
+          </div>
+          <div><h5>Product</h5><ul><li><a href="#">Agendas</a></li><li><a href="#">Minutes</a></li><li><a href="#">Public portal</a></li></ul></div>
+          <div><h5>District</h5><ul><li><a href="#">Migration</a></li><li><a href="#">Security</a></li><li><a href="#">Contact</a></li></ul></div>
+          <div><h5>Get started</h5><ul><li><a href="/demo">See a demo</a></li><li><a href="#">Sign in</a></li></ul></div>
+        </div>
+        <div class="pr-foot-bot">
+          <span>© 2026 BoardPlanner</span>
+          <span class="pr-adjourned">Meeting adjourned.</span>
+        </div>
+      </div>
+    </footer>
+  </div>
+</Base>
+
+<script>
+  // Hovering (or focusing/clicking) a sidebar item switches the live stage.
+  const side = document.getElementById('prSide');
+  const stage = document.getElementById('prStage');
+  function activate(k: string) {
+    side?.querySelectorAll('.pr-navitem').forEach((n) => n.classList.toggle('on', (n as HTMLElement).dataset.k === k));
+    stage?.querySelectorAll('.pr-panel').forEach((p) => p.classList.toggle('on', (p as HTMLElement).dataset.k === k));
+  }
+  side?.querySelectorAll('.pr-navitem').forEach((item) => {
+    const k = (item as HTMLElement).dataset.k!;
+    item.addEventListener('mouseenter', () => activate(k));
+    item.addEventListener('click', () => activate(k));
+    item.addEventListener('focus', () => activate(k));
+    item.addEventListener('keydown', (e) => { if ((e as KeyboardEvent).key === 'Enter' || (e as KeyboardEvent).key === ' ') { e.preventDefault(); activate(k); } });
+  });
+</script>
