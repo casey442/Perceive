@@ -4,6 +4,20 @@ import '../../styles/lab.css';
 import '../../styles/crisp.css';
 import LabBar from '../../components/LabBar.astro';
 
+// line icons (no emoji)
+const svg = {
+  templates: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="2.5"/><path d="M3 9h18M9 21V9"/></svg>',
+  mail: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.5 7l8.5 6 8.5-6"/></svg>',
+  check: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M8 12l2.8 2.8L16 9"/></svg>',
+  clock: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.2 2"/></svg>',
+  ballot: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="2.5"/><path d="M7.5 12l3 3 6-6.5"/></svg>',
+  book: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 4.5A1.5 1.5 0 0 1 6.5 3H19v16.5H6.5A1.5 1.5 0 0 0 5 21z"/><path d="M9 3v18"/></svg>',
+  search: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>',
+  doc: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="5" y="3" width="14" height="18" rx="2.5"/><path d="M9 8.5h6M9 12.5h6M9 16.5h4"/></svg>',
+  calendar: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="5" width="16" height="16" rx="2.5"/><path d="M4 9.5h16M8.5 3v4M15.5 3v4"/></svg>',
+  clip: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M20 11.5l-8.2 8.2a5 5 0 0 1-7-7l8.5-8.5a3.3 3.3 0 1 1 4.7 4.7l-8.5 8.5a1.6 1.6 0 0 1-2.3-2.3l7.8-7.8"/></svg>',
+};
+
 // reusable app mockups
 const agendaApp = `
   <div class="cr-app">
@@ -15,7 +29,7 @@ const agendaApp = `
         <li><span><span class="idx">2</span>Consent agenda</span></li>
         <li class="on"><span><span class="idx">3</span>New business</span></li>
       </ul>
-      <div class="att">📎 Budget-FY26.pdf · filed from email</div>
+      <div class="att">${svg.clip} Budget-FY26.pdf · filed from email</div>
       <ul style="margin:0;padding:0">
         <li><span><span class="idx">4</span>Public comment</span></li>
         <li><span><span class="idx">5</span>Adjourn</span></li>
@@ -28,8 +42,8 @@ const minutesApp = `
     <div class="cr-app-body"><div class="cr-mn">
       <div><h6>Agenda</h6><ul class="ai"><li class="on">Consent agenda</li><li>Bus contract</li><li>Bell schedule</li></ul></div>
       <div><h6>Minutes</h6><ul>
-        <li class="en"><b>Consent agenda</b>Approved as presented. <em>✓ 7–0</em></li>
-        <li class="en"><b>Bus contract</b>Awarded to Durham. <em>✓ 6–1</em></li>
+        <li class="en"><b>Consent agenda</b>Approved as presented. <em>7–0</em></li>
+        <li class="en"><b>Bus contract</b>Awarded to Durham. <em>6–1</em></li>
       </ul></div>
     </div></div>
   </div>`;
@@ -37,7 +51,7 @@ const portalApp = `
   <div class="cr-app">
     <div class="cr-app-bar"><span class="cr-dots"><i></i><i></i><i></i></span><span class="cr-app-title">Public portal</span></div>
     <div class="cr-app-body"><div class="cr-pt">
-      <div class="bar">🔎 bus routes redrawn</div>
+      <div class="bar">${svg.search} bus routes redrawn</div>
       <div class="res"><b>Minutes · Regular Meeting, Mar 2023</b><span class="sn">…the redrawn bus routes approved 5–2, effective August…</span><span class="cite">Cites p. 4</span></div>
       <div class="res"><b>Agenda · Mar 14, 2023</b><span class="sn">Item 5.2 — Transportation: route realignment…</span><span class="cite">Posted 3 days prior</span></div>
     </div></div>
@@ -70,7 +84,6 @@ const portalApp = `
     <header class="cr-hero">
       <div class="wrap">
         <div class="cr-hero-head">
-          <div class="cr-eyebrow">One place to keep the record</div>
           <div class="cr-switch" id="crSwitch">
             <button class="cr-tab on" data-k="agendas">Agendas</button>
             <button class="cr-tab" data-k="minutes">Minutes</button>
@@ -87,16 +100,16 @@ const portalApp = `
               <a class="cr-btn big ghost" href="#">Learn more</a>
             </div>
             <ul class="cr-bullets">
-              <li><span class="ck">✓</span><span><b>Always properly noticed.</b> Posted inside your state's window.</span></li>
-              <li><span class="ck">✓</span><span><b>A complete minute book.</b> Back to your first meeting.</span></li>
-              <li><span class="ck">✓</span><span><b>Public by law.</b> Searchable by anyone.</span></li>
+              <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-10"/></svg></span><span><b>Always properly noticed.</b> Posted inside your state's window.</span></li>
+              <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-10"/></svg></span><span><b>A complete minute book.</b> Back to your first meeting.</span></li>
+              <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-10"/></svg></span><span><b>Public by law.</b> Searchable by anyone.</span></li>
             </ul>
           </div>
 
           <div class="cr-hero-panel-wrap">
-            <div class="cr-hero-panel on" data-k="agendas"><div class="cr-panel indigo" set:html={agendaApp} /></div>
-            <div class="cr-hero-panel" data-k="minutes"><div class="cr-panel violet" set:html={minutesApp} /></div>
-            <div class="cr-hero-panel" data-k="portal"><div class="cr-panel blue" set:html={portalApp} /></div>
+            <div class="cr-hero-panel on" data-k="agendas"><div class="cr-panel p-blue" set:html={agendaApp} /></div>
+            <div class="cr-hero-panel" data-k="minutes"><div class="cr-panel p-slate" set:html={minutesApp} /></div>
+            <div class="cr-hero-panel" data-k="portal"><div class="cr-panel p-sky" set:html={portalApp} /></div>
           </div>
         </div>
       </div>
@@ -116,17 +129,16 @@ const portalApp = `
     <section class="cr-feat">
       <div class="wrap"><div class="cr-feat-inner">
         <div class="cr-feat-copy">
-          <div class="k">Agendas</div>
           <h2>Build the packet, not the busywork.</h2>
           <p>Start from a reusable template, never a blank page. The packet goes out days early and stays whole when Monday night changes.</p>
           <div class="cr-feat-sub">
-            <div><span class="ic">🗂️</span><div><h4>Reusable templates</h4><p>The structure is set once. You fill in the night's business.</p></div></div>
-            <div><span class="ic">✉️</span><div><h4>Email-to-file</h4><p>Forward a document and it lands on the right agenda item.</p></div></div>
-            <div><span class="ic">✅</span><div><h4>Draft → review → publish</h4><p>One version, published when the board approves.</p></div></div>
+            <div><span class="ic" set:html={svg.templates} /><div><h4>Reusable templates</h4><p>The structure is set once. You fill in the night's business.</p></div></div>
+            <div><span class="ic" set:html={svg.mail} /><div><h4>Email-to-file</h4><p>Forward a document and it lands on the right agenda item.</p></div></div>
+            <div><span class="ic" set:html={svg.check} /><div><h4>Draft → review → publish</h4><p>One version, published when the board approves.</p></div></div>
           </div>
           <div class="cr-feat-cta"><a class="cr-btn accent" href="/demo">See a demo</a><a class="cr-btn ghost" href="#">Learn more</a></div>
         </div>
-        <div class="cr-feat-panel"><div class="cr-panel indigo" set:html={agendaApp} /></div>
+        <div class="cr-feat-panel"><div class="cr-panel p-blue" set:html={agendaApp} /></div>
       </div></div>
     </section>
 
@@ -134,17 +146,16 @@ const portalApp = `
     <section class="cr-feat rev" style="background:var(--soft)">
       <div class="wrap"><div class="cr-feat-inner">
         <div class="cr-feat-copy">
-          <div class="k">Minutes</div>
           <h2>Minutes that write themselves.</h2>
           <p>They start from the agenda and follow the meeting item by item. Each entry ties back to the posted notice.</p>
           <div class="cr-feat-sub">
-            <div><span class="ic">⏱️</span><div><h4>Tied to the agenda</h4><p>Every entry maps to its item. Nothing floats loose.</p></div></div>
-            <div><span class="ic">🗳️</span><div><h4>Motions & votes</h4><p>Roll calls and tallies captured as the meeting runs.</p></div></div>
-            <div><span class="ic">📚</span><div><h4>A complete minute book</h4><p>Runs unbroken back to your first meeting.</p></div></div>
+            <div><span class="ic" set:html={svg.clock} /><div><h4>Tied to the agenda</h4><p>Every entry maps to its item. Nothing floats loose.</p></div></div>
+            <div><span class="ic" set:html={svg.ballot} /><div><h4>Motions & votes</h4><p>Roll calls and tallies captured as the meeting runs.</p></div></div>
+            <div><span class="ic" set:html={svg.book} /><div><h4>A complete minute book</h4><p>Runs unbroken back to your first meeting.</p></div></div>
           </div>
           <div class="cr-feat-cta"><a class="cr-btn accent" href="/demo">See a demo</a><a class="cr-btn ghost" href="#">Learn more</a></div>
         </div>
-        <div class="cr-feat-panel"><div class="cr-panel violet" set:html={minutesApp} /></div>
+        <div class="cr-feat-panel"><div class="cr-panel p-slate" set:html={minutesApp} /></div>
       </div></div>
     </section>
 
@@ -152,17 +163,16 @@ const portalApp = `
     <section class="cr-feat">
       <div class="wrap"><div class="cr-feat-inner">
         <div class="cr-feat-copy">
-          <div class="k">The public</div>
           <h2>A record anyone can read.</h2>
           <p>Agendas and approved minutes, posted inside your notice window and searchable by anyone. Every summary cites its page.</p>
           <div class="cr-feat-sub">
-            <div><span class="ic">🔎</span><div><h4>Full-text search</h4><p>Every word inside every PDF, answerable in seconds.</p></div></div>
-            <div><span class="ic">📝</span><div><h4>Cited summaries</h4><p>Plain-language, in the reader's language, citing the source page.</p></div></div>
-            <div><span class="ic">📅</span><div><h4>Posted on time</h4><p>Inside your state's notice window, every meeting.</p></div></div>
+            <div><span class="ic" set:html={svg.search} /><div><h4>Full-text search</h4><p>Every word inside every PDF, answerable in seconds.</p></div></div>
+            <div><span class="ic" set:html={svg.doc} /><div><h4>Cited summaries</h4><p>Plain-language, in the reader's language, citing the source page.</p></div></div>
+            <div><span class="ic" set:html={svg.calendar} /><div><h4>Posted on time</h4><p>Inside your state's notice window, every meeting.</p></div></div>
           </div>
           <div class="cr-feat-cta"><a class="cr-btn accent" href="/demo">See a demo</a><a class="cr-btn ghost" href="#">Learn more</a></div>
         </div>
-        <div class="cr-feat-panel"><div class="cr-panel blue" set:html={portalApp} /></div>
+        <div class="cr-feat-panel"><div class="cr-panel p-sky" set:html={portalApp} /></div>
       </div></div>
     </section>
 
