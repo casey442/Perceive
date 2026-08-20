@@ -1,11 +1,12 @@
 ---
-interface Props { active?: 'index' | 'home' | 'search' | 'workflow' | 'themes' | 'headlines' | 'fh' | 'luxe'; }
+interface Props { active?: 'index' | 'home' | 'search' | 'workflow' | 'themes' | 'headlines' | 'fh' | 'luxe' | 'motion'; }
 const { active } = Astro.props;
 const items = [
   { key: 'index', label: 'Lab', href: '/lab/' },
   { key: 'home', label: 'Home study', href: '/lab/home-study/' },
   { key: 'fh', label: 'FH layout', href: '/lab/function-health/' },
   { key: 'luxe', label: 'Luxe', href: '/lab/luxe/' },
+  { key: 'motion', label: 'Motion', href: '/lab/motion/' },
   { key: 'themes', label: 'Themes', href: '/lab/themes/' },
   { key: 'headlines', label: 'Headlines', href: '/lab/headlines/' },
   { key: 'search', label: 'HIW · Search', href: '/lab/how-it-works-search/' },
