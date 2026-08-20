@@ -11,6 +11,11 @@
 }
 .motion .wrap { max-width: 1180px; margin: 0 auto; padding: 0 32px; }
 
+/* black-and-white variant — same layout, monochrome accent, desaturated emoji */
+.motion.bw { --accent: #111318; --accent-deep: #000000; --accent-tint: #EEF0F2; }
+.motion.bw .mo-feat:hover, .motion.bw .mo-feat.pinned { box-shadow: 0 22px 46px -26px rgba(0,0,0,.22); }
+.motion.bw .mo-icon, .motion.bw .mo-preview { filter: grayscale(1); }
+
 /* ---------- NAV ---------- */
 .mo-nav { position: sticky; top: 52px; z-index: 20; background: rgba(255,255,255,.82); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
 .mo-nav-inner { max-width: 1180px; margin: 0 auto; padding: 0 32px; height: 64px; display: flex; align-items: center; justify-content: space-between; }
@@ -40,7 +45,9 @@
 .mo-feats-head h2 { font-size: clamp(30px, 3.6vw, 46px); font-weight: 800; letter-spacing: -.03em; }
 .mo-feats-head h2 .g { color: var(--accent); }
 .mo-feats-head p { font-size: 16.5px; color: var(--muted); margin-top: 12px; }
-.mo-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; padding-top: 220px; }
+/* modest top room so a hovered preview has somewhere to pop (it overlaps upward,
+   like a tooltip) without leaving a big dead gap under the heading */
+.mo-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; padding-top: 48px; }
 
 .mo-feat { position: relative; background: var(--bg); border: 1.5px solid var(--line2); border-radius: 20px; padding: 22px 16px 18px; text-align: center; cursor: pointer; transition: border-color .18s ease, box-shadow .18s ease, transform .18s ease; }
 .mo-feat:hover, .mo-feat.pinned { border-color: var(--accent); box-shadow: 0 22px 46px -26px rgba(18,184,134,.4); transform: translateY(-3px); }

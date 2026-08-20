@@ -1,0 +1,179 @@
+---
+// Shared body for the Motion studies. `bw` renders the black-and-white variant.
+interface Props { bw?: boolean; }
+const { bw = false } = Astro.props;
+---
+<div class:list={['motion', { bw }]}>
+  <nav class="mo-nav">
+    <div class="mo-nav-inner">
+      <a class="mo-logo" href="/">BoardPlanner</a>
+      <div class="mo-nav-links">
+        <a href="#">How it works</a>
+        <a href="#">Board members</a>
+        <a href="#">Public portal</a>
+        <a href="#">Security</a>
+        <a class="mo-btn accent" href="/demo">See a demo</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="mo-hero">
+    <div class="wrap">
+      <span class="mo-eyebrow">Board meeting software for K-12</span>
+      <h1>Keep the <span class="g">record</span>.</h1>
+      <p class="lede">Agendas, packets, minutes, and policies. <b>Everything your board decided, and why,</b> in one place.</p>
+      <div class="mo-hero-cta">
+        <a class="mo-btn big accent" href="/demo">See a demo</a>
+        <a class="mo-btn big" href="#feats" style="background:var(--soft);color:var(--ink)">Explore features</a>
+      </div>
+      <p class="note">Hover or tap any feature below to watch it work.</p>
+    </div>
+  </header>
+
+  <!-- FEATURE GRID (hover to animate) -->
+  <section class="mo-feats" id="feats">
+    <div class="wrap">
+      <div class="mo-feats-head">
+        <h2>Six things it does <span class="g">for you</span>.</h2>
+        <p>Hover or tap a feature to watch it in motion.</p>
+      </div>
+
+      <div class="mo-grid" id="moGrid">
+        <!-- 1 · AI summaries -->
+        <div class="mo-feat" tabindex="0">
+          <div class="mo-preview"><div class="pv-sum">
+            <div class="pv-label">AI summary · Supt. contract</div>
+            <div class="pv-tabs"><span class="hl"></span><b>EN</b><b>ES</b><b>中文</b></div>
+            <div class="pv-lines">
+              <span class="l1">The board renewed the contract for three years.</span>
+              <span class="l2">La junta renovó el contrato por tres años.</span>
+              <span class="l3">董事会续签了督学的三年合同。</span>
+            </div>
+            <div class="pv-cite">Cites p. 12</div>
+          </div></div>
+          <div class="mo-icon">📝</div>
+          <div class="mo-title">AI summaries</div>
+          <div class="mo-sub">Plain-language, cited</div>
+          <div class="mo-hint">Hover to preview →</div>
+        </div>
+
+        <!-- 2 · Agenda builder -->
+        <div class="mo-feat" tabindex="0">
+          <div class="mo-preview"><div class="pv-agenda">
+            <div class="pv-label">Agenda builder</div>
+            <ul>
+              <li><span>1 · Call to order</span></li>
+              <li class="tgt"><span>5 · New business</span><span class="att">📎 Budget.pdf</span></li>
+              <li><span>7 · Adjourn</span></li>
+            </ul>
+            <div class="pv-email">✉ Fwd: Budget-FY26.pdf</div>
+          </div></div>
+          <div class="mo-icon">🗂️</div>
+          <div class="mo-title">Agenda builder</div>
+          <div class="mo-sub">Templates + email-to-file</div>
+          <div class="mo-hint">Hover to preview →</div>
+        </div>
+
+        <!-- 3 · Live minutes -->
+        <div class="mo-feat" tabindex="0">
+          <div class="mo-preview"><div class="pv-minutes">
+            <div class="pv-label">Live minutes</div>
+            <ul>
+              <li><span>Consent agenda</span><em>Approved 7–0</em></li>
+              <li><span>Bus contract</span><em>Approved 6–1</em></li>
+              <li><span>Bell schedule</span><em>Approved 5–2</em></li>
+            </ul>
+          </div></div>
+          <div class="mo-icon">⏱️</div>
+          <div class="mo-title">Live minutes</div>
+          <div class="mo-sub">Autopopulate as you go</div>
+          <div class="mo-hint">Hover to preview →</div>
+        </div>
+
+        <!-- 4 · Search -->
+        <div class="mo-feat" tabindex="0">
+          <div class="mo-preview"><div class="pv-search">
+            <div class="pv-label">Search the record</div>
+            <div class="pv-bar"><span>🔎</span><span class="q">bus routes redrawn</span><span class="car"></span></div>
+            <div class="pv-res">
+              <b>Minutes · Regular Meeting, Mar 2023</b>
+              <span class="sn">…the redrawn bus routes approved 5–2…</span>
+              <div class="pv-cite">P. 4</div>
+            </div>
+          </div></div>
+          <div class="mo-icon">🔎</div>
+          <div class="mo-title">Full-text search</div>
+          <div class="mo-sub">Every word, every PDF</div>
+          <div class="mo-hint">Hover to preview →</div>
+        </div>
+
+        <!-- 5 · Workflow -->
+        <div class="mo-feat" tabindex="0">
+          <div class="mo-preview"><div class="pv-workflow">
+            <div class="pv-label">Draft → review → publish</div>
+            <div class="pv-steps">
+              <span class="n n1">1</span><span class="ln ln1"><i></i></span>
+              <span class="n n2">2</span><span class="ln ln2"><i></i></span>
+              <span class="n n3">3</span>
+            </div>
+            <div class="pv-badges"><b class="b1">Draft</b><b class="b2">In review</b><b class="b3">Published</b></div>
+          </div></div>
+          <div class="mo-icon">✅</div>
+          <div class="mo-title">Draft to publish</div>
+          <div class="mo-sub">One version, approved</div>
+          <div class="mo-hint">Hover to preview →</div>
+        </div>
+
+        <!-- 6 · Migration -->
+        <div class="mo-feat" tabindex="0">
+          <div class="mo-preview"><div class="pv-migrate">
+            <div class="pv-label">History migration</div>
+            <div class="pv-imp"><b class="imp">Importing your history…</b><b class="done">✓ 12,480 records imported</b></div>
+            <div class="pv-prog"><i></i></div>
+            <div class="pv-from">from BoardDocs or Diligent</div>
+          </div></div>
+          <div class="mo-icon">📦</div>
+          <div class="mo-title">History migration</div>
+          <div class="mo-sub">Your full record, day one</div>
+          <div class="mo-hint">Hover to preview →</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <section class="mo-cta">
+    <h2>The next meeting is already on the calendar.</h2>
+    <a class="mo-btn big" href="/demo">See a demo</a>
+    <p class="sub">Twenty minutes with your real agenda, start to finish.</p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="mo-foot">
+    <div class="mo-foot-inner">
+      <a class="mo-logo" href="/">BoardPlanner</a>
+      <div class="mo-foot-links">
+        <a href="#">How it works</a><a href="#">Board members</a><a href="#">Public portal</a><a href="#">Security</a><a href="#">Contact</a>
+      </div>
+      <span>© 2026 BoardPlanner</span>
+    </div>
+  </footer>
+</div>
+
+<script>
+  // Tap / click to pin a feature preview open (hover already shows it on desktop).
+  const grid = document.getElementById('moGrid');
+  grid?.addEventListener('click', (e) => {
+    const f = (e.target as HTMLElement).closest('.mo-feat');
+    if (!f) return;
+    const wasPinned = f.classList.contains('pinned');
+    grid.querySelectorAll('.mo-feat').forEach((x) => x.classList.remove('pinned'));
+    if (!wasPinned) f.classList.add('pinned');
+  });
+  document.addEventListener('click', (e) => {
+    if (!(e.target as HTMLElement).closest('.mo-feat')) {
+      grid?.querySelectorAll('.mo-feat').forEach((x) => x.classList.remove('pinned'));
+    }
+  });
+</script>
