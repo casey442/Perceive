@@ -1,0 +1,280 @@
+---
+import Base from '../../layouts/Base.astro';
+import '../../styles/lab.css';
+import '../../styles/feedback-v2.css';
+import LabBar from '../../components/LabBar.astro';
+
+// line icons (no emoji)
+const svg = {
+  templates: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="2.5"/><path d="M3 9h18M9 21V9"/></svg>',
+  mail: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.5 7l8.5 6 8.5-6"/></svg>',
+  check: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M8 12l2.8 2.8L16 9"/></svg>',
+  clock: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.2 2"/></svg>',
+  search: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>',
+  doc: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="5" y="3" width="14" height="18" rx="2.5"/><path d="M9 8.5h6M9 12.5h6M9 16.5h4"/></svg>',
+  book: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 4.5A1.5 1.5 0 0 1 6.5 3H19v16.5H6.5A1.5 1.5 0 0 0 5 21z"/><path d="M9 3v18"/></svg>',
+  clip: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M20 11.5l-8.2 8.2a5 5 0 0 1-7-7l8.5-8.5a3.3 3.3 0 1 1 4.7 4.7l-8.5 8.5a1.6 1.6 0 0 1-2.3-2.3l7.8-7.8"/></svg>',
+};
+---
+<Base title="BoardPlanner — Feedback V2 · Hamptons">
+  <Fragment slot="head">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..500;1,9..144,300..500&family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400..500&display=swap" />
+  </Fragment>
+
+  <LabBar active="feedback-v2" />
+
+  <div class="hamptons">
+    <nav class="ha-nav">
+      <div class="ha-nav-inner">
+        <a class="ha-logo" href="/">BoardPlanner</a>
+        <div class="ha-nav-links">
+          <a href="#feats">How it works</a>
+          <a href="#">Public portal</a>
+          <a href="#">Security</a>
+          <a href="#">Sign in</a>
+          <a class="ha-btn" href="/demo">See a demo</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- HERO · photo left, headline right -->
+    <header class="ha-hero">
+      <div class="wrap">
+        <div class="ha-hero-grid">
+          <div class="ha-hero-media">
+            <div class="frame">
+              <img src="/fb/hero.jpg" width="1500" height="1100" alt="A civic building, seen from below." loading="eager" />
+              <span class="cap">Placeholder · board room, 5:45</span>
+            </div>
+          </div>
+          <div class="ha-hero-copy">
+            <h1>Keep the <em>record</em>.</h1>
+            <p class="lede">The agenda, the packet, the minutes, and your full history. <b>In one place, posted on time, searchable by anyone.</b></p>
+            <div class="ha-hero-cta">
+              <a class="ha-btn big" href="/demo">See a demo</a>
+              <a class="plain" href="#feats">See it work</a>
+            </div>
+            <div class="ha-hero-proof">
+              <div><span class="n">72 hrs</span><span class="l">of posted notice, met every meeting</span></div>
+              <div><span class="n">1 book</span><span class="l">back to your first meeting on record</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- FEATURE GRID · hover or tap to watch it work -->
+    <section class="ha-feats" id="feats">
+      <div class="wrap">
+        <div class="ha-feats-head">
+          <h2>Six things it does <em>for you</em>.</h2>
+          <p>Hover or tap a feature to watch it work.</p>
+        </div>
+
+        <div class="ha-grid" id="haGrid">
+          <!-- 1 · summaries -->
+          <div class="ha-feat" tabindex="0">
+            <div class="ha-preview"><div class="pv-sum">
+              <div class="pv-label">AI summary · Supt. contract</div>
+              <div class="pv-tabs"><span class="hl"></span><b>EN</b><b>ES</b><b>中文</b></div>
+              <div class="pv-lines">
+                <span class="l1">The board renewed the contract for three years.</span>
+                <span class="l2">La junta renovó el contrato por tres años.</span>
+                <span class="l3">董事会续签了三年的合同。</span>
+              </div>
+              <div class="pv-cite">Cites p. 12</div>
+            </div></div>
+            <div class="ha-ic" set:html={svg.doc} />
+            <div class="t">AI summaries</div>
+            <div class="s">Plain-language, cited</div>
+            <div class="hint">Hover to preview →</div>
+          </div>
+
+          <!-- 2 · agenda -->
+          <div class="ha-feat" tabindex="0">
+            <div class="ha-preview"><div class="pv-agenda">
+              <div class="pv-label">Agenda builder</div>
+              <ul>
+                <li><span>1 · Call to order</span></li>
+                <li class="tgt"><span>5 · New business</span><span class="att"><span set:html={svg.clip} /> Budget.pdf</span></li>
+                <li><span>7 · Adjourn</span></li>
+              </ul>
+              <div class="pv-email"><span set:html={svg.mail} /> Fwd: Budget-FY26.pdf</div>
+            </div></div>
+            <div class="ha-ic" set:html={svg.templates} />
+            <div class="t">Agenda builder</div>
+            <div class="s">Templates + email-to-file</div>
+            <div class="hint">Hover to preview →</div>
+          </div>
+
+          <!-- 3 · minutes -->
+          <div class="ha-feat" tabindex="0">
+            <div class="ha-preview"><div class="pv-minutes">
+              <div class="pv-label">Live minutes</div>
+              <ul>
+                <li><span>Consent agenda</span><em>Approved 7–0</em></li>
+                <li><span>Bus contract</span><em>Approved 6–1</em></li>
+                <li><span>Bell schedule</span><em>Approved 5–2</em></li>
+              </ul>
+            </div></div>
+            <div class="ha-ic" set:html={svg.clock} />
+            <div class="t">Live minutes</div>
+            <div class="s">Autopopulate as you go</div>
+            <div class="hint">Hover to preview →</div>
+          </div>
+
+          <!-- 4 · search -->
+          <div class="ha-feat" tabindex="0">
+            <div class="ha-preview"><div class="pv-search">
+              <div class="pv-label">Search the record</div>
+              <div class="pv-bar"><span set:html={svg.search} /><span class="q">bus routes redrawn</span><span class="car"></span></div>
+              <div class="pv-res">
+                <b>Minutes · Regular Meeting, Mar 2023</b>
+                <span class="sn">…the redrawn bus routes approved 5–2…</span>
+                <div class="pv-cite">P. 4</div>
+              </div>
+            </div></div>
+            <div class="ha-ic" set:html={svg.search} />
+            <div class="t">Full-text search</div>
+            <div class="s">Every word, every PDF</div>
+            <div class="hint">Hover to preview →</div>
+          </div>
+
+          <!-- 5 · workflow -->
+          <div class="ha-feat" tabindex="0">
+            <div class="ha-preview"><div class="pv-workflow">
+              <div class="pv-label">Draft → review → publish</div>
+              <div class="pv-steps">
+                <span class="n n1">1</span><span class="ln ln1"><i></i></span>
+                <span class="n n2">2</span><span class="ln ln2"><i></i></span>
+                <span class="n n3">3</span>
+              </div>
+              <div class="pv-badges"><b class="b1">Draft</b><b class="b2">In review</b><b class="b3">Published</b></div>
+            </div></div>
+            <div class="ha-ic" set:html={svg.check} />
+            <div class="t">Draft to publish</div>
+            <div class="s">One version, approved</div>
+            <div class="hint">Hover to preview →</div>
+          </div>
+
+          <!-- 6 · migration -->
+          <div class="ha-feat" tabindex="0">
+            <div class="ha-preview"><div class="pv-migrate">
+              <div class="pv-label">History migration</div>
+              <div class="pv-imp"><b class="imp">Importing your history…</b><b class="done"><span set:html={svg.check} /> 12,480 records imported</b></div>
+              <div class="pv-prog"><i></i></div>
+              <div class="pv-from">from BoardDocs or Diligent</div>
+            </div></div>
+            <div class="ha-ic" set:html={svg.book} />
+            <div class="t">History migration</div>
+            <div class="s">Your full record, day one</div>
+            <div class="hint">Hover to preview →</div>
+          </div>
+        </div>
+
+        <p class="note">Every summary cites the exact page it came from.</p>
+      </div>
+    </section>
+
+    <!-- MARQUEE -->
+    <section class="ha-marquee" aria-label="What the record holds">
+      <div class="ha-marquee-head">
+        <span class="lbl">The words the work runs on</span>
+        <button class="ha-pause" id="haPause" aria-pressed="false">Pause</button>
+      </div>
+      <div class="ha-track-mask">
+        <div class="ha-track" id="haTrack">
+          {[
+            { t: 'Consent agenda' }, { t: '72 hrs', s: 'posted notice' }, { t: 'Roll call' },
+            { t: 'The minute book' }, { t: '3 days', s: 'Texas posting rule' }, { t: 'Properly noticed' },
+            { t: 'Packet' }, { t: '48 hrs', s: 'packet delivery' }, { t: 'Backup' }, { t: 'Motions & votes' },
+            { t: 'Consent agenda' }, { t: '72 hrs', s: 'posted notice' }, { t: 'Roll call' },
+            { t: 'The minute book' }, { t: '3 days', s: 'Texas posting rule' }, { t: 'Properly noticed' },
+            { t: 'Packet' }, { t: '48 hrs', s: 'packet delivery' }, { t: 'Backup' }, { t: 'Motions & votes' },
+          ].map((v) => (
+            <span class="ha-chip">{v.t}{v.s && <span class="s">{v.s}</span>}</span>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- STATEMENT (navy) -->
+    <section class="ha-statement">
+      <div class="wrap">
+        <h2>The law requires the meeting. <em>It sets the deadlines, too.</em></h2>
+        <div class="stats">
+          <div class="stat"><div class="n">1–2×</div><div class="l">public meetings each month, by statute</div></div>
+          <div class="stat"><div class="n">72 hrs</div><div class="l">of posted notice in many states</div></div>
+          <div class="stat"><div class="n">3 days</div><div class="l">Texas posting rule, business days prior</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="ha-cta">
+      <div class="wrap">
+        <h2>The next meeting is already on the calendar.</h2>
+        <p class="sub">Twenty minutes with your real agenda, start to finish.</p>
+        <a class="ha-btn big" href="/demo">See a demo</a>
+      </div>
+    </section>
+
+    <!-- FOOTER (navy) -->
+    <footer class="ha-foot">
+      <div class="ha-foot-inner">
+        <div class="ha-foot-top">
+          <div>
+            <a class="ha-logo" href="/">BoardPlanner</a>
+            <p>Board meeting software for K-12 districts. Agendas, packets, minutes, and a public record.</p>
+          </div>
+          <div><h5>Product</h5><ul><li><a href="#">Agendas</a></li><li><a href="#">Minutes</a></li><li><a href="#">Public portal</a></li></ul></div>
+          <div><h5>District</h5><ul><li><a href="#">Migration</a></li><li><a href="#">Security</a></li><li><a href="#">Contact</a></li></ul></div>
+          <div><h5>Get started</h5><ul><li><a href="/demo">See a demo</a></li><li><a href="#">Sign in</a></li></ul></div>
+        </div>
+        <div class="ha-foot-bot">
+          <span>© 2026 BoardPlanner</span>
+          <span class="ha-adjourned">Meeting adjourned.</span>
+        </div>
+      </div>
+    </footer>
+  </div>
+</Base>
+
+<script>
+  const grid = document.getElementById('haGrid');
+
+  // tag the leftmost / rightmost card in each row so its popover anchors inward
+  const feats = grid ? [...grid.querySelectorAll('.ha-feat')] as HTMLElement[] : [];
+  function tagEdges() {
+    const rows = new Map<number, HTMLElement[]>();
+    feats.forEach((f) => { f.classList.remove('edge-l', 'edge-r'); const y = f.offsetTop; (rows.get(y) || rows.set(y, []).get(y)!).push(f); });
+    rows.forEach((row) => { row[0].classList.add('edge-l'); row[row.length - 1].classList.add('edge-r'); });
+  }
+  tagEdges();
+  let rt: number; window.addEventListener('resize', () => { clearTimeout(rt); rt = window.setTimeout(tagEdges, 150); });
+
+  // hover shows a preview; tap/click pins it open
+  grid?.addEventListener('click', (e) => {
+    const f = (e.target as HTMLElement).closest('.ha-feat');
+    if (!f) return;
+    const wasPinned = f.classList.contains('pinned');
+    grid.querySelectorAll('.ha-feat').forEach((x) => x.classList.remove('pinned'));
+    if (!wasPinned) f.classList.add('pinned');
+  });
+  document.addEventListener('click', (e) => {
+    if (!(e.target as HTMLElement).closest('.ha-feat')) {
+      grid?.querySelectorAll('.ha-feat').forEach((x) => x.classList.remove('pinned'));
+    }
+  });
+
+  // marquee pause control
+  const track = document.getElementById('haTrack');
+  const pause = document.getElementById('haPause');
+  pause?.addEventListener('click', () => {
+    const paused = track?.classList.toggle('paused');
+    pause.textContent = paused ? 'Play' : 'Pause';
+    pause.setAttribute('aria-pressed', String(!!paused));
+  });
+</script>
