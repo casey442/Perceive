@@ -75,11 +75,8 @@
 .pr-navitem.on { background: var(--navy-tint); color: var(--navy); border-left-color: var(--navy); }
 .pr-navitem.on .d { color: var(--sage-deep); }
 
-/* main stage */
-.pr-stage { position: relative; padding: 26px 28px; transition: background .45s ease; }
-/* the stages alternate light / dark as the preview plays (independent of page mode) */
-.pr-stage.tone-light { background: #FDFCF9; --app-ink: #2B2B29; --app-muted: #6B6960; --app-faint: #9C988C; --app2: #F5F2EB; --app3: #EFEBE1; --app-hi: #FFFFFF; --app-line: #E7E1D3; --app-line2: #DAD3C3; --navy: #263D49; --navy-tint: rgba(38,61,73,.10); }
-.pr-stage.tone-dark  { background: #2A303A; --app-ink: #E7DECB; --app-muted: #A99C86; --app-faint: #8994A0; --app2: #2A303A; --app3: #3E454F; --app-hi: #454D58; --app-line: #3A414B; --app-line2: #474F5A; --navy: #C4B598; --navy-tint: rgba(148,137,121,.18); }
+/* main stage — one color, follows the page mode (the video does not flip per stage) */
+.pr-stage { position: relative; padding: 26px 28px; }
 .pr-panel { display: none; }
 .pr-panel.on { display: block; animation: panelin .4s ease both; }
 @keyframes panelin { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
@@ -396,3 +393,21 @@
 .pr-peek-bar { position: absolute; left: 0; right: 0; bottom: 0; height: 4px; background: var(--app-line); z-index: 5; }
 .pr-peek-bar i { display: block; height: 100%; width: 0; background: var(--navy); border-radius: 0 2px 2px 0; transition: width .08s linear; }
 .pr-fnote { text-align: center; font-size: 13px; color: var(--faint); font-style: italic; margin-top: 40px; }
+
+/* ---------- POP-OVER PANEL: opposite tone of the hero (alternating rhythm) ---------- */
+.pr-feats2 {
+  background: #222831;
+  --card: #393E46; --card-hi: #434A54;
+  --ink: #E7DECB; --muted: #A99C86; --faint: #8A8071;
+  --line: #333A44; --line2: #3E454F;
+  --navy: #C4B598; --navy-tint: rgba(148,137,121,.18);
+  --app3: #3E454F; --app-hi: #454D58;
+}
+.prod.dark .pr-feats2 {
+  background: #E8E3D7;
+  --card: #B6AD9D; --card-hi: #C7BFB1;
+  --ink: #303536; --muted: #5C5A53; --faint: #7B7970;
+  --line: #D6CFC1; --line2: #C7BEAE;
+  --navy: #263D49; --navy-tint: rgba(38,61,73,.10);
+  --app3: #EFEBE1; --app-hi: #FFFFFF;
+}

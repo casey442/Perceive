@@ -349,13 +349,9 @@ const nav = [
   const stage = document.getElementById('prStage');
   const scEl = document.querySelector('.pr-scroll') as HTMLElement | null;
   const bar = document.getElementById('prBar');
-  const darkStages = new Set(['minutes', 'summaries', 'migration']);   // every other panel = dark
   function activate(k: string) {
     side?.querySelectorAll('.pr-navitem').forEach((n) => n.classList.toggle('on', (n as HTMLElement).dataset.k === k));
     stage?.querySelectorAll('.pr-panel').forEach((p) => p.classList.toggle('on', (p as HTMLElement).dataset.k === k));
-    const dk = darkStages.has(k);
-    stage?.classList.toggle('tone-dark', dk);
-    stage?.classList.toggle('tone-light', !dk);
   }
 
   const order = ['agenda', 'minutes', 'portal', 'summaries', 'workflow', 'migration'];
