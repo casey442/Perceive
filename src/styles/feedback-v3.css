@@ -411,3 +411,8 @@
   --navy: #263D49; --navy-tint: rgba(38,61,73,.10);
   --app3: #EFEBE1; --app-hi: #FFFFFF;
 }
+
+/* the section header must re-resolve the tokens at the (inverted) section scope,
+   otherwise it inherits the page's computed dark color and vanishes on the dark band */
+.pr-feats2-head h2 { color: var(--ink); }
+.pr-feats2-head p { color: var(--muted); }
