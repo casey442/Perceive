@@ -394,14 +394,15 @@
 .pr-peek-bar i { display: block; height: 100%; width: 0; background: var(--navy); border-radius: 0 2px 2px 0; transition: width .08s linear; }
 .pr-fnote { text-align: center; font-size: 13px; color: var(--faint); font-style: italic; margin-top: 40px; }
 
-/* ---------- POP-OVER PANEL: opposite tone of the hero (alternating rhythm) ---------- */
+/* ---------- POP-OVER PANEL: opposite tone of the hero (alternating rhythm) ----------
+   Uses the same navy as the statement + footer so every dark panel matches. */
 .pr-feats2 {
-  background: #222831;
-  --card: #393E46; --card-hi: #434A54;
-  --ink: #E7DECB; --muted: #A99C86; --faint: #8A8071;
-  --line: #333A44; --line2: #3E454F;
-  --navy: #C4B598; --navy-tint: rgba(148,137,121,.18);
-  --app3: #3E454F; --app-hi: #454D58;
+  background: var(--brand);            /* navy #263D49 — matches statement + footer */
+  --card: #2E4A58; --card-hi: #365460;
+  --ink: #EEEAE0; --muted: #A9B4A6; --faint: #A4AF98;
+  --line: #35505C; --line2: #3F5B68;
+  --navy: #A7AE97; --navy-tint: rgba(167,174,151,.16);   /* sage-light accent, like the statement em */
+  --app3: #2E4A58; --app-hi: #375A68;
 }
 .prod.dark .pr-feats2 {
   background: #E8E3D7;
