@@ -170,22 +170,127 @@ const nav = [
             </div>
             </div>
             <div class="pr-peek-fade" aria-hidden="true"></div>
-            <a class="pr-peek-scrollhint" href="#">Scroll to explore <span>→</span></a>
+            <div class="pr-peek-bar" aria-hidden="true"><i id="prBar"></i></div>
           </div>
         </div>
           </div>
           <div class="pr-hero-copy">
-            <h1>The whole meeting, in <em>one place</em>.</h1>
+            <h1>A matter of record. <em>In seconds.</em></h1>
             <p class="lede">Build the packet, take the minutes, post the record. Everything the board decided, and why, back to your first meeting on record.</p>
             <div class="pr-hero-cta">
               <a class="pr-btn big" href="/demo">See a demo</a>
               <a class="plain" href="#">Take a tour</a>
             </div>
-            <p class="pr-peek-note"><b>Sneak peek.</b> Hover the menu, scroll the product to explore →</p>
+            <p class="pr-peek-note"><b>Sneak peek.</b> A guided preview, playing itself. Hover to take control.</p>
           </div>
         </div>
       </div>
     </header>
+
+    <!-- FEATURE CARDS · hover pop-overs (the interactive detail) -->
+    <section class="pr-feats2" id="feats">
+      <div class="wrap">
+        <div class="pr-feats2-head">
+          <h2>Six things it does <em>for you</em>.</h2>
+          <p>Hover or tap a feature to watch it work.</p>
+        </div>
+        <div class="pr-fgrid" id="prFGrid">
+          <div class="pr-feat" tabindex="0">
+            <div class="pr-preview2"><div class="pv-sum">
+              <div class="pv-label">AI summary · Supt. contract</div>
+              <div class="pv-tabs"><span class="hl"></span><b>EN</b><b>ES</b><b>中文</b></div>
+              <div class="pv-lines">
+                <span class="l1">The board renewed the contract for three years.</span>
+                <span class="l2">La junta renovó el contrato por tres años.</span>
+                <span class="l3">董事会续签了三年的合同。</span>
+              </div>
+              <div class="pv-cite">Cites p. 12</div>
+            </div></div>
+            <div class="pr-fic" set:html={svg.doc} />
+            <div class="t">AI summaries</div>
+            <div class="s">Plain-language, cited</div>
+            <div class="hint">Hover to preview →</div>
+          </div>
+
+          <div class="pr-feat" tabindex="0">
+            <div class="pr-preview2"><div class="pv-agenda">
+              <div class="pv-label">Agenda builder</div>
+              <ul>
+                <li><span>1 · Call to order</span></li>
+                <li class="tgt"><span>5 · New business</span><span class="att"><span set:html={svg.clip} /> Budget.pdf</span></li>
+                <li><span>7 · Adjourn</span></li>
+              </ul>
+              <div class="pv-email"><span set:html={svg.mail} /> Fwd: Budget-FY26.pdf</div>
+            </div></div>
+            <div class="pr-fic" set:html={svg.templates} />
+            <div class="t">Agenda builder</div>
+            <div class="s">Templates + email-to-file</div>
+            <div class="hint">Hover to preview →</div>
+          </div>
+
+          <div class="pr-feat" tabindex="0">
+            <div class="pr-preview2"><div class="pv-minutes">
+              <div class="pv-label">Live minutes</div>
+              <ul>
+                <li><span>Consent agenda</span><em>Approved 7–0</em></li>
+                <li><span>Bus contract</span><em>Approved 6–1</em></li>
+                <li><span>Bell schedule</span><em>Approved 5–2</em></li>
+              </ul>
+            </div></div>
+            <div class="pr-fic" set:html={svg.clock} />
+            <div class="t">Live minutes</div>
+            <div class="s">Autopopulate as you go</div>
+            <div class="hint">Hover to preview →</div>
+          </div>
+
+          <div class="pr-feat" tabindex="0">
+            <div class="pr-preview2"><div class="pv-search">
+              <div class="pv-label">Search the record</div>
+              <div class="pv-bar"><span set:html={svg.search} /><span class="q">bus routes redrawn</span><span class="car"></span></div>
+              <div class="pv-res">
+                <b>Minutes · Regular Meeting, Mar 2023</b>
+                <span class="sn">…the redrawn bus routes approved 5–2…</span>
+                <div class="pv-cite">P. 4</div>
+              </div>
+            </div></div>
+            <div class="pr-fic" set:html={svg.search} />
+            <div class="t">Full-text search</div>
+            <div class="s">Every word, every PDF</div>
+            <div class="hint">Hover to preview →</div>
+          </div>
+
+          <div class="pr-feat" tabindex="0">
+            <div class="pr-preview2"><div class="pv-workflow">
+              <div class="pv-label">Draft → review → publish</div>
+              <div class="pv-steps">
+                <span class="n n1">1</span><span class="ln ln1"><i></i></span>
+                <span class="n n2">2</span><span class="ln ln2"><i></i></span>
+                <span class="n n3">3</span>
+              </div>
+              <div class="pv-badges"><b class="b1">Draft</b><b class="b2">In review</b><b class="b3">Published</b></div>
+            </div></div>
+            <div class="pr-fic" set:html={svg.check} />
+            <div class="t">Draft to publish</div>
+            <div class="s">One version, approved</div>
+            <div class="hint">Hover to preview →</div>
+          </div>
+
+          <div class="pr-feat" tabindex="0">
+            <div class="pr-preview2"><div class="pv-migrate">
+              <div class="pv-label">History migration</div>
+              <div class="pv-imp"><b class="imp">Importing your history…</b><b class="done"><span set:html={svg.check} /> 12,480 records imported</b></div>
+              <div class="pv-prog"><i></i></div>
+              <div class="pv-from">from BoardDocs or Diligent</div>
+            </div></div>
+            <div class="pr-fic" set:html={svg.book} />
+            <div class="t">History migration</div>
+            <div class="s">Your full record, day one</div>
+            <div class="hint">Hover to preview →</div>
+          </div>
+        </div>
+        <p class="pr-fnote">Every summary cites the exact page it came from.</p>
+      </div>
+    </section>
 
     <!-- STATEMENT -->
     <section class="pr-statement">
@@ -239,18 +344,72 @@ const nav = [
     const lbl = themeBtn.querySelector('.lbl'); if (lbl) lbl.textContent = dark ? 'Light' : 'Dark';
   });
 
-  // Hovering (or focusing/clicking) a sidebar item switches the live stage.
+  // ===== ARCH: plays itself like a video (advance stages + pan). Hover to take control. =====
   const side = document.getElementById('prSide');
   const stage = document.getElementById('prStage');
+  const scEl = document.querySelector('.pr-scroll') as HTMLElement | null;
+  const bar = document.getElementById('prBar');
+  const darkStages = new Set(['minutes', 'summaries', 'migration']);   // every other panel = dark
   function activate(k: string) {
     side?.querySelectorAll('.pr-navitem').forEach((n) => n.classList.toggle('on', (n as HTMLElement).dataset.k === k));
     stage?.querySelectorAll('.pr-panel').forEach((p) => p.classList.toggle('on', (p as HTMLElement).dataset.k === k));
+    const dk = darkStages.has(k);
+    stage?.classList.toggle('tone-dark', dk);
+    stage?.classList.toggle('tone-light', !dk);
   }
+
+  const order = ['agenda', 'minutes', 'portal', 'summaries', 'workflow', 'migration'];
+  const DUR = 5000;         // ms per stage
+  const PAN = 0.82;         // finish the pan by 82% of the stage, then hold
+  const ease = (p: number) => (p < .5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2);
+  // One master clock drives everything. Even stages glide left→right, odd stages
+  // right→left, and the ends line up — so it never snaps back, it just reverses.
+  let t0 = performance.now(), paused = false, pausedAt = 0, curIdx = -1, raf = 0;
+  function tick(now: number) {
+    if (!paused) {
+      const elapsed = now - t0;
+      const i = Math.floor(elapsed / DUR) % order.length;
+      if (i !== curIdx) { curIdx = i; activate(order[i]); }
+      const within = (elapsed % DUR) / DUR;
+      const e = ease(Math.min(1, within / PAN));
+      const max = scEl ? scEl.scrollWidth - scEl.clientWidth : 0;
+      if (scEl) scEl.scrollLeft = (i % 2 === 0) ? max * e : max * (1 - e);
+      if (bar) bar.style.width = (within * 100) + '%';
+    }
+    raf = requestAnimationFrame(tick);
+  }
+  // hover the product to freeze the clock (take control); leaving resumes seamlessly
+  const peek = document.querySelector('.pr-peek');
+  peek?.addEventListener('mouseenter', () => { if (!paused) { paused = true; pausedAt = performance.now(); } });
+  peek?.addEventListener('mouseleave', () => { if (paused) { t0 += performance.now() - pausedAt; paused = false; } });
   side?.querySelectorAll('.pr-navitem').forEach((item) => {
     const k = (item as HTMLElement).dataset.k!;
     item.addEventListener('mouseenter', () => activate(k));
     item.addEventListener('click', () => activate(k));
     item.addEventListener('focus', () => activate(k));
-    item.addEventListener('keydown', (e) => { if ((e as KeyboardEvent).key === 'Enter' || (e as KeyboardEvent).key === ' ') { e.preventDefault(); activate(k); } });
+  });
+
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduced) { activate('agenda'); } else { activate('agenda'); raf = requestAnimationFrame(tick); }
+
+  // ===== FEATURE CARDS: hover pop-overs + edge anchoring =====
+  const fgrid = document.getElementById('prFGrid');
+  const feats = fgrid ? [...fgrid.querySelectorAll('.pr-feat')] as HTMLElement[] : [];
+  function tagEdges() {
+    const rows = new Map<number, HTMLElement[]>();
+    feats.forEach((f) => { f.classList.remove('edge-l', 'edge-r'); const y = f.offsetTop; (rows.get(y) || rows.set(y, []).get(y)!).push(f); });
+    rows.forEach((row) => { row[0].classList.add('edge-l'); row[row.length - 1].classList.add('edge-r'); });
+  }
+  tagEdges();
+  let rt: number; window.addEventListener('resize', () => { clearTimeout(rt); rt = window.setTimeout(tagEdges, 150); });
+  fgrid?.addEventListener('click', (e) => {
+    const f = (e.target as HTMLElement).closest('.pr-feat');
+    if (!f) return;
+    const was = f.classList.contains('pinned');
+    fgrid.querySelectorAll('.pr-feat').forEach((x) => x.classList.remove('pinned'));
+    if (!was) f.classList.add('pinned');
+  });
+  document.addEventListener('click', (e) => {
+    if (!(e.target as HTMLElement).closest('.pr-feat')) fgrid?.querySelectorAll('.pr-feat').forEach((x) => x.classList.remove('pinned'));
   });
 </script>
