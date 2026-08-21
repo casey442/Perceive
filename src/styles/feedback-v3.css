@@ -9,12 +9,24 @@
   --ink: #303536; --muted: #5C5A53; --stone: #8E8C84; --faint: #7B7970;
   --line: #D6CFC1; --line2: #C7BEAE;
   --navy: #263D49; --navy-deep: #1B2C36; --navy-tint: rgba(38,61,73,.10); --sage: #89917A; --sage-deep: #6E7663;
+  --brand: #263D49; --on-brand: #EEEAE0; /* dark section (statement, footer) bg + text */
   /* product UI surface */
-  --app: #FDFCF9; --app2: #F5F2EB; --app3: #EFEBE1; --app-line: #E7E1D3; --app-line2: #DAD3C3;
+  --app: #FDFCF9; --app2: #F5F2EB; --app3: #EFEBE1; --app-hi: #FFFFFF; --app-line: #E7E1D3; --app-line2: #DAD3C3;
   --app-ink: #2B2B29; --app-muted: #6B6960; --app-faint: #9C988C;
   --disp: "Fraunces", Georgia, "Times New Roman", serif;
   --text: "Newsreader", Georgia, "Times New Roman", serif;
   background: var(--ground); color: var(--ink); font-family: var(--text); -webkit-font-smoothing: antialiased;
+}
+
+/* ===== DARK MODE — warm charcoal, like V1 ===== */
+.prod.dark {
+  --ground: #222831; --ground-hi: #2A303A; --card: #393E46;
+  --ink: #DFD0B8; --muted: #A99C86; --stone: #837A6B; --faint: #8A8071;
+  --line: #333A44; --line2: #3E454F;
+  --navy: #C4B598; --navy-deep: #DFD0B8; --navy-tint: rgba(148,137,121,.18); --sage: #A99C86; --sage-deep: #C4B598;
+  --brand: #1A1F26; --on-brand: #EEEAE0;
+  --app: #333A44; --app2: #2A303A; --app3: #3E454F; --app-hi: #454D58; --app-line: #3A414B; --app-line2: #474F5A;
+  --app-ink: #E7DECB; --app-muted: #A99C86; --app-faint: #8994A0;
 }
 .prod .wrap { max-width: 1140px; margin: 0 auto; padding: 0 32px; }
 .prod ::selection { background: var(--navy); color: #F1EDE4; }
@@ -33,14 +45,16 @@
 .pr-btn.light:hover { background: #fff; }
 
 /* ---------- HERO ---------- */
-.pr-hero { background: radial-gradient(120% 80% at 50% -10%, #F1EDE4 0%, #E8E3D7 60%, #E1DBCD 100%); padding: 66px 0 74px; text-align: center; }
-.pr-hero h1 { font-family: var(--disp); font-weight: 360; font-size: clamp(46px, 6vw, 78px); line-height: 1.0; letter-spacing: -.02em; }
-.pr-hero h1 em { font-style: italic; font-weight: 360; color: var(--navy); }
-.pr-hero .lede { font-size: 19px; line-height: 1.55; color: var(--muted); margin: 20px auto 26px; max-width: 52ch; }
-.pr-hero-cta { display: flex; gap: 14px; align-items: center; justify-content: center; }
+.pr-hero { background: radial-gradient(120% 90% at 40% -10%, #F1EDE4 0%, #E8E3D7 60%, #E1DBCD 100%); padding: 72px 0 66px; }
+.pr-hero-grid { display: grid; grid-template-columns: 1fr 1.02fr; gap: 54px; align-items: center; }
+.pr-hero-copy h1 { font-family: var(--disp); font-weight: 360; font-size: clamp(44px, 5.4vw, 76px); line-height: 1.0; letter-spacing: -.02em; }
+.pr-hero-copy h1 em { font-style: italic; font-weight: 360; color: var(--navy); }
+.pr-hero-copy .lede { font-size: 19px; line-height: 1.55; color: var(--muted); margin: 20px 0 24px; max-width: 40ch; }
+.pr-hero-cta { display: flex; gap: 14px; align-items: center; }
 .pr-hero-cta a.plain { font-size: 15px; color: var(--sage-deep); text-decoration: none; border-bottom: 1px solid var(--sage); padding-bottom: 2px; font-style: italic; }
 .pr-hero-cta a.plain:hover { color: var(--ink); border-color: var(--ink); }
-.pr-hint { font-size: 13px; color: var(--faint); font-style: italic; margin: 30px 0 20px; }
+.pr-peek-note { font-size: 13.5px; color: var(--faint); font-style: italic; margin-top: 24px; }
+.pr-peek-note b { font-style: normal; font-weight: 700; color: var(--sage-deep); letter-spacing: .02em; }
 
 /* ---------- PRODUCT WINDOW ---------- */
 .pr-app { max-width: 1000px; margin: 0 auto; background: var(--app); border: 1px solid var(--app-line2); border-radius: 14px; box-shadow: 0 50px 90px -40px rgba(38,61,73,.5), 0 8px 24px -12px rgba(38,61,73,.2); overflow: hidden; text-align: left; }
@@ -174,17 +188,20 @@
 @media (prefers-reduced-motion: reduce) { .pr-stage * { animation: none !important; } .ag-att, .email-pill, .mn-en li, .pt-res, .sum-lines span { opacity: 1 !important; } }
 
 /* ---------- SNEAK-PEEK ARCH FRAME ---------- */
-/* the product is wider than the arch, so you see a slice and scroll right to explore */
-.pr-peek { position: relative; max-width: 940px; margin: 10px auto 0; }
-.pr-peek-mask { position: relative; border: 1px solid var(--app-line2); border-radius: 150px 150px 14px 14px; overflow: hidden; background: var(--app2); box-shadow: 0 60px 100px -45px rgba(38,61,73,.55), 0 12px 34px -16px rgba(38,61,73,.28); }
-.pr-scroll { overflow-x: auto; overflow-y: hidden; -webkit-overflow-scrolling: touch; scrollbar-width: thin; scrollbar-color: var(--app-line2) transparent; }
+/* the product is wider than the arch, so you see a slice and scroll right to explore.
+   Lives in the LEFT hero column (media), the H1 sits in the right column. */
+.pr-hero-media { position: relative; min-width: 0; }
+.pr-peek { position: relative; min-width: 0; }
+.pr-peek-mask { position: relative; min-width: 0; border: 1px solid var(--app-line2); border-radius: 200px 200px 12px 12px; overflow: hidden; background: var(--app2); box-shadow: 0 55px 95px -42px rgba(38,61,73,.55), 0 12px 34px -16px rgba(38,61,73,.28); }
+.pr-scroll { min-width: 0; overflow-x: auto; overflow-y: hidden; -webkit-overflow-scrolling: touch; scrollbar-width: thin; scrollbar-color: var(--app-line2) transparent; }
 .pr-scroll::-webkit-scrollbar { height: 9px; }
 .pr-scroll::-webkit-scrollbar-track { background: var(--app2); }
 .pr-scroll::-webkit-scrollbar-thumb { background: var(--app-line2); border-radius: 100px; border: 2px solid var(--app2); }
-.pr-peek .pr-app { width: 1240px; max-width: none; margin: 0; border: none; border-radius: 0; box-shadow: none; }
-.pr-peek .pr-topbar { justify-content: center; padding-top: 16px; }
-.pr-peek .pr-dots, .pr-peek .pr-badge { display: none; }
-.pr-peek .pr-topsearch { max-width: 320px; }
+.pr-peek .pr-app { width: 940px; max-width: none; margin: 0; border: none; border-radius: 0; box-shadow: none; }
+.pr-peek .pr-topbar { display: none; } /* the arch is the frame; drop the window chrome */
+.pr-peek .pr-body { min-height: 430px; }
+.pr-peek .pr-side { padding-top: 48px; } /* clear the arch curve at the top */
+.pr-peek .pr-stage { padding-top: 40px; }
 /* right-edge fade cueing "there's more" */
 .pr-peek-fade { position: absolute; top: 1px; right: 1px; bottom: 10px; width: 110px; pointer-events: none; z-index: 4; background: linear-gradient(90deg, rgba(245,242,235,0), rgba(245,242,235,.6) 55%, var(--app2) 100%); }
 .pr-peek-scrollhint { position: absolute; right: 18px; bottom: 20px; z-index: 5; display: inline-flex; align-items: center; gap: 8px; font-size: 11.5px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #F1EDE4; background: var(--navy); border: none; border-radius: 100px; padding: 9px 16px; box-shadow: 0 12px 26px -10px rgba(38,61,73,.6); }
@@ -193,10 +210,9 @@
 /* keystone "sneak peek" seal at the arch apex */
 .pr-peek-seal { position: absolute; top: -13px; left: 50%; transform: translateX(-50%); z-index: 6; display: inline-flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--navy); background: #F1EDE4; border: 1px solid var(--navy-tint); border-radius: 100px; padding: 8px 18px; box-shadow: 0 10px 24px -8px rgba(38,61,73,.45); }
 .pr-peek-seal .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--sage-deep); animation: pulse 1.6s infinite; }
-@media (max-width: 640px) { .pr-peek-mask { border-radius: 90px 90px 12px 12px; } }
 
 /* ---------- STATEMENT (navy) ---------- */
-.pr-statement { background: var(--navy); padding: 84px 0; margin-top: 84px; }
+.pr-statement { background: var(--brand); padding: 84px 0; margin-top: 84px; }
 .pr-statement h2 { font-family: var(--disp); font-weight: 340; font-size: clamp(32px, 4.6vw, 56px); line-height: 1.06; letter-spacing: -.02em; max-width: 20ch; color: #EEEAE0; }
 .pr-statement h2 em { font-style: italic; font-weight: 340; color: #A7AE97; }
 .pr-statement .stats { display: flex; gap: 56px; margin-top: 36px; flex-wrap: wrap; }
@@ -209,7 +225,7 @@
 .pr-cta .sub { font-size: 16px; color: var(--muted); margin: 20px 0 26px; }
 
 /* ---------- FOOTER (navy) ---------- */
-.pr-foot { background: var(--navy); color: #EEEAE0; }
+.pr-foot { background: var(--brand); color: #EEEAE0; }
 .pr-foot-inner { max-width: 1140px; margin: 0 auto; padding: 54px 32px 30px; }
 .pr-foot .pr-logo { color: #F1EDE4; }
 .pr-foot-top { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 32px; }
@@ -222,18 +238,35 @@
 .pr-foot-bot span { font-size: 13px; color: #869084; }
 .pr-adjourned { font-family: var(--disp); font-style: italic; font-weight: 360; font-size: 20px; color: #A7AE97; }
 
+/* ---------- THEME TOGGLE + DARK MODE ---------- */
+.pr-theme { display: inline-flex; align-items: center; gap: 8px; font-family: var(--text); font-size: 13.5px; font-weight: 600; color: var(--muted); background: transparent; border: 1px solid var(--line2); border-radius: 100px; padding: 7px 14px; cursor: pointer; transition: color .15s ease, border-color .15s ease; }
+.pr-theme:hover { color: var(--ink); border-color: var(--stone); }
+.pr-theme .ico { width: 13px; height: 13px; border-radius: 50%; border: 1.5px solid currentColor; background: linear-gradient(90deg, currentColor 0 50%, transparent 50% 100%); }
+
+.prod.dark .pr-nav { background: rgba(34,40,49,.82); }
+.prod.dark .pr-hero { background: radial-gradient(120% 90% at 40% -10%, #2A303A 0%, #222831 60%, #1A1F26 100%); }
+.prod.dark .pr-cta { background: radial-gradient(120% 120% at 50% 0%, #2A303A 0%, #222831 60%, #1A1F26 100%); }
+.prod.dark .pr-btn { background: var(--ink); color: #222831; border-color: var(--ink); }
+.prod.dark .pr-btn:hover { background: var(--sage-deep); border-color: var(--sage-deep); }
+.prod.dark ::selection { background: var(--sage-deep); color: #222831; }
+.prod.dark .pr-peek-seal { color: #2A2620; background: #E7DECB; border-color: rgba(0,0,0,.12); }
+.prod.dark .pr-peek-scrollhint { background: #171C22; color: #EEEAE0; }
+.prod.dark .pr-peek-fade { background: linear-gradient(90deg, rgba(42,48,58,0), rgba(42,48,58,.6) 55%, var(--app2) 100%); }
+/* keep raised bits from flashing pure white on the dark surface */
+.prod.dark .email-pill, .prod.dark .ag-att, .prod.dark .sum-tabs .hl { background: var(--app-hi); }
+.prod.dark .wf-badges .b3 { color: #222831; }
+.prod.dark .wf-steps .n1 { animation-name: nfill-d; } .prod.dark .wf-steps .n2 { animation-name: nfill-d; } .prod.dark .wf-steps .n3 { animation-name: nfill-d; }
+@keyframes nfill-d { 0% { background: var(--app-hi); border-color: var(--app-line2); color: var(--app-faint); } 12%,100% { background: var(--navy); border-color: var(--navy); color: #222831; } }
+
 /* ---------- RESPONSIVE ---------- */
-@media (max-width: 860px) {
-  .pr-body { grid-template-columns: 1fr; }
-  .pr-side { display: flex; gap: 6px; overflow-x: auto; border-right: none; border-bottom: 1px solid var(--app-line); scrollbar-width: none; }
-  .pr-side::-webkit-scrollbar { display: none; }
-  .pr-side .grp { display: none; }
-  .pr-navitem { flex: none; border-left: none; border-bottom: 2px solid transparent; padding: 8px 12px; }
-  .pr-navitem.on { border-left: none; border-bottom-color: var(--navy); }
-  .pr-navitem .d { display: none; }
-  .ag-cols, .mn-cols, .sum-cols { grid-template-columns: 1fr; }
+/* the product keeps its fixed width inside the arch and scrolls; it does not
+   collapse — the horizontal scroll IS the sneak-peek. Only the hero stacks. */
+@media (max-width: 900px) {
+  .pr-hero-grid { grid-template-columns: 1fr; gap: 34px; }
+  .pr-hero-media { order: -1; }
   .pr-foot-top { grid-template-columns: 1fr 1fr; }
 }
+@media (max-width: 640px) { .pr-peek-mask { border-radius: 130px 130px 12px 12px; } }
 @media (max-width: 720px) {
   .pr-nav-links a:not(.pr-btn) { display: none; }
   .pr-nav-inner { padding: 0 20px; } .prod .wrap { padding: 0 20px; }

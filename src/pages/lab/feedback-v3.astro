@@ -43,6 +43,7 @@ const nav = [
           <a href="#">Public portal</a>
           <a href="#">Security</a>
           <a href="#">Sign in</a>
+          <button class="pr-theme" id="prTheme" type="button" aria-pressed="false" title="Toggle light / dark"><span class="ico" aria-hidden="true"></span><span class="lbl">Dark</span></button>
           <a class="pr-btn" href="/demo">See a demo</a>
         </div>
       </div>
@@ -51,14 +52,8 @@ const nav = [
     <!-- HERO + LIVE PRODUCT WINDOW -->
     <header class="pr-hero">
       <div class="wrap">
-        <h1>The whole meeting, in <em>one place</em>.</h1>
-        <p class="lede">Build the packet, take the minutes, and post the record. Everything the board decided, and why, back to your first meeting.</p>
-        <div class="pr-hero-cta">
-          <a class="pr-btn big" href="/demo">See a demo</a>
-          <a class="plain" href="#">Take a tour</a>
-        </div>
-        <p class="pr-hint">A first look, by invitation. Hover the menu, scroll to explore.</p>
-
+        <div class="pr-hero-grid">
+          <div class="pr-hero-media">
         <div class="pr-peek">
           <span class="pr-peek-seal"><span class="dot"></span> Sneak peek</span>
           <div class="pr-peek-mask">
@@ -178,6 +173,17 @@ const nav = [
             <a class="pr-peek-scrollhint" href="#">Scroll to explore <span>→</span></a>
           </div>
         </div>
+          </div>
+          <div class="pr-hero-copy">
+            <h1>The whole meeting, in <em>one place</em>.</h1>
+            <p class="lede">Build the packet, take the minutes, post the record. Everything the board decided, and why, back to your first meeting on record.</p>
+            <div class="pr-hero-cta">
+              <a class="pr-btn big" href="/demo">See a demo</a>
+              <a class="plain" href="#">Take a tour</a>
+            </div>
+            <p class="pr-peek-note"><b>Sneak peek.</b> Hover the menu, scroll the product to explore →</p>
+          </div>
+        </div>
       </div>
     </header>
 
@@ -224,6 +230,15 @@ const nav = [
 </Base>
 
 <script>
+  // Light (Hamptons, like V2) <-> dark (warm charcoal, like V1) toggle.
+  const root = document.querySelector('.prod');
+  const themeBtn = document.getElementById('prTheme');
+  themeBtn?.addEventListener('click', () => {
+    const dark = root?.classList.toggle('dark');
+    themeBtn.setAttribute('aria-pressed', String(!!dark));
+    const lbl = themeBtn.querySelector('.lbl'); if (lbl) lbl.textContent = dark ? 'Light' : 'Dark';
+  });
+
   // Hovering (or focusing/clicking) a sidebar item switches the live stage.
   const side = document.getElementById('prSide');
   const stage = document.getElementById('prStage');
