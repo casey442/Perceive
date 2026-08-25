@@ -5,6 +5,12 @@ import '../../styles/contrarian.css';
 import LabBar from '../../components/LabBar.astro';
 ---
 <Base title="BoardPlanner — Contrarian study">
+  <Fragment slot="head">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..500;1,9..144,300..500&family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400..500&display=swap" />
+  </Fragment>
+
   <LabBar active="contrarian" />
 
   <div class="contra">
@@ -16,6 +22,7 @@ import LabBar from '../../components/LabBar.astro';
         <a href="#log">Changelog</a>
         <a href="#log">Status</a>
         <a href="#cta">Sign in</a>
+        <button class="cx-theme" id="cxTheme" type="button" aria-label="Toggle light / dark">Dark</button>
       </div>
     </nav>
 
@@ -206,4 +213,9 @@ import LabBar from '../../components/LabBar.astro';
   }
   render('');
   input?.addEventListener('input', () => render(input.value));
+
+  // light (Hamptons) <-> dark (warm charcoal) — matches V3
+  const root = document.querySelector('.contra');
+  const tbtn = document.getElementById('cxTheme');
+  tbtn?.addEventListener('click', () => { const d = root?.classList.toggle('dark'); tbtn.textContent = d ? 'Light' : 'Dark'; });
 </script>
