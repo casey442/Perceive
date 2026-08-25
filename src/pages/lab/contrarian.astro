@@ -1,0 +1,209 @@
+---
+import Base from '../../layouts/Base.astro';
+import '../../styles/lab.css';
+import '../../styles/contrarian.css';
+import LabBar from '../../components/LabBar.astro';
+---
+<Base title="BoardPlanner — Contrarian study">
+  <LabBar active="contrarian" />
+
+  <div class="contra">
+    <nav class="cx-nav">
+      <div class="cx-nav-in">
+        <a class="cx-logo" href="/">BoardPlanner</a>
+        <a href="#does">Docs</a>
+        <a href="#price">Pricing</a>
+        <a href="#log">Changelog</a>
+        <a href="#log">Status</a>
+        <a href="#cta">Sign in</a>
+      </div>
+    </nav>
+
+    <main>
+      <div class="col">
+        <p class="cx-meta">Board meeting software for K-12 districts. Last updated 2026-08-25. No demo required to read this page.</p>
+
+        <p class="cx-lead"><span class="first">I build BoardPlanner.</span> This page has no demo gate, no sales call, and no product screenshot tilted on a 3D axis. It has the price, the parts we do not build, the competitors who beat us, and the one thing we do well. Read to the bottom and you will know whether to buy it.</p>
+        <p>If you would rather I just showed you, the search box below is the actual thing, running on a sample record.</p>
+
+        <!-- THE ONE THING (interactive sandbox, no claim) -->
+        <section class="cx-sec" id="does">
+          <p class="cx-h">The one thing</p>
+          <p>Every agenda, motion, and vote your board ever recorded, findable by anyone in seconds. Type part of a decision you might go looking for:</p>
+          <div class="cx-box">
+            <label for="cxq">search the record</label>
+            <input class="cx-input" id="cxq" type="text" placeholder="e.g. bus routes, contract, budget" autocomplete="off" spellcheck="false" />
+            <div class="cx-results" id="cxr"></div>
+          </div>
+          <p>That is the product. Everything below is detail.</p>
+        </section>
+
+        <!-- WHAT IT DOES -->
+        <section class="cx-sec">
+          <p class="cx-h">What it does</p>
+          <ul class="plain">
+            <li>Posts your agenda to a public URL inside your state's notice window.</li>
+            <li>Records motions, votes, and roll calls as the meeting runs.</li>
+            <li>Files documents you forward by email onto the right agenda item.</li>
+            <li>Searches every word of every PDF, back to your first meeting.</li>
+            <li>Exports the whole minute book as one file.</li>
+            <li>Imports your history out of BoardDocs or Diligent.</li>
+          </ul>
+        </section>
+
+        <!-- WHO IT'S NOT FOR -->
+        <section class="cx-sec">
+          <p class="cx-h">Who it is not for</p>
+          <p>Do not buy this if any one of these is true:</p>
+          <ul class="plain no">
+            <li>You hold fewer than one public meeting a month.</li>
+            <li>You do not post minutes publicly, and are not required to.</li>
+            <li>You need a native mobile app. There is not one, and there will not be one this year.</li>
+            <li>You want live video streaming of meetings. We do not do that.</li>
+            <li>You want an all-in-one governance suite with HR, evaluations, and planning modules. That is Diligent. Buy Diligent.</li>
+          </ul>
+        </section>
+
+        <!-- WHAT IT DOESN'T DO -->
+        <section class="cx-sec">
+          <p class="cx-h">What it does not do</p>
+          <ul class="plain no">
+            <li>It does not stream video.</li>
+            <li>It does not have a mobile app.</li>
+            <li>It does not write your minutes for you. It drafts a summary that cites the exact source page, and you approve it.</li>
+            <li>It does not connect to your student information system.</li>
+            <li>It does not decide for you what must be posted, or when. Your attorney does that.</li>
+          </ul>
+        </section>
+
+        <!-- PRICE -->
+        <section class="cx-sec" id="price">
+          <p class="cx-h">The price. All of it.</p>
+          <p>We will honor these numbers for the first ten districts that sign.</p>
+          <table>
+            <thead><tr><th>Plan</th><th>Who</th><th class="num">Per year</th></tr></thead>
+            <tbody>
+              <tr><td>Small</td><td>Under 7 trustees</td><td class="num price">$2,400</td></tr>
+              <tr><td>Standard</td><td>7 to 15 trustees</td><td class="num price">$3,600</td></tr>
+              <tr><td>Enterprise</td><td>County office or multi-board</td><td class="num price">$7,200</td></tr>
+              <tr><td>Migration</td><td>From BoardDocs or Diligent, any plan</td><td class="num price">$0</td></tr>
+            </tbody>
+          </table>
+          <p>No setup fee. No per-seat pricing. No "contact sales." If your district is larger than this, email me and I will quote a number in the reply, not on a call.</p>
+        </section>
+
+        <!-- THE NUMBERS -->
+        <section class="cx-sec">
+          <p class="cx-h">The numbers that matter</p>
+          <p>We are pre-launch, so I will not show you a dashboard of usage we do not have. The only numbers that matter here are the law, not our marketing:</p>
+          <table>
+            <thead><tr><th>Rule</th><th class="num">Deadline</th><th>Source</th></tr></thead>
+            <tbody>
+              <tr><td>Texas, posted notice</td><td class="num">3 business days</td><td>Texas AG, Open Meetings Handbook (2025)</td></tr>
+              <tr><td>Many states, notice</td><td class="num">72 hours</td><td>Varies; verify your state</td></tr>
+              <tr><td>Board policy, packet delivery</td><td class="num">48 hours</td><td>Typical local policy</td></tr>
+            </tbody>
+          </table>
+          <p>Miss one of these and the meeting can be void. Preventing that is the entire reason this exists. Everything else is convenience.</p>
+          <p class="cx-note">Deadlines shown are illustrative for this preview and must be verified against a live source before launch.</p>
+        </section>
+
+        <!-- THE EMPTY TESTIMONIAL -->
+        <section class="cx-sec">
+          <p class="cx-h">The customer quote</p>
+          <div class="cx-empty">
+            There is no testimonial here. We have zero districts live as of 2026-08-25. When the first one goes live, this box holds up to 400 of their own unedited words, the complaints included. We will not write it for them, and we will not cut the parts that sting. Until then, an empty box is the honest thing to show.
+          </div>
+        </section>
+
+        <!-- CONCEDE -->
+        <section class="cx-sec">
+          <p class="cx-h">Where the competition beats us</p>
+          <p>BoardDocs and Diligent are the incumbents. The honest comparison, including where they win:</p>
+          <table>
+            <thead><tr><th>&nbsp;</th><th>BoardDocs</th><th>Diligent</th><th>BoardPlanner</th></tr></thead>
+            <tbody>
+              <tr><td>Districts live</td><td>Thousands</td><td>Thousands</td><td class="concede">0 (pre-launch)</td></tr>
+              <tr><td>Mobile app</td><td>Yes</td><td>Yes</td><td class="concede">No</td></tr>
+              <tr><td>Governance modules</td><td>A few</td><td>Many</td><td class="concede">None</td></tr>
+              <tr><td>Public full-text search</td><td>Partial</td><td>Partial</td><td class="win">Yes</td></tr>
+              <tr><td>Price on the website</td><td>No</td><td>No</td><td class="win">Yes</td></tr>
+              <tr><td>Migration included</td><td>No</td><td>No</td><td class="win">Yes</td></tr>
+            </tbody>
+          </table>
+          <p>If you need a mobile app or a full governance suite today, we are the wrong choice, and I would rather you learn that here than after a sales call.</p>
+        </section>
+
+        <!-- STATUS / CHANGELOG -->
+        <section class="cx-sec" id="log">
+          <p class="cx-h">What is shipped, and what is not</p>
+          <div class="cx-status">
+            <div class="line"><span class="k"><span class="cx-dot pre"></span>Status</span><span class="v">Pre-launch</span></div>
+            <div class="line"><span class="k">Districts live</span><span class="v">0</span></div>
+            <div class="line"><span class="k">Meetings posted</span><span class="v">0</span></div>
+            <div class="line"><span class="k">Last deploy</span><span class="v">2026-08-25</span></div>
+          </div>
+          <p>Build log, newest first:</p>
+          <ul class="plain">
+            <li>2026-08-20 &nbsp; Public portal: full-text search of agendas and minutes.</li>
+            <li>2026-07-30 &nbsp; Email-to-file onto agenda items.</li>
+            <li>2026-06-15 &nbsp; Minute book export as a single file.</li>
+            <li>2026-05-02 &nbsp; Cited summaries, source page shown.</li>
+            <li>2026-03-18 &nbsp; Migration importer for BoardDocs exports.</li>
+          </ul>
+          <p>This log is the marketing. When something breaks, it will say so here too.</p>
+        </section>
+
+        <!-- ONE SMALL CTA -->
+        <section class="cx-sec" id="cta">
+          <div class="cx-cta">
+            <a href="/trial">Start a 30-day trial</a>
+            <span class="aside">No card, no call. Or reply to the person who built it; I read all of them.</span>
+          </div>
+          <div class="cx-sign">
+            <p>Written 2026-08-25. I update this page when the facts change, not when a campaign launches.</p>
+            <p>— <span class="name">[your name]</span>, founder, BoardPlanner</p>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="cx-foot">
+      <div class="col">
+        <div class="row">
+          <a href="#does">Docs</a><a href="#price">Pricing</a><a href="#log">Changelog</a><a href="#log">Status</a><a href="#">Security</a><a href="#cta">Contact</a>
+        </div>
+        <div>© 2026 BoardPlanner. No cookie banner: we set no tracking cookies, so there is nothing to consent to.</div>
+      </div>
+    </footer>
+  </div>
+</Base>
+
+<script>
+  // Live search over the sample record. Functional, not decorative — no animation.
+  const DATA = [
+    { t: 'Redrawn bus routes approved 5–2, effective August.', c: 'Minutes · Regular Meeting, Mar 14 2023 · p.4' },
+    { t: 'Superintendent contract renewed for three years, 7–0.', c: 'Minutes · Special Meeting, Jan 9 2024 · p.12' },
+    { t: 'Bell schedule adopted for FY26, 5–2.', c: 'Minutes · Regular Meeting, May 6 2025 · p.3' },
+    { t: 'Durham awarded the transportation contract, 6–1.', c: 'Minutes · Regular Meeting, Feb 11 2025 · p.7' },
+    { t: 'FY26 budget hearing opened; public comment heard.', c: 'Agenda · Jun 3 2025 · item 5.2' },
+    { t: 'East feeder boundary change tabled to next meeting.', c: 'Minutes · Regular Meeting, Apr 8 2025 · p.6' },
+    { t: 'Consent agenda approved as presented, 7–0.', c: 'Minutes · Regular Meeting, Mar 14 2023 · p.1' },
+  ];
+  const input = document.getElementById('cxq') as HTMLInputElement | null;
+  const out = document.getElementById('cxr');
+  const esc = (s: string) => s.replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c] as string));
+  function render(q: string) {
+    if (!out) return;
+    const query = q.trim();
+    if (!query) { out.innerHTML = '<div class="cx-none">Type above. The whole record is searchable, not just the titles.</div>'; return; }
+    const rx = new RegExp('(' + query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'ig');
+    const hits = DATA.filter((d) => (d.t + ' ' + d.c).toLowerCase().includes(query.toLowerCase()));
+    if (!hits.length) { out.innerHTML = '<div class="cx-none">No decision matches "' + esc(query) + '". In the real record that means it did not happen, or it is filed under other words. Try again.</div>'; return; }
+    out.innerHTML = hits.map((d) =>
+      '<div class="cx-row"><div>' + esc(d.t).replace(rx, '<mark>$1</mark>') + '</div><div class="cite">' + esc(d.c).replace(rx, '<mark>$1</mark>') + '</div></div>'
+    ).join('');
+  }
+  render('');
+  input?.addEventListener('input', () => render(input.value));
+</script>

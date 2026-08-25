@@ -1,0 +1,96 @@
+/* "Contrarian" — the inverse of the typical SaaS homepage. A founder's letter in
+   one long column: system monospace (paints instantly, no web font), text-only
+   above the fold, no hero image, exact prices, who it's NOT for, what it doesn't
+   do, competitors conceded, a live 0-districts counter instead of testimonials,
+   one small CTA. Zero animation. Let it be plain if the plainness is honest.
+   Scoped under `.contra`. */
+
+.contra {
+  --ink: #1A1A19; --mut: #63615C; --faint: #8C8A85; --bg: #FCFBF8; --rule: #E4E1DA; --rule2: #D3CFC6;
+  --mark: #FBEEA6; --down: #A23A31; --ok: #2F6B43; --link: #1A1A19;
+  --mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, "Liberation Mono", "Courier New", monospace;
+  background: var(--bg); color: var(--ink); font-family: var(--mono);
+  font-size: 15px; line-height: 1.72; -webkit-font-smoothing: antialiased;
+  font-variant-ligatures: none;
+}
+.contra ::selection { background: var(--mark); color: #1A1A19; }
+.contra .col { max-width: 680px; margin: 0 auto; padding: 0 22px; }
+
+/* ---------- NAV (plain text, no dropdowns, no button) ---------- */
+.cx-nav { border-bottom: 1px solid var(--rule); background: var(--bg); }
+.cx-nav-in { max-width: 680px; margin: 0 auto; padding: 14px 22px; display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 18px; }
+.cx-logo { font-weight: 700; color: var(--ink); text-decoration: none; letter-spacing: -.02em; margin-right: auto; }
+.cx-nav a:not(.cx-logo) { color: var(--mut); text-decoration: none; font-size: 13px; }
+.cx-nav a:not(.cx-logo):hover { color: var(--ink); text-decoration: underline; }
+
+/* ---------- PROSE ---------- */
+.contra main { padding: 40px 0 8px; }
+.contra p { margin: 0 0 18px; max-width: 66ch; }
+.contra a { color: var(--link); text-underline-offset: 2px; }
+.contra a:hover { text-decoration-thickness: 2px; }
+.contra strong, .contra b { font-weight: 700; }
+.contra em { font-style: italic; }
+.cx-meta { font-size: 12.5px; color: var(--faint); margin-bottom: 30px; }
+.cx-lead { font-size: 16px; }
+.cx-lead .first { font-weight: 700; }
+
+.cx-h { font-size: 12px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--faint); margin: 0 0 14px; }
+.cx-sec { padding: 30px 0; border-top: 1px solid var(--rule); }
+.cx-sec:first-of-type { border-top: none; }
+
+.contra ul.plain { list-style: none; margin: 0 0 18px; padding: 0; }
+.contra ul.plain li { padding: 4px 0 4px 22px; position: relative; max-width: 66ch; }
+.contra ul.plain li::before { content: "—"; position: absolute; left: 0; color: var(--faint); }
+.contra ul.no li::before { content: "×"; color: var(--down); font-weight: 700; }
+.contra ul.yes li::before { content: "+"; color: var(--ok); font-weight: 700; }
+
+/* interactive sandbox */
+.cx-box { border: 1px solid var(--rule2); background: #fff; padding: 16px; margin: 4px 0 20px; }
+.cx-box label { display: block; font-size: 12px; color: var(--mut); margin-bottom: 8px; }
+.cx-input { width: 100%; box-sizing: border-box; font-family: var(--mono); font-size: 15px; color: var(--ink); background: var(--bg); border: 1px solid var(--rule2); padding: 9px 11px; }
+.cx-input:focus { outline: 2px solid var(--ink); outline-offset: -1px; }
+.cx-results { margin-top: 12px; font-size: 13.5px; }
+.cx-row { padding: 8px 0; border-top: 1px dotted var(--rule); }
+.cx-row:first-child { border-top: none; }
+.cx-row .m { color: var(--mut); }
+.cx-row mark { background: var(--mark); color: var(--ink); padding: 0 1px; }
+.cx-row .cite { color: var(--faint); font-size: 11.5px; }
+.cx-none { color: var(--faint); padding: 10px 0; }
+
+/* tables (price, numbers, comparison) */
+.contra table { width: 100%; border-collapse: collapse; margin: 4px 0 20px; font-size: 13.5px; }
+.contra th, .contra td { text-align: left; padding: 8px 10px 8px 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
+.contra thead th { color: var(--faint); font-weight: 700; font-size: 11.5px; letter-spacing: .06em; text-transform: uppercase; border-bottom: 1px solid var(--rule2); }
+.contra td.num { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.contra .price { font-weight: 700; }
+.contra .down { color: var(--down); }
+.contra .concede { color: var(--down); }
+.contra .win { color: var(--ok); }
+
+/* the empty testimonial */
+.cx-empty { border: 1px dashed var(--rule2); padding: 20px; color: var(--mut); background: #fff; margin: 4px 0 20px; }
+
+/* live counter / status */
+.cx-status { border: 1px solid var(--rule2); background: #fff; padding: 14px 16px; margin: 4px 0 20px; font-size: 13.5px; }
+.cx-status .line { display: flex; justify-content: space-between; gap: 16px; padding: 5px 0; border-top: 1px dotted var(--rule); }
+.cx-status .line:first-child { border-top: none; }
+.cx-status .k { color: var(--mut); } .cx-status .v { font-weight: 700; font-variant-numeric: tabular-nums; }
+.cx-dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--ok); margin-right: 6px; vertical-align: 1px; }
+.cx-dot.pre { background: var(--faint); }
+
+/* the one small CTA */
+.cx-cta { margin: 8px 0 6px; }
+.cx-cta a { font-size: 14px; font-weight: 700; border: 1px solid var(--ink); padding: 7px 12px; text-decoration: none; color: var(--ink); }
+.cx-cta a:hover { background: var(--ink); color: var(--bg); }
+.cx-cta .aside { display: block; font-size: 12px; color: var(--faint); margin-top: 8px; }
+
+.cx-sign { margin-top: 26px; font-size: 14px; }
+.cx-sign .name { font-weight: 700; }
+
+.cx-foot { border-top: 1px solid var(--rule); margin-top: 20px; padding: 22px 0 40px; font-size: 12.5px; color: var(--faint); }
+.cx-foot a { color: var(--mut); }
+.cx-foot .row { display: flex; flex-wrap: wrap; gap: 6px 16px; margin-bottom: 8px; }
+
+.cx-note { font-size: 12px; color: var(--faint); font-style: italic; }
+
+@media (max-width: 560px) { .contra { font-size: 14.5px; } }
