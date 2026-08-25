@@ -28,18 +28,19 @@ import LabBar from '../../components/LabBar.astro';
 
     <main>
       <div class="col">
-        <p class="cx-meta">Board meeting software for K-12 districts. Last updated 2026-08-25. No demo required to read this page.</p>
+        <p class="cx-meta">Board meeting software for K-12 school districts, and nothing else. Last updated 2026-08-25. No demo required to read this page.</p>
 
-        <p class="cx-lead"><span class="first">I build BoardPlanner.</span> This page has no demo gate, no sales call, and no product screenshot tilted on a 3D axis. It has the price, the parts we do not build, the competitors who beat us, and the one thing we do well. Read to the bottom and you will know whether to buy it.</p>
-        <p>If you would rather I just showed you, the search box below is the actual thing, running on a sample record.</p>
+        <p class="cx-lead"><span class="first">I build BoardPlanner.</span> It runs the meetings of elected K-12 school boards, and only those. This page has no demo gate, no sales call, and no product screenshot tilted on a 3D axis. It has the price, the parts we do not build, the competitors who beat us, and the one thing we do well.</p>
+        <p>If you run a city council, a county commission, a hospital board, or an HOA, close the tab now. Those are not K-12 school boards, this software is not built for them, and I will not sell it to you. Everyone else, read to the bottom and you will know whether to buy it.</p>
+        <p>If you would rather I just showed you, the search box below is the actual thing, running on a sample school-board record.</p>
 
         <!-- THE ONE THING (interactive sandbox, no claim) -->
         <section class="cx-sec" id="does">
           <p class="cx-h">The one thing</p>
-          <p>Every agenda, motion, and vote your board ever recorded, findable by anyone in seconds. Type part of a decision you might go looking for:</p>
+          <p>Every agenda, motion, and vote your school board ever took, findable by any parent, teacher, or reporter in seconds. Type part of a decision you might go looking for:</p>
           <div class="cx-box">
-            <label for="cxq">search the record</label>
-            <input class="cx-input" id="cxq" type="text" placeholder="e.g. bus routes, contract, budget" autocomplete="off" spellcheck="false" />
+            <label for="cxq">search the district's record</label>
+            <input class="cx-input" id="cxq" type="text" placeholder="e.g. cell phones, calendar, superintendent" autocomplete="off" spellcheck="false" />
             <div class="cx-results" id="cxr"></div>
           </div>
           <p>That is the product. Everything below is detail.</p>
@@ -49,12 +50,12 @@ import LabBar from '../../components/LabBar.astro';
         <section class="cx-sec">
           <p class="cx-h">What it does</p>
           <ul class="plain">
-            <li>Posts your agenda to a public URL inside your state's notice window.</li>
-            <li>Records motions, votes, and roll calls as the meeting runs.</li>
-            <li>Files documents you forward by email onto the right agenda item.</li>
-            <li>Searches every word of every PDF, back to your first meeting.</li>
-            <li>Exports the whole minute book as one file.</li>
-            <li>Imports your history out of BoardDocs or Diligent.</li>
+            <li>Posts the board agenda and packet to a public URL inside your state's open-meetings window.</li>
+            <li>Records the budget votes, policy adoptions, and roll calls as the meeting runs.</li>
+            <li>Files the documents the superintendent's office forwards by email onto the right agenda item.</li>
+            <li>Searches every word of every PDF, back to the district's first meeting on record.</li>
+            <li>Exports the whole minute book as one file for your records request or your auditor.</li>
+            <li>Imports the district's history out of BoardDocs or Diligent.</li>
           </ul>
         </section>
 
@@ -63,11 +64,11 @@ import LabBar from '../../components/LabBar.astro';
           <p class="cx-h">Who it is not for</p>
           <p>Do not buy this if any one of these is true:</p>
           <ul class="plain no">
-            <li>You hold fewer than one public meeting a month.</li>
-            <li>You do not post minutes publicly, and are not required to.</li>
-            <li>You need a native mobile app. There is not one, and there will not be one this year.</li>
-            <li>You want live video streaming of meetings. We do not do that.</li>
-            <li>You want an all-in-one governance suite with HR, evaluations, and planning modules. That is Diligent. Buy Diligent.</li>
+            <li>You are not an elected K-12 school board. This serves one market. Yours is not it unless you are it.</li>
+            <li>Your board does not post agendas or minutes publicly, and your state does not make you.</li>
+            <li>You need a native mobile app for board members. There is not one, and there will not be one this year.</li>
+            <li>You want live video streaming of board meetings. We do not do that; your district's AV vendor does.</li>
+            <li>You want an all-in-one district-governance suite with HR, evaluations, and strategic-planning modules. That is Diligent. Buy Diligent.</li>
           </ul>
         </section>
 
@@ -90,9 +91,9 @@ import LabBar from '../../components/LabBar.astro';
           <table>
             <thead><tr><th>Plan</th><th>Who</th><th class="num">Per year</th></tr></thead>
             <tbody>
-              <tr><td>Small</td><td>Under 7 trustees</td><td class="num price">$2,400</td></tr>
-              <tr><td>Standard</td><td>7 to 15 trustees</td><td class="num price">$3,600</td></tr>
-              <tr><td>Enterprise</td><td>County office or multi-board</td><td class="num price">$7,200</td></tr>
+              <tr><td>Small district</td><td>School board of 5 to 7 members</td><td class="num price">$2,400</td></tr>
+              <tr><td>Standard district</td><td>School board of 8 to 15 members</td><td class="num price">$3,600</td></tr>
+              <tr><td>County / regional</td><td>County education office or multi-district co-op</td><td class="num price">$7,200</td></tr>
               <tr><td>Migration</td><td>From BoardDocs or Diligent, any plan</td><td class="num price">$0</td></tr>
             </tbody>
           </table>
@@ -111,7 +112,7 @@ import LabBar from '../../components/LabBar.astro';
               <tr><td>Board policy, packet delivery</td><td class="num">48 hours</td><td>Typical local policy</td></tr>
             </tbody>
           </table>
-          <p>Miss one of these and the meeting can be void. Preventing that is the entire reason this exists. Everything else is convenience.</p>
+          <p>Miss one of these and the board meeting can be void, and a parent with a stopwatch can say so at the podium. Preventing that is the entire reason this exists. Everything else is convenience.</p>
           <p class="cx-note">Deadlines shown are illustrative for this preview and must be verified against a live source before launch.</p>
         </section>
 
@@ -119,18 +120,18 @@ import LabBar from '../../components/LabBar.astro';
         <section class="cx-sec">
           <p class="cx-h">The customer quote</p>
           <div class="cx-empty">
-            There is no testimonial here. We have zero districts live as of 2026-08-25. When the first one goes live, this box holds up to 400 of their own unedited words, the complaints included. We will not write it for them, and we will not cut the parts that sting. Until then, an empty box is the honest thing to show.
+            There is no testimonial here. We have zero school districts live as of 2026-08-25. When the first district's board secretary goes live, this box holds up to 400 of her own unedited words, the complaints included. We will not write it for her, and we will not cut the parts that sting. Until then, an empty box is the honest thing to show.
           </div>
         </section>
 
         <!-- CONCEDE -->
         <section class="cx-sec">
           <p class="cx-h">Where the competition beats us</p>
-          <p>BoardDocs and Diligent are the incumbents. The honest comparison, including where they win:</p>
+          <p>BoardDocs and Diligent are the incumbents in K-12 board software; BoardDocs runs a large share of the districts in the country. The honest comparison for a school district, including where they win:</p>
           <table>
             <thead><tr><th>&nbsp;</th><th>BoardDocs</th><th>Diligent</th><th>BoardPlanner</th></tr></thead>
             <tbody>
-              <tr><td>Districts live</td><td>Thousands</td><td>Thousands</td><td class="concede">0 (pre-launch)</td></tr>
+              <tr><td>School districts live</td><td>Thousands</td><td>Thousands</td><td class="concede">0 (pre-launch)</td></tr>
               <tr><td>Mobile app</td><td>Yes</td><td>Yes</td><td class="concede">No</td></tr>
               <tr><td>Governance modules</td><td>A few</td><td>Many</td><td class="concede">None</td></tr>
               <tr><td>Public full-text search</td><td>Partial</td><td>Partial</td><td class="win">Yes</td></tr>
@@ -146,8 +147,8 @@ import LabBar from '../../components/LabBar.astro';
           <p class="cx-h">What is shipped, and what is not</p>
           <div class="cx-status">
             <div class="line"><span class="k"><span class="cx-dot pre"></span>Status</span><span class="v">Pre-launch</span></div>
-            <div class="line"><span class="k">Districts live</span><span class="v">0</span></div>
-            <div class="line"><span class="k">Meetings posted</span><span class="v">0</span></div>
+            <div class="line"><span class="k">School districts live</span><span class="v">0</span></div>
+            <div class="line"><span class="k">Board meetings posted</span><span class="v">0</span></div>
             <div class="line"><span class="k">Last deploy</span><span class="v">2026-08-25</span></div>
           </div>
           <p>Build log, newest first:</p>
@@ -189,13 +190,14 @@ import LabBar from '../../components/LabBar.astro';
 <script>
   // Live search over the sample record. Functional, not decorative — no animation.
   const DATA = [
-    { t: 'Redrawn bus routes approved 5–2, effective August.', c: 'Minutes · Regular Meeting, Mar 14 2023 · p.4' },
-    { t: 'Superintendent contract renewed for three years, 7–0.', c: 'Minutes · Special Meeting, Jan 9 2024 · p.12' },
+    { t: 'Cell-phone policy adopted for all campuses, 6–1.', c: 'Minutes · Regular Meeting, Aug 12 2025 · p.5' },
+    { t: '2026–27 school calendar approved, 7–0.', c: 'Minutes · Regular Meeting, Nov 5 2024 · p.2' },
+    { t: "Superintendent's contract renewed for three years, 7–0.", c: 'Minutes · Special Meeting, Jan 9 2024 · p.12' },
+    { t: 'Teacher salary schedule raised 3% for FY26, 5–2.', c: 'Minutes · Budget Hearing, Jun 24 2025 · p.8' },
+    { t: 'Attendance boundaries redrawn for the east feeder, 5–2.', c: 'Minutes · Regular Meeting, Mar 14 2023 · p.4' },
     { t: 'Bell schedule adopted for FY26, 5–2.', c: 'Minutes · Regular Meeting, May 6 2025 · p.3' },
-    { t: 'Durham awarded the transportation contract, 6–1.', c: 'Minutes · Regular Meeting, Feb 11 2025 · p.7' },
-    { t: 'FY26 budget hearing opened; public comment heard.', c: 'Agenda · Jun 3 2025 · item 5.2' },
-    { t: 'East feeder boundary change tabled to next meeting.', c: 'Minutes · Regular Meeting, Apr 8 2025 · p.6' },
-    { t: 'Consent agenda approved as presented, 7–0.', c: 'Minutes · Regular Meeting, Mar 14 2023 · p.1' },
+    { t: '$120M school bond called for the November ballot, 4–3.', c: 'Minutes · Special Meeting, Aug 5 2025 · p.9' },
+    { t: 'Superintendent evaluation completed in closed session.', c: 'Minutes · Regular Meeting, Feb 11 2025 · p.7' },
   ];
   const input = document.getElementById('cxq') as HTMLInputElement | null;
   const out = document.getElementById('cxr');
