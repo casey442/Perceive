@@ -21,9 +21,14 @@ jobs:
       - run: npm ci
       - run: npm run build
       - name: Deploy to Netlify (production)
-        # Pinned: netlify-cli@latest (27.4.0) is broken — it requires a nonexistent
-        # @netlify/ai@^1.0.1 and fails npm install. 27.3.1 resolves cleanly.
-        run: npx netlify-cli@27.3.1 deploy --prod --dir=dist --site "$NETLIFY_SITE_ID" --auth "$NETLIFY_AUTH_TOKEN"
+        # netlify-cli's tree currently requires @netlify/ai@^1.0.1, which does not
+        # exist on npm (latest is 1.0.0), so a plain install fails with ETARGET.
+        # Install in a scratch dir with an npm override forcing @netlify/ai to 1.0.0.
+        run: |
+          mkdir -p /tmp/ntl && cd /tmp/ntl
+          printf '{"name":"ntl-deploy","private":true,"overrides":{"@netlify/ai":"1.0.0"},"dependencies":{"netlify-cli":"27.3.1"}}' > package.json
+          npm install --no-audit --no-fund --loglevel=error
+          ./node_modules/.bin/netlify deploy --prod --dir="$GITHUB_WORKSPACE/dist" --site "$NETLIFY_SITE_ID" --auth "$NETLIFY_AUTH_TOKEN"
         env:
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
