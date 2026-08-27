@@ -142,3 +142,21 @@
 @media (max-width: 1000px) { .rt-grid { grid-template-columns: repeat(2,1fr); } .rt-stats { grid-template-columns: repeat(2,1fr); } .rt-stat:nth-child(2){border-right:none;} .rt-stat:nth-child(-n+2){border-bottom:2px solid var(--ink);} .rt-manifesto { grid-template-columns: 1fr; } .rt-foot-top { grid-template-columns: 1fr 1fr 1fr; } }
 @media (max-width: 720px) { .rt-nav-links { display: none; } .rt-grid { grid-template-columns: 1fr; } .rt-stats { grid-template-columns: 1fr; } .rt-stat { border-right: none; border-bottom: 2px solid var(--ink); } .rt-stat:last-child{border-bottom:none;} .rt-foot-top { grid-template-columns: 1fr 1fr; } .rt-price { overflow-x: auto; } }
 @media (prefers-reduced-motion: reduce) { .rt-table .float1, .rt-table .float2, .rt-strip .marq { animation: none; } }
+
+/* ---------- NO ORPHANS on key headers ---------- */
+.rt-hero h1, .rt-h2, .rt-final h2, .rt-prod h3, .rt-op h4, .rt-quote h2 { text-wrap: balance; }
+
+/* ---------- SVG accents follow the palette ---------- */
+.rt-acc { fill: var(--red); }
+.rt-acc-s { stroke: var(--red); }
+
+/* ---------- PALETTE TOGGLE ---------- */
+.rt-pal { font-family: var(--mono); font-size: 12.5px; font-weight: 700; color: var(--ink); background: var(--card); border: 2px solid var(--ink); border-radius: 8px; padding: 6px 11px; cursor: pointer; box-shadow: 2px 2px 0 var(--ink); transition: background .12s ease; }
+.rt-pal:hover { background: var(--hi); }
+
+/* ---------- WARM VARIATION: the house colors (ivory / navy / sage / charcoal) ---------- */
+.rt.warm {
+  --paper: #E8E3D7; --paper2: #DED7C7; --card: #F4F1E9; --ink: #303536; --mut: #5C5A53; --faint: #8E8C84;
+  --line: #D6CFC1; --line2: #C7BEAE;
+  --red: #263D49; --red-deep: #1B2C36; --brass: #6E7663; --hi: #CAD4B7; --green: #4E7A57;
+}

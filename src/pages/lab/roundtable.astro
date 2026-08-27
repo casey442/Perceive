@@ -48,6 +48,7 @@ const products = [
           <a href="#why">Why us</a>
         </div>
         <div class="rt-nav-cta">
+          <button class="rt-pal" id="rtPal" type="button" aria-label="Toggle palette">House colors →</button>
           <a class="signin" href="#">Sign in</a>
           <a class="rt-btn" href="/demo">Book a demo</a>
         </div>
@@ -58,12 +59,12 @@ const products = [
     <header class="rt-hero">
       <div class="wrap">
         <span class="rt-eyebrow">◆ Board meeting software for K-12 school districts</span>
-        <h1>Run the meeting. Post the record. <span class="u">Sleep at night.</span></h1>
+        <h1>Run the meeting. Move the record. Get back to <span class="u">what matters.</span></h1>
         <p class="lede">Your school board's agendas, packets, minutes, votes, and public record all live on one table. <b>Posted on time, searchable by anyone, back to your first meeting.</b></p>
         <div class="rt-hero-cta">
           <a class="rt-btn big" href="/demo">Book a demo</a>
           <a class="rt-btn big ghost" href="#products">See what's on the table</a>
-          <span class="note">No sales call to look. Pricing's right on this page.</span>
+          <span class="note">Look before you talk to anyone. Pricing is on this page.</span>
         </div>
 
         <!-- BOARD TABLE FLAT-LAY -->
@@ -114,20 +115,20 @@ const products = [
             <g transform="translate(232,300) rotate(-7)">
               <rect x="-70" y="-96" width="140" height="192" rx="6" fill="#FBF9F1" stroke="#1D1A14" stroke-width="2"/>
               <rect x="-70" y="-96" width="70" height="192" rx="6" fill="#F3EFE2" stroke="#1D1A14" stroke-width="2"/>
-              <rect x="-58" y="-82" width="46" height="12" rx="3" fill="#C6402A"/>
+              <rect x="-58" y="-82" width="46" height="12" rx="3" class="rt-acc"/>
               <g stroke="#C9C0AC" stroke-width="3" stroke-linecap="round">
                 <path d="M-58 -60h46M-58 -48h40M-58 -36h46M-58 -24h34"/>
                 <path d="M8 -60h48M8 -48h40M8 -36h48M8 -24h30M8 -12h44"/>
               </g>
               <rect x="-58" y="4" width="30" height="10" rx="2" fill="#EFE3B8" stroke="#1D1A14" stroke-width="1.5"/>
             </g>
-            <g class="float2"><rect x="150" y="360" width="120" height="8" rx="4" fill="#2C2820" stroke="#1D1A14" stroke-width="2" transform="rotate(18 210 364)"/><circle cx="268" cy="392" r="5" fill="#C6402A" stroke="#1D1A14" stroke-width="1.5"/></g>
+            <g class="float2"><rect x="150" y="360" width="120" height="8" rx="4" fill="#2C2820" stroke="#1D1A14" stroke-width="2" transform="rotate(18 210 364)"/><circle cx="268" cy="392" r="5" class="rt-acc" stroke="#1D1A14" stroke-width="1.5"/></g>
 
             <!-- laptop taking live minutes (center-right) -->
             <g transform="translate(600,315) rotate(-6)">
               <rect x="-96" y="-70" width="192" height="128" rx="8" fill="#26231C" stroke="#1D1A14" stroke-width="2"/>
               <rect x="-86" y="-60" width="172" height="108" rx="4" fill="#F7F4EA"/>
-              <rect x="-74" y="-50" width="70" height="9" rx="3" fill="#C6402A"/>
+              <rect x="-74" y="-50" width="70" height="9" rx="3" class="rt-acc"/>
               <g font-family="Space Mono, monospace" font-weight="700" font-size="9" fill="#3A362B">
                 <text x="-74" y="-28">MINUTES · LIVE</text>
               </g>
@@ -137,9 +138,9 @@ const products = [
                 <rect x="-74" y="28" width="150" height="20" rx="4" fill="none"/>
               </g>
               <g font-family="Space Mono, monospace" font-size="8.5" fill="#4A4536">
-                <text x="-66" y="-6">Consent agenda</text><text x="52" y="-6" fill="#C6402A" font-weight="700">7–0</text>
-                <text x="-66" y="18">Bus contract</text><text x="52" y="18" fill="#C6402A" font-weight="700">6–1</text>
-                <text x="-66" y="42">Bell schedule</text><text x="52" y="42" fill="#C6402A" font-weight="700">5–2</text>
+                <text x="-66" y="-6">Consent agenda</text><text x="52" y="-6" class="rt-acc" font-weight="700">7–0</text>
+                <text x="-66" y="18">Bus contract</text><text x="52" y="18" class="rt-acc" font-weight="700">6–1</text>
+                <text x="-66" y="42">Bell schedule</text><text x="52" y="42" class="rt-acc" font-weight="700">5–2</text>
               </g>
               <rect x="-108" y="58" width="216" height="12" rx="4" fill="#3A362B" stroke="#1D1A14" stroke-width="2"/>
             </g>
@@ -162,10 +163,10 @@ const products = [
             <!-- clock at 5:45 (top-right) -->
             <g transform="translate(760,205)">
               <circle r="34" fill="#FBF9F1" stroke="#1D1A14" stroke-width="2.5"/>
-              <circle r="34" fill="none" stroke="#C6402A" stroke-width="2" stroke-dasharray="2 6"/>
+              <circle r="34" fill="none" class="rt-acc-s" stroke-width="2" stroke-dasharray="2 6"/>
               <line x1="0" y1="0" x2="-15" y2="4" stroke="#1D1A14" stroke-width="3" stroke-linecap="round"/>
               <line x1="0" y1="0" x2="2" y2="-20" stroke="#1D1A14" stroke-width="3" stroke-linecap="round"/>
-              <circle r="3" fill="#C6402A"/>
+              <circle r="3" class="rt-acc"/>
               <text x="0" y="52" text-anchor="middle" font-family="Space Mono, monospace" font-weight="700" font-size="10" fill="#5B5546">5:45</text>
             </g>
 
@@ -194,7 +195,7 @@ const products = [
       <div class="wrap">
         <span class="rt-kick">Everything on the table</span>
         <h2 class="rt-h2">One place for the whole meeting.</h2>
-        <p class="rt-sub">Not eight tools duct-taped together. Every part of a school board meeting, from the agenda to the archive, in one product.</p>
+        <p class="rt-sub">Every part of a school board meeting lives in one product, from the agenda to the archive. Your clerk stops stitching eight tools together.</p>
         <div class="rt-grid">
           {products.map((p) => (
             <div class="rt-prod">
@@ -301,4 +302,14 @@ const products = [
       </div>
     </footer>
   </div>
+
+  <script>
+    // Swap between the bold PostHog palette and the house colors (ivory / navy / sage).
+    const rt = document.querySelector('.rt');
+    const pal = document.getElementById('rtPal');
+    pal?.addEventListener('click', () => {
+      const warm = rt?.classList.toggle('warm');
+      if (pal) pal.textContent = warm ? 'Bold colors →' : 'House colors →';
+    });
+  </script>
 </Base>
