@@ -160,3 +160,21 @@
   --line: #D6CFC1; --line2: #C7BEAE;
   --red: #263D49; --red-deep: #1B2C36; --brass: #6E7663; --hi: #CAD4B7; --green: #4E7A57;
 }
+
+/* ---------- HERO MEDIA VIEW SWITCH (table <-> minutes doc) ---------- */
+.rt-view { display: inline-flex; margin: 26px 0 0; border: 2px solid var(--ink); border-radius: 10px; overflow: hidden; box-shadow: 3px 3px 0 var(--ink); }
+.rt-view button { font-family: var(--mono); font-size: 13px; font-weight: 700; color: var(--ink); background: var(--card); border: none; padding: 8px 16px; cursor: pointer; transition: background .1s ease; }
+.rt-view button + button { border-left: 2px solid var(--ink); }
+.rt-view button.on { background: var(--red); color: #fff; }
+.rt-doc-wrap { display: none; margin: 20px 0 8px; }
+.rt-media.show-doc .rt-table-wrap { display: none; }
+.rt-media.show-doc .rt-doc-wrap { display: block; }
+.rt-doc { width: 100%; height: auto; display: block; overflow: visible; }
+.rt-paper { fill: var(--card); stroke: var(--ink); stroke-width: 2.5; }
+.rt-paper-2 { fill: #F1EBDA; stroke: var(--ink); stroke-width: 2; }
+.rt-doc-h { font-family: var(--disp); font-weight: 700; fill: var(--ink); }
+.rt-doc-t { font-family: var(--mono); fill: var(--ink); }
+.rt-doc-m { font-family: var(--mono); fill: var(--mut); }
+.rt-doc-rule { stroke: var(--line2); stroke-width: 1.5; }
+.rt.warm .rt-paper-2 { fill: #DED7C7; }
+.rt-doc-acc { fill: var(--red); font-family: var(--mono); }

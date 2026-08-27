@@ -67,6 +67,12 @@ const products = [
           <span class="note">Look before you talk to anyone. Pricing is on this page.</span>
         </div>
 
+        <div class="rt-view" id="rtView">
+          <button class="on" type="button" data-v="table">Table view</button>
+          <button type="button" data-v="doc">Minutes view</button>
+        </div>
+
+        <div class="rt-media" id="rtMedia">
         <!-- BOARD TABLE FLAT-LAY -->
         <div class="rt-table-wrap">
           <svg class="rt-table" viewBox="0 0 1000 640" role="img" aria-label="A board room table, seen from above, set for a meeting: agenda and packet, a gavel, a laptop taking live minutes, the minute book, sticky notes for public comment, and a clock.">
@@ -178,6 +184,59 @@ const products = [
             <g class="rt-annot"><line class="rt-lead-line" x1="176" y1="576" x2="270" y2="452"/><circle class="rt-dot" cx="270" cy="452" r="4.5"/><g transform="translate(60,566)"><rect class="rt-tag" width="150" height="26" rx="7"/><text class="rt-tag-t" x="11" y="17">The minute book</text></g></g>
             <g class="rt-annot"><line class="rt-lead-line" x1="726" y1="578" x2="676" y2="482"/><circle class="rt-dot" cx="676" cy="482" r="4.5"/><g transform="translate(720,568)"><rect class="rt-tag" width="140" height="26" rx="7"/><text class="rt-tag-t" x="11" y="17">Public comment</text></g></g>
           </svg>
+        </div>
+
+        <!-- MINUTES ON PAPER (slightly askew) -->
+        <div class="rt-doc-wrap">
+          <svg class="rt-doc" viewBox="0 0 1000 640" role="img" aria-label="Board meeting minutes on a sheet of paper, slightly askew: the meeting title and date, roll call, six numbered items with vote tallies, an APPROVED stamp, and the clerk's signature.">
+            <g transform="translate(500,306) rotate(-3.5)">
+              <rect class="rt-paper-2" x="-198" y="-262" width="404" height="540" rx="5" transform="rotate(3)"/>
+              <rect class="rt-paper-2" x="-204" y="-270" width="410" height="546" rx="5" transform="rotate(-1.6)"/>
+              <rect x="-202" y="-272" width="414" height="552" rx="5" fill="#1D1A14"/>
+              <rect class="rt-paper" x="-208" y="-278" width="414" height="552" rx="5"/>
+
+              <text class="rt-doc-m" x="-182" y="-240" font-size="11" letter-spacing="1.4">RIVERTON USD · BOARD OF TRUSTEES</text>
+              <text class="rt-doc-h" x="-183" y="-200" font-size="36" letter-spacing="-1">Minutes</text>
+              <text class="rt-doc-t" x="-181" y="-174" font-size="13">Regular Meeting · March 12, 2026 · 6:00 p.m.</text>
+              <g transform="translate(118,-232) rotate(4)">
+                <rect class="rt-acc-s" x="-4" y="-17" width="98" height="32" rx="5" fill="none" stroke-width="2"/>
+                <text class="rt-doc-acc" x="4" y="-3" font-size="9" font-weight="700">POSTED</text>
+                <text class="rt-doc-acc" x="4" y="9" font-size="9" font-weight="700">3 DAYS PRIOR</text>
+              </g>
+              <line class="rt-doc-rule" x1="-182" y1="-158" x2="182" y2="-158" stroke-width="2"/>
+
+              <text class="rt-doc-t" x="-182" y="-132" font-size="12.5">Present: 7 of 7 trustees. Quorum met. Clerk recording.</text>
+
+              <g class="rt-doc-t" font-size="13">
+                <text x="-182" y="-100"><tspan fill="#8B8574">1</tspan>  Call to order</text><text x="182" y="-100" text-anchor="end" class="rt-doc-m">6:00 p.m.</text>
+                <text x="-182" y="-64"><tspan fill="#8B8574">2</tspan>  Consent agenda</text><text x="182" y="-64" text-anchor="end" class="rt-doc-acc" font-weight="700">Approved 7–0</text>
+                <text x="-182" y="-28"><tspan fill="#8B8574">3</tspan>  Bus contract to Durham</text><text x="182" y="-28" text-anchor="end" class="rt-doc-acc" font-weight="700">6–1</text>
+                <text x="-182" y="8"><tspan fill="#8B8574">4</tspan>  Bell schedule, FY26</text><text x="182" y="8" text-anchor="end" class="rt-doc-acc" font-weight="700">5–2</text>
+                <text x="-182" y="44"><tspan fill="#8B8574">5</tspan>  Public comment</text><text x="182" y="44" text-anchor="end" class="rt-doc-m">3 speakers</text>
+                <text x="-182" y="80"><tspan fill="#8B8574">6</tspan>  Adjourned</text><text x="182" y="80" text-anchor="end" class="rt-doc-m">7:12 p.m.</text>
+              </g>
+              <g class="rt-doc-rule">
+                <line x1="-182" y1="-84" x2="182" y2="-84"/><line x1="-182" y1="-48" x2="182" y2="-48"/><line x1="-182" y1="-12" x2="182" y2="-12"/><line x1="-182" y1="24" x2="182" y2="24"/><line x1="-182" y1="60" x2="182" y2="60"/>
+              </g>
+
+              <g transform="translate(70,140) rotate(-11)">
+                <rect class="rt-acc-s" x="-60" y="-23" width="120" height="46" rx="8" fill="none" stroke-width="3"/>
+                <text class="rt-doc-acc" x="0" y="9" text-anchor="middle" font-weight="700" font-size="22" letter-spacing="2">APPROVED</text>
+              </g>
+
+              <path d="M-176 214 q 14 -18 28 0 t 28 0 q 10 -14 22 -2 l 12 6" fill="none" stroke="#1D1A14" stroke-width="2" stroke-linecap="round"/>
+              <line class="rt-doc-rule" x1="-178" y1="228" x2="-36" y2="228" stroke-width="1.5"/>
+              <text class="rt-doc-m" x="-178" y="246" font-size="11">Clerk of the Board</text>
+              <text class="rt-doc-m" x="182" y="246" text-anchor="end" font-size="10">p. 1 of 3</text>
+            </g>
+
+            <g class="rt-annot"><line class="rt-lead-line" x1="560" y1="42" x2="612" y2="70"/><circle class="rt-dot" cx="612" cy="70" r="4.5"/><g transform="translate(452,28)"><rect class="rt-tag" width="114" height="26" rx="7"/><text class="rt-tag-t" x="11" y="17">Posted on time</text></g></g>
+            <g class="rt-annot"><line class="rt-lead-line" x1="736" y1="292" x2="650" y2="292"/><circle class="rt-dot" cx="650" cy="292" r="4.5"/><g transform="translate(730,279)"><rect class="rt-tag" width="212" height="26" rx="7"/><text class="rt-tag-t" x="11" y="17">Every motion, with the tally</text></g></g>
+            <g class="rt-annot"><line class="rt-lead-line" x1="716" y1="452" x2="602" y2="436"/><circle class="rt-dot" cx="602" cy="436" r="4.5"/><g transform="translate(710,442)"><rect class="rt-tag" width="150" height="26" rx="7"/><text class="rt-tag-t" x="11" y="17">Approved + sealed</text></g></g>
+            <g class="rt-annot"><line class="rt-lead-line" x1="300" y1="560" x2="384" y2="524"/><circle class="rt-dot" cx="384" cy="524" r="4.5"/><g transform="translate(158,550)"><rect class="rt-tag" width="150" height="26" rx="7"/><text class="rt-tag-t" x="11" y="17">Signed by the clerk</text></g></g>
+            <g class="rt-annot"><line class="rt-lead-line" x1="150" y1="300" x2="322" y2="280"/><circle class="rt-dot" cx="322" cy="280" r="4.5"/><g transform="translate(6,290)"><rect class="rt-tag" width="188" height="26" rx="7"/><text class="rt-tag-t" x="11" y="17">Searchable to the word</text></g></g>
+          </svg>
+        </div>
         </div>
       </div>
     </header>
@@ -310,6 +369,17 @@ const products = [
     pal?.addEventListener('click', () => {
       const warm = rt?.classList.toggle('warm');
       if (pal) pal.textContent = warm ? 'Bold colors →' : 'House colors →';
+    });
+
+    // Swap the hero illustration between the table flat-lay and the minutes doc.
+    const media = document.getElementById('rtMedia');
+    const view = document.getElementById('rtView');
+    view?.addEventListener('click', (e) => {
+      const b = (e.target as HTMLElement).closest('button[data-v]') as HTMLElement | null;
+      if (!b) return;
+      view.querySelectorAll('button').forEach((x) => x.classList.remove('on'));
+      b.classList.add('on');
+      media?.classList.toggle('show-doc', b.dataset.v === 'doc');
     });
   </script>
 </Base>
