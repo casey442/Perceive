@@ -21,14 +21,19 @@ jobs:
       - run: npm ci
       - run: npm run build
       - name: Deploy to Netlify (production)
-        # netlify-cli's tree currently requires @netlify/ai@^1.0.1, which does not
-        # exist on npm (latest is 1.0.0), so a plain install fails with ETARGET.
-        # Install in a scratch dir with an npm override forcing @netlify/ai to 1.0.0.
+        # netlify-cli's dependency tree is currently un-installable (sub-packages
+        # pin unpublished @netlify/* versions), so deploy the built dist straight to
+        # Netlify's zip-upload API with curl. No npm deps, nothing to break.
         run: |
-          mkdir -p /tmp/ntl && cd /tmp/ntl
-          printf '{"name":"ntl-deploy","private":true,"overrides":{"@netlify/ai":"1.0.0"},"dependencies":{"netlify-cli":"27.3.1"}}' > package.json
-          npm install --no-audit --no-fund --loglevel=error
-          ./node_modules/.bin/netlify deploy --prod --dir="$GITHUB_WORKSPACE/dist" --site "$NETLIFY_SITE_ID" --auth "$NETLIFY_AUTH_TOKEN"
+          ( cd dist && zip -r -q /tmp/site.zip . )
+          echo "Uploading $(du -h /tmp/site.zip | cut -f1) to Netlify..."
+          code=$(curl -sS -o /tmp/ntl-resp.json -w '%{http_code}' -X POST \
+            -H "Authorization: Bearer $NETLIFY_AUTH_TOKEN" \
+            -H "Content-Type: application/zip" \
+            --data-binary @/tmp/site.zip \
+            "https://api.netlify.com/api/v1/sites/$NETLIFY_SITE_ID/deploys")
+          echo "HTTP $code"; head -c 500 /tmp/ntl-resp.json; echo
+          test "$code" -ge 200 -a "$code" -lt 300
         env:
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
