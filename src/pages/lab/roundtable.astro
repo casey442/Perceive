@@ -1,0 +1,304 @@
+---
+import Base from '../../layouts/Base.astro';
+import '../../styles/lab.css';
+import '../../styles/roundtable.css';
+import LabBar from '../../components/LabBar.astro';
+
+const svg = {
+  templates: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3" y="3" width="18" height="18" rx="2.5"/><path d="M3 9h18M9 21V9"/></svg>',
+  doc: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="5" y="3" width="14" height="18" rx="2.5"/><path d="M9 8.5h6M9 12.5h6M9 16.5h4"/></svg>',
+  clock: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.2 2"/></svg>',
+  search: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>',
+  check: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="12" cy="12" r="9"/><path d="M8 12l2.8 2.8L16 9"/></svg>',
+  book: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M5 4.5A1.5 1.5 0 0 1 6.5 3H19v16.5H6.5A1.5 1.5 0 0 0 5 21z"/><path d="M9 3v18"/></svg>',
+  clip: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M20 11.5l-8.2 8.2a5 5 0 0 1-7-7l8.5-8.5a3.3 3.3 0 1 1 4.7 4.7l-8.5 8.5a1.6 1.6 0 0 1-2.3-2.3l7.8-7.8"/></svg>',
+  mail: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.5 7l8.5 6 8.5-6"/></svg>',
+  gavel: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M14 3l7 7-3 3-7-7z"/><path d="M11 6l-7 7 3 3 7-7"/><path d="M3 21h9"/></svg>',
+};
+
+const products = [
+  { k: 'Agendas', ic: 'templates', d: 'Templates plus email-to-file. Never a blank page.', c: '#C98B6A' },
+  { k: 'Packets', ic: 'doc', d: 'Assembled and posted days before the meeting.', c: '#D9C48A' },
+  { k: 'Live minutes', ic: 'clock', d: 'Motions, votes, and roll calls, as it happens.', c: '#93A382' },
+  { k: 'Public portal', ic: 'search', d: 'Every word of the record, searchable by anyone.', c: '#8FA6B4' },
+  { k: 'Notices', ic: 'check', d: "Posted inside your state's open-meetings window.", c: '#DBA093' },
+  { k: 'The record', ic: 'book', d: 'One minute book, back to your first meeting.', c: '#D4B36A' },
+  { k: 'Migration', ic: 'clip', d: 'Your history, out of BoardDocs or Diligent.', c: '#B79BC0' },
+  { k: 'Cited summaries', ic: 'mail', d: 'AI drafts, you approve, the source page is cited.', c: '#84B3A9' },
+];
+---
+<Base title="BoardPlanner — Roundtable study">
+  <Fragment slot="head">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" />
+  </Fragment>
+
+  <LabBar active="roundtable" />
+
+  <div class="rt">
+    <nav class="rt-nav">
+      <div class="rt-nav-in">
+        <a class="rt-logo" href="/"><span class="mk">B</span> BoardPlanner</a>
+        <div class="rt-nav-links">
+          <a href="#products">Products</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#">Docs</a>
+          <a href="#">Districts</a>
+          <a href="#why">Why us</a>
+        </div>
+        <div class="rt-nav-cta">
+          <a class="signin" href="#">Sign in</a>
+          <a class="rt-btn" href="/demo">Book a demo</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="rt-hero">
+      <div class="wrap">
+        <span class="rt-eyebrow">◆ Board meeting software for K-12 school districts</span>
+        <h1>Run the meeting. Post the record. <span class="u">Sleep at night.</span></h1>
+        <p class="lede">Your school board's agendas, packets, minutes, votes, and public record all live on one table. <b>Posted on time, searchable by anyone, back to your first meeting.</b></p>
+        <div class="rt-hero-cta">
+          <a class="rt-btn big" href="/demo">Book a demo</a>
+          <a class="rt-btn big ghost" href="#products">See what's on the table</a>
+          <span class="note">No sales call to look. Pricing's right on this page.</span>
+        </div>
+
+        <!-- BOARD TABLE FLAT-LAY -->
+        <div class="rt-table-wrap">
+          <svg class="rt-table" viewBox="0 0 1000 640" role="img" aria-label="A board room table, seen from above, set for a meeting: agenda and packet, a gavel, a laptop taking live minutes, the minute book, sticky notes for public comment, and a clock.">
+            <defs>
+              <linearGradient id="wood" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#D0AC78"/><stop offset="1" stop-color="#B18B55"/>
+              </linearGradient>
+              <linearGradient id="woodrim" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#9A7A45"/><stop offset="1" stop-color="#7E6236"/>
+              </linearGradient>
+            </defs>
+
+            <!-- chairs -->
+            <g fill="#2C2820" stroke="#1D1A14" stroke-width="2">
+              <rect x="255" y="70" width="96" height="52" rx="14"/><rect x="452" y="66" width="96" height="52" rx="14"/><rect x="649" y="70" width="96" height="52" rx="14"/>
+              <rect x="255" y="520" width="96" height="52" rx="14"/><rect x="452" y="524" width="96" height="52" rx="14"/><rect x="649" y="520" width="96" height="52" rx="14"/>
+              <rect x="70" y="270" width="52" height="96" rx="14"/><rect x="878" y="270" width="52" height="96" rx="14"/>
+            </g>
+
+            <!-- table (racetrack) -->
+            <rect x="96" y="132" width="808" height="376" rx="188" fill="url(#woodrim)"/>
+            <rect x="104" y="140" width="792" height="360" rx="180" fill="url(#wood)"/>
+            <rect x="104" y="140" width="792" height="360" rx="180" fill="none" stroke="#8A6C3E" stroke-width="2" opacity=".5"/>
+
+            <!-- name plates near seats -->
+            <g font-family="Space Mono, monospace" font-weight="700" font-size="10" fill="#EDE7D6">
+              <g transform="translate(470,150)"><rect x="-30" y="-2" width="60" height="18" rx="3" fill="#2C2820" stroke="#1D1A14" stroke-width="1.5"/><text x="0" y="11" text-anchor="middle">PRESIDENT</text></g>
+              <g transform="translate(470,472)"><rect x="-24" y="0" width="48" height="18" rx="3" fill="#2C2820" stroke="#1D1A14" stroke-width="1.5"/><text x="0" y="13" text-anchor="middle">CLERK</text></g>
+            </g>
+
+            <!-- coffee cups -->
+            <g fill="#F4F0E6" stroke="#1D1A14" stroke-width="2">
+              <circle cx="330" cy="200" r="15"/><circle cx="670" cy="440" r="15"/>
+            </g>
+            <g fill="#8A6C3E"><circle cx="330" cy="200" r="8"/><circle cx="670" cy="440" r="8"/></g>
+
+            <!-- gavel (top center) -->
+            <ellipse cx="470" cy="250" rx="30" ry="10" fill="#B98A3B" stroke="#1D1A14" stroke-width="2"/>
+            <g class="float1"><g transform="translate(500,205) rotate(24)">
+              <rect x="-6" y="-4" width="74" height="16" rx="7" fill="#B98A3B" stroke="#1D1A14" stroke-width="2"/>
+              <rect x="-44" y="-13" width="42" height="34" rx="7" fill="#C89A48" stroke="#1D1A14" stroke-width="2"/>
+              <rect x="-46" y="-16" width="46" height="8" rx="3" fill="#8A6C3E" stroke="#1D1A14" stroke-width="2"/>
+            </g></g>
+
+            <!-- agenda booklet + pen (left) -->
+            <g transform="translate(232,300) rotate(-7)">
+              <rect x="-70" y="-96" width="140" height="192" rx="6" fill="#FBF9F1" stroke="#1D1A14" stroke-width="2"/>
+              <rect x="-70" y="-96" width="70" height="192" rx="6" fill="#F3EFE2" stroke="#1D1A14" stroke-width="2"/>
+              <rect x="-58" y="-82" width="46" height="12" rx="3" fill="#C6402A"/>
+              <g stroke="#C9C0AC" stroke-width="3" stroke-linecap="round">
+                <path d="M-58 -60h46M-58 -48h40M-58 -36h46M-58 -24h34"/>
+                <path d="M8 -60h48M8 -48h40M8 -36h48M8 -24h30M8 -12h44"/>
+              </g>
+              <rect x="-58" y="4" width="30" height="10" rx="2" fill="#EFE3B8" stroke="#1D1A14" stroke-width="1.5"/>
+            </g>
+            <g class="float2"><rect x="150" y="360" width="120" height="8" rx="4" fill="#2C2820" stroke="#1D1A14" stroke-width="2" transform="rotate(18 210 364)"/><circle cx="268" cy="392" r="5" fill="#C6402A" stroke="#1D1A14" stroke-width="1.5"/></g>
+
+            <!-- laptop taking live minutes (center-right) -->
+            <g transform="translate(600,315) rotate(-6)">
+              <rect x="-96" y="-70" width="192" height="128" rx="8" fill="#26231C" stroke="#1D1A14" stroke-width="2"/>
+              <rect x="-86" y="-60" width="172" height="108" rx="4" fill="#F7F4EA"/>
+              <rect x="-74" y="-50" width="70" height="9" rx="3" fill="#C6402A"/>
+              <g font-family="Space Mono, monospace" font-weight="700" font-size="9" fill="#3A362B">
+                <text x="-74" y="-28">MINUTES · LIVE</text>
+              </g>
+              <g stroke="#D8D0BC" stroke-width="2">
+                <rect x="-74" y="-20" width="150" height="20" rx="4" fill="#EFEAD9"/>
+                <rect x="-74" y="4" width="150" height="20" rx="4" fill="none"/>
+                <rect x="-74" y="28" width="150" height="20" rx="4" fill="none"/>
+              </g>
+              <g font-family="Space Mono, monospace" font-size="8.5" fill="#4A4536">
+                <text x="-66" y="-6">Consent agenda</text><text x="52" y="-6" fill="#C6402A" font-weight="700">7–0</text>
+                <text x="-66" y="18">Bus contract</text><text x="52" y="18" fill="#C6402A" font-weight="700">6–1</text>
+                <text x="-66" y="42">Bell schedule</text><text x="52" y="42" fill="#C6402A" font-weight="700">5–2</text>
+              </g>
+              <rect x="-108" y="58" width="216" height="12" rx="4" fill="#3A362B" stroke="#1D1A14" stroke-width="2"/>
+            </g>
+
+            <!-- the minute book / PDF stack (bottom-left) -->
+            <g transform="translate(300,452) rotate(-4)">
+              <rect x="-58" y="-6" width="120" height="60" rx="5" fill="#E7DFC9" stroke="#1D1A14" stroke-width="2"/>
+              <rect x="-64" y="-16" width="120" height="60" rx="5" fill="#F1EAD6" stroke="#1D1A14" stroke-width="2"/>
+              <rect x="-70" y="-26" width="120" height="60" rx="5" fill="#FBF9F1" stroke="#1D1A14" stroke-width="2"/>
+              <g stroke="#C9C0AC" stroke-width="2.4" stroke-linecap="round"><path d="M-58 -12h96M-58 -2h80M-58 8h96"/></g>
+            </g>
+
+            <!-- sticky notes (bottom-right) -->
+            <g transform="translate(650,455)">
+              <rect x="-2" y="-2" width="52" height="52" rx="3" fill="#F2E074" stroke="#1D1A14" stroke-width="2" transform="rotate(6 24 24)"/>
+              <rect x="30" y="6" width="48" height="48" rx="3" fill="#E7A6B0" stroke="#1D1A14" stroke-width="2" transform="rotate(-8 54 30)"/>
+              <g font-family="Space Mono, monospace" font-size="8" fill="#4A4536"><text x="6" y="20" transform="rotate(6 24 24)">3 min</text><text x="6" y="34" transform="rotate(6 24 24)">/ speaker</text></g>
+            </g>
+
+            <!-- clock at 5:45 (top-right) -->
+            <g transform="translate(760,205)">
+              <circle r="34" fill="#FBF9F1" stroke="#1D1A14" stroke-width="2.5"/>
+              <circle r="34" fill="none" stroke="#C6402A" stroke-width="2" stroke-dasharray="2 6"/>
+              <line x1="0" y1="0" x2="-15" y2="4" stroke="#1D1A14" stroke-width="3" stroke-linecap="round"/>
+              <line x1="0" y1="0" x2="2" y2="-20" stroke="#1D1A14" stroke-width="3" stroke-linecap="round"/>
+              <circle r="3" fill="#C6402A"/>
+              <text x="0" y="52" text-anchor="middle" font-family="Space Mono, monospace" font-weight="700" font-size="10" fill="#5B5546">5:45</text>
+            </g>
+
+            <!-- annotations -->
+            <g class="rt-annot"><line class="rt-lead-line" x1="300" y1="80" x2="474" y2="210"/><circle class="rt-dot" cx="474" cy="210" r="4.5"/><g transform="translate(196,64)"><rect class="rt-tag" width="118" height="26" rx="7"/><text class="rt-tag-t" x="11" y="17">Call to order</text></g></g>
+            <g class="rt-annot"><line class="rt-lead-line" x1="712" y1="104" x2="612" y2="270"/><circle class="rt-dot" cx="612" cy="270" r="4.5"/><g transform="translate(706,90)"><rect class="rt-tag" width="112" height="26" rx="7"/><text class="rt-tag-t" x="11" y="17">Live minutes</text></g></g>
+            <g class="rt-annot"><line class="rt-lead-line" x1="150" y1="310" x2="232" y2="300"/><circle class="rt-dot" cx="232" cy="300" r="4.5"/><g transform="translate(6,297)"><rect class="rt-tag" width="150" height="26" rx="7"/><text class="rt-tag-t" x="11" y="17">Agenda + packet</text></g></g>
+            <g class="rt-annot"><line class="rt-lead-line" x1="838" y1="300" x2="760" y2="220"/><circle class="rt-dot" cx="760" cy="220" r="4.5"/><g transform="translate(832,290)"><rect class="rt-tag" width="164" height="26" rx="7"/><text class="rt-tag-t" x="11" y="17">Posted 3 days early</text></g></g>
+            <g class="rt-annot"><line class="rt-lead-line" x1="176" y1="576" x2="270" y2="452"/><circle class="rt-dot" cx="270" cy="452" r="4.5"/><g transform="translate(60,566)"><rect class="rt-tag" width="150" height="26" rx="7"/><text class="rt-tag-t" x="11" y="17">The minute book</text></g></g>
+            <g class="rt-annot"><line class="rt-lead-line" x1="726" y1="578" x2="676" y2="482"/><circle class="rt-dot" cx="676" cy="482" r="4.5"/><g transform="translate(720,568)"><rect class="rt-tag" width="140" height="26" rx="7"/><text class="rt-tag-t" x="11" y="17">Public comment</text></g></g>
+          </svg>
+        </div>
+      </div>
+    </header>
+
+    <!-- MARQUEE STRIP -->
+    <div class="rt-strip" aria-hidden="true">
+      <div class="marq">
+        <span>PROPERLY NOTICED <b>◆</b> CONSENT AGENDA <b>◆</b> ROLL CALL <b>◆</b> THE PACKET <b>◆</b> MINUTE BOOK <b>◆</b> POSTED ON TIME <b>◆</b> PUBLIC BY LAW <b>◆</b></span>
+        <span>PROPERLY NOTICED <b>◆</b> CONSENT AGENDA <b>◆</b> ROLL CALL <b>◆</b> THE PACKET <b>◆</b> MINUTE BOOK <b>◆</b> POSTED ON TIME <b>◆</b> PUBLIC BY LAW <b>◆</b></span>
+      </div>
+    </div>
+
+    <!-- PRODUCT GRID -->
+    <section class="rt-sec" id="products">
+      <div class="wrap">
+        <span class="rt-kick">Everything on the table</span>
+        <h2 class="rt-h2">One place for the whole meeting.</h2>
+        <p class="rt-sub">Not eight tools duct-taped together. Every part of a school board meeting, from the agenda to the archive, in one product.</p>
+        <div class="rt-grid">
+          {products.map((p) => (
+            <div class="rt-prod">
+              <span class="tagn">/{p.k.toLowerCase().replace(/ /g, '-')}</span>
+              <span class="swatch" style={`background:${p.c}`}><span set:html={svg[p.ic]} /></span>
+              <h3>{p.k}</h3>
+              <p>{p.d}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="rt-sec alt">
+      <div class="wrap">
+        <span class="rt-kick">The numbers that matter</span>
+        <h2 class="rt-h2">The meeting is the law. We keep the clock.</h2>
+        <div class="rt-stats">
+          <div class="rt-stat"><div class="n">3<span class="un"> days</span></div><div class="l">business days of posted notice in Texas, met every time</div></div>
+          <div class="rt-stat"><div class="n">72<span class="un"> hrs</span></div><div class="l">notice in many states, never missed</div></div>
+          <div class="rt-stat"><div class="n">1<span class="un"> book</span></div><div class="l">minute book, back to your first meeting on record</div></div>
+          <div class="rt-stat"><div class="n">0</div><div class="l">meetings void for a missed notice deadline</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MANIFESTO -->
+    <section class="rt-sec" id="why">
+      <div class="wrap">
+        <span class="rt-kick">Why we built it this way</span>
+        <h2 class="rt-h2">We have opinions about school board meetings.</h2>
+        <div class="rt-manifesto">
+          <div class="rt-op"><h4>The calendar is a statute.</h4><p>Miss a notice deadline and the meeting can be void. We treat your state's window like the law it is, and post inside it every time.</p></div>
+          <div class="rt-op"><h4>The public should not file a request.</h4><p>Every agenda and approved minute posts to a URL a parent, teacher, or reporter can read and search. No form, no wait.</p></div>
+          <div class="rt-op"><h4>Your minute book is not a hard drive.</h4><p>It runs unbroken back to meeting one, searchable to the word, and it does not leave when the last person who knew the filing system retires.</p></div>
+          <div class="rt-op"><h4>AI cites the page, then hushes.</h4><p>It drafts a plain-language summary and shows the source page. You approve it. It never speaks for the board.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <section class="rt-sec alt" id="pricing">
+      <div class="wrap">
+        <span class="rt-kick">Pricing, right here</span>
+        <h2 class="rt-h2">Priced by your enrollment. On the page.</h2>
+        <p class="rt-sub">One flat price per district a year, set by how many students you serve. Migration off BoardDocs or Diligent is on us. <span class="rt-sticker">No "contact sales" ◆</span></p>
+        <div class="rt-price">
+          <table>
+            <thead><tr><th>Plan</th><th>Enrollment</th><th class="num">Per year</th></tr></thead>
+            <tbody>
+              <tr><td class="plan">Small</td><td>Up to 1,500 students</td><td class="num">$2,400</td></tr>
+              <tr><td class="plan">Standard</td><td>1,500 to 5,000 students</td><td class="num">$3,600</td></tr>
+              <tr><td class="plan">Large</td><td>5,000 to 15,000 students</td><td class="num">$6,000</td></tr>
+              <tr><td class="plan">Enterprise</td><td>15,000+ students</td><td class="num">$9,600</td></tr>
+              <tr><td class="plan">Migration</td><td>From BoardDocs or Diligent, any plan</td><td class="num free">$0</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIAL (honest empty) -->
+    <section class="rt-sec">
+      <div class="wrap">
+        <span class="rt-kick">What districts say</span>
+        <h2 class="rt-h2">Nothing yet. We left it blank on purpose.</h2>
+        <div class="rt-quote">
+          <span class="rt-stamp">Reserved</span>
+          <p>This is where a real board secretary's quote will go, in her own unedited words, the complaints included. We have zero districts live, so we did not write one for her. Be the first, and the box is yours.</p>
+          <div class="by">// awaiting district #1 · as of 2026-08-25</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="rt-final">
+      <div class="wrap">
+        <h2>The next meeting is <span class="u">already on the calendar.</span></h2>
+        <p>Twenty minutes with your real agenda, start to finish. No slides.</p>
+        <a class="rt-btn big" href="/demo">Book a demo</a>
+        <a class="rt-btn big ghost" href="#pricing">See the pricing again</a>
+      </div>
+    </section>
+
+    <!-- FAT FOOTER -->
+    <footer class="rt-foot">
+      <div class="rt-foot-in">
+        <div class="rt-foot-top">
+          <div class="col brand">
+            <a class="rt-logo" href="/"><span class="mk">B</span> BoardPlanner</a>
+            <p>Board meeting software for K-12 school districts. Built for the person who keeps the record.</p>
+            <form class="rt-news" onsubmit="return false"><input type="email" placeholder="you@district.org" aria-label="email" /><button class="rt-btn" type="submit">Get the changelog</button></form>
+          </div>
+          <div class="col"><h5>Product</h5><ul><li><a href="#products">Agendas</a></li><li><a href="#products">Minutes</a></li><li><a href="#products">Public portal</a></li><li><a href="#products">Migration</a></li><li><a href="#pricing">Pricing</a></li></ul></div>
+          <div class="col"><h5>Your district</h5><ul><li><a href="#">For the board secretary</a></li><li><a href="#">For the superintendent</a></li><li><a href="#">For board members</a></li><li><a href="#">Open-meetings rules</a></li></ul></div>
+          <div class="col"><h5>Company</h5><ul><li><a href="#why">Why us</a></li><li><a href="#">Changelog</a></li><li><a href="#">Status</a></li><li><a href="#">Security</a></li><li><a href="/lab/contrarian/">The honest page</a></li></ul></div>
+          <div class="col"><h5>Legal</h5><ul><li><a href="#">Disclosure policy</a></li><li><a href="#">Privacy</a></li><li><a href="#">Terms</a></li><li><a href="#">Accessibility</a></li></ul></div>
+        </div>
+        <div class="rt-foot-bot">
+          <span class="adjourned">Meeting adjourned.</span>
+          <span class="fine">© 2026 BoardPlanner · No tracking cookies, so no banner to dismiss.</span>
+        </div>
+      </div>
+    </footer>
+  </div>
+</Base>
