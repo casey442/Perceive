@@ -1,5 +1,5 @@
 ---
-interface Props { active?: 'index' | 'home' | 'search' | 'workflow' | 'themes' | 'headlines' | 'fh' | 'luxe' | 'motion' | 'motion-bw' | 'crisp' | 'feedback-v1' | 'feedback-v2' | 'feedback-v3' | 'contrarian' | 'roundtable'; }
+interface Props { active?: 'index' | 'home' | 'search' | 'workflow' | 'themes' | 'headlines' | 'fh' | 'luxe' | 'motion' | 'motion-bw' | 'crisp' | 'feedback-v1' | 'feedback-v2' | 'feedback-v3' | 'contrarian' | 'roundtable' | 'cashapp'; }
 const { active } = Astro.props;
 const items = [
   { key: 'index', label: 'Lab', href: '/lab/' },
@@ -8,6 +8,7 @@ const items = [
   { key: 'feedback-v3', label: 'Feedback V3', href: '/lab/feedback-v3/' },
   { key: 'contrarian', label: 'Contrarian', href: '/lab/contrarian/' },
   { key: 'roundtable', label: 'Roundtable', href: '/lab/roundtable/' },
+  { key: 'cashapp', label: 'Cash App', href: '/lab/cashapp/' },
   { key: 'home', label: 'Home study', href: '/lab/home-study/' },
   { key: 'fh', label: 'FH layout', href: '/lab/function-health/' },
   { key: 'luxe', label: 'Luxe', href: '/lab/luxe/' },

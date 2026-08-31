@@ -1,0 +1,202 @@
+---
+import Base from '../../layouts/Base.astro';
+import '../../styles/lab.css';
+import '../../styles/cashapp.css';
+import LabBar from '../../components/LabBar.astro';
+
+const svg = {
+  clip: '<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 11.5l-8.2 8.2a5 5 0 0 1-7-7l8.5-8.5a3.3 3.3 0 1 1 4.7 4.7l-8.5 8.5a1.6 1.6 0 0 1-2.3-2.3l7.8-7.8"/></svg>',
+  search: '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>',
+};
+---
+<Base title="BoardPlanner — Cash App study">
+  <Fragment slot="head">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&display=swap" />
+  </Fragment>
+
+  <LabBar active="cashapp" />
+
+  <div class="cash">
+    <nav class="cash-nav">
+      <div class="cash-nav-in">
+        <a class="cash-logo" href="/"><span class="mk">B</span> BoardPlanner</a>
+        <div class="cash-nav-links">
+          <a href="#minutes">Product</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#">Districts</a>
+          <a href="#">Docs</a>
+        </div>
+        <div class="cash-nav-cta">
+          <a class="signin" href="#">Sign in</a>
+          <a class="cash-btn sm" href="/demo">Book a demo</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- HERO (navy) -->
+    <header class="cash-hero">
+      <div class="wrap">
+        <div class="grid">
+          <div>
+            <span class="cash-eyebrow">Board software for K-12 school districts</span>
+            <h1 class="cash-huge">Board meetings, handled.</h1>
+            <p class="cash-lede">Agendas, packets, minutes, votes, and the public record. One place, posted on time, searchable by anyone.</p>
+            <div class="cash-hero-cta">
+              <a class="cash-btn" href="/demo">Book a demo</a>
+              <a class="cash-btn outline" href="#pricing">See pricing</a>
+              <span class="note">Pricing's on the page. No sales call to look.</span>
+            </div>
+          </div>
+          <div class="stage">
+            <div class="ph"><div class="ph-scr">
+              <div class="ph-top"><div class="t">Agenda</div><div class="s">Regular Meeting · March 12</div></div>
+              <div class="ph-body">
+                <div class="ph-row"><span class="k"><span class="n">1</span>Call to order</span></div>
+                <div class="ph-row"><span class="k"><span class="n">2</span>Consent agenda</span></div>
+                <div class="ph-row on"><span class="k"><span class="n">3</span>New business</span></div>
+                <span class="ph-chip"><span set:html={svg.clip} /> Budget-FY26.pdf · filed from email</span>
+                <div class="ph-row"><span class="k"><span class="n">4</span>Public comment</span></div>
+                <div class="ph-row"><span class="k"><span class="n">5</span>Adjourn</span></div>
+              </div>
+            </div></div>
+          </div>
+        </div>
+      </div>
+      <div style="height:70px"></div>
+    </header>
+
+    <!-- BLOCK A · Minutes (ivory, image left) -->
+    <section class="cash-sec cash-feat b-ivory rev" id="minutes">
+      <div class="wrap"><div class="grid">
+        <div>
+          <span class="cash-eyebrow">Live minutes</span>
+          <h2 class="cash-big">Minutes, the moment they happen.</h2>
+          <p>Motions, votes, and roll calls captured as the meeting runs. By adjournment, the book has written itself.</p>
+          <a class="cash-arrow" href="#">See live minutes</a>
+        </div>
+        <div class="stage">
+          <div class="ph"><div class="ph-scr">
+            <div class="ph-top"><div class="t">Minutes</div><div class="s">Live · recording</div></div>
+            <div class="ph-body">
+              <div class="ph-row"><span class="k">Consent agenda</span><span class="v">7–0</span></div>
+              <div class="ph-row"><span class="k">Bus contract</span><span class="v">6–1</span></div>
+              <div class="ph-row"><span class="k">Bell schedule</span><span class="v">5–2</span></div>
+              <div class="ph-row"><span class="k">Cell-phone policy</span><span class="v">6–1</span></div>
+              <div class="ph-row"><span class="k">Adjourned</span><span class="v">7:12p</span></div>
+            </div>
+          </div></div>
+        </div>
+      </div></div>
+    </section>
+
+    <!-- BLOCK B · Public portal (sage, image right) -->
+    <section class="cash-sec cash-feat b-sage">
+      <div class="wrap"><div class="grid">
+        <div>
+          <span class="cash-eyebrow">Public portal</span>
+          <h2 class="cash-big">Your whole record, public and searchable.</h2>
+          <p>Every agenda and approved minute on a URL a parent, teacher, or reporter can search to the word. No records request required.</p>
+          <a class="cash-arrow" href="#">Search a real record</a>
+        </div>
+        <div class="stage">
+          <div class="ph"><div class="ph-scr">
+            <div class="ph-top"><div class="t">Public portal</div><div class="s">Riverton USD</div></div>
+            <div class="ph-body">
+              <div class="ph-search"><span set:html={svg.search} /> bus routes redrawn</div>
+              <div class="ph-res"><b>Minutes · Regular Meeting, Mar 2023</b><span class="sn">…the redrawn bus routes approved 5–2, effective August…</span><span class="cite">Cites p. 4</span></div>
+              <div class="ph-res"><b>Agenda · Mar 14, 2023</b><span class="sn">Item 5.2 · Transportation: route realignment…</span><span class="cite">Posted 3 days prior</span></div>
+            </div>
+          </div></div>
+        </div>
+      </div></div>
+    </section>
+
+    <!-- BLOCK C · Migration (charcoal, image left) -->
+    <section class="cash-sec cash-feat b-ink rev">
+      <div class="wrap"><div class="grid">
+        <div>
+          <span class="cash-eyebrow">Migration</span>
+          <h2 class="cash-big">Bring every meeting with you.</h2>
+          <p>Your history out of BoardDocs or Diligent, back to your first meeting on record. Migration is on us, every plan.</p>
+          <a class="cash-arrow" href="#">How migration works</a>
+        </div>
+        <div class="stage">
+          <div class="cash-card">
+            <div class="brand">Minute Book</div>
+            <div class="stamp">IMPORTED</div>
+            <div class="big">12,480 records</div>
+            <div class="yr">since 2004</div>
+          </div>
+        </div>
+      </div></div>
+    </section>
+
+    <!-- MARQUEE (navy) -->
+    <section class="b-navy cash-marq" aria-hidden="true">
+      <div class="row">
+        <span>Posted on time <b class="dot">·</b> On the record <b class="dot">·</b> Searchable by anyone <b class="dot">·</b> The minute book <b class="dot">·</b> Properly noticed <b class="dot">·</b></span>
+        <span>Posted on time <b class="dot">·</b> On the record <b class="dot">·</b> Searchable by anyone <b class="dot">·</b> The minute book <b class="dot">·</b> Properly noticed <b class="dot">·</b></span>
+      </div>
+    </section>
+
+    <!-- STATS (ivory) -->
+    <section class="cash-sec b-ivory">
+      <div class="wrap">
+        <span class="cash-eyebrow">The meeting is the law</span>
+        <h2 class="cash-big">We keep the clock.</h2>
+        <div class="cash-stats">
+          <div class="cash-stat"><div class="n">3 days</div><div class="l">of posted notice in Texas, met every time</div></div>
+          <div class="cash-stat"><div class="n">72 hrs</div><div class="l">notice in many states, never missed</div></div>
+          <div class="cash-stat"><div class="n">1 book</div><div class="l">back to your first meeting on record</div></div>
+          <div class="cash-stat"><div class="n">0</div><div class="l">meetings void for a missed deadline</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRICING (cream) -->
+    <section class="cash-sec b-cream" id="pricing">
+      <div class="wrap">
+        <span class="cash-eyebrow">Pricing, right here</span>
+        <h2 class="cash-big">Priced by enrollment.</h2>
+        <div class="cash-price">
+          <div class="cash-tier"><div class="plan">Small</div><div class="who">Up to 1,500 students</div><div class="amt">$2,400<small>/yr</small></div></div>
+          <div class="cash-tier"><div class="plan">Standard</div><div class="who">1,500 to 5,000 students</div><div class="amt">$3,600<small>/yr</small></div></div>
+          <div class="cash-tier"><div class="plan">Large</div><div class="who">5,000 to 15,000 students</div><div class="amt">$6,000<small>/yr</small></div></div>
+          <div class="cash-tier free"><div class="plan">Enterprise</div><div class="who">15,000+ students</div><div class="amt">$9,600<small>/yr</small></div></div>
+        </div>
+        <p style="margin-top:22px;font-weight:600;">Plus free migration off BoardDocs or Diligent. No setup fee, no per-seat math, no "contact sales."</p>
+      </div>
+    </section>
+
+    <!-- FINAL CTA (navy) -->
+    <section class="cash-final">
+      <div class="wrap">
+        <h2 class="cash-huge">Ready when<br>you are.</h2>
+        <p>The next meeting is already on the calendar. Twenty minutes with your real agenda, start to finish.</p>
+        <a class="cash-btn" href="/demo">Book a demo</a>
+      </div>
+    </section>
+
+    <!-- FOOTER (charcoal) -->
+    <footer class="cash-foot">
+      <div class="cash-foot-in">
+        <div class="cash-foot-top">
+          <div class="brand">
+            <a class="cash-logo" href="/"><span class="mk">B</span> BoardPlanner</a>
+            <p>Board meeting software for K-12 school districts. Built for the person who keeps the record.</p>
+          </div>
+          <div><h5>Product</h5><ul><li><a href="#minutes">Agendas</a></li><li><a href="#minutes">Minutes</a></li><li><a href="#">Public portal</a></li><li><a href="#">Migration</a></li></ul></div>
+          <div><h5>District</h5><ul><li><a href="#">Board secretary</a></li><li><a href="#">Superintendent</a></li><li><a href="#">Board members</a></li><li><a href="#pricing">Pricing</a></li></ul></div>
+          <div><h5>Company</h5><ul><li><a href="#">Changelog</a></li><li><a href="#">Status</a></li><li><a href="#">Security</a></li><li><a href="/lab/contrarian/">The honest page</a></li></ul></div>
+          <div><h5>Legal</h5><ul><li><a href="#">Disclosure policy</a></li><li><a href="#">Privacy</a></li><li><a href="#">Terms</a></li></ul></div>
+        </div>
+        <div class="cash-foot-bot">
+          <span class="adjourned">Meeting adjourned.</span>
+          <span class="fine">© 2026 BoardPlanner · No tracking cookies, so no banner to dismiss.</span>
+        </div>
+      </div>
+    </footer>
+  </div>
+</Base>
