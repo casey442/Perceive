@@ -1,0 +1,384 @@
+---
+import Base from '../../layouts/Base.astro';
+import '../../styles/lab.css';
+import '../../styles/call-to-order.css';
+import LabBar from '../../components/LabBar.astro';
+
+const roster = [
+  { who: 'You', role: 'Board Secretary / EA', cares: 'Never miss a notice deadline. Assemble the packet in an hour, not a weekend.', present: true },
+  { who: 'Superintendent', role: 'Approver', cares: 'The board looks prepared, and the record holds up when someone asks.', present: false },
+  { who: 'IT Director', role: 'Sign-off', cares: 'Nothing to install, host, or patch. It runs in a browser.', present: false },
+  { who: 'Board President', role: 'The board', cares: 'Find what the board decided, fast, without calling the office.', present: false },
+  { who: 'District Attorney', role: 'As needed', cares: 'Open-meetings compliance. The posting window, met every time.', present: false },
+  { who: 'Business Office', role: 'Budget', cares: 'One line item. No per-seat surprises, no "contact sales."', present: false },
+];
+const reqs = [
+  { t: 'Post agendas and packets inside our notice window', f: 'Notices' },
+  { t: 'Keep a minute book back to our first meeting', f: 'The record' },
+  { t: 'Let the public search the record, no request needed', f: 'Public portal' },
+  { t: 'Record motions, votes, and roll calls as we go', f: 'Live minutes' },
+  { t: 'Bring our history from the current system', f: 'Migration' },
+  { t: 'Cite the source page on any AI summary', f: 'Summaries' },
+];
+const systems = [
+  { k: 'BoardDocs', line: 'Migration from BoardDocs is included. Your history comes with you.' },
+  { k: 'Diligent', line: 'Migration from Diligent is included. Your history comes with you.' },
+  { k: 'Email + PDFs', line: 'We import what you have and give it one searchable home.' },
+  { k: 'Paper / a cabinet', line: 'We start your digital minute book at the next meeting and back-file what you send.' },
+];
+const objections = [
+  { q: 'We already use BoardDocs.', a: 'Understood. Migration is included, and here is what changes: the price is on the page, the public can search the full record, and there is no mobile-app upsell.' },
+  { q: 'There is no mobile app.', a: 'True. Board members read the packet in a browser. If you need a native app today, we are the wrong vendor, and the comparison page says so.' },
+  { q: 'Is the record secure?', a: 'Our promise is disclosure: any problem goes to the district first, in writing. We do not claim to be "more secure" than anyone.' },
+  { q: 'What does IT have to run?', a: 'Nothing. It runs in the browser. No server to host, no install, no patch cycle.' },
+];
+const tiers = [
+  { plan: 'Small', who: 'Up to 1,500 students', amt: '$2,400', max: 1500 },
+  { plan: 'Standard', who: '1,500 to 5,000 students', amt: '$3,600', max: 5000 },
+  { plan: 'Large', who: '5,000 to 15,000 students', amt: '$6,000', max: 15000 },
+  { plan: 'Enterprise', who: '15,000+ students', amt: '$9,600', max: 999999 },
+];
+---
+<Base title="BoardPlanner · Call to Order">
+  <Fragment slot="head">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,380..500;1,9..144,380..500&family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400..500&family=Space+Mono:wght@400;700&display=swap" />
+  </Fragment>
+
+  <LabBar active="call-to-order" />
+
+  <div class="order">
+    <!-- MASTHEAD -->
+    <header class="order-head">
+      <div class="inner">
+        <div class="oh-kick">BoardPlanner · Notice of Special Meeting</div>
+        <h1>Agenda: <em>adopt BoardPlanner</em>.</h1>
+        <p class="oh-sub">A short meeting about a small decision. You are the chair. Work down the agenda, and watch the minutes take themselves.</p>
+        <div class="oh-meta">
+          <span>Meeting called to order: <b id="ohTime">now</b></span>
+          <span>Posted 3 business days prior <span class="ok">✓</span></span>
+          <span>6 items · about 4 minutes</span>
+        </div>
+        <div class="oh-progress">
+          <div class="track"><div class="bar" id="progBar"></div></div>
+          <span class="txt" id="progTxt">0 of 6 items</span>
+        </div>
+        <div class="oh-seal">PROPERLY<br>NOTICED</div>
+      </div>
+    </header>
+
+    <div class="order-shell">
+      <main class="order-main">
+        <!-- ROLL CALL -->
+        <section class="item" id="item-roll">
+          <div class="item-head">
+            <span class="item-no">R</span>
+            <span class="item-title">Roll call: who needs to be in the room</span>
+            <span class="item-tag">Recorded</span>
+          </div>
+          <div class="item-body">
+            <p>Adopting new software is not a solo vote. Here is who signs off, and the one thing each of them cares about. Tap the people you have.</p>
+            <div class="roster" id="roster">
+              {roster.map((p, i) => (
+                <div class:list={['person', { present: p.present }]} data-i={i} tabindex="0" role="button">
+                  <div class="top"><span class="who">{p.who}</span><span class="mark">{p.present ? 'Present' : 'Absent'}</span></div>
+                  <div class="role">{p.role}</div>
+                  <div class="cares">{p.cares}</div>
+                </div>
+              ))}
+            </div>
+            <p class="quorum" id="quorum">Present: <b>1</b> of 6. You alone can start the meeting; the rest sign off before it ends.</p>
+          </div>
+        </section>
+
+        <!-- ITEM 1 -->
+        <section class="item" id="item-1">
+          <div class="item-head"><span class="item-no">1</span><span class="item-title">Call to order: is this worth a meeting?</span><span class="item-tag">Recorded</span></div>
+          <div class="item-body">
+            <p>Your board meets one or two times a month. Every meeting carries a statutory notice deadline, a packet to assemble, minutes to keep, and a public that can request any of it. Miss a posting deadline and the meeting can be void, and you get to run it again.</p>
+            <p class="item-q">Do we have a problem worth twenty minutes?</p>
+            <div class="act">
+              <button class="btn" data-item="1" data-log="Item 1 · Motion to proceed. Carried.">Move to proceed</button>
+              <span class="done-note">✓ Motion to proceed carried.</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- ITEM 2 -->
+        <section class="item" id="item-2">
+          <div class="item-head"><span class="item-no">2</span><span class="item-title">Review the current record: what are we replacing?</span><span class="item-tag">Recorded</span></div>
+          <div class="item-body">
+            <p>Before you buy anything, name where the board's record lives today. That decides what migration looks like.</p>
+            <div class="opts" id="sysOpts">
+              {systems.map((s, i) => (
+                <div class="opt" data-i={i} data-line={s.line} tabindex="0" role="button"><span class="rad"></span>{s.k}</div>
+              ))}
+            </div>
+            <div class="opt-reply" id="sysReply"></div>
+          </div>
+        </section>
+
+        <!-- ITEM 3 -->
+        <section class="item" id="item-3">
+          <div class="item-head"><span class="item-no">3</span><span class="item-title">Requirements: what it must do</span><span class="item-tag">Recorded</span></div>
+          <div class="item-body">
+            <p>Here is the must-have list for a K-12 board. Uncheck anything that is not a requirement for your district. Each one maps to a part of the product.</p>
+            <div class="checks" id="checks">
+              {reqs.map((r, i) => (
+                <div class="chk on" data-i={i} tabindex="0" role="button"><span class="box">✓</span><span class="lbl">{r.t}<small>{r.f}</small></span></div>
+              ))}
+            </div>
+            <div class="act">
+              <button class="btn" id="confirmReqs">Confirm requirements</button>
+              <span class="done-note" id="reqNote">✓ Requirements recorded.</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- ITEM 4 -->
+        <section class="item" id="item-4">
+          <div class="item-head"><span class="item-no">4</span><span class="item-title">The numbers: cost, and what a miss costs</span><span class="item-tag">Recorded</span></div>
+          <div class="item-body">
+            <p>Two sets of numbers. What it costs, and the deadlines it exists to protect.</p>
+            <div class="enroll">Your enrollment: <input id="enroll" type="number" inputmode="numeric" placeholder="e.g. 4200" min="0" /> students</div>
+            <div class="two">
+              <div class="card">
+                <h4>Price, by enrollment</h4>
+                <table id="priceTable">
+                  {tiers.map((t, i) => (
+                    <tr data-i={i}><td>{t.plan}</td><td class="n">{t.amt}</td></tr>
+                  ))}
+                  <tr><td>Migration</td><td class="n">$0</td></tr>
+                </table>
+              </div>
+              <div class="card">
+                <h4>Deadlines it protects</h4>
+                <table>
+                  <tr><td>Texas notice</td><td class="n">3 days</td></tr>
+                  <tr><td>Many states</td><td class="n">72 hrs</td></tr>
+                  <tr><td>Packet policy</td><td class="n">48 hrs</td></tr>
+                  <tr><td>A void meeting</td><td class="n">re-vote</td></tr>
+                </table>
+              </div>
+            </div>
+            <div class="act">
+              <button class="btn" id="noteBudget">Note the budget line</button>
+              <span class="done-note" id="budgetNote">✓ Budget recorded.</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- ITEM 5 -->
+        <section class="item" id="item-5">
+          <div class="item-head"><span class="item-no">5</span><span class="item-title">Public comment: objections, heard</span><span class="item-tag">Recorded</span></div>
+          <div class="item-body">
+            <p>Every adoption meets the same four objections. Open each one. We answer plainly, including where we lose.</p>
+            <div id="objList">
+              {objections.map((o) => (
+                <details class="obj"><summary>{o.q}<span class="plus">+</span></summary><div class="ans">{o.a}</div></details>
+              ))}
+            </div>
+            <div class="act" style="margin-top:14px">
+              <button class="btn ghost" id="closeComment">Close public comment</button>
+              <span class="done-note" id="commentNote">✓ Comment closed.</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- ITEM 6 -->
+        <section class="item" id="item-6">
+          <div class="item-head"><span class="item-no">6</span><span class="item-title">The motion to adopt</span><span class="item-tag">Recorded</span></div>
+          <div class="item-body">
+            <div class="motion">
+              <div class="move">I move that the district adopt BoardPlanner for board meeting management, with migration from our current system, effective the next regular meeting.</div>
+            </div>
+            <div class="act" id="voteRow">
+              <button class="btn" id="second">Second the motion</button>
+              <button class="btn aye" id="aye" disabled>Aye</button>
+              <button class="btn nay" id="nay" disabled>Nay</button>
+            </div>
+
+            <div class="carried" id="carried">
+              <span class="seal">MOTION CARRIED</span>
+              <h3>That is exactly how a vote is recorded.</h3>
+              <p>The minutes on the right wrote themselves while you read. Yours will too. When you are ready to do it for real:</p>
+              <div class="cta">
+                <a class="btn" href="/demo" style="text-decoration:none">Book a demo</a>
+                <a class="btn ghost" href="/trial" style="text-decoration:none">Start a 30-day trial</a>
+                <span class="done-note" style="display:inline">Twenty minutes with your real agenda.</span>
+              </div>
+            </div>
+            <div class="failed" id="failed">
+              <p>Motion fails. No hard feelings. Two honest pages before you go: the <a href="/lab/contrarian/">plain-terms page</a> and where the <a href="/lab/contrarian/">competition beats us</a>. Come back when the next deadline gets close.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ADJOURN -->
+        <section class="adjourn">
+          <div class="big">Meeting adjourned.</div>
+          <p>These minutes were recorded by BoardPlanner as you worked. Assembling the packet, taking the vote, keeping the book: that is the whole product, and you just watched it run.</p>
+        </section>
+      </main>
+
+      <!-- MINUTES RAIL -->
+      <aside class="order-min" id="minutesRail">
+        <div class="min-head"><span class="dot"></span> Minutes · recording</div>
+        <ol class="min-log" id="minLog"><li class="min-empty">Nothing recorded yet. Work the agenda on the left.</li></ol>
+        <div class="min-foot"><span>Auto-recorded, cited, kept.</span><a href="#" id="dlMin">Download</a></div>
+      </aside>
+    </div>
+
+    <footer class="order-foot">
+      <div class="inner">
+        <span>© 2026 BoardPlanner · Board meeting software for K-12 school districts.</span>
+        <span>No tracking cookies, so no banner to dismiss.</span>
+      </div>
+    </footer>
+  </div>
+</Base>
+
+<script>
+  // ===== live meeting clock (mock, starts 6:00 p.m., +1 min per entry) =====
+  let clock = 360; // 6:00 in minutes
+  const fmt = (m: number) => `${Math.floor(m / 60)}:${String(m % 60).padStart(2, '0')}`;
+
+  const log = document.getElementById('minLog');
+  let hasEntries = false;
+  function record(text: string, carried = false) {
+    if (!log) return;
+    if (!hasEntries) { log.innerHTML = ''; hasEntries = true; }
+    clock += 1;
+    const li = document.createElement('li');
+    if (carried) li.className = 'carried';
+    li.innerHTML = `<span class="tm">${fmt(clock)}</span><span class="tx"></span>`;
+    (li.querySelector('.tx') as HTMLElement).textContent = text;
+    log.appendChild(li);
+    log.scrollTop = log.scrollHeight;
+  }
+  record('Meeting called to order.');
+
+  // ===== progress =====
+  const done = new Set<string>();
+  const bar = document.getElementById('progBar');
+  const ptxt = document.getElementById('progTxt');
+  function complete(id: string) {
+    const el = document.getElementById(id);
+    if (el && !el.classList.contains('done')) {
+      el.classList.add('done');
+      done.add(id);
+      const pct = Math.round((done.size / 6) * 100);
+      if (bar) (bar as HTMLElement).style.width = pct + '%';
+      if (ptxt) ptxt.textContent = `${done.size} of 6 items`;
+    }
+  }
+
+  // ===== roll call =====
+  const roster = document.getElementById('roster');
+  const quorum = document.getElementById('quorum');
+  function refreshQuorum() {
+    const present = roster ? roster.querySelectorAll('.person.present').length : 0;
+    if (quorum) {
+      const b = quorum.querySelector('b'); if (b) b.textContent = String(present);
+      quorum.childNodes[quorum.childNodes.length - 1].textContent = present >= 4
+        ? ' Enough of the room is on board to carry a vote.'
+        : ' You alone can start the meeting; the rest sign off before it ends.';
+    }
+  }
+  roster?.querySelectorAll('.person').forEach((p) => {
+    const toggle = () => {
+      const on = p.classList.toggle('present');
+      const mark = p.querySelector('.mark'); if (mark) mark.textContent = on ? 'Present' : 'Absent';
+      const who = p.querySelector('.who')?.textContent || '';
+      record(`${on ? 'Present' : 'Absent'}: ${who}.`);
+      refreshQuorum();
+    };
+    p.addEventListener('click', toggle);
+    p.addEventListener('keydown', (e) => { if ((e as KeyboardEvent).key === 'Enter') { e.preventDefault(); toggle(); } });
+  });
+
+  // ===== generic "record item" buttons (items 1) =====
+  document.querySelectorAll('.btn[data-item]').forEach((b) => {
+    b.addEventListener('click', () => {
+      complete('item-' + (b as HTMLElement).dataset.item);
+      record((b as HTMLElement).dataset.log || 'Item recorded.');
+      (b as HTMLButtonElement).disabled = true;
+    });
+  });
+
+  // ===== item 2: current system radio =====
+  const reply = document.getElementById('sysReply');
+  document.querySelectorAll('#sysOpts .opt').forEach((o) => {
+    const pick = () => {
+      document.querySelectorAll('#sysOpts .opt').forEach((x) => x.classList.remove('sel'));
+      o.classList.add('sel');
+      const line = (o as HTMLElement).dataset.line || '';
+      if (reply) { reply.textContent = line; reply.classList.add('show'); }
+      const k = o.textContent?.trim() || '';
+      record(`Item 2 · replacing ${k}. ${line.startsWith('Migration') ? 'Migration included.' : 'History imported.'}`);
+      complete('item-2');
+    };
+    o.addEventListener('click', pick);
+    o.addEventListener('keydown', (e) => { if ((e as KeyboardEvent).key === 'Enter') { e.preventDefault(); pick(); } });
+  });
+
+  // ===== item 3: requirements checklist =====
+  document.querySelectorAll('#checks .chk').forEach((c) => {
+    const toggle = () => { c.classList.toggle('on'); (c.querySelector('.box') as HTMLElement).textContent = c.classList.contains('on') ? '✓' : ''; };
+    c.addEventListener('click', toggle);
+    c.addEventListener('keydown', (e) => { if ((e as KeyboardEvent).key === 'Enter') { e.preventDefault(); toggle(); } });
+  });
+  document.getElementById('confirmReqs')?.addEventListener('click', () => {
+    const n = document.querySelectorAll('#checks .chk.on').length;
+    record(`Item 3 · requirements: ${n} of 6, all met by the product.`);
+    complete('item-3');
+  });
+
+  // ===== item 4: enrollment -> tier + budget =====
+  const tiers = [{ plan: 'Small', amt: '$2,400', max: 1500 }, { plan: 'Standard', amt: '$3,600', max: 5000 }, { plan: 'Large', amt: '$6,000', max: 15000 }, { plan: 'Enterprise', amt: '$9,600', max: 9e9 }];
+  const enroll = document.getElementById('enroll') as HTMLInputElement | null;
+  let curTier = -1;
+  function pickTier() {
+    const v = parseInt(enroll?.value || '', 10);
+    const rows = document.querySelectorAll('#priceTable tr[data-i]');
+    rows.forEach((r) => r.classList.remove('sel'));
+    if (!isNaN(v)) { curTier = tiers.findIndex((t) => v <= t.max); if (curTier >= 0) rows[curTier]?.classList.add('sel'); }
+  }
+  enroll?.addEventListener('input', pickTier);
+  document.getElementById('noteBudget')?.addEventListener('click', () => {
+    const t = curTier >= 0 ? tiers[curTier] : null;
+    record(t ? `Item 4 · budget: ${t.amt}/yr (${t.plan}), migration $0.` : 'Item 4 · budget: priced by enrollment, migration $0.');
+    complete('item-4');
+  });
+
+  // ===== item 5: close public comment =====
+  document.getElementById('closeComment')?.addEventListener('click', () => {
+    record('Item 5 · public comment closed. Objections heard.');
+    complete('item-5');
+  });
+
+  // ===== item 6: the vote =====
+  const second = document.getElementById('second') as HTMLButtonElement | null;
+  const aye = document.getElementById('aye') as HTMLButtonElement | null;
+  const nay = document.getElementById('nay') as HTMLButtonElement | null;
+  second?.addEventListener('click', () => {
+    record('Item 6 · motion to adopt, seconded.');
+    if (aye) aye.disabled = false; if (nay) nay.disabled = false;
+    second.disabled = true;
+  });
+  aye?.addEventListener('click', () => {
+    record('Item 6 · MOTION CARRIED. Adopt BoardPlanner.', true);
+    complete('item-6');
+    document.getElementById('carried')?.classList.add('show');
+    document.getElementById('failed')?.classList.remove('show');
+    if (aye) aye.disabled = true; if (nay) nay.disabled = true;
+  });
+  nay?.addEventListener('click', () => {
+    record('Item 6 · motion fails.');
+    document.getElementById('failed')?.classList.add('show');
+    document.getElementById('carried')?.classList.remove('show');
+  });
+
+  document.getElementById('dlMin')?.addEventListener('click', (e) => { e.preventDefault(); record('Minutes exported. (In the product, this is a signed PDF.)'); });
+</script>
