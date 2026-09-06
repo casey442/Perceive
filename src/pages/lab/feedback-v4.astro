@@ -13,12 +13,12 @@ const svg = {
   phone: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 3h3l1.6 4.2L8.4 9.1a12 12 0 0 0 6.5 6.5l1.9-2.2L21 15v3a2 2 0 0 1-2.1 2A16 16 0 0 1 4 5.1 2 2 0 0 1 6 3z"/></svg>',
 };
 const six = [
-  { ic: 'doc', name: 'AI summaries', tag: 'Because who actually reads the minutes?' },
-  { ic: 'mic', name: 'Ramble mode', tag: 'What if you could talk to the agenda and it built itself?' },
-  { ic: 'globe', name: 'Translation', tag: 'Translation summaries and full-text.' },
-  { ic: 'book', name: 'Agendas, minutes, policies', tag: 'Minutes populate as you go.' },
-  { ic: 'clip', name: 'Full document migration', tag: "You don't have to ask anyone to do the work." },
-  { ic: 'phone', name: 'Real US support', tag: "You'll never talk to an AI bot on the phone." },
+  { ic: 'doc',   pv: 'sum',    name: 'AI summaries',              sub: 'Every packet, read for you. The citation shows the source page.' },
+  { ic: 'mic',   pv: 'ramble', name: 'Ramble mode',              sub: 'Talk through the meeting. The agenda builds itself.' },
+  { ic: 'globe', pv: 'trans',  name: 'Translation',              sub: 'Summaries and full text, in the reader’s language.' },
+  { ic: 'book',  pv: 'min',    name: 'Agendas, minutes, policies', sub: 'Minutes populate as the motions and votes land.' },
+  { ic: 'clip',  pv: 'mig',    name: 'Full document migration',  sub: 'Your whole history, brought over. You ask no one.' },
+  { ic: 'phone', pv: 'sup',    name: 'Real US support',          sub: 'A person in Ohio picks up. Never a phone bot.' },
 ];
 ---
 <Base title="BoardPlanner — Feedback V4">
@@ -134,8 +134,85 @@ const six = [
               <span class="num">{String(i + 1).padStart(2, '0')}</span>
               <span class="ic" set:html={svg[f.ic]} />
               <h3>{f.name}</h3>
-              <span class="prompt">Hover to discover</span>
-              <span class="reveal">{f.tag}</span>
+              <p class="tsub">{f.sub}</p>
+              <span class="thint">Hover to see it</span>
+
+              <div class="v4-pop" role="img" aria-label={f.name}>
+                {f.pv === 'sum' && (
+                  <div class="v4pv v4pv-sum">
+                    <div class="plabel">AI summary</div>
+                    <div class="pv-lines">
+                      <span class="ln l1">Board approved the FY26 budget, 6–1.</span>
+                      <span class="ln l2">Tax rate held. New bus lease deferred to May.</span>
+                    </div>
+                    <span class="pcite">From: Consent Agenda · p.4</span>
+                  </div>
+                )}
+                {f.pv === 'ramble' && (
+                  <div class="v4pv v4pv-ramble">
+                    <div class="plabel">Listening</div>
+                    <div class="pv-mic">
+                      <i class="bar"></i><i class="bar"></i><i class="bar"></i><i class="bar"></i><i class="bar"></i>
+                      <span class="say">“…then the budget vote, then facilities.”</span>
+                    </div>
+                    <ul class="pv-items">
+                      <li>1 · Call to order</li>
+                      <li>2 · FY26 budget vote</li>
+                      <li>3 · Facilities update</li>
+                    </ul>
+                  </div>
+                )}
+                {f.pv === 'trans' && (
+                  <div class="v4pv v4pv-trans">
+                    <div class="plabel">Translation</div>
+                    <div class="pv-tabs">
+                      <span class="hl"></span>
+                      <b>EN</b><b>ES</b><b>中文</b>
+                    </div>
+                    <div class="pv-tline">
+                      <span class="t1">Budget approved, 6–1. Tax rate held.</span>
+                      <span class="t2">Presupuesto aprobado, 6–1. Tasa sin cambios.</span>
+                      <span class="t3">预算通过，6–1。税率维持不变。</span>
+                    </div>
+                    <span class="pcite">From: Minutes · Item 4</span>
+                  </div>
+                )}
+                {f.pv === 'min' && (
+                  <div class="v4pv v4pv-min">
+                    <div class="plabel">Minutes · live</div>
+                    <ul class="pv-rows">
+                      <li><span>Motion to approve budget</span><em>Carried</em></li>
+                      <li><span>Roll call vote</span><em>6–1</em></li>
+                      <li><span>Meeting adjourned</span><em>7:42</em></li>
+                    </ul>
+                  </div>
+                )}
+                {f.pv === 'mig' && (
+                  <div class="v4pv v4pv-mig">
+                    <div class="plabel">Migration</div>
+                    <div class="pv-imp">
+                      <b class="imp">Importing minute book…</b>
+                      <b class="done">Imported · 1,204 records</b>
+                    </div>
+                    <div class="pv-prog"><i></i></div>
+                    <div class="pv-from">From BoardDocs · agendas, minutes, policies</div>
+                  </div>
+                )}
+                {f.pv === 'sup' && (
+                  <div class="v4pv v4pv-sup">
+                    <div class="plabel">Support</div>
+                    <div class="pv-msg">“Can you restore last month’s packet?”</div>
+                    <div class="pv-agent">
+                      <span class="av">DM</span>
+                      <div>
+                        <b>Dana · BoardPlanner</b>
+                        <span class="typing"><i></i><i></i><i></i></span>
+                        <span class="reply">On it — restored and emailed to you.</span>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
           ))}
         </div>
@@ -221,12 +298,27 @@ const six = [
     el.addEventListener('mouseleave', () => letters.forEach((l) => { l.style.fontVariationSettings = ''; }));
   });
 
-  // six tiles: scramble the tagline in on hover / focus
-  document.querySelectorAll<HTMLElement>('.v4-tile').forEach((t) => {
-    const r = t.querySelector<HTMLElement>('.reveal'); if (!r) return;
-    const final = r.textContent || '';
-    const run = () => scramble(r, final, 560);
-    t.addEventListener('mouseenter', run);
-    t.addEventListener('focusin', run);
-  });
+  // six tiles: anchor the pop-over inward on the left/right columns of each row
+  // so a corner card's preview never overflows the grid.
+  const grid = document.getElementById('sixGrid');
+  if (grid) {
+    const tiles = Array.from(grid.querySelectorAll<HTMLElement>('.v4-tile'));
+    const layout = () => {
+      // reset
+      tiles.forEach((t) => t.classList.remove('edge-l', 'edge-r'));
+      // group by row using offsetTop
+      const rows = new Map<number, HTMLElement[]>();
+      tiles.forEach((t) => {
+        const key = t.offsetTop;
+        (rows.get(key) || rows.set(key, []).get(key)!).push(t);
+      });
+      rows.forEach((row) => {
+        if (row.length < 2) return;
+        row[0].classList.add('edge-l');
+        row[row.length - 1].classList.add('edge-r');
+      });
+    };
+    layout();
+    window.addEventListener('resize', layout);
+  }
 </script>
