@@ -244,32 +244,6 @@ const six = [
 
 <script>
   const RM = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const CH = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-
-  function scramble(el: HTMLElement, finalText: string, dur = 760) {
-    if (RM) { el.textContent = finalText; return; }
-    const len = finalText.length; const t0 = performance.now();
-    function frame(now: number) {
-      const p = Math.min(1, (now - t0) / dur);
-      const reveal = Math.floor(p * len);
-      let out = '';
-      for (let i = 0; i < len; i++) {
-        const c = finalText[i];
-        out += (i < reveal || c === ' ' || c === '.' || c === ',' || c === '?') ? c : CH[Math.floor(Math.random() * CH.length)];
-      }
-      el.textContent = out;
-      if (p < 1) requestAnimationFrame(frame); else el.textContent = finalText;
-    }
-    requestAnimationFrame(frame);
-  }
-
-  // descriptors: scramble in on scroll
-  document.querySelectorAll<HTMLElement>('.vf-desc').forEach((el) => { el.dataset.final = el.textContent || ''; if (!RM) el.textContent = ''; });
-  const io = new IntersectionObserver((es) => {
-    es.forEach((e) => { if (e.isIntersecting) { const el = e.target as HTMLElement; scramble(el, el.dataset.final || ''); io.unobserve(el); } });
-  }, { threshold: 0.7 });
-  document.querySelectorAll('.vf-desc').forEach((el) => io.observe(el));
-
   // feature titles: variable-font hover, random weight per letter
   document.querySelectorAll<HTMLElement>('.vf-title').forEach((el) => {
     const text = el.textContent || ''; el.textContent = '';
