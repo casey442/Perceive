@@ -1,8 +1,8 @@
-/* "Feedback V4" — the refined homepage direction. Hamptons house colors, Fraunces
-   + Newsreader, editorial spacing, muted / flat 2-D graphics. Sophistication comes
-   from restrained micro-interactions (variable-font hover on the two feature
-   titles, scramble-in on the descriptors, hover-to-discover on the six) rather
-   than chunky shadows. Scoped under `.v4`. Aim: 20% less toy than the lab studies. */
+/* "Feedback V4 · Sept Edition" — the refined homepage direction. Hamptons house
+   colors, Fraunces + Newsreader, editorial spacing, muted / flat 2-D graphics.
+   Two core differentiators cast large (Commitment Tracker, Early Signal), the
+   everyday tools below as six hover-to-discover tiles, and a Calendly-style demo
+   scheduler at the close. Scoped under `.v4`. Aim: 20% less toy. */
 
 .v4 {
   --paper: #E8E3D7; --paper-2: #F1EDE4; --card: #FBFAF6; --ink: #2E3134; --mut: #5C5A53; --faint: #8E8C84;
@@ -52,9 +52,8 @@
 .v4-feat .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
 .v4-feat.rev .grid { direction: rtl; } .v4-feat.rev .grid > * { direction: ltr; }
 .v4-feat-copy .v4-kick { display: block; margin-bottom: 12px; }
-.vf-title { font-family: var(--disp); font-weight: 460; font-size: clamp(32px, 4.4vw, 54px); line-height: 1.02; letter-spacing: -.02em; cursor: default; }
-.vf-title .vf-l { display: inline-block; transition: font-variation-settings .35s cubic-bezier(.2,.7,.3,1), color .35s ease; will-change: font-variation-settings; }
-.vf-desc { font-family: var(--disp); font-style: italic; font-weight: 400; font-size: clamp(19px, 2.1vw, 24px); color: var(--navy); margin: 16px 0 0; min-height: 1.5em; }
+.vf-title { font-family: var(--disp); font-weight: 460; font-size: clamp(32px, 4.4vw, 54px); line-height: 1.02; letter-spacing: -.02em; }
+.vf-desc { font-family: var(--disp); font-style: italic; font-weight: 400; font-size: clamp(19px, 2.1vw, 24px); color: var(--navy); margin: 16px 0 0; }
 .v4-feat-copy p.body { font-size: 18px; line-height: 1.6; color: var(--mut); margin: 16px 0 22px; max-width: 42ch; }
 .v4-feat-copy .arrow { font-size: 15.5px; font-style: italic; color: var(--navy); text-decoration: none; border-bottom: 1px solid var(--line2); padding-bottom: 2px; }
 .v4-feat-copy .arrow:hover { border-color: var(--navy); }
@@ -121,7 +120,6 @@
 
 .v4-hero-cta .plainlink { color: var(--paper-2); font-style: italic; font-size: 16.5px; text-decoration: none; border-bottom: 1px solid rgba(241,237,228,.5); padding-bottom: 3px; }
 .v4-hero-cta .plainlink:hover { border-color: var(--paper-2); }
-.v4 .vf-word { display: inline-block; white-space: nowrap; }
 
 /* ---------- SIX TILES: hover pop-over previews (like Feedback V1) ---------- */
 .v4-six-grid { overflow: visible; border-radius: 0; }
@@ -205,3 +203,48 @@
 @keyframes v4rep { 0%,40% { opacity: 0; transform: translateY(4px) } 48%,100% { opacity: 1; transform: none } }
 
 @media (prefers-reduced-motion: reduce) { .v4pv * { animation: none !important; opacity: 1 !important; } .v4pv-sum .ln, .v4pv-ramble .pv-items li, .v4pv-min .pv-rows li { opacity: 1 !important; } }
+
+/* ---------- FINAL CTA · Calendly-style demo scheduler ---------- */
+.v4-cal { max-width: 860px; margin: 40px auto 0; background: #FCFAF4; color: var(--ink); border-radius: 16px; text-align: left; overflow: hidden; box-shadow: 0 44px 90px -44px rgba(0,0,0,.55); }
+.cal-body { display: grid; grid-template-columns: 200px 1fr 196px; }
+.cal-info { padding: 26px 24px; border-right: 1px solid var(--line); }
+.cal-brand { font-family: var(--mono); font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--faint); }
+.cal-info h3 { font-family: var(--disp); font-weight: 500; font-size: 23px; letter-spacing: -.01em; margin: 6px 0 18px; }
+.cal-meta { list-style: none; margin: 0; padding: 0; }
+.cal-meta li { font-family: var(--text); font-size: 14px; color: var(--mut); padding: 6px 0; display: flex; align-items: center; gap: 9px; }
+.cal-meta .ci { color: var(--sage); font-size: 15px; width: 16px; text-align: center; }
+
+.cal-pick { padding: 24px 22px; border-right: 1px solid var(--line); min-width: 0; }
+.cal-head { display: flex; justify-content: space-between; align-items: center; font-family: var(--disp); font-weight: 500; font-size: 16px; margin-bottom: 16px; }
+.cal-nav { color: var(--faint); letter-spacing: .3em; font-family: var(--mono); font-size: 15px; }
+.cal-dow { display: grid; grid-template-columns: repeat(7, 1fr); gap: 3px; margin-bottom: 6px; }
+.cal-dow i { text-align: center; font-family: var(--mono); font-size: 10px; font-style: normal; color: var(--faint); }
+.cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+.cal-grid .day { aspect-ratio: 1 / 1; display: flex; align-items: center; justify-content: center; border: 0; background: none; border-radius: 9px; font-family: var(--text); font-size: 14px; color: var(--ink); cursor: pointer; padding: 0; transition: background .12s ease, color .12s ease; }
+.cal-grid .day.empty { pointer-events: none; }
+.cal-grid .day:disabled { color: var(--faint); opacity: .4; cursor: default; }
+.cal-grid .day.avail { background: var(--sage-tint); color: var(--navy); font-weight: 600; }
+.cal-grid .day.avail:hover { background: rgba(122,133,101,.28); }
+.cal-grid .day.sel { background: var(--navy); color: #fff; font-weight: 600; }
+
+.cal-times { padding: 24px 20px; display: flex; flex-direction: column; min-width: 0; }
+.cal-times-head { font-family: var(--disp); font-weight: 500; font-size: 15px; margin-bottom: 12px; }
+.cal-slots { display: flex; flex-direction: column; gap: 8px; overflow-y: auto; max-height: 300px; }
+.cal-slots:empty::before { content: "Choose a day to see open times."; font-family: var(--text); font-size: 13.5px; font-style: italic; color: var(--faint); line-height: 1.5; }
+.slot { font-family: var(--mono); font-size: 13px; font-weight: 700; text-align: center; padding: 11px 8px; border: 1px solid var(--line2); border-radius: 9px; background: #fff; color: var(--navy); cursor: pointer; transition: border-color .12s ease, background .12s ease, color .12s ease; }
+.slot:hover { border-color: var(--navy); }
+.slot.sel { background: var(--navy); color: #fff; border-color: var(--navy); }
+
+.cal-foot { display: flex; align-items: center; justify-content: space-between; gap: 16px; border-top: 1px solid var(--line); padding: 16px 24px; }
+.cal-sum { font-family: var(--text); font-size: 14.5px; color: var(--mut); }
+.cal-confirm { flex: none; }
+.cal-confirm:disabled { opacity: .4; cursor: default; }
+.cal-confirm:disabled:hover { background: var(--navy); }
+.cal-note { font-family: var(--mono); font-size: 11px; letter-spacing: .04em; color: #A8B0A0; margin: 16px 0 0; }
+
+@media (max-width: 720px) {
+  .cal-body { grid-template-columns: 1fr; }
+  .cal-info, .cal-pick { border-right: 0; border-bottom: 1px solid var(--line); }
+  .cal-slots { max-height: none; }
+  .cal-foot { flex-direction: column; align-items: stretch; text-align: center; gap: 12px; }
+}

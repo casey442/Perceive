@@ -51,7 +51,7 @@ const six = [
     <header class="v4-hero">
       <div class="v4-hero-img" style="background-image:url(/fb/hero.jpg)"></div>
       <div class="inner">
-        <h1>A matter of record. <em>In seconds.</em></h1>
+        <h1>A matter of record.<br><em>In seconds.</em></h1>
         <p class="lede">The agenda, the packet, the minutes, and your full history. In one place, posted on time, searchable by anyone.</p>
         <div class="v4-hero-cta">
           <a class="v4-btn light big" href="/demo">See a demo</a>
@@ -72,16 +72,18 @@ const six = [
           <a class="arrow" href="#">See it work</a>
         </div>
         <div class="v4-feat-media">
-          <svg class="v4-illus" viewBox="0 0 460 336" role="img" aria-label="A commitment tracker: motions from the meeting listed with an owner and a due date, one already closed.">
+          <svg class="v4-illus" viewBox="0 0 460 336" role="img" aria-label="A commitment tracker: each motion from the meeting is listed with the board member responsible for it and a due date; one is already closed.">
             <rect class="il-card" x="10" y="12" width="440" height="312" rx="16"/>
             <text x="32" y="48" font-family="Fraunces" font-size="18" font-weight="500" class="il-ink">Open commitments</text>
             <g transform="translate(360,32)"><rect class="il-navytint" width="66" height="24" rx="12"/><text x="33" y="16" text-anchor="middle" font-family="Space Mono" font-size="12" font-weight="700" class="il-navy">3 open</text></g>
             <line x1="32" y1="66" x2="428" y2="66" class="il-line" stroke-width="1"/>
+            <text x="282" y="80" font-family="Space Mono" font-size="8.5" font-weight="700" letter-spacing="0.09em" class="il-faint">RESPONSIBLE</text>
+            <text x="428" y="80" text-anchor="end" font-family="Space Mono" font-size="8.5" font-weight="700" letter-spacing="0.09em" class="il-faint">DUE</text>
             <!-- rows -->
-            <g transform="translate(32,88)"><rect width="20" height="20" rx="5" class="il-sage"/><path d="M5 10l3.5 3.5 6.5-7" fill="none" stroke="#FBFAF6" stroke-width="2.2" stroke-linecap="round"/><text x="32" y="15" font-family="Newsreader" font-size="14.5" class="il-faint" text-decoration="line-through">Post FY26 budget notice</text><circle cx="318" cy="10" r="12" class="il-sagetint"/><text x="318" y="14" text-anchor="middle" font-family="Space Mono" font-size="9" font-weight="700" class="il-sage">BS</text><g transform="translate(352,-1)"><rect width="44" height="22" rx="11" class="il-sagetint"/><text x="22" y="15" text-anchor="middle" font-family="Space Mono" font-size="10.5" font-weight="700" class="il-sage">done</text></g></g>
-            <g transform="translate(32,144)"><rect width="20" height="20" rx="5" fill="none" stroke="#C7BEAE" stroke-width="2"/><text x="32" y="15" font-family="Newsreader" font-size="14.5" class="il-ink">Send bus contract to legal</text><circle cx="318" cy="10" r="12" class="il-navytint"/><text x="318" y="14" text-anchor="middle" font-family="Space Mono" font-size="9" font-weight="700" class="il-navy">SU</text><g transform="translate(350,-1)"><rect width="46" height="22" rx="11" class="il-navytint"/><text x="23" y="15" text-anchor="middle" font-family="Space Mono" font-size="10.5" font-weight="700" class="il-navy">Mon</text></g></g>
-            <g transform="translate(32,200)"><rect width="20" height="20" rx="5" fill="none" stroke="#C7BEAE" stroke-width="2"/><text x="32" y="15" font-family="Newsreader" font-size="14.5" class="il-ink">Publish March minutes</text><circle cx="318" cy="10" r="12" class="il-navytint"/><text x="318" y="14" text-anchor="middle" font-family="Space Mono" font-size="9" font-weight="700" class="il-navy">BS</text><g transform="translate(342,-1)"><rect width="54" height="22" rx="11" fill="#9E5346" class="il-pulse"/><text x="27" y="15" text-anchor="middle" font-family="Space Mono" font-size="10" font-weight="700" fill="#FBFAF6">3 days</text></g></g>
-            <g transform="translate(32,256)"><rect width="20" height="20" rx="5" fill="none" stroke="#C7BEAE" stroke-width="2"/><text x="32" y="15" font-family="Newsreader" font-size="14.5" class="il-ink">Renew cell-phone policy</text><circle cx="318" cy="10" r="12" class="il-navytint"/><text x="318" y="14" text-anchor="middle" font-family="Space Mono" font-size="9" font-weight="700" class="il-navy">BM</text><g transform="translate(356,-1)"><rect width="40" height="22" rx="11" class="il-navytint"/><text x="20" y="15" text-anchor="middle" font-family="Space Mono" font-size="10.5" font-weight="700" class="il-navy">Apr</text></g></g>
+            <g transform="translate(32,88)"><rect width="20" height="20" rx="5" class="il-sage"/><path d="M5 10l3.5 3.5 6.5-7" fill="none" stroke="#FBFAF6" stroke-width="2.2" stroke-linecap="round"/><text x="32" y="15" font-family="Newsreader" font-size="14.5" class="il-faint" text-decoration="line-through">Post FY26 budget notice</text><circle cx="250" cy="10" r="12" class="il-sagetint"/><text x="250" y="14" text-anchor="middle" font-family="Space Mono" font-size="9" font-weight="700" class="il-sage">BS</text><text x="270" y="15" font-family="Newsreader" font-size="13" class="il-faint">Bea S.</text><g transform="translate(352,-1)"><rect width="44" height="22" rx="11" class="il-sagetint"/><text x="22" y="15" text-anchor="middle" font-family="Space Mono" font-size="10.5" font-weight="700" class="il-sage">done</text></g></g>
+            <g transform="translate(32,144)"><rect width="20" height="20" rx="5" fill="none" stroke="#C7BEAE" stroke-width="2"/><text x="32" y="15" font-family="Newsreader" font-size="14.5" class="il-ink">Send bus contract to legal</text><circle cx="250" cy="10" r="12" class="il-navytint"/><text x="250" y="14" text-anchor="middle" font-family="Space Mono" font-size="9" font-weight="700" class="il-navy">SU</text><text x="270" y="15" font-family="Newsreader" font-size="13" class="il-mut">Sam U.</text><g transform="translate(350,-1)"><rect width="46" height="22" rx="11" class="il-navytint"/><text x="23" y="15" text-anchor="middle" font-family="Space Mono" font-size="10.5" font-weight="700" class="il-navy">Mon</text></g></g>
+            <g transform="translate(32,200)"><rect width="20" height="20" rx="5" fill="none" stroke="#C7BEAE" stroke-width="2"/><text x="32" y="15" font-family="Newsreader" font-size="14.5" class="il-ink">Publish March minutes</text><circle cx="250" cy="10" r="12" class="il-navytint"/><text x="250" y="14" text-anchor="middle" font-family="Space Mono" font-size="9" font-weight="700" class="il-navy">BS</text><text x="270" y="15" font-family="Newsreader" font-size="13" class="il-mut">Bea S.</text><g transform="translate(342,-1)"><rect width="54" height="22" rx="11" fill="#9E5346" class="il-pulse"/><text x="27" y="15" text-anchor="middle" font-family="Space Mono" font-size="10" font-weight="700" fill="#FBFAF6">3 days</text></g></g>
+            <g transform="translate(32,256)"><rect width="20" height="20" rx="5" fill="none" stroke="#C7BEAE" stroke-width="2"/><text x="32" y="15" font-family="Newsreader" font-size="14.5" class="il-ink">Renew cell-phone policy</text><circle cx="250" cy="10" r="12" class="il-navytint"/><text x="250" y="14" text-anchor="middle" font-family="Space Mono" font-size="9" font-weight="700" class="il-navy">BM</text><text x="270" y="15" font-family="Newsreader" font-size="13" class="il-mut">Ben M.</text><g transform="translate(356,-1)"><rect width="40" height="22" rx="11" class="il-navytint"/><text x="20" y="15" text-anchor="middle" font-family="Space Mono" font-size="10.5" font-weight="700" class="il-navy">Apr</text></g></g>
           </svg>
         </div>
       </div></div>
@@ -215,9 +217,36 @@ const six = [
     <!-- FINAL CTA -->
     <section class="v4-final">
       <div class="wrap">
-        <h2>The next meeting is <em>already on the calendar</em>.</h2>
-        <p>Twenty minutes with your real agenda, start to finish.</p>
-        <a class="v4-btn light big" href="/demo">See a demo</a>
+        <h2>Book a demo.</h2>
+        <p>Pick a time that works. Twenty minutes, walked through your own agenda.</p>
+
+        <div class="v4-cal" id="v4cal">
+          <div class="cal-body">
+            <div class="cal-info">
+              <span class="cal-brand">BoardPlanner</span>
+              <h3>Product demo</h3>
+              <ul class="cal-meta">
+                <li><span class="ci" aria-hidden="true">◷</span> 20 minutes</li>
+                <li><span class="ci" aria-hidden="true">▦</span> Video call, link on confirm</li>
+                <li><span class="ci" aria-hidden="true">◎</span> Walked through your agenda</li>
+              </ul>
+            </div>
+            <div class="cal-pick">
+              <div class="cal-head"><span>September 2026</span><span class="cal-nav" aria-hidden="true">‹ ›</span></div>
+              <div class="cal-dow"><i>S</i><i>M</i><i>T</i><i>W</i><i>T</i><i>F</i><i>S</i></div>
+              <div class="cal-grid" id="calGrid" role="group" aria-label="Choose a day"></div>
+            </div>
+            <div class="cal-times">
+              <div class="cal-times-head" id="calTimesHead">Select a day</div>
+              <div class="cal-slots" id="calSlots"></div>
+            </div>
+          </div>
+          <div class="cal-foot">
+            <span class="cal-sum" id="calSum">Pick a day and time to continue</span>
+            <button class="v4-btn cal-confirm" id="calConfirm" disabled>See a demo</button>
+          </div>
+        </div>
+        <p class="cal-note">Demo scheduler for this study. Nothing is actually booked.</p>
       </div>
     </section>
 
@@ -244,27 +273,6 @@ const six = [
 
 <script>
   const RM = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  // feature titles: variable-font hover, random weight per letter
-  document.querySelectorAll<HTMLElement>('.vf-title').forEach((el) => {
-    const text = el.textContent || ''; el.textContent = '';
-    text.split(' ').forEach((word, wi, arr) => {
-      const w = document.createElement('span'); w.className = 'vf-word';
-      [...word].forEach((ch) => { const s = document.createElement('span'); s.className = 'vf-l'; s.textContent = ch; w.appendChild(s); });
-      el.appendChild(w);
-      if (wi < arr.length - 1) el.appendChild(document.createTextNode(' '));
-    });
-    const letters = [...el.querySelectorAll<HTMLElement>('.vf-l')];
-    el.addEventListener('mouseenter', () => {
-      if (RM) return;
-      letters.forEach((l, i) => setTimeout(() => {
-        const w = 320 + Math.floor(Math.random() * 360);
-        const o = 9 + Math.floor(Math.random() * 130);
-        l.style.fontVariationSettings = `"opsz" ${o}, "wght" ${w}`;
-      }, i * 15));
-    });
-    el.addEventListener('mouseleave', () => letters.forEach((l) => { l.style.fontVariationSettings = ''; }));
-  });
-
   // six tiles: anchor the pop-over inward on the left/right columns of each row
   // so a corner card's preview never overflows the grid.
   const grid = document.getElementById('sixGrid');
@@ -287,5 +295,70 @@ const six = [
     };
     layout();
     window.addEventListener('resize', layout);
+  }
+
+  // Calendly-style demo scheduler (September 2026; deterministic for the study)
+  const cal = document.getElementById('v4cal');
+  if (cal) {
+    const gridEl = document.getElementById('calGrid')!;
+    const slotsEl = document.getElementById('calSlots')!;
+    const headEl = document.getElementById('calTimesHead')!;
+    const sumEl = document.getElementById('calSum')!;
+    const confirmEl = document.getElementById('calConfirm') as HTMLButtonElement;
+    const DOW = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    const MON = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    const SLOTS = ['9:00 am', '9:30 am', '10:00 am', '10:30 am', '1:00 pm', '1:30 pm', '3:00 pm', '3:30 pm'];
+    const YEAR = 2026, M = 8, TODAY = 6; // Sep 2026, "today" = the 6th
+    const firstDow = new Date(YEAR, M, 1).getDay();
+    const days = new Date(YEAR, M + 1, 0).getDate();
+    let selDay: number | null = null, selTime: string | null = null;
+
+    const state = () => {
+      const ready = selDay && selTime;
+      confirmEl.disabled = !ready;
+      sumEl.textContent = ready
+        ? `${DOW[new Date(YEAR, M, selDay!).getDay()]}, ${MON[M]} ${selDay} · ${selTime}`
+        : 'Pick a day and time to continue';
+    };
+    const renderSlots = () => {
+      slotsEl.innerHTML = '';
+      SLOTS.forEach((t) => {
+        const b = document.createElement('button');
+        b.className = 'slot'; b.type = 'button'; b.textContent = t;
+        b.addEventListener('click', () => {
+          selTime = t;
+          slotsEl.querySelectorAll('.slot').forEach((s) => s.classList.remove('sel'));
+          b.classList.add('sel'); state();
+        });
+        slotsEl.appendChild(b);
+      });
+    };
+    for (let i = 0; i < firstDow; i++) {
+      const e = document.createElement('span'); e.className = 'day empty'; gridEl.appendChild(e);
+    }
+    for (let d = 1; d <= days; d++) {
+      const dow = new Date(YEAR, M, d).getDay();
+      const b = document.createElement('button');
+      b.className = 'day'; b.type = 'button'; b.textContent = String(d);
+      const open = d > TODAY && dow !== 0 && dow !== 6;
+      if (!open) { b.disabled = true; }
+      else {
+        b.classList.add('avail');
+        b.addEventListener('click', () => {
+          selDay = d; selTime = null;
+          gridEl.querySelectorAll('.day').forEach((x) => x.classList.remove('sel'));
+          b.classList.add('sel');
+          headEl.textContent = `${DOW[dow]}, ${MON[M]} ${d}`;
+          renderSlots(); state();
+        });
+      }
+      gridEl.appendChild(b);
+    }
+    confirmEl.addEventListener('click', () => {
+      if (confirmEl.disabled) return;
+      confirmEl.textContent = 'Requested ✓';
+      sumEl.textContent = 'We would email a confirmation here.';
+    });
+    state();
   }
 </script>
