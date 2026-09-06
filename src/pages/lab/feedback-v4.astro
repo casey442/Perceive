@@ -1,0 +1,232 @@
+---
+import Base from '../../layouts/Base.astro';
+import '../../styles/lab.css';
+import '../../styles/feedback-v4.css';
+import LabBar from '../../components/LabBar.astro';
+
+const svg = {
+  doc: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="5" y="3" width="14" height="18" rx="2.5"/><path d="M9 8.5h6M9 12.5h6M9 16.5h4"/></svg>',
+  mic: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21"/></svg>',
+  globe: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3.2 3.4 3.2 14.6 0 18M12 3c-3.2 3.4-3.2 14.6 0 18"/></svg>',
+  book: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 4.5A1.5 1.5 0 0 1 6.5 3H19v16.5H6.5A1.5 1.5 0 0 0 5 21z"/><path d="M9 3v18"/></svg>',
+  clip: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 11.5l-8.2 8.2a5 5 0 0 1-7-7l8.5-8.5a3.3 3.3 0 1 1 4.7 4.7l-8.5 8.5a1.6 1.6 0 0 1-2.3-2.3l7.8-7.8"/></svg>',
+  phone: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 3h3l1.6 4.2L8.4 9.1a12 12 0 0 0 6.5 6.5l1.9-2.2L21 15v3a2 2 0 0 1-2.1 2A16 16 0 0 1 4 5.1 2 2 0 0 1 6 3z"/></svg>',
+};
+const six = [
+  { ic: 'doc', name: 'AI summaries', tag: 'Because who actually reads the minutes?' },
+  { ic: 'mic', name: 'Ramble mode', tag: 'What if you could talk to the agenda and it built itself?' },
+  { ic: 'globe', name: 'Translation', tag: 'Translation summaries and full-text.' },
+  { ic: 'book', name: 'Agendas, minutes, policies', tag: 'Minutes populate as you go.' },
+  { ic: 'clip', name: 'Full document migration', tag: "You don't have to ask anyone to do the work." },
+  { ic: 'phone', name: 'Real US support', tag: "You'll never talk to an AI bot on the phone." },
+];
+---
+<Base title="BoardPlanner — Feedback V4">
+  <Fragment slot="head">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400..500&family=Space+Mono:wght@400;700&display=swap" />
+  </Fragment>
+
+  <LabBar active="feedback-v4" />
+
+  <div class="v4">
+    <nav class="v4-nav">
+      <div class="v4-nav-in">
+        <a class="v4-logo" href="/">BoardPlanner</a>
+        <div class="v4-links">
+          <a href="#features">Product</a>
+          <a href="#">Pricing</a>
+          <a href="#">Districts</a>
+          <a href="#">Docs</a>
+        </div>
+        <div class="v4-nav-cta">
+          <a class="signin" href="#">Sign in</a>
+          <a class="v4-btn" href="/demo">See a demo</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="v4-hero">
+      <div class="v4-hero-img" style="background-image:url(/fb/hero.jpg)"></div>
+      <div class="inner">
+        <h1>A matter of record. <em>In seconds.</em></h1>
+        <p class="lede">The agenda, the packet, the minutes, and your full history. In one place, posted on time, searchable by anyone.</p>
+        <div class="v4-hero-cta">
+          <a class="v4-btn light big" href="/demo">See a demo</a>
+          <a class="plainlink" href="#features">See it work</a>
+        </div>
+      </div>
+      <span class="v4-hero-cap">Placeholder · board room, 5:45</span>
+    </header>
+
+    <!-- FEATURE 1 · Commitment Tracker (image left) -->
+    <section class="v4-feat rev" id="features">
+      <div class="wrap"><div class="grid">
+        <div class="v4-feat-copy">
+          <span class="v4-kick">Follow-through</span>
+          <h2 class="vf-title">The Commitment Tracker</h2>
+          <p class="vf-desc">Every motion, tracked to done.</p>
+          <p class="body">Each motion the board passes becomes a commitment with an owner and a due date. The superintendent's office sees what is open, what is late, and what closed, without chasing a soul.</p>
+          <a class="arrow" href="#">See it work</a>
+        </div>
+        <div class="v4-feat-media">
+          <svg class="v4-illus" viewBox="0 0 460 336" role="img" aria-label="A commitment tracker: motions from the meeting listed with an owner and a due date, one already closed.">
+            <rect class="il-card" x="10" y="12" width="440" height="312" rx="16"/>
+            <text x="32" y="48" font-family="Fraunces" font-size="18" font-weight="500" class="il-ink">Open commitments</text>
+            <g transform="translate(360,32)"><rect class="il-navytint" width="66" height="24" rx="12"/><text x="33" y="16" text-anchor="middle" font-family="Space Mono" font-size="12" font-weight="700" class="il-navy">3 open</text></g>
+            <line x1="32" y1="66" x2="428" y2="66" class="il-line" stroke-width="1"/>
+            <!-- rows -->
+            <g transform="translate(32,88)"><rect width="20" height="20" rx="5" class="il-sage"/><path d="M5 10l3.5 3.5 6.5-7" fill="none" stroke="#FBFAF6" stroke-width="2.2" stroke-linecap="round"/><text x="32" y="15" font-family="Newsreader" font-size="14.5" class="il-faint" text-decoration="line-through">Post FY26 budget notice</text><circle cx="360" cy="10" r="12" class="il-sagetint"/><text x="360" y="14" text-anchor="middle" font-family="Space Mono" font-size="9" font-weight="700" class="il-sage">BS</text><g transform="translate(384,-1)"><rect width="44" height="22" rx="11" class="il-sagetint"/><text x="22" y="15" text-anchor="middle" font-family="Space Mono" font-size="10.5" font-weight="700" class="il-sage">done</text></g></g>
+            <g transform="translate(32,144)"><rect width="20" height="20" rx="5" fill="none" stroke="#C7BEAE" stroke-width="2"/><text x="32" y="15" font-family="Newsreader" font-size="14.5" class="il-ink">Send bus contract to legal</text><circle cx="360" cy="10" r="12" class="il-navytint"/><text x="360" y="14" text-anchor="middle" font-family="Space Mono" font-size="9" font-weight="700" class="il-navy">SU</text><g transform="translate(388,-1)"><rect width="40" height="22" rx="11" class="il-navytint"/><text x="20" y="15" text-anchor="middle" font-family="Space Mono" font-size="10.5" font-weight="700" class="il-navy">Mon</text></g></g>
+            <g transform="translate(32,200)"><rect width="20" height="20" rx="5" fill="none" stroke="#C7BEAE" stroke-width="2"/><text x="32" y="15" font-family="Newsreader" font-size="14.5" class="il-ink">Publish March minutes</text><circle cx="360" cy="10" r="12" class="il-navytint"/><text x="360" y="14" text-anchor="middle" font-family="Space Mono" font-size="9" font-weight="700" class="il-navy">BS</text><g transform="translate(378,-1)"><rect width="50" height="22" rx="11" fill="#9E5346" class="il-pulse"/><text x="25" y="15" text-anchor="middle" font-family="Space Mono" font-size="10" font-weight="700" fill="#FBFAF6">3 days</text></g></g>
+            <g transform="translate(32,256)"><rect width="20" height="20" rx="5" fill="none" stroke="#C7BEAE" stroke-width="2"/><text x="32" y="15" font-family="Newsreader" font-size="14.5" class="il-ink">Renew cell-phone policy</text><circle cx="360" cy="10" r="12" class="il-navytint"/><text x="360" y="14" text-anchor="middle" font-family="Space Mono" font-size="9" font-weight="700" class="il-navy">BM</text><g transform="translate(390,-1)"><rect width="38" height="22" rx="11" class="il-navytint"/><text x="19" y="15" text-anchor="middle" font-family="Space Mono" font-size="10.5" font-weight="700" class="il-navy">Apr</text></g></g>
+          </svg>
+        </div>
+      </div></div>
+    </section>
+
+    <!-- FEATURE 2 · Early Signal (image right) -->
+    <section class="v4-feat">
+      <div class="wrap"><div class="grid">
+        <div class="v4-feat-copy">
+          <span class="v4-kick">Ahead of the meeting</span>
+          <h2 class="vf-title">Early Signal</h2>
+          <p class="vf-desc">Know what is coming before it is late.</p>
+          <p class="body">It watches your posting windows and the recurring items on the calendar, and flags what needs attention while there is still time to act. The deadline finds you, not the other way around.</p>
+          <a class="arrow" href="#">See it work</a>
+        </div>
+        <div class="v4-feat-media">
+          <svg class="v4-illus" viewBox="0 0 460 336" role="img" aria-label="Early Signal: a timeline of meetings with the next posting deadline flagged, and two items surfaced early.">
+            <rect class="il-card" x="10" y="12" width="440" height="312" rx="16"/>
+            <text x="32" y="48" font-family="Fraunces" font-size="18" font-weight="500" class="il-ink">What needs attention</text>
+            <line x1="32" y1="66" x2="428" y2="66" class="il-line" stroke-width="1"/>
+            <!-- timeline -->
+            <line x1="52" y1="150" x2="410" y2="150" class="il-line"/>
+            <g font-family="Space Mono" font-size="10" class="il-faint" text-anchor="middle">
+              <circle cx="90" cy="150" r="6" class="il-navy"/><text x="90" y="176">Jan</text>
+              <circle cx="180" cy="150" r="6" class="il-navy"/><text x="180" y="176">Feb</text>
+              <circle cx="270" cy="150" r="6" class="il-navy"/><text x="270" y="176">Mar</text>
+              <circle cx="360" cy="150" r="9" fill="none" class="il-sagestroke" stroke-width="3"/><circle cx="360" cy="150" r="4" class="il-sage il-pulse"/><text x="360" y="178" class="il-sage" font-weight="700">Apr</text>
+            </g>
+            <!-- callout to the upcoming node -->
+            <line x1="360" y1="141" x2="360" y2="120" class="il-line" stroke-width="1.5"/>
+            <g transform="translate(250,84)"><rect width="176" height="34" rx="9" class="il-sagetint" stroke="#89917A" stroke-width="1.5"/><text x="14" y="22" font-family="Newsreader" font-size="13.5" class="il-ink">Post the notice by <tspan font-weight="700" class="il-sage">Fri</tspan></text></g>
+            <!-- signal chips -->
+            <g transform="translate(32,212)"><rect width="396" height="38" rx="10" class="il-navytint"/><circle cx="24" cy="19" r="4" class="il-navy"/><text x="42" y="24" font-family="Newsreader" font-size="14" class="il-ink">Recurring: cell-phone policy is up for review in 30 days.</text></g>
+            <g transform="translate(32,262)"><rect width="396" height="38" rx="10" fill="#9E5346" opacity=".1"/><circle cx="24" cy="19" r="4" fill="#9E5346"/><text x="42" y="24" font-family="Newsreader" font-size="14" class="il-ink">3 commitments from last meeting are past due.</text></g>
+          </svg>
+        </div>
+      </div></div>
+    </section>
+
+    <!-- SIX CORE FEATURES · hover to discover -->
+    <section class="v4-six">
+      <div class="wrap">
+        <div class="v4-six-head">
+          <h2>Six things it does <em>for you</em>.</h2>
+          <p>Hover to discover</p>
+        </div>
+        <div class="v4-six-grid" id="sixGrid">
+          {six.map((f, i) => (
+            <div class="v4-tile" tabindex="0">
+              <span class="num">{String(i + 1).padStart(2, '0')}</span>
+              <span class="ic" set:html={svg[f.ic]} />
+              <h3>{f.name}</h3>
+              <span class="prompt">Hover to discover</span>
+              <span class="reveal">{f.tag}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="v4-final">
+      <div class="wrap">
+        <h2>The next meeting is <em>already on the calendar</em>.</h2>
+        <p>Twenty minutes with your real agenda, start to finish.</p>
+        <a class="v4-btn light big" href="/demo">See a demo</a>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="v4-foot">
+      <div class="v4-foot-in">
+        <div class="v4-foot-top">
+          <div class="brand">
+            <a class="v4-logo" href="/">BoardPlanner</a>
+            <p>Board meeting software for K-12 school districts. Built for the person who keeps the record.</p>
+          </div>
+          <div><h5>Product</h5><ul><li><a href="#features">Agendas</a></li><li><a href="#features">Minutes</a></li><li><a href="#">Public portal</a></li><li><a href="#">Migration</a></li></ul></div>
+          <div><h5>District</h5><ul><li><a href="#">Board secretary</a></li><li><a href="#">Superintendent</a></li><li><a href="#">Board members</a></li><li><a href="#">Pricing</a></li></ul></div>
+          <div><h5>Company</h5><ul><li><a href="#">Changelog</a></li><li><a href="#">Status</a></li><li><a href="#">Security</a></li><li><a href="#">Contact</a></li></ul></div>
+        </div>
+        <div class="v4-foot-bot">
+          <span class="adjourned">Meeting adjourned.</span>
+          <span class="fine">© 2026 BoardPlanner</span>
+        </div>
+      </div>
+    </footer>
+  </div>
+</Base>
+
+<script>
+  const RM = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const CH = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+
+  function scramble(el: HTMLElement, finalText: string, dur = 760) {
+    if (RM) { el.textContent = finalText; return; }
+    const len = finalText.length; const t0 = performance.now();
+    function frame(now: number) {
+      const p = Math.min(1, (now - t0) / dur);
+      const reveal = Math.floor(p * len);
+      let out = '';
+      for (let i = 0; i < len; i++) {
+        const c = finalText[i];
+        out += (i < reveal || c === ' ' || c === '.' || c === ',' || c === '?') ? c : CH[Math.floor(Math.random() * CH.length)];
+      }
+      el.textContent = out;
+      if (p < 1) requestAnimationFrame(frame); else el.textContent = finalText;
+    }
+    requestAnimationFrame(frame);
+  }
+
+  // descriptors: scramble in on scroll
+  document.querySelectorAll<HTMLElement>('.vf-desc').forEach((el) => { el.dataset.final = el.textContent || ''; if (!RM) el.textContent = ''; });
+  const io = new IntersectionObserver((es) => {
+    es.forEach((e) => { if (e.isIntersecting) { const el = e.target as HTMLElement; scramble(el, el.dataset.final || ''); io.unobserve(el); } });
+  }, { threshold: 0.7 });
+  document.querySelectorAll('.vf-desc').forEach((el) => io.observe(el));
+
+  // feature titles: variable-font hover, random weight per letter
+  document.querySelectorAll<HTMLElement>('.vf-title').forEach((el) => {
+    const text = el.textContent || ''; el.textContent = '';
+    text.split(' ').forEach((word, wi, arr) => {
+      const w = document.createElement('span'); w.className = 'vf-word';
+      [...word].forEach((ch) => { const s = document.createElement('span'); s.className = 'vf-l'; s.textContent = ch; w.appendChild(s); });
+      el.appendChild(w);
+      if (wi < arr.length - 1) el.appendChild(document.createTextNode(' '));
+    });
+    const letters = [...el.querySelectorAll<HTMLElement>('.vf-l')];
+    el.addEventListener('mouseenter', () => {
+      if (RM) return;
+      letters.forEach((l, i) => setTimeout(() => {
+        const w = 320 + Math.floor(Math.random() * 360);
+        const o = 9 + Math.floor(Math.random() * 130);
+        l.style.fontVariationSettings = `"opsz" ${o}, "wght" ${w}`;
+      }, i * 15));
+    });
+    el.addEventListener('mouseleave', () => letters.forEach((l) => { l.style.fontVariationSettings = ''; }));
+  });
+
+  // six tiles: scramble the tagline in on hover / focus
+  document.querySelectorAll<HTMLElement>('.v4-tile').forEach((t) => {
+    const r = t.querySelector<HTMLElement>('.reveal'); if (!r) return;
+    const final = r.textContent || '';
+    const run = () => scramble(r, final, 560);
+    t.addEventListener('mouseenter', run);
+    t.addEventListener('focusin', run);
+  });
+</script>
