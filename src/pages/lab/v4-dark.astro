@@ -1,0 +1,277 @@
+---
+import Base from '../../layouts/Base.astro';
+import '../../styles/lab.css';
+import '../../styles/v4-dark.css';
+import LabBar from '../../components/LabBar.astro';
+
+const svg = {
+  doc: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="5" y="3" width="14" height="18" rx="2.5"/><path d="M9 8.5h6M9 12.5h6M9 16.5h4"/></svg>',
+  mic: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21"/></svg>',
+  globe: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3.2 3.4 3.2 14.6 0 18M12 3c-3.2 3.4-3.2 14.6 0 18"/></svg>',
+  book: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 4.5A1.5 1.5 0 0 1 6.5 3H19v16.5H6.5A1.5 1.5 0 0 0 5 21z"/><path d="M9 3v18"/></svg>',
+  clip: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 11.5l-8.2 8.2a5 5 0 0 1-7-7l8.5-8.5a3.3 3.3 0 1 1 4.7 4.7l-8.5 8.5a1.6 1.6 0 0 1-2.3-2.3l7.8-7.8"/></svg>',
+  phone: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 3h3l1.6 4.2L8.4 9.1a12 12 0 0 0 6.5 6.5l1.9-2.2L21 15v3a2 2 0 0 1-2.1 2A16 16 0 0 1 4 5.1 2 2 0 0 1 6 3z"/></svg>',
+  logo: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20V10a8 8 0 0 1 16 0v10"/><path d="M4 20h16M9 20v-6h6v6"/></svg>',
+};
+
+const six = [
+  { ic: 'doc',   name: 'AI summaries',              tag: 'Cites the source page', sub: 'Every packet, read for you. The citation shows the source page.' },
+  { ic: 'mic',   name: 'Ramble mode',              tag: 'Voice to agenda',       sub: 'Talk through the meeting. The agenda builds itself.' },
+  { ic: 'globe', name: 'Translation',              tag: 'Reader’s language',     sub: 'Summaries and full text, in the reader’s language.' },
+  { ic: 'book',  name: 'Agendas, minutes, policies', tag: 'Minutes, live',       sub: 'Minutes populate as the motions and votes land.' },
+  { ic: 'clip',  name: 'Full document migration',  tag: 'From BoardDocs',        sub: 'Your whole history, brought over. You ask no one.' },
+  { ic: 'phone', name: 'Real US support',          tag: 'A person picks up',     sub: 'A person in Ohio picks up. Never a phone bot.' },
+];
+---
+<Base title="BoardPlanner — V4 · Dark">
+  <LabBar active="v4-dark" />
+
+  <div class="v4d">
+    <nav class="v4d-nav">
+      <div class="v4d-nav-in">
+        <a class="v4d-logo" href="/"><span class="mark" set:html={svg.logo} />BoardPlanner</a>
+        <div class="v4d-links">
+          <a href="#features">Product</a>
+          <a href="#">Pricing</a>
+          <a href="#">Districts</a>
+          <a href="#">Docs</a>
+        </div>
+        <div class="v4d-nav-cta">
+          <a class="signin" href="#">Sign in</a>
+          <a class="v4d-btn" href="#book">See a demo</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="v4d-hero">
+      <div class="wrap"><div class="grid">
+        <div class="v4d-hero-copy">
+          <span class="eyebrow">Board meeting software · K-12</span>
+          <h1>A matter of record.<br><span class="hi">In seconds.</span></h1>
+          <p class="lede">The agenda, the packet, the minutes, and your full history. In one place, posted on time, searchable by anyone.</p>
+          <div class="v4d-hero-cta">
+            <a class="v4d-btn big" href="#book">See a demo</a>
+            <a class="v4d-btn ghost big" href="#features">See it work</a>
+          </div>
+          <p class="v4d-hero-note">Migration included. Your minute book comes with you.</p>
+        </div>
+        <div class="v4d-hero-media">
+          <div class="v4d-card">
+            <svg class="v4d-illus" viewBox="0 0 420 300" role="img" aria-label="This week in BoardPlanner: a completed task, the packet ready, and an early signal.">
+              <text x="24" y="40" font-family="system-ui, sans-serif" font-size="17" font-weight="700" class="il-ink">This week</text>
+              <g transform="translate(316,24)"><rect width="80" height="24" rx="12" class="il-bluetint"/><text x="40" y="16" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-size="11" font-weight="700" class="il-blue">on track</text></g>
+              <line x1="24" y1="58" x2="396" y2="58" class="il-line"/>
+              <!-- row 1: done -->
+              <g transform="translate(24,80)"><rect width="22" height="22" rx="6" class="il-sage"/><path d="M6 11l4 4 7-8" fill="none" stroke="#17181D" stroke-width="2.4" stroke-linecap="round"/><text x="36" y="16" font-family="system-ui, sans-serif" font-size="15" class="il-faint" text-decoration="line-through">Post FY26 budget notice</text><g transform="translate(316,0)"><rect width="56" height="24" rx="12" class="il-sagetint"/><text x="28" y="16" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-size="11" font-weight="700" class="il-sage">done</text></g></g>
+              <!-- row 2: packet -->
+              <g transform="translate(24,128)"><rect width="22" height="22" rx="6" fill="none" stroke="#3E3F4A" stroke-width="2"/><g class="il-blue" transform="translate(2,3)" stroke="currentColor" stroke-width="1.6" fill="none"><rect x="3" y="0" width="12" height="16" rx="2"/><path d="M6 5h6M6 8.5h6M6 12h4"/></g><text x="36" y="16" font-family="system-ui, sans-serif" font-size="15" class="il-ink">Board packet assembled</text><g transform="translate(330,0)"><rect width="42" height="24" rx="12" fill="none" stroke="#3E3F4A"/><text x="21" y="16" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-size="11" font-weight="700" class="il-mut">Fri</text></g></g>
+              <!-- row 3: signal -->
+              <g transform="translate(24,176)"><circle cx="11" cy="11" r="7" class="il-bluetint"/><circle cx="11" cy="11" r="3.4" class="il-blue il-pulse"/><text x="36" y="16" font-family="system-ui, sans-serif" font-size="15" class="il-ink">Signal: policy challenge, 3 districts over</text></g>
+              <g transform="translate(24,214)"><rect width="372" height="52" rx="12" class="il-bluetint"/><text x="18" y="24" font-family="ui-monospace, Menlo, monospace" font-size="10" font-weight="700" letter-spacing="0.06em" class="il-blue">HEADING YOUR WAY</text><text x="18" y="42" font-family="system-ui, sans-serif" font-size="14" class="il-ink">Likely on your April agenda</text></g>
+            </svg>
+          </div>
+        </div>
+      </div></div>
+    </header>
+
+    <!-- FEATURE 1 · Commitment Tracker (image left) -->
+    <section class="v4d-feat rev" id="features">
+      <div class="wrap"><div class="grid">
+        <div class="v4d-feat-copy">
+          <span class="kick">Differentiator 01</span>
+          <h2>The Commitment Tracker</h2>
+          <p class="desc">Heralded in September. Forgotten by spring.</p>
+          <p class="body">The board sets its goals in the fall, then the year buries them. The Commitment Tracker watches what you are actually doing to reach them: the motions, the owners, the due dates already in your meetings, shown as open, late, or done. Zero work required.</p>
+          <a class="arrow" href="#book">See it work</a>
+        </div>
+        <div class="v4d-feat-media">
+          <div class="v4d-card">
+            <svg class="v4d-illus" viewBox="0 0 460 336" role="img" aria-label="A commitment tracker: each motion is listed with the board member responsible and a due date; one is already closed.">
+              <text x="32" y="46" font-family="system-ui, sans-serif" font-size="18" font-weight="700" class="il-ink">Open commitments</text>
+              <g transform="translate(362,30)"><rect class="il-bluetint" width="66" height="24" rx="12"/><text x="33" y="16" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-size="12" font-weight="700" class="il-blue">3 open</text></g>
+              <line x1="32" y1="64" x2="428" y2="64" class="il-line"/>
+              <text x="282" y="78" font-family="ui-monospace, Menlo, monospace" font-size="8.5" font-weight="700" letter-spacing="0.09em" class="il-faint">RESPONSIBLE</text>
+              <text x="428" y="78" text-anchor="end" font-family="ui-monospace, Menlo, monospace" font-size="8.5" font-weight="700" letter-spacing="0.09em" class="il-faint">DUE</text>
+              <g transform="translate(32,88)"><rect width="20" height="20" rx="5" class="il-sage"/><path d="M5 10l3.5 3.5 6.5-7" fill="none" stroke="#17181D" stroke-width="2.2" stroke-linecap="round"/><text x="32" y="15" font-family="system-ui, sans-serif" font-size="14.5" class="il-faint" text-decoration="line-through">Post FY26 budget notice</text><circle cx="250" cy="10" r="12" class="il-sagetint"/><text x="250" y="14" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-size="9" font-weight="700" class="il-sage">BS</text><text x="270" y="15" font-family="system-ui, sans-serif" font-size="13" class="il-faint">Bea S.</text><g transform="translate(352,-1)"><rect width="44" height="22" rx="11" class="il-sagetint"/><text x="22" y="15" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-size="10.5" font-weight="700" class="il-sage">done</text></g></g>
+              <g transform="translate(32,144)"><rect width="20" height="20" rx="5" fill="none" stroke="#3E3F4A" stroke-width="2"/><text x="32" y="15" font-family="system-ui, sans-serif" font-size="14.5" class="il-ink">Send bus contract to legal</text><circle cx="250" cy="10" r="12" class="il-bluetint"/><text x="250" y="14" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-size="9" font-weight="700" class="il-blue">SU</text><text x="270" y="15" font-family="system-ui, sans-serif" font-size="13" class="il-mut">Sam U.</text><g transform="translate(350,-1)"><rect width="46" height="22" rx="11" class="il-bluetint"/><text x="23" y="15" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-size="10.5" font-weight="700" class="il-blue">Mon</text></g></g>
+              <g transform="translate(32,200)"><rect width="20" height="20" rx="5" fill="none" stroke="#3E3F4A" stroke-width="2"/><text x="32" y="15" font-family="system-ui, sans-serif" font-size="14.5" class="il-ink">Publish March minutes</text><circle cx="250" cy="10" r="12" class="il-bluetint"/><text x="250" y="14" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-size="9" font-weight="700" class="il-blue">BS</text><text x="270" y="15" font-family="system-ui, sans-serif" font-size="13" class="il-mut">Bea S.</text><g transform="translate(342,-1)"><rect width="54" height="22" rx="11" fill="#CE8072" class="il-pulse"/><text x="27" y="15" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-size="10" font-weight="700" fill="#17181D">3 days</text></g></g>
+              <g transform="translate(32,256)"><rect width="20" height="20" rx="5" fill="none" stroke="#3E3F4A" stroke-width="2"/><text x="32" y="15" font-family="system-ui, sans-serif" font-size="14.5" class="il-ink">Renew cell-phone policy</text><circle cx="250" cy="10" r="12" class="il-bluetint"/><text x="250" y="14" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-size="9" font-weight="700" class="il-blue">BM</text><text x="270" y="15" font-family="system-ui, sans-serif" font-size="13" class="il-mut">Ben M.</text><g transform="translate(356,-1)"><rect width="40" height="22" rx="11" class="il-bluetint"/><text x="20" y="15" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-size="10.5" font-weight="700" class="il-blue">Apr</text></g></g>
+            </svg>
+          </div>
+        </div>
+      </div></div>
+    </section>
+
+    <!-- FEATURE 2 · Early Signal (image right) -->
+    <section class="v4d-feat">
+      <div class="wrap"><div class="grid">
+        <div class="v4d-feat-copy">
+          <span class="kick">Differentiator 02</span>
+          <h2>Early Signal</h2>
+          <p class="desc">Surprises rarely start with your community.</p>
+          <p class="body">They start three districts over, a few weeks earlier: the same policy challenge, the same records-request surge, the same public-comment wave. Early Signal catches the pattern while it is still down the road, so it reaches your agenda before it reaches your board room.</p>
+          <a class="arrow" href="#book">See it work</a>
+        </div>
+        <div class="v4d-feat-media">
+          <div class="v4d-card">
+            <svg class="v4d-illus" viewBox="0 0 460 336" role="img" aria-label="Early Signal: three nearby districts show the same issue over the past weeks, flagged as heading your way onto the April agenda.">
+              <text x="32" y="46" font-family="system-ui, sans-serif" font-size="18" font-weight="700" class="il-ink">Signals near you</text>
+              <g transform="translate(362,30)"><rect width="66" height="24" rx="12" class="il-bluetint"/><text x="33" y="16" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-size="12" font-weight="700" class="il-blue">3 near</text></g>
+              <line x1="32" y1="64" x2="428" y2="64" class="il-line"/>
+              <g transform="translate(32,80)"><rect width="396" height="46" rx="10" class="il-card"/><circle cx="22" cy="23" r="4" class="il-blue"/><text x="40" y="20" font-family="ui-monospace, Menlo, monospace" font-size="9.5" font-weight="700" class="il-faint">WESTBROOK ISD · 3 DISTRICTS OVER</text><text x="40" y="37" font-family="system-ui, sans-serif" font-size="14" class="il-ink">Policy challenged at open comment</text><g transform="translate(332,12)"><rect width="52" height="22" rx="11" fill="#30313B"/><text x="26" y="15" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-size="10" font-weight="700" class="il-mut">3 wks</text></g></g>
+              <g transform="translate(32,132)"><rect width="396" height="46" rx="10" class="il-card"/><circle cx="22" cy="23" r="4" class="il-blue"/><text x="40" y="20" font-family="ui-monospace, Menlo, monospace" font-size="9.5" font-weight="700" class="il-faint">CEDAR GROVE ISD · 2 DISTRICTS OVER</text><text x="40" y="37" font-family="system-ui, sans-serif" font-size="14" class="il-ink">Records-request surge after a budget vote</text><g transform="translate(332,12)"><rect width="52" height="22" rx="11" fill="#30313B"/><text x="26" y="15" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-size="10" font-weight="700" class="il-mut">2 wks</text></g></g>
+              <g transform="translate(32,184)"><rect width="396" height="46" rx="10" class="il-card"/><circle cx="22" cy="23" r="4" class="il-blue"/><text x="40" y="20" font-family="ui-monospace, Menlo, monospace" font-size="9.5" font-weight="700" class="il-faint">PINE HOLLOW ISD · NEXT COUNTY</text><text x="40" y="37" font-family="system-ui, sans-serif" font-size="14" class="il-ink">Public-comment wave on the same policy</text><g transform="translate(330,12)"><rect width="54" height="22" rx="11" fill="#30313B"/><text x="27" y="15" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-size="10" font-weight="700" class="il-mut">9 days</text></g></g>
+              <g transform="translate(32,244)"><rect width="396" height="56" rx="12" class="il-bluetint" stroke="#7DC4E4" stroke-width="1.2"/><circle cx="26" cy="28" r="5" class="il-blue il-pulse"/><text x="46" y="24" font-family="ui-monospace, Menlo, monospace" font-size="10" font-weight="700" class="il-blue">HEADING YOUR WAY</text><text x="46" y="43" font-family="system-ui, sans-serif" font-size="14.5" class="il-ink">Same policy, likely on your April agenda</text></g>
+            </svg>
+          </div>
+        </div>
+      </div></div>
+    </section>
+
+    <!-- SIX TOOLS -->
+    <section class="v4d-six">
+      <div class="wrap">
+        <div class="v4d-six-head">
+          <span class="eyebrow">The basics, still in play</span>
+          <h2>Everything you expect from board software.</h2>
+          <p>The two above are the differentiators. These are the everyday tools that carry the meeting.</p>
+        </div>
+        <div class="v4d-six-grid">
+          {six.map((f) => (
+            <div class="v4d-tile">
+              <span class="ic" set:html={svg[f.ic]} />
+              <h3>{f.name}</h3>
+              <p>{f.sub}</p>
+              <span class="tag">{f.tag}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- SCHEDULER -->
+    <section class="v4d-final" id="book">
+      <div class="wrap">
+        <div class="v4d-final-head">
+          <h2>Book a demo.</h2>
+          <p>Pick a time that works. Twenty minutes, walked through your own agenda.</p>
+        </div>
+
+        <div class="v4d-cal" id="v4cal">
+          <div class="cal-body">
+            <div class="cal-info">
+              <span class="cal-brand">BoardPlanner</span>
+              <h3>Product demo</h3>
+              <ul class="cal-meta">
+                <li><span class="ci" aria-hidden="true">◷</span> 20 minutes</li>
+                <li><span class="ci" aria-hidden="true">▦</span> Video call, link on confirm</li>
+                <li><span class="ci" aria-hidden="true">◎</span> Walked through your agenda</li>
+              </ul>
+            </div>
+            <div class="cal-pick">
+              <div class="cal-head"><span>September 2026</span><span class="cal-nav" aria-hidden="true">‹ ›</span></div>
+              <div class="cal-dow"><i>S</i><i>M</i><i>T</i><i>W</i><i>T</i><i>F</i><i>S</i></div>
+              <div class="cal-grid" id="calGrid" role="group" aria-label="Choose a day"></div>
+            </div>
+            <div class="cal-times">
+              <div class="cal-times-head" id="calTimesHead">Select a day</div>
+              <div class="cal-slots" id="calSlots"></div>
+            </div>
+          </div>
+          <div class="cal-foot">
+            <span class="cal-sum" id="calSum">Pick a day and time to continue</span>
+            <button class="v4d-btn cal-confirm" id="calConfirm" disabled>See a demo</button>
+          </div>
+        </div>
+        <p class="cal-note">Demo scheduler for this study. Nothing is actually booked.</p>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="v4d-foot">
+      <div class="v4d-foot-in">
+        <div class="v4d-foot-top">
+          <div class="brand">
+            <a class="v4d-logo" href="/"><span class="mark" set:html={svg.logo} />BoardPlanner</a>
+            <p>Board meeting software for K-12 school districts. Built for the person who keeps the record.</p>
+          </div>
+          <div><h5>Product</h5><ul><li><a href="#features">Agendas</a></li><li><a href="#features">Minutes</a></li><li><a href="#">Public portal</a></li><li><a href="#">Migration</a></li></ul></div>
+          <div><h5>District</h5><ul><li><a href="#">Board secretary</a></li><li><a href="#">Superintendent</a></li><li><a href="#">Board members</a></li><li><a href="#">Pricing</a></li></ul></div>
+          <div><h5>Company</h5><ul><li><a href="#">Changelog</a></li><li><a href="#">Status</a></li><li><a href="#">Security</a></li><li><a href="#">Contact</a></li></ul></div>
+        </div>
+        <div class="v4d-foot-bot">
+          <span class="fine">© 2026 BoardPlanner</span>
+          <span class="adjourned">Meeting adjourned.</span>
+        </div>
+      </div>
+    </footer>
+  </div>
+</Base>
+
+<script>
+  // Calendly-style demo scheduler (September 2026; deterministic for the study)
+  const cal = document.getElementById('v4cal');
+  if (cal) {
+    const gridEl = document.getElementById('calGrid')!;
+    const slotsEl = document.getElementById('calSlots')!;
+    const headEl = document.getElementById('calTimesHead')!;
+    const sumEl = document.getElementById('calSum')!;
+    const confirmEl = document.getElementById('calConfirm') as HTMLButtonElement;
+    const DOW = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    const MON = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    const SLOTS = ['9:00 am', '9:30 am', '10:00 am', '10:30 am', '1:00 pm', '1:30 pm', '3:00 pm', '3:30 pm'];
+    const YEAR = 2026, M = 8, TODAY = 6; // Sep 2026, "today" = the 6th
+    const firstDow = new Date(YEAR, M, 1).getDay();
+    const days = new Date(YEAR, M + 1, 0).getDate();
+    let selDay: number | null = null, selTime: string | null = null;
+
+    const state = () => {
+      const ready = selDay && selTime;
+      confirmEl.disabled = !ready;
+      sumEl.textContent = ready
+        ? `${DOW[new Date(YEAR, M, selDay!).getDay()]}, ${MON[M]} ${selDay} · ${selTime}`
+        : 'Pick a day and time to continue';
+    };
+    const renderSlots = () => {
+      slotsEl.innerHTML = '';
+      SLOTS.forEach((t) => {
+        const b = document.createElement('button');
+        b.className = 'slot'; b.type = 'button'; b.textContent = t;
+        b.addEventListener('click', () => {
+          selTime = t;
+          slotsEl.querySelectorAll('.slot').forEach((s) => s.classList.remove('sel'));
+          b.classList.add('sel'); state();
+        });
+        slotsEl.appendChild(b);
+      });
+    };
+    for (let i = 0; i < firstDow; i++) {
+      const e = document.createElement('span'); e.className = 'day empty'; gridEl.appendChild(e);
+    }
+    for (let d = 1; d <= days; d++) {
+      const dow = new Date(YEAR, M, d).getDay();
+      const b = document.createElement('button');
+      b.className = 'day'; b.type = 'button'; b.textContent = String(d);
+      const open = d > TODAY && dow !== 0 && dow !== 6;
+      if (!open) { b.disabled = true; }
+      else {
+        b.classList.add('avail');
+        b.addEventListener('click', () => {
+          selDay = d; selTime = null;
+          gridEl.querySelectorAll('.day').forEach((x) => x.classList.remove('sel'));
+          b.classList.add('sel');
+          headEl.textContent = `${DOW[dow]}, ${MON[M]} ${d}`;
+          renderSlots(); state();
+        });
+      }
+      gridEl.appendChild(b);
+    }
+    confirmEl.addEventListener('click', () => {
+      if (confirmEl.disabled) return;
+      confirmEl.textContent = 'Requested ✓';
+      sumEl.textContent = 'We would email a confirmation here.';
+    });
+    state();
+  }
+</script>

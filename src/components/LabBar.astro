@@ -1,5 +1,5 @@
 ---
-interface Props { active?: 'index' | 'home' | 'search' | 'workflow' | 'themes' | 'headlines' | 'fh' | 'luxe' | 'motion' | 'motion-bw' | 'crisp' | 'feedback-v1' | 'feedback-v2' | 'feedback-v3' | 'contrarian' | 'roundtable' | 'cashapp' | 'call-to-order' | 'feedback-v4'; }
+interface Props { active?: 'index' | 'home' | 'search' | 'workflow' | 'themes' | 'headlines' | 'fh' | 'luxe' | 'motion' | 'motion-bw' | 'crisp' | 'feedback-v1' | 'feedback-v2' | 'feedback-v3' | 'contrarian' | 'roundtable' | 'cashapp' | 'call-to-order' | 'feedback-v4' | 'v4-dark'; }
 const { active } = Astro.props;
 const items = [
   { key: 'index', label: 'Lab', href: '/lab/' },
@@ -7,6 +7,7 @@ const items = [
   { key: 'feedback-v2', label: 'Feedback V2', href: '/lab/feedback-v2/' },
   { key: 'feedback-v3', label: 'Feedback V3', href: '/lab/feedback-v3/' },
   { key: 'feedback-v4', label: 'V4 · Sept Edition', href: '/lab/feedback-v4/' },
+  { key: 'v4-dark', label: 'V4 · Dark', href: '/lab/v4-dark/' },
   { key: 'contrarian', label: 'Contrarian', href: '/lab/contrarian/' },
   { key: 'roundtable', label: 'Roundtable', href: '/lab/roundtable/' },
   { key: 'cashapp', label: 'Cash App', href: '/lab/cashapp/' },
