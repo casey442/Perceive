@@ -15,12 +15,12 @@ const svg = {
 };
 
 const six = [
-  { ic: 'doc',   name: 'AI summaries',              tag: 'Cites the source page', sub: 'Every packet, read for you. The citation shows the source page.' },
-  { ic: 'mic',   name: 'Ramble mode',              tag: 'Voice to agenda',       sub: 'Talk through the meeting. The agenda builds itself.' },
-  { ic: 'globe', name: 'Translation',              tag: 'Reader’s language',     sub: 'Summaries and full text, in the reader’s language.' },
-  { ic: 'book',  name: 'Agendas, minutes, policies', tag: 'Minutes, live',       sub: 'Minutes populate as the motions and votes land.' },
-  { ic: 'clip',  name: 'Full document migration',  tag: 'From BoardDocs',        sub: 'Your whole history, brought over. You ask no one.' },
-  { ic: 'phone', name: 'Real US support',          tag: 'A person picks up',     sub: 'A person in Ohio picks up. Never a phone bot.' },
+  { ic: 'doc',   pv: 'sum',    name: 'AI summaries',              sub: 'Every packet, read for you. The citation shows the source page.' },
+  { ic: 'mic',   pv: 'ramble', name: 'Ramble mode',              sub: 'Talk through the meeting. The agenda builds itself.' },
+  { ic: 'globe', pv: 'trans',  name: 'Translation',              sub: 'Summaries and full text, in the reader’s language.' },
+  { ic: 'book',  pv: 'min',    name: 'Agendas, minutes, policies', sub: 'Minutes populate as the motions and votes land.' },
+  { ic: 'clip',  pv: 'mig',    name: 'Full document migration',  sub: 'Your whole history, brought over. You ask no one.' },
+  { ic: 'phone', pv: 'sup',    name: 'Real US support',          sub: 'A person in Ohio picks up. Never a phone bot.' },
 ];
 ---
 <Base title="BoardPlanner — V4 · Dark">
@@ -47,7 +47,6 @@ const six = [
     <header class="v4d-hero">
       <div class="wrap"><div class="grid">
         <div class="v4d-hero-copy">
-          <span class="eyebrow">Board meeting software · K-12</span>
           <h1>A matter of record.<br><span class="hi">In seconds.</span></h1>
           <p class="lede">The agenda, the packet, the minutes, and your full history. In one place, posted on time, searchable by anyone.</p>
           <div class="v4d-hero-cta">
@@ -133,17 +132,93 @@ const six = [
     <section class="v4d-six">
       <div class="wrap">
         <div class="v4d-six-head">
-          <span class="eyebrow">The basics, still in play</span>
           <h2>Everything you expect from board software.</h2>
           <p>The two above are the differentiators. These are the everyday tools that carry the meeting.</p>
         </div>
-        <div class="v4d-six-grid">
+        <div class="v4d-six-grid" id="sixGrid">
           {six.map((f) => (
-            <div class="v4d-tile">
+            <div class="v4d-tile" tabindex="0">
               <span class="ic" set:html={svg[f.ic]} />
               <h3>{f.name}</h3>
-              <p>{f.sub}</p>
-              <span class="tag">{f.tag}</span>
+              <p class="sub">{f.sub}</p>
+              <span class="thint">Hover to preview</span>
+
+              <div class="v4d-pop" role="img" aria-label={f.name}>
+                {f.pv === 'sum' && (
+                  <div class="v4pv v4pv-sum">
+                    <div class="plabel">AI summary</div>
+                    <div class="pv-lines">
+                      <span class="ln l1">Board approved the FY26 budget, 6–1.</span>
+                      <span class="ln l2">Tax rate held. New bus lease deferred to May.</span>
+                    </div>
+                    <span class="pcite">From: Consent Agenda · p.4</span>
+                  </div>
+                )}
+                {f.pv === 'ramble' && (
+                  <div class="v4pv v4pv-ramble">
+                    <div class="plabel">Listening</div>
+                    <div class="pv-mic">
+                      <i class="bar"></i><i class="bar"></i><i class="bar"></i><i class="bar"></i><i class="bar"></i>
+                      <span class="say">“…then the budget vote, then facilities.”</span>
+                    </div>
+                    <ul class="pv-items">
+                      <li>1 · Call to order</li>
+                      <li>2 · FY26 budget vote</li>
+                      <li>3 · Facilities update</li>
+                    </ul>
+                  </div>
+                )}
+                {f.pv === 'trans' && (
+                  <div class="v4pv v4pv-trans">
+                    <div class="plabel">Translation</div>
+                    <div class="pv-tabs">
+                      <span class="hl"></span>
+                      <b>EN</b><b>ES</b><b>中文</b>
+                    </div>
+                    <div class="pv-tline">
+                      <span class="t1">Budget approved, 6–1. Tax rate held.</span>
+                      <span class="t2">Presupuesto aprobado, 6–1. Tasa sin cambios.</span>
+                      <span class="t3">预算通过，6–1。税率维持不变。</span>
+                    </div>
+                    <span class="pcite">From: Minutes · Item 4</span>
+                  </div>
+                )}
+                {f.pv === 'min' && (
+                  <div class="v4pv v4pv-min">
+                    <div class="plabel">Minutes · live</div>
+                    <ul class="pv-rows">
+                      <li><span>Motion to approve budget</span><em>Carried</em></li>
+                      <li><span>Roll call vote</span><em>6–1</em></li>
+                      <li><span>Meeting adjourned</span><em>7:42</em></li>
+                    </ul>
+                  </div>
+                )}
+                {f.pv === 'mig' && (
+                  <div class="v4pv v4pv-mig">
+                    <div class="plabel">Migration</div>
+                    <div class="pv-imp">
+                      <b class="imp">Importing minute book…</b>
+                      <b class="done">Imported · 1,204 records</b>
+                    </div>
+                    <div class="pv-prog"><i></i></div>
+                    <div class="pv-from">From BoardDocs · agendas, minutes, policies</div>
+                  </div>
+                )}
+                {f.pv === 'sup' && (
+                  <div class="v4pv v4pv-sup">
+                    <div class="plabel">Support</div>
+                    <div class="pv-msg">“Can you restore last month’s packet?”</div>
+                    <div class="pv-agent">
+                      <span class="av">DM</span>
+                      <div>
+                        <b>Dana · BoardPlanner</b>
+                        <span class="typing"><i></i><i></i><i></i></span>
+                        <span class="reply">On it — restored and emailed to you.</span>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
           ))}
         </div>
@@ -210,6 +285,27 @@ const six = [
 </Base>
 
 <script>
+  // six tiles: anchor the hover pop-over inward on each row's edge columns
+  const grid = document.getElementById('sixGrid');
+  if (grid) {
+    const tiles = Array.from(grid.querySelectorAll<HTMLElement>('.v4d-tile'));
+    const layout = () => {
+      tiles.forEach((t) => t.classList.remove('edge-l', 'edge-r'));
+      const rows = new Map<number, HTMLElement[]>();
+      tiles.forEach((t) => {
+        const key = t.offsetTop;
+        (rows.get(key) || rows.set(key, []).get(key)!).push(t);
+      });
+      rows.forEach((row) => {
+        if (row.length < 2) return;
+        row[0].classList.add('edge-l');
+        row[row.length - 1].classList.add('edge-r');
+      });
+    };
+    layout();
+    window.addEventListener('resize', layout);
+  }
+
   // Calendly-style demo scheduler (September 2026; deterministic for the study)
   const cal = document.getElementById('v4cal');
   if (cal) {
