@@ -1,0 +1,453 @@
+N---
+import Base from '../../layouts/Base.astro';
+import '../../styles/lab.css';
+import '../../styles/v4-hamptons.css';
+import LabBar from '../../components/LabBar.astro';
+
+const svg = {
+  doc: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="5" y="3" width="14" height="18" rx="2.5"/><path d="M9 8.5h6M9 12.5h6M9 16.5h4"/></svg>',
+  mic: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21"/></svg>',
+  globe: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3.2 3.4 3.2 14.6 0 18M12 3c-3.2 3.4-3.2 14.6 0 18"/></svg>',
+  book: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 4.5A1.5 1.5 0 0 1 6.5 3H19v16.5H6.5A1.5 1.5 0 0 0 5 21z"/><path d="M9 3v18"/></svg>',
+  clip: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 11.5l-8.2 8.2a5 5 0 0 1-7-7l8.5-8.5a3.3 3.3 0 1 1 4.7 4.7l-8.5 8.5a1.6 1.6 0 0 1-2.3-2.3l7.8-7.8"/></svg>',
+  phone: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 3h3l1.6 4.2L8.4 9.1a12 12 0 0 0 6.5 6.5l1.9-2.2L21 15v3a2 2 0 0 1-2.1 2A16 16 0 0 1 4 5.1 2 2 0 0 1 6 3z"/></svg>',
+  logo: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20V10a8 8 0 0 1 16 0v10"/><path d="M4 20h16M9 20v-6h6v6"/></svg>',
+};
+
+const record = [
+  { t: 'Superintendent contract', d: 'renewed' },
+  { t: 'Bus routes', d: 'redrawn 2023' },
+  { t: 'Boundary study', d: 'adopted' },
+  { t: 'Substitute pay scale', d: 'amended' },
+  { t: 'Consent agenda 8.B', d: 'pulled' },
+  { t: 'Roof bid, Lincoln Elementary', d: 'awarded' },
+  { t: 'Calendar adoption', d: 'first reading' },
+  { t: 'Title I plan', d: 'approved' },
+];
+
+const six = [
+  { ic: 'doc',   pv: 'sum',    name: 'AI summaries',              sub: 'Every packet, read for you. The citation shows the source page.' },
+  { ic: 'mic',   pv: 'ramble', name: 'Ramble mode',              sub: 'Talk through the meeting. The agenda builds itself.' },
+  { ic: 'globe', pv: 'trans',  name: 'Translation',              sub: 'Summaries and full text, in the reader’s language.' },
+  { ic: 'book',  pv: 'min',    name: 'Agendas, minutes, policies', sub: 'Minutes populate as the motions and votes land.' },
+  { ic: 'clip',  pv: 'mig',    name: 'Full document migration',  sub: 'Your whole history, brought over. You ask no one.' },
+  { ic: 'phone', pv: 'sup',    name: 'Real US support',          sub: 'Talk to a real person in the good ole US of A, never a bot.' },
+];
+---
+<Base title="Perceive — V4 · Hamptons">
+  <LabBar active="v4-hamptons" />
+
+  <div class="v4h">
+    <!-- SCROLL DUDE: a little rope-rider on the right edge, drag him (or click the
+         rope) to scroll. Purely decorative + a bonus scrollbar, not required nav. -->
+    <div class="v4h-scroller" id="scrollDude" role="slider" tabindex="0" aria-label="Scroll the page" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+      <div class="v4h-scroller-dude">
+        <svg viewBox="0 0 28 40" aria-hidden="true">
+          <path d="M8 19 Q3 10 10 2.3" fill="none" stroke="#2A2620" stroke-width="3" stroke-linecap="round"/>
+          <path d="M20 19 Q25 10 18 2.3" fill="none" stroke="#2A2620" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="10" cy="2.3" r="2.1" fill="#2A2620"/>
+          <circle cx="18" cy="2.3" r="2.1" fill="#2A2620"/>
+          <circle cx="14" cy="12" r="6.5" fill="var(--gold)"/>
+          <circle cx="11.6" cy="11" r="0.9" fill="#2A2620"/>
+          <circle cx="16.4" cy="11" r="0.9" fill="#2A2620"/>
+          <path d="M11.5 14.2q2.5 2 5 0" fill="none" stroke="#2A2620" stroke-width="1.1" stroke-linecap="round"/>
+          <ellipse cx="14" cy="6.5" rx="6.8" ry="1.6" fill="#2A2620"/>
+          <path d="M10.3 6.5 Q9.8 2 14 1.6 Q18.2 2 17.7 6.5 Z" fill="#2A2620"/>
+          <rect x="10.3" y="5.6" width="7.4" height="1" fill="var(--gold)"/>
+          <rect x="6.5" y="18" width="15" height="14" rx="4" fill="var(--blue)"/>
+          <rect x="8" y="31" width="5.5" height="9" rx="2.5" fill="#2A2620"/>
+          <rect x="14.5" y="31" width="5.5" height="9" rx="2.5" fill="#2A2620"/>
+        </svg>
+      </div>
+      <div class="v4h-scroller-bubble" id="dudeBubble">
+        <span class="v4h-scroller-bubble-text" aria-hidden="true"></span>
+        <a class="v4h-scroller-bubble-link" href="#book">Book a demo</a>
+      </div>
+    </div>
+
+    <nav class="v4h-nav">
+      <div class="v4h-nav-in">
+        <a class="v4h-logo" href="/"><span class="mark" set:html={svg.logo} />Perceive</a>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="v4h-hero" data-dude-blurb="Let's go!">
+      <div class="wrap"><div class="grid">
+        <div class="v4h-hero-copy">
+          <h1>No tools that <span class="hi">"revolutionize K-12 governance."</span></h1>
+          <p class="lede">We just handle a lot of the boring administrative work so you don't have to. That's it. That's the pitch.</p>
+          <div class="v4h-hero-cta">
+            <a class="v4h-btn big" href="#book">See a demo</a>
+            <a class="v4h-btn ghost big" href="#features">See it work</a>
+          </div>
+        </div>
+        <div class="v4h-hero-media">
+          <div class="v4h-card">
+            <svg class="v4h-illus" viewBox="0 0 420 300" role="img" aria-label="This week in Perceive: a completed task, the packet ready, and an early signal.">
+              <text x="24" y="40" font-family="system-ui, sans-serif" font-size="17" font-weight="700" class="il-ink">This week</text>
+              <g transform="translate(316,24)"><rect width="80" height="24" rx="12" class="il-bluetint"/><text x="40" y="16" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-size="11" font-weight="700" class="il-blue">on track</text></g>
+              <line x1="24" y1="58" x2="396" y2="58" class="il-line"/>
+              <!-- row 1: done -->
+              <g transform="translate(24,80)"><rect width="22" height="22" rx="6" class="il-sage"/><path d="M6 11l4 4 7-8" fill="none" stroke="#2A2620" stroke-width="2.4" stroke-linecap="round"/><text x="36" y="16" font-family="system-ui, sans-serif" font-size="15" class="il-faint" text-decoration="line-through">Post FY26 budget notice</text><g transform="translate(316,0)"><rect width="56" height="24" rx="12" class="il-sagetint"/><text x="28" y="16" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-size="11" font-weight="700" class="il-sage">done</text></g></g>
+              <!-- row 2: packet -->
+              <g transform="translate(24,128)"><rect width="22" height="22" rx="6" fill="none" stroke="#D2C6AA" stroke-width="2"/><g class="il-blue" transform="translate(2,3)" stroke="currentColor" stroke-width="1.6" fill="none"><rect x="3" y="0" width="12" height="16" rx="2"/><path d="M6 5h6M6 8.5h6M6 12h4"/></g><text x="36" y="16" font-family="system-ui, sans-serif" font-size="15" class="il-ink">Board packet assembled</text><g transform="translate(330,0)"><rect width="42" height="24" rx="12" fill="none" stroke="#D2C6AA"/><text x="21" y="16" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-size="11" font-weight="700" class="il-mut">Fri</text></g></g>
+              <!-- row 3: signal -->
+              <g transform="translate(24,176)"><circle cx="11" cy="11" r="7" class="il-bluetint"/><circle cx="11" cy="11" r="3.4" class="il-blue il-pulse"/><text x="36" y="16" font-family="system-ui, sans-serif" font-size="15" class="il-ink">Signal: policy challenge, 3 districts over</text></g>
+              <g transform="translate(24,214)"><rect width="372" height="52" rx="12" class="il-bluetint"/><text x="18" y="24" font-family="ui-monospace, Menlo, monospace" font-size="10" font-weight="700" letter-spacing="0.06em" class="il-blue">HEADING YOUR WAY</text><text x="18" y="42" font-family="system-ui, sans-serif" font-size="14" class="il-ink">Likely on your April agenda</text></g>
+            </svg>
+          </div>
+        </div>
+      </div></div>
+    </header>
+
+    <!-- FEATURE 1 · Commitment Tracker (image left) -->
+    <section class="v4h-feat rev" id="features" data-dude-blurb="Tracking!">
+      <div class="wrap"><div class="grid">
+        <div class="v4h-feat-copy">
+          <span class="kick">Introducing</span>
+          <h2 class="jump">The Commitment Tracker</h2>
+          <p class="desc">The plan is public. So is the progress.</p>
+          <p class="body">Being a firefighter is one of the noblest professions, but shouldn't be the primary day-to-day of a superintendent. Commitment Tracker keeps you and your board focused on the right things, so you can make meaningful progress, without extra work.</p>
+          <a class="arrow" href="#book">See it work</a>
+        </div>
+        <div class="v4h-feat-media">
+          <div class="v4h-card">
+            <svg class="v4h-illus" viewBox="0 0 460 336" role="img" aria-label="A commitment tracker: a strategic-plan goal marked active, its four objectives shown as met, moving, or open, grounded in the March 17 board meeting minutes.">
+              <text x="32" y="42" font-family="system-ui, sans-serif" font-size="18" font-weight="700" class="il-ink">Reading proficiency, K–3</text>
+              <g transform="translate(366,20)"><rect width="62" height="24" rx="12" fill="var(--sage-tint)"/><text x="31" y="16" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-size="12" font-weight="700" fill="var(--sage)">Active</text></g>
+              <text x="32" y="66" font-family="ui-monospace, Menlo, monospace" font-size="10.5" font-weight="700" letter-spacing="0.04em" class="il-faint">4 OBJECTIVES · 6 LINKED MEETINGS</text>
+              <line x1="32" y1="80" x2="428" y2="80" class="il-line"/>
+              <g transform="translate(32,94)"><rect width="20" height="20" rx="5" class="il-sage"/><path d="M5 10l3.5 3.5 6.5-7" fill="none" stroke="#2A2620" stroke-width="2.2" stroke-linecap="round"/><text x="32" y="15" font-family="system-ui, sans-serif" font-size="14.5" class="il-ink">Adopt board-approved reading curriculum</text><g transform="translate(354,-1)"><rect width="44" height="22" rx="11" fill="var(--sage-tint)"/><text x="22" y="15" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-size="10" font-weight="700" fill="var(--sage)">met</text></g></g>
+              <g transform="translate(32,148)"><rect width="20" height="20" rx="5" fill="var(--gold-tint)" stroke="var(--gold)" stroke-width="1.5"/><rect x="4" y="9" width="12" height="3" rx="1.5" fill="var(--gold)"/><text x="32" y="15" font-family="system-ui, sans-serif" font-size="14.5" class="il-ink">Move report cards to standards-based grading</text><g transform="translate(354,-1)"><rect width="58" height="22" rx="11" fill="var(--gold-tint)"/><text x="29" y="15" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-size="10" font-weight="700" fill="var(--gold)">moving</text></g></g>
+              <g transform="translate(32,202)"><rect width="20" height="20" rx="5" fill="var(--gold-tint)" stroke="var(--gold)" stroke-width="1.5"/><rect x="4" y="9" width="12" height="3" rx="1.5" fill="var(--gold)"/><text x="32" y="15" font-family="system-ui, sans-serif" font-size="14.5" class="il-ink">Raise 3rd-grade reading proficiency to 70%</text><g transform="translate(354,-1)"><rect width="58" height="22" rx="11" fill="var(--gold-tint)"/><text x="29" y="15" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-size="10" font-weight="700" fill="var(--gold)">moving</text></g></g>
+              <g transform="translate(32,256)"><rect width="20" height="20" rx="5" fill="none" stroke="#D2C6AA" stroke-width="2"/><text x="32" y="15" font-family="system-ui, sans-serif" font-size="14.5" class="il-mut">Publish a family guide to the new report card</text><g transform="translate(354,-1)"><rect width="46" height="22" rx="11" fill="#EFE7D8"/><text x="23" y="15" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-size="10" font-weight="700" class="il-faint">open</text></g></g>
+              <g transform="translate(32,300)"><rect width="396" height="32" rx="10" class="il-bluetint"/><circle cx="18" cy="16" r="4" class="il-blue il-pulse"/><text x="34" y="20" font-family="ui-monospace, Menlo, monospace" font-size="11" font-weight="700" class="il-blue">From the March 17 board meeting minutes</text></g>
+            </svg>
+          </div>
+        </div>
+      </div></div>
+    </section>
+
+    <!-- FEATURE 2 · Early Signal (image right) -->
+    <section class="v4h-feat" data-dude-blurb="Surprise!">
+      <div class="wrap"><div class="grid">
+        <div class="v4h-feat-copy">
+          <h2 class="jump">Early Signal</h2>
+          <p class="desc">Surprises rarely start with your community.</p>
+          <p class="body">They start three districts over, a few weeks earlier: the same policy challenge, the same records-request surge, the same public-comment wave. Early Signal catches the pattern while it is still down the road, so it reaches your agenda before it reaches your board room.</p>
+          <a class="arrow" href="#book">See it work</a>
+        </div>
+        <div class="v4h-feat-media">
+          <div class="v4h-card">
+            <svg class="v4h-illus" viewBox="0 0 460 336" role="img" aria-label="Early Signal: three nearby districts show the same issue over the past weeks, flagged as heading your way onto the April agenda.">
+              <text x="32" y="46" font-family="system-ui, sans-serif" font-size="18" font-weight="700" class="il-ink">Signals near you</text>
+              <g transform="translate(362,30)"><rect width="66" height="24" rx="12" class="il-bluetint"/><text x="33" y="16" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-size="12" font-weight="700" class="il-blue">3 near</text></g>
+              <line x1="32" y1="64" x2="428" y2="64" class="il-line"/>
+              <g transform="translate(32,80)"><rect width="396" height="46" rx="10" class="il-card"/><circle cx="22" cy="23" r="4" class="il-blue"/><text x="40" y="20" font-family="ui-monospace, Menlo, monospace" font-size="9.5" font-weight="700" class="il-faint">3 DISTRICTS OVER</text><text x="40" y="37" font-family="system-ui, sans-serif" font-size="14" class="il-ink">Screen policy dominates discussion</text><g transform="translate(332,12)"><rect width="52" height="22" rx="11" fill="#EFE7D8"/><text x="26" y="15" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-size="10" font-weight="700" class="il-mut">3 wks</text></g></g>
+              <g transform="translate(32,132)"><rect width="396" height="46" rx="10" class="il-card"/><circle cx="22" cy="23" r="4" class="il-blue"/><text x="40" y="20" font-family="ui-monospace, Menlo, monospace" font-size="9.5" font-weight="700" class="il-faint">2 DISTRICTS OVER</text><text x="40" y="37" font-family="system-ui, sans-serif" font-size="14" class="il-ink">Records-request surge after a budget vote</text><g transform="translate(332,12)"><rect width="52" height="22" rx="11" fill="#EFE7D8"/><text x="26" y="15" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-size="10" font-weight="700" class="il-mut">2 wks</text></g></g>
+              <g transform="translate(32,184)"><rect width="396" height="46" rx="10" class="il-card"/><circle cx="22" cy="23" r="4" class="il-blue"/><text x="40" y="20" font-family="ui-monospace, Menlo, monospace" font-size="9.5" font-weight="700" class="il-faint">NEXT COUNTY OVER</text><text x="40" y="37" font-family="system-ui, sans-serif" font-size="14" class="il-ink">Public-comment wave on the same policy</text><g transform="translate(330,12)"><rect width="54" height="22" rx="11" fill="#EFE7D8"/><text x="27" y="15" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-size="10" font-weight="700" class="il-mut">9 days</text></g></g>
+              <g transform="translate(32,244)"><rect width="396" height="56" rx="12" class="il-bluetint" stroke="#1F3A52" stroke-width="1.2"/><circle cx="26" cy="28" r="5" class="il-blue il-pulse"/><text x="46" y="24" font-family="ui-monospace, Menlo, monospace" font-size="10" font-weight="700" class="il-blue">HEADING YOUR WAY</text><text x="46" y="43" font-family="system-ui, sans-serif" font-size="14.5" class="il-ink">Same policy, likely on your April agenda</text></g>
+            </svg>
+          </div>
+        </div>
+      </div></div>
+    </section>
+
+    <!-- ON THE RECORD MARQUEE (follows the two features) -->
+    <section class="v4h-marquee" data-dude-blurb="Meanwhile…">
+      <div class="wrap v4h-marquee-head">
+        <span class="kick">Meanwhile, on the record</span>
+      </div>
+      <div class="v4h-marquee-row left">
+        {[...record, ...record].map((it) => (
+          <span class="v4h-tag">{it.t} <i>· {it.d}</i></span>
+        ))}
+      </div>
+      <div class="v4h-marquee-row right">
+        {[...record.slice().reverse(), ...record.slice().reverse()].map((it) => (
+          <span class="v4h-tag">{it.t} <i>· {it.d}</i></span>
+        ))}
+      </div>
+    </section>
+
+    <!-- SIX TOOLS -->
+    <section class="v4h-six" data-dude-blurb="So boring!">
+      <div class="wrap">
+        <div class="v4h-six-head">
+          <h2>The Boring Suite</h2>
+          <p>Administrators handle a lot of tedious work surrounding board meetings and compliance; The Boring Suite takes that burden away.</p>
+        </div>
+        <div class="v4h-six-grid" id="sixGrid">
+          {six.map((f) => (
+            <div class="v4h-tile" tabindex="0">
+              <span class="ic" set:html={svg[f.ic]} />
+              <h3>{f.name}</h3>
+              <p class="sub">{f.sub}</p>
+              <span class="thint">Hover to preview</span>
+
+              <div class="v4h-pop" role="img" aria-label={f.name}>
+                {f.pv === 'sum' && (
+                  <div class="v4pv v4pv-sum">
+                    <div class="plabel">AI summary</div>
+                    <div class="pv-lines">
+                      <span class="ln l1">Board approved the FY26 budget.</span>
+                      <span class="ln l2">Tax rate held. New bus lease deferred to May.</span>
+                    </div>
+                    <span class="pcite">From: Consent Agenda · p.4</span>
+                  </div>
+                )}
+                {f.pv === 'ramble' && (
+                  <div class="v4pv v4pv-ramble">
+                    <div class="plabel">Listening</div>
+                    <div class="pv-mic">
+                      <i class="bar"></i><i class="bar"></i><i class="bar"></i><i class="bar"></i><i class="bar"></i>
+                    </div>
+                    <span class="say">“<span class="say-text">…then the budget vote, then facilities.</span>”</span>
+                    <ul class="pv-items">
+                      <li>1 · Call to order</li>
+                      <li>2 · FY26 budget vote</li>
+                      <li>3 · Facilities update</li>
+                    </ul>
+                  </div>
+                )}
+                {f.pv === 'trans' && (
+                  <div class="v4pv v4pv-trans">
+                    <div class="plabel">Translation</div>
+                    <div class="pv-tabs">
+                      <span class="hl"></span>
+                      <b>EN</b><b>ES</b><b>中文</b>
+                    </div>
+                    <div class="pv-tline">
+                      <span class="t1">Budget approved, 6–1. Tax rate held.</span>
+                      <span class="t2">Presupuesto aprobado, 6–1. Tasa sin cambios.</span>
+                      <span class="t3">预算通过，6–1。税率维持不变。</span>
+                    </div>
+                    <span class="pcite">From: Minutes · Item 4</span>
+                  </div>
+                )}
+                {f.pv === 'min' && (
+                  <div class="v4pv v4pv-min">
+                    <div class="plabel">Minutes · live</div>
+                    <ul class="pv-rows">
+                      <li><span>Motion to approve budget</span><em>Carried</em></li>
+                      <li><span>Roll call vote</span><em>6–1</em></li>
+                      <li><span>Meeting adjourned</span><em>7:42</em></li>
+                    </ul>
+                  </div>
+                )}
+                {f.pv === 'mig' && (
+                  <div class="v4pv v4pv-mig">
+                    <div class="plabel">Migration</div>
+                    <div class="pv-imp">
+                      <b class="imp">Importing minute book…</b>
+                      <b class="done">Imported · 1,204 records</b>
+                    </div>
+                    <div class="pv-prog"><i></i></div>
+                    <div class="pv-from">Agendas, minutes, policies</div>
+                  </div>
+                )}
+                {f.pv === 'sup' && (
+                  <div class="v4pv v4pv-sup">
+                    <div class="plabel">Support</div>
+                    <div class="pv-msg">“Can you restore last month’s packet?”</div>
+                    <div class="pv-agent">
+                      <span class="av">DM</span>
+                      <div>
+                        <b>Dana · Perceive</b>
+                        <span class="typing"><i></i><i></i><i></i></span>
+                        <span class="reply">On it — restored and emailed to you.</span>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY WE WOULDN'T BE A FIT -->
+    <section class="v4h-final" id="book" data-dude-blurb="Not for everyone!">
+      <div class="wrap">
+        <div class="v4h-final-head">
+          <h2>We're not for everyone.</h2>
+        </div>
+
+        <div class="v4h-notfit-grid">
+          <div class="v4h-notfit-tile">
+            <h3>If you're not a K-12 public school district</h3>
+            <p>You're a city, a nonprofit, or another kind of institution. There are tools built for you. This isn't one of them.</p>
+          </div>
+          <div class="v4h-notfit-tile">
+            <h3>If you're a very large district</h3>
+            <p>You're a large school district that needs every bell and whistle. We're built for small and midsize districts, on purpose.</p>
+          </div>
+          <div class="v4h-notfit-tile">
+            <h3 class="ghost">We wanted to see if you noticed</h3>
+            <p>You want a partner "pioneering world change through innovation," blah blah blah. School leaders already do that. We just want to take some work off your plate.</p>
+          </div>
+          <div class="v4h-notfit-tile">
+            <h3>If you want AI-based support</h3>
+            <p>You want a company that deals with Fortune 500s and answers with a chatbot. Not us. Smaller and midsize districts only — and you'll never talk to an AI when you call in.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="v4h-foot" data-dude-blurb="Book a demo" data-dude-cta="true">
+      <div class="v4h-foot-in">
+        <div class="v4h-foot-cta">
+          <a class="v4h-btn big" href="#book">Book a demo</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+</Base>
+
+<script>
+  // "The Commitment Tracker" / "Early Signal": split into letter spans so the
+  // hover jump can stagger across them. Respects prefers-reduced-motion by
+  // simply never adding the animation trigger (CSS below also hard-guards it).
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduceMotion) {
+    document.querySelectorAll<HTMLElement>('.v4h-feat h2.jump').forEach((h2) => {
+      const text = h2.textContent ?? '';
+      h2.textContent = '';
+      text.split('').forEach((ch, i) => {
+        const span = document.createElement('span');
+        span.textContent = ch === ' ' ? ' ' : ch;
+        span.style.setProperty('--i', String(i));
+        h2.appendChild(span);
+      });
+    });
+  }
+
+  // Scroll dude: rides the rope in step with scroll position; drag him, or click
+  // the rope itself, to scrub the page.
+  const scroller = document.getElementById('scrollDude');
+  const dude = scroller?.querySelector<HTMLElement>('.v4h-scroller-dude');
+  if (scroller && dude) {
+    let dragging = false;
+    const usableHeight = () => scroller.getBoundingClientRect().height - dude.offsetHeight;
+    const scrollMax = () => document.documentElement.scrollHeight - window.innerHeight;
+    const place = (frac: number) => {
+      const clamped = Math.max(0, Math.min(1, frac));
+      dude.style.top = `${clamped * usableHeight()}px`;
+      scroller.setAttribute('aria-valuenow', String(Math.round(clamped * 100)));
+    };
+    const fracFromScroll = () => (scrollMax() > 0 ? window.scrollY / scrollMax() : 0);
+    const syncToScroll = () => { if (!dragging) place(fracFromScroll()); };
+    const fracFromClientY = (clientY: number) => {
+      const rect = scroller.getBoundingClientRect();
+      const uh = usableHeight();
+      return uh > 0 ? (clientY - rect.top - dude.offsetHeight / 2) / uh : 0;
+    };
+
+    window.addEventListener('scroll', syncToScroll, { passive: true });
+    window.addEventListener('resize', syncToScroll);
+    syncToScroll();
+
+    dude.addEventListener('pointerdown', (e) => {
+      dragging = true;
+      scroller.classList.add('dragging');
+      dude.setPointerCapture(e.pointerId);
+    });
+    dude.addEventListener('pointermove', (e) => {
+      if (!dragging) return;
+      const frac = fracFromClientY(e.clientY);
+      place(frac);
+      window.scrollTo({ top: Math.max(0, Math.min(1, frac)) * scrollMax() });
+    });
+    const stopDrag = () => { dragging = false; scroller.classList.remove('dragging'); };
+    dude.addEventListener('pointerup', stopDrag);
+    dude.addEventListener('pointercancel', stopDrag);
+
+    scroller.addEventListener('pointerdown', (e) => {
+      if (e.target === dude || dude.contains(e.target as Node)) return;
+      const frac = fracFromClientY(e.clientY);
+      window.scrollTo({ top: Math.max(0, Math.min(1, frac)) * scrollMax(), behavior: reduceMotion ? 'auto' : 'smooth' });
+    });
+
+    scroller.addEventListener('keydown', (e) => {
+      const step = window.innerHeight * 0.22;
+      if (e.key === 'ArrowDown' || e.key === 'PageDown') { window.scrollBy({ top: step, behavior: reduceMotion ? 'auto' : 'smooth' }); e.preventDefault(); }
+      if (e.key === 'ArrowUp' || e.key === 'PageUp') { window.scrollBy({ top: -step, behavior: reduceMotion ? 'auto' : 'smooth' }); e.preventDefault(); }
+    });
+
+    // Speech bubble: swaps text as each tagged section crosses the vertical
+    // center of the viewport (a thin scrollspy band), and rides alongside him.
+    const bubble = document.getElementById('dudeBubble');
+    const bubbleText = bubble?.querySelector<HTMLElement>('.v4h-scroller-bubble-text');
+    const blurbSections = Array.from(document.querySelectorAll<HTMLElement>('[data-dude-blurb]'));
+    if (bubble && bubbleText && blurbSections.length) {
+      // If a tagged section (like a short footer) is too small to ever cross the
+      // center band before the page runs out of room to scroll, the observer
+      // below can never fire for it. Force its state once we're pinned at the
+      // very bottom, so it always wins regardless of section height.
+      const lastSection = blurbSections[blurbSections.length - 1];
+      const showSection = (el: HTMLElement) => {
+        bubbleText.textContent = el.getAttribute('data-dude-blurb') || '';
+        bubble.classList.toggle('is-cta', el.hasAttribute('data-dude-cta'));
+        bubble.classList.toggle('show', Boolean(el.getAttribute('data-dude-blurb')));
+      };
+      const syncBubblePosition = () => {
+        bubble.style.top = `${parseFloat(dude.style.top || '0') + 18}px`;
+        const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
+        if (atBottom) showSection(lastSection);
+      };
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            showSection(entry.target as HTMLElement);
+          });
+        },
+        { rootMargin: '-45% 0px -45% 0px', threshold: 0 }
+      );
+      blurbSections.forEach((s) => io.observe(s));
+      window.addEventListener('scroll', syncBubblePosition, { passive: true });
+      window.addEventListener('resize', syncBubblePosition);
+      syncBubblePosition();
+    }
+  }
+
+  // six tiles: anchor the hover pop-over inward on each row's edge columns
+  const grid = document.getElementById('sixGrid');
+  if (grid) {
+    const tiles = Array.from(grid.querySelectorAll<HTMLElement>('.v4h-tile'));
+    const layout = () => {
+      tiles.forEach((t) => t.classList.remove('edge-l', 'edge-r'));
+      const rows = new Map<number, HTMLElement[]>();
+      tiles.forEach((t) => {
+        const key = t.offsetTop;
+        (rows.get(key) || rows.set(key, []).get(key)!).push(t);
+      });
+      rows.forEach((row) => {
+        if (row.length < 2) return;
+        row[0].classList.add('edge-l');
+        row[row.length - 1].classList.add('edge-r');
+      });
+    };
+    layout();
+    window.addEventListener('resize', layout);
+  }
+
+</script>
+
+<style>
+  .v4h-marquee { padding: 60px 0; border-bottom: 1px solid var(--line); background-color: transparent; background-image: var(--weave), var(--grain); background-blend-mode: multiply, normal; overflow: hidden; }
+  .v4h-marquee-head { text-align: center; margin-bottom: 32px; }
+  .v4h-marquee-head .kick { display: inline-flex; align-items: center; gap: 8px; color: var(--blue); font-size: 13px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
+  .v4h-marquee-row { display: flex; gap: 14px; white-space: nowrap; width: max-content; }
+  .v4h-marquee-row.left { animation: v4hScrollLeft 38s linear infinite; }
+  .v4h-marquee-row.right { animation: v4hScrollRight 42s linear infinite; margin-top: 14px; }
+  .v4h-marquee:hover .v4h-marquee-row { animation-play-state: paused; }
+  @keyframes v4hScrollLeft { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  @keyframes v4hScrollRight { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+  .v4h-tag { display: inline-flex; align-items: center; gap: 8px; font-family: var(--mono); font-size: 12.5px; color: var(--ink); background: var(--card); border: 1px solid var(--line2); border-radius: 100px; padding: 8px 16px; }
+  .v4h-tag i { font-style: normal; color: var(--faint); }
+  @media (prefers-reduced-motion: reduce) { .v4h-marquee-row { animation: none; } }
+</style>

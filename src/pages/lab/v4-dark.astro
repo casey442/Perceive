@@ -14,22 +14,33 @@ const svg = {
   logo: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20V10a8 8 0 0 1 16 0v10"/><path d="M4 20h16M9 20v-6h6v6"/></svg>',
 };
 
+const record = [
+  { t: 'Superintendent contract', d: 'renewed' },
+  { t: 'Bus routes', d: 'redrawn 2023' },
+  { t: 'Boundary study', d: 'adopted' },
+  { t: 'Substitute pay scale', d: 'amended' },
+  { t: 'Consent agenda 8.B', d: 'pulled' },
+  { t: 'Roof bid, Lincoln Elementary', d: 'awarded' },
+  { t: 'Calendar adoption', d: 'first reading' },
+  { t: 'Title I plan', d: 'approved' },
+];
+
 const six = [
   { ic: 'doc',   pv: 'sum',    name: 'AI summaries',              sub: 'Every packet, read for you. The citation shows the source page.' },
   { ic: 'mic',   pv: 'ramble', name: 'Ramble mode',              sub: 'Talk through the meeting. The agenda builds itself.' },
   { ic: 'globe', pv: 'trans',  name: 'Translation',              sub: 'Summaries and full text, in the reader’s language.' },
   { ic: 'book',  pv: 'min',    name: 'Agendas, minutes, policies', sub: 'Minutes populate as the motions and votes land.' },
   { ic: 'clip',  pv: 'mig',    name: 'Full document migration',  sub: 'Your whole history, brought over. You ask no one.' },
-  { ic: 'phone', pv: 'sup',    name: 'Real US support',          sub: 'A person in Ohio picks up. Never a phone bot.' },
+  { ic: 'phone', pv: 'sup',    name: 'Real US support',          sub: 'Talk to a real person in the good ole US of A, never a bot.' },
 ];
 ---
-<Base title="BoardPlanner — V4 · Dark">
+<Base title="Perceive — V4 · Dark">
   <LabBar active="v4-dark" />
 
   <div class="v4d">
     <nav class="v4d-nav">
       <div class="v4d-nav-in">
-        <a class="v4d-logo" href="/"><span class="mark" set:html={svg.logo} />BoardPlanner</a>
+        <a class="v4d-logo" href="/"><span class="mark" set:html={svg.logo} />Perceive</a>
         <div class="v4d-links">
           <a href="#features">Product</a>
           <a href="#">Pricing</a>
@@ -57,7 +68,7 @@ const six = [
         </div>
         <div class="v4d-hero-media">
           <div class="v4d-card">
-            <svg class="v4d-illus" viewBox="0 0 420 300" role="img" aria-label="This week in BoardPlanner: a completed task, the packet ready, and an early signal.">
+            <svg class="v4d-illus" viewBox="0 0 420 300" role="img" aria-label="This week in Perceive: a completed task, the packet ready, and an early signal.">
               <text x="24" y="40" font-family="system-ui, sans-serif" font-size="17" font-weight="700" class="il-ink">This week</text>
               <g transform="translate(316,24)"><rect width="80" height="24" rx="12" class="il-bluetint"/><text x="40" y="16" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-size="11" font-weight="700" class="il-blue">on track</text></g>
               <line x1="24" y1="58" x2="396" y2="58" class="il-line"/>
@@ -78,7 +89,7 @@ const six = [
     <section class="v4d-feat rev" id="features">
       <div class="wrap"><div class="grid">
         <div class="v4d-feat-copy">
-          <span class="kick">Differentiator 01</span>
+          <span class="kick">Introducing</span>
           <h2>The Commitment Tracker</h2>
           <p class="desc">Heralded in September. Forgotten by spring.</p>
           <p class="body">The board sets its goals in the fall, then the year buries them. The Commitment Tracker watches what you are actually doing to reach them: the motions, the owners, the due dates already in your meetings, shown as open, late, or done. Zero work required.</p>
@@ -128,12 +139,29 @@ const six = [
       </div></div>
     </section>
 
+    <!-- ON THE RECORD MARQUEE (follows the two features) -->
+    <section class="v4d-marquee">
+      <div class="wrap v4d-marquee-head">
+        <span class="kick">Meanwhile, on the record</span>
+      </div>
+      <div class="v4d-marquee-row left">
+        {[...record, ...record].map((it) => (
+          <span class="v4d-tag">{it.t} <i>· {it.d}</i></span>
+        ))}
+      </div>
+      <div class="v4d-marquee-row right">
+        {[...record.slice().reverse(), ...record.slice().reverse()].map((it) => (
+          <span class="v4d-tag">{it.t} <i>· {it.d}</i></span>
+        ))}
+      </div>
+    </section>
+
     <!-- SIX TOOLS -->
     <section class="v4d-six">
       <div class="wrap">
         <div class="v4d-six-head">
-          <h2>Everything you expect from board software.</h2>
-          <p>The two above are the differentiators. These are the everyday tools that carry the meeting.</p>
+          <h2>The Boring Suite</h2>
+          <p>Administrators handle a lot of tedious work surrounding board meetings and compliance; The Boring Suite takes that burden away.</p>
         </div>
         <div class="v4d-six-grid" id="sixGrid">
           {six.map((f) => (
@@ -211,7 +239,7 @@ const six = [
                     <div class="pv-agent">
                       <span class="av">DM</span>
                       <div>
-                        <b>Dana · BoardPlanner</b>
+                        <b>Dana · Perceive</b>
                         <span class="typing"><i></i><i></i><i></i></span>
                         <span class="reply">On it — restored and emailed to you.</span>
                       </div>
@@ -236,7 +264,7 @@ const six = [
         <div class="v4d-cal" id="v4cal">
           <div class="cal-body">
             <div class="cal-info">
-              <span class="cal-brand">BoardPlanner</span>
+              <span class="cal-brand">Perceive</span>
               <h3>Product demo</h3>
               <ul class="cal-meta">
                 <li><span class="ci" aria-hidden="true">◷</span> 20 minutes</li>
@@ -268,7 +296,7 @@ const six = [
       <div class="v4d-foot-in">
         <div class="v4d-foot-top">
           <div class="brand">
-            <a class="v4d-logo" href="/"><span class="mark" set:html={svg.logo} />BoardPlanner</a>
+            <a class="v4d-logo" href="/"><span class="mark" set:html={svg.logo} />Perceive</a>
             <p>Board meeting software for K-12 school districts. Built for the person who keeps the record.</p>
           </div>
           <div><h5>Product</h5><ul><li><a href="#features">Agendas</a></li><li><a href="#features">Minutes</a></li><li><a href="#">Public portal</a></li><li><a href="#">Migration</a></li></ul></div>
@@ -276,7 +304,7 @@ const six = [
           <div><h5>Company</h5><ul><li><a href="#">Changelog</a></li><li><a href="#">Status</a></li><li><a href="#">Security</a></li><li><a href="#">Contact</a></li></ul></div>
         </div>
         <div class="v4d-foot-bot">
-          <span class="fine">© 2026 BoardPlanner</span>
+          <span class="fine">© 2026 Perceive</span>
           <span class="adjourned">Meeting adjourned.</span>
         </div>
       </div>
@@ -371,3 +399,18 @@ const six = [
     state();
   }
 </script>
+
+<style>
+  .v4d-marquee { padding: 60px 0; border-bottom: 1px solid var(--line); background: var(--bg2); overflow: hidden; }
+  .v4d-marquee-head { text-align: center; margin-bottom: 32px; }
+  .v4d-marquee-head .kick { display: inline-flex; align-items: center; gap: 8px; color: var(--blue); font-size: 13px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
+  .v4d-marquee-row { display: flex; gap: 14px; white-space: nowrap; width: max-content; }
+  .v4d-marquee-row.left { animation: v4dScrollLeft 38s linear infinite; }
+  .v4d-marquee-row.right { animation: v4dScrollRight 42s linear infinite; margin-top: 14px; }
+  .v4d-marquee:hover .v4d-marquee-row { animation-play-state: paused; }
+  @keyframes v4dScrollLeft { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  @keyframes v4dScrollRight { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+  .v4d-tag { display: inline-flex; align-items: center; gap: 8px; font-family: var(--mono); font-size: 12.5px; color: var(--ink); background: var(--card); border: 1px solid var(--line2); border-radius: 100px; padding: 8px 16px; }
+  .v4d-tag i { font-style: normal; color: var(--faint); }
+  @media (prefers-reduced-motion: reduce) { .v4d-marquee-row { animation: none; } }
+</style>
