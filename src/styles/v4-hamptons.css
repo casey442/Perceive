@@ -72,10 +72,10 @@
 .v4h-logo .mark { width: 22px; height: 22px; color: var(--gold); }
 
 /* ---------- HERO ---------- */
-.v4h-hero { padding: 88px 0 96px; border-bottom: 1px solid var(--line); background:
+.v4h-hero { position: relative; min-height: calc(100vh - 114px); display: flex; align-items: center; padding: 88px 0 96px; border-bottom: 1px solid var(--line); background:
   radial-gradient(1100px 520px at 82% -8%, rgba(180,146,79,.09), transparent 60%),
   radial-gradient(700px 400px at 0% 0%, rgba(124,138,110,.06), transparent 55%); }
-.v4h-hero .grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 56px; align-items: center; }
+.v4h-hero .grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1.05fr .95fr; gap: 56px; align-items: center; }
 .v4h-hero h1 { font-size: clamp(40px, 5.4vw, 62px); font-weight: 700; line-height: 1.04; letter-spacing: -.03em; margin: 16px 0 0; color: var(--ink); }
 .v4h-hero h1 .hi { color: var(--blue-hi); }
 .v4h-hero .lede { font-size: clamp(17px, 1.5vw, 19px); line-height: 1.55; color: var(--mut); margin: 22px 0 30px; max-width: 44ch; }
@@ -96,7 +96,11 @@
 @keyframes v4hpulse { 0%,100% { opacity: .55 } 50% { opacity: 1 } }
 
 /* ---------- TWO FEATURES ---------- */
-.v4h-feat { padding: 88px 0; border-bottom: 1px solid var(--line); position: relative; }
+.v4h-feat { padding: 88px 0; border-bottom: 1px solid var(--line); position: relative; background-image: var(--weave), var(--grain); background-blend-mode: multiply, normal; }
+/* Commitment Tracker: 30% darker than the base linen, to set it apart */
+.v4h-feat.rev { background-color: color-mix(in srgb, var(--bg) 70%, var(--ink) 30%); }
+/* Early Signal: lightened toward ivory, the opposite move */
+.v4h-feat:not(.rev) { background-color: color-mix(in srgb, var(--bg) 50%, var(--card) 50%); }
 .v4h-feat .wrap { position: relative; z-index: 1; }
 /* Early Signal only: a real, de-identified render of the signal map (actual data
    points from the product, stripped of hover/animation cruft) sitting as a faint
@@ -114,22 +118,6 @@
   pointer-events: none;
   z-index: 0;
 }
-/* Commitment Tracker only: the real "Board priorities" header illustration from
-   the product (campus, tree, people, an open book), recolored into the page's
-   navy/gold/sage accents, sitting as a faint watermark behind the section. */
-.v4h-feat.rev::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: url('/images/committrack-hero.svg');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 1100px auto;
-  opacity: 0.22;
-  mix-blend-mode: multiply;
-  pointer-events: none;
-  z-index: 0;
-}
 .v4h-feat .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 58px; align-items: center; }
 .v4h-feat.rev .grid { direction: rtl; } .v4h-feat.rev .grid > * { direction: ltr; }
 .v4h-feat .kick { display: inline-flex; align-items: center; gap: 8px; color: var(--blue); font-size: 13px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
@@ -142,12 +130,29 @@
 @media (prefers-reduced-motion: reduce) { .v4h-feat h2.jump:hover span { animation: none; } }
 .v4h-feat .desc { font-size: clamp(17px, 1.6vw, 20px); color: var(--blue-hi); margin: 14px 0 0; font-weight: 500; }
 .v4h-feat .body { font-size: 16.5px; line-height: 1.6; color: var(--mut); margin: 14px 0 22px; max-width: 42ch; }
-/* both features now sit over a watermark: darker text keeps them readable */
-.v4h-feat:not(.rev) .desc, .v4h-feat.rev .desc { color: var(--blue); }
-.v4h-feat:not(.rev) .body, .v4h-feat.rev .body { color: var(--ink); }
+/* Early Signal: lightened background, keep the darker text for contrast */
+.v4h-feat:not(.rev) .desc { color: var(--blue); }
+.v4h-feat:not(.rev) .body { color: var(--ink); }
 .v4h-feat .arrow { font-size: 15px; font-weight: 600; color: var(--blue); text-decoration: none; border-bottom: 1px solid var(--line2); padding-bottom: 2px; }
 .v4h-feat .arrow:hover { border-color: var(--blue); }
+/* Commitment Tracker: lightened background, back to dark text */
+.v4h-feat.rev .desc { color: var(--blue); }
+.v4h-feat.rev .body { color: var(--ink); }
 .v4h-feat-media { display: flex; justify-content: center; }
+
+/* slide-in reveal, first scroll into view: image and text each come from their
+   own visual side (Commitment Tracker's image sits left via the .rev/rtl swap,
+   Early Signal's sits right, so the two features mirror each other). The
+   transition lives on the base class, not just .pre-reveal — otherwise it
+   vanishes in the same instant the class is removed and the change snaps
+   instead of animating. */
+.v4h-feat-copy, .v4h-feat-media { transition: opacity 1.6s ease, transform 1.6s cubic-bezier(.16,1,.3,1); }
+.v4h-feat-copy.pre-reveal, .v4h-feat-media.pre-reveal { opacity: 0; }
+.v4h-feat:not(.rev) .v4h-feat-copy.pre-reveal { transform: translateX(-140px); }
+.v4h-feat:not(.rev) .v4h-feat-media.pre-reveal { transform: translateX(140px); }
+.v4h-feat.rev .v4h-feat-copy.pre-reveal { transform: translateX(140px); }
+.v4h-feat.rev .v4h-feat-media.pre-reveal { transform: translateX(-140px); }
+@media (prefers-reduced-motion: reduce) { .v4h-feat-copy.pre-reveal, .v4h-feat-media.pre-reveal { opacity: 1; transform: none; } .v4h-feat-copy, .v4h-feat-media { transition: none; } }
 .v4h-feat-media .v4h-card { width: 100%; max-width: 460px; }
 
 /* ---------- SIX TOOLS ---------- */

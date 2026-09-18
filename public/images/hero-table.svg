@@ -1,0 +1,96 @@
+          <svg viewBox="0 0 1000 640" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+            <defs>
+              <linearGradient id="wood" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#D0AC78"/><stop offset="1" stop-color="#B18B55"/>
+              </linearGradient>
+              <linearGradient id="woodrim" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#9A7A45"/><stop offset="1" stop-color="#7E6236"/>
+              </linearGradient>
+            </defs>
+
+            <!-- chairs -->
+            <g fill="#2A2620" stroke="#2A2620" stroke-width="2">
+              <rect x="255" y="70" width="96" height="52" rx="14"/><rect x="452" y="66" width="96" height="52" rx="14"/><rect x="649" y="70" width="96" height="52" rx="14"/>
+              <rect x="255" y="520" width="96" height="52" rx="14"/><rect x="452" y="524" width="96" height="52" rx="14"/><rect x="649" y="520" width="96" height="52" rx="14"/>
+              <rect x="70" y="270" width="52" height="96" rx="14"/><rect x="878" y="270" width="52" height="96" rx="14"/>
+            </g>
+
+            <!-- table (racetrack) -->
+            <rect x="96" y="132" width="808" height="376" rx="188" fill="url(#woodrim)"/>
+            <rect x="104" y="140" width="792" height="360" rx="180" fill="url(#wood)"/>
+            <rect x="104" y="140" width="792" height="360" rx="180" fill="none" stroke="#8A6C3E" stroke-width="2" opacity=".5"/>
+
+            <!-- name plates near seats -->
+            <g font-family="Space Mono, monospace" font-weight="700" font-size="10" fill="#EDE7D6">
+              <g transform="translate(470,150)"><rect x="-30" y="-2" width="60" height="18" rx="3" fill="#2A2620" stroke="#2A2620" stroke-width="1.5"/><text x="0" y="11" text-anchor="middle">PRESIDENT</text></g>
+              <g transform="translate(470,472)"><rect x="-24" y="0" width="48" height="18" rx="3" fill="#2A2620" stroke="#2A2620" stroke-width="1.5"/><text x="0" y="13" text-anchor="middle">CLERK</text></g>
+            </g>
+
+            <!-- coffee cups -->
+            <g fill="#F4F0E6" stroke="#2A2620" stroke-width="2">
+              <circle cx="330" cy="200" r="15"/><circle cx="670" cy="440" r="15"/>
+            </g>
+            <g fill="#8A6C3E"><circle cx="330" cy="200" r="8"/><circle cx="670" cy="440" r="8"/></g>
+
+            <!-- gavel (top center) -->
+            <ellipse cx="470" cy="250" rx="30" ry="10" fill="#B98A3B" stroke="#2A2620" stroke-width="2"/>
+            <g ><g transform="translate(500,205) rotate(24)">
+              <rect x="-6" y="-4" width="74" height="16" rx="7" fill="#B98A3B" stroke="#2A2620" stroke-width="2"/>
+              <rect x="-44" y="-13" width="42" height="34" rx="7" fill="#C89A48" stroke="#2A2620" stroke-width="2"/>
+              <rect x="-46" y="-16" width="46" height="8" rx="3" fill="#8A6C3E" stroke="#2A2620" stroke-width="2"/>
+            </g></g>
+
+
+            <!-- laptop taking live minutes (center-right) -->
+            <g transform="translate(600,315) rotate(-6)">
+              <rect x="-96" y="-70" width="192" height="128" rx="8" fill="#26231C" stroke="#2A2620" stroke-width="2"/>
+              <rect x="-86" y="-60" width="172" height="108" rx="4" fill="#F7F4EA"/>
+              <rect x="-74" y="-50" width="70" height="9" rx="3" fill="#B4924F"/>
+              <g font-family="Space Mono, monospace" font-weight="700" font-size="9" fill="#3A362B">
+                <text x="-74" y="-28">MINUTES · LIVE</text>
+              </g>
+              <g stroke="#D8D0BC" stroke-width="2">
+                <rect x="-74" y="-20" width="150" height="20" rx="4" fill="#EFEAD9"/>
+                <rect x="-74" y="4" width="150" height="20" rx="4" fill="none"/>
+                <rect x="-74" y="28" width="150" height="20" rx="4" fill="none"/>
+              </g>
+              <g font-family="Space Mono, monospace" font-size="8.5" fill="#4A4536">
+                <text x="-66" y="-6">Consent agenda</text><text x="52" y="-6" fill="#B4924F" font-weight="700">7–0</text>
+                <text x="-66" y="18">Bus contract</text><text x="52" y="18" fill="#B4924F" font-weight="700">6–1</text>
+                <text x="-66" y="42">Bell schedule</text><text x="52" y="42" fill="#B4924F" font-weight="700">5–2</text>
+              </g>
+              <rect x="-108" y="58" width="216" height="12" rx="4" fill="#3A362B" stroke="#2A2620" stroke-width="2"/>
+            </g>
+
+            <!-- the minute book / PDF stack (bottom-left) -->
+            <g transform="translate(300,452) rotate(-4)">
+              <rect x="-58" y="-6" width="120" height="60" rx="5" fill="#E7DFC9" stroke="#2A2620" stroke-width="2"/>
+              <rect x="-64" y="-16" width="120" height="60" rx="5" fill="#F1EAD6" stroke="#2A2620" stroke-width="2"/>
+              <rect x="-70" y="-26" width="120" height="60" rx="5" fill="#FBF9F1" stroke="#2A2620" stroke-width="2"/>
+              <g stroke="#C9C0AC" stroke-width="2.4" stroke-linecap="round"><path d="M-58 -12h96M-58 -2h80M-58 8h96"/></g>
+            </g>
+
+            <!-- sticky notes (bottom-right) -->
+            <g transform="translate(650,455)">
+              <rect x="-2" y="-2" width="52" height="52" rx="3" fill="#F2E074" stroke="#2A2620" stroke-width="2" transform="rotate(6 24 24)"/>
+              <rect x="30" y="6" width="48" height="48" rx="3" fill="#E7A6B0" stroke="#2A2620" stroke-width="2" transform="rotate(-8 54 30)"/>
+              <g font-family="Space Mono, monospace" font-size="8" fill="#4A4536"><text x="6" y="20" transform="rotate(6 24 24)">3 min</text><text x="6" y="34" transform="rotate(6 24 24)">/ speaker</text></g>
+            </g>
+
+            <!-- clock at 5:45 (top-right) -->
+            <g transform="translate(760,205)">
+              <circle r="34" fill="#FBF9F1" stroke="#2A2620" stroke-width="2.5"/>
+              <circle r="34" fill="none" stroke="#B4924F" stroke-width="2" stroke-dasharray="2 6"/>
+              <line x1="0" y1="0" x2="-15" y2="4" stroke="#2A2620" stroke-width="3" stroke-linecap="round"/>
+              <line x1="0" y1="0" x2="2" y2="-20" stroke="#2A2620" stroke-width="3" stroke-linecap="round"/>
+              <circle r="3" fill="#B4924F"/>
+              <text x="0" y="52" text-anchor="middle" font-family="Space Mono, monospace" font-weight="700" font-size="10" fill="#5B5546">5:45</text>
+            </g>
+
+            <!-- annotations -->
+            <g ><line stroke="#2A2620" stroke-width="1.5" stroke-dasharray="3 3" fill="none" x1="300" y1="80" x2="474" y2="210"/><circle fill="#B4924F" stroke="#2A2620" stroke-width="1.5" cx="474" cy="210" r="4.5"/><g transform="translate(196,64)"><rect fill="#FFFEFB" stroke="#2A2620" stroke-width="1.5" width="118" height="26" rx="7"/><text fill="#2A2620" x="11" y="17">Call to order</text></g></g>
+            <g ><line stroke="#2A2620" stroke-width="1.5" stroke-dasharray="3 3" fill="none" x1="712" y1="104" x2="612" y2="270"/><circle fill="#B4924F" stroke="#2A2620" stroke-width="1.5" cx="612" cy="270" r="4.5"/><g transform="translate(706,90)"><rect fill="#FFFEFB" stroke="#2A2620" stroke-width="1.5" width="112" height="26" rx="7"/><text fill="#2A2620" x="11" y="17">Live minutes</text></g></g>
+            <g ><line stroke="#2A2620" stroke-width="1.5" stroke-dasharray="3 3" fill="none" x1="838" y1="300" x2="760" y2="220"/><circle fill="#B4924F" stroke="#2A2620" stroke-width="1.5" cx="760" cy="220" r="4.5"/><g transform="translate(832,290)"><rect fill="#FFFEFB" stroke="#2A2620" stroke-width="1.5" width="164" height="26" rx="7"/><text fill="#2A2620" x="11" y="17">Posted 3 days early</text></g></g>
+            <g ><line stroke="#2A2620" stroke-width="1.5" stroke-dasharray="3 3" fill="none" x1="176" y1="576" x2="270" y2="452"/><circle fill="#B4924F" stroke="#2A2620" stroke-width="1.5" cx="270" cy="452" r="4.5"/><g transform="translate(60,566)"><rect fill="#FFFEFB" stroke="#2A2620" stroke-width="1.5" width="150" height="26" rx="7"/><text fill="#2A2620" x="11" y="17">The minute book</text></g></g>
+            <g ><line stroke="#2A2620" stroke-width="1.5" stroke-dasharray="3 3" fill="none" x1="726" y1="578" x2="676" y2="482"/><circle fill="#B4924F" stroke="#2A2620" stroke-width="1.5" cx="676" cy="482" r="4.5"/><g transform="translate(720,568)"><rect fill="#FFFEFB" stroke="#2A2620" stroke-width="1.5" width="140" height="26" rx="7"/><text fill="#2A2620" x="11" y="17">Public comment</text></g></g>
+          </svg>

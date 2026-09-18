@@ -51,9 +51,10 @@ const six = [
           <circle cx="11.6" cy="11" r="0.9" fill="#2A2620"/>
           <circle cx="16.4" cy="11" r="0.9" fill="#2A2620"/>
           <path d="M11.5 14.2q2.5 2 5 0" fill="none" stroke="#2A2620" stroke-width="1.1" stroke-linecap="round"/>
-          <ellipse cx="14" cy="6.5" rx="6.8" ry="1.6" fill="#2A2620"/>
-          <path d="M10.3 6.5 Q9.8 2 14 1.6 Q18.2 2 17.7 6.5 Z" fill="#2A2620"/>
-          <rect x="10.3" y="5.6" width="7.4" height="1" fill="var(--gold)"/>
+          <path d="M12 16.6 Q14 20 16 16.6 Q14 18.2 12 16.6 Z" fill="#2A2620"/>
+          <ellipse cx="14" cy="6.9" rx="11" ry="1.9" fill="#2A2620"/>
+          <path d="M9.2 6.9 Q9 2 14 1.4 Q19 2 18.8 6.9 Z" fill="#2A2620"/>
+          <rect x="9.2" y="5.9" width="9.6" height="1" fill="var(--gold)"/>
           <rect x="6.5" y="18" width="15" height="14" rx="4" fill="var(--blue)"/>
           <rect x="8" y="31" width="5.5" height="9" rx="2.5" fill="#2A2620"/>
           <rect x="14.5" y="31" width="5.5" height="9" rx="2.5" fill="#2A2620"/>
@@ -323,6 +324,25 @@ const six = [
         h2.appendChild(span);
       });
     });
+  }
+
+  // Commitment Tracker / Early Signal: hidden unconditionally on load (only
+  // the hero should be visible first), each sliding in from its own side the
+  // moment you actually scroll it into view.
+  if (!reduceMotion) {
+    const revealEls = document.querySelectorAll<HTMLElement>('.v4h-feat-copy, .v4h-feat-media');
+    revealEls.forEach((el) => el.classList.add('pre-reveal'));
+    const revealIO = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.remove('pre-reveal');
+          obs.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.08 }
+    );
+    revealEls.forEach((el) => revealIO.observe(el));
   }
 
   // Scroll dude: rides the rope in step with scroll position; drag him, or click
