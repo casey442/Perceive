@@ -62,14 +62,14 @@ const six = [
       </div>
     </div>
 
-    <nav class="v4h-nav">
+    <nav class="v4h-nav" style="top: 0;">
       <div class="v4h-nav-in">
         <a class="v4h-logo" href="/"><span class="mark" set:html={svg.logo} />Perceive</a>
       </div>
     </nav>
 
     <!-- HERO -->
-    <header class="v4h-hero" data-dude-blurb="Let's go!">
+    <header class="v4h-hero" data-dude-blurb="Let's go!" style="min-height: calc(100vh - 62px);">
       <div class="wrap"><div class="grid">
         <div class="v4h-hero-copy">
           <h1>No tools that <span class="hi">"revolutionize K-12 governance."</span></h1>
@@ -315,7 +315,7 @@ const six = [
       h2.textContent = '';
       text.split('').forEach((ch, i) => {
         const span = document.createElement('span');
-        span.textContent = ch === ' ' ? ' ' : ch;
+        span.textContent = ch === ' ' ? ' ' : ch;
         span.style.setProperty('--i', String(i));
         h2.appendChild(span);
       });
