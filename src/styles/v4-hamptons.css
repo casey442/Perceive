@@ -45,7 +45,7 @@
 
 /* ---------- NAV ---------- */
 /* ---------- SCROLL DUDE ---------- */
-.v4h-scroller { position: fixed; top: 14vh; right: 26px; width: 34px; height: 72vh; z-index: 50; cursor: grab; touch-action: none; }
+.v4h-scroller { position: fixed; top: 0; right: 26px; width: 34px; height: 86vh; z-index: 50; cursor: grab; touch-action: none; }
 .v4h-scroller::before { content: ""; position: absolute; left: 50%; top: 0; bottom: 0; width: 2px; margin-left: -1px; background: repeating-linear-gradient(to bottom, var(--line2) 0 5px, transparent 5px 10px); }
 .v4h-scroller:active, .v4h-scroller.dragging { cursor: grabbing; }
 .v4h-scroller-dude { position: absolute; left: 50%; top: 0; width: 28px; height: 40px; transform: translateX(-50%) rotate(-4deg); transform-origin: 50% 4px; filter: drop-shadow(0 6px 10px rgba(42,38,32,.22)); animation: v4hDudeSway 3.4s ease-in-out infinite; }
