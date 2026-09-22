@@ -58,7 +58,7 @@ const six = [
       </div>
       <div class="v4h-scroller-bubble" id="dudeBubble">
         <span class="v4h-scroller-bubble-text" aria-hidden="true"></span>
-        <a class="v4h-scroller-bubble-link" href="#book">Book a demo</a>
+        <a class="v4h-scroller-bubble-link" href="https://calendar.app.google/RWAKgxYFQuVBggrt6" target="_blank" rel="noopener">Book a demo</a>
       </div>
     </div>
 
@@ -75,7 +75,7 @@ const six = [
           <h1>No tools that <span class="hi">"revolutionize K-12 governance."</span></h1>
           <p class="lede">We just handle a lot of the boring administrative work so you don't have to. That's it. That's the pitch.</p>
           <div class="v4h-hero-cta">
-            <a class="v4h-btn big" href="#book">See a demo</a>
+            <a class="v4h-btn big" href="https://calendar.app.google/RWAKgxYFQuVBggrt6" target="_blank" rel="noopener">See a demo</a>
             <a class="v4h-btn ghost big" href="#features">See it work</a>
           </div>
         </div>
@@ -297,7 +297,7 @@ const six = [
     <footer class="v4h-foot" data-dude-blurb="Book a demo" data-dude-cta="true">
       <div class="v4h-foot-in">
         <div class="v4h-foot-cta">
-          <a class="v4h-btn big" href="#book">Book a demo</a>
+          <a class="v4h-btn big" href="https://calendar.app.google/RWAKgxYFQuVBggrt6" target="_blank" rel="noopener">Book a demo</a>
         </div>
       </div>
     </footer>
@@ -382,7 +382,7 @@ const six = [
     dude.addEventListener('pointercancel', stopDrag);
 
     scroller.addEventListener('pointerdown', (e) => {
-      if (e.target === dude || dude.contains(e.target as Node)) return;
+      if (e.target === dude || dude.contains(e.target as Node) || (e.target as HTMLElement).closest('.v4h-scroller-bubble-link')) return;
       const frac = fracFromClientY(e.clientY);
       window.scrollTo({ top: Math.max(0, Math.min(1, frac)) * scrollMax(), behavior: reduceMotion ? 'auto' : 'smooth' });
     });
